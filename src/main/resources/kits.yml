@@ -1,0 +1,1923 @@
+# Blaze's WildKits - Premade kits (120+)
+# These mirror DefaultKits and can be customized.
+kits:
+  starter:
+    display-name: "<gray>Starter"
+    description: "Basic gear for new fighters"
+    rarity: COMMON
+    icon: WOODEN_SWORD
+    category: General
+    permission: wildkits.kit.starter
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  warrior:
+    display-name: "<gray>Warrior"
+    description: "Balanced melee fighter"
+    rarity: COMMON
+    icon: STONE_SWORD
+    category: Melee
+    permission: wildkits.kit.warrior
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  knight:
+    display-name: "<green>Knight"
+    description: "Armored frontline defender"
+    rarity: UNCOMMON
+    icon: IRON_SWORD
+    category: Melee
+    permission: wildkits.kit.knight
+    unlocked-by-default: true
+    price: 0
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: false
+  tank:
+    display-name: "<green>Tank"
+    description: "Heavy armor and shield focus"
+    rarity: UNCOMMON
+    icon: SHIELD
+    category: Melee
+    permission: wildkits.kit.tank
+    unlocked-by-default: true
+    price: 0
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  assassin:
+    display-name: "<aqua>Assassin"
+    description: "Fast strikes and pearls"
+    rarity: RARE
+    icon: IRON_SWORD
+    category: Stealth
+    permission: wildkits.kit.assassin
+    unlocked-by-default: false
+    price: 500
+    theme: assassin
+    prefer-ranged: false
+    prefer-magic: false
+  archer:
+    display-name: "<gray>Archer"
+    description: "Bow-focused ranged kit"
+    rarity: COMMON
+    icon: BOW
+    category: Ranged
+    permission: wildkits.kit.archer
+    unlocked-by-default: true
+    price: 0
+    theme: archer
+    prefer-ranged: true
+    prefer-magic: false
+  mage:
+    display-name: "<aqua>Mage"
+    description: "Potions and magic control"
+    rarity: RARE
+    icon: BLAZE_ROD
+    category: Magic
+    permission: wildkits.kit.mage
+    unlocked-by-default: false
+    price: 750
+    theme: mage
+    prefer-ranged: false
+    prefer-magic: true
+  miner:
+    display-name: "<gray>Miner"
+    description: "Pickaxe and torch utility"
+    rarity: COMMON
+    icon: IRON_PICKAXE
+    category: Utility
+    permission: wildkits.kit.miner
+    unlocked-by-default: true
+    price: 0
+    theme: miner
+    prefer-ranged: false
+    prefer-magic: false
+  builder:
+    display-name: "<gray>Builder"
+    description: "Blocks and scaffolding"
+    rarity: COMMON
+    icon: OAK_PLANKS
+    category: Utility
+    permission: wildkits.kit.builder
+    unlocked-by-default: true
+    price: 0
+    theme: builder
+    prefer-ranged: false
+    prefer-magic: false
+  hunter:
+    display-name: "<green>Hunter"
+    description: "Track and shoot prey"
+    rarity: UNCOMMON
+    icon: CROSSBOW
+    category: Ranged
+    permission: wildkits.kit.hunter
+    unlocked-by-default: true
+    price: 0
+    theme: hunter
+    prefer-ranged: true
+    prefer-magic: false
+  farmer:
+    display-name: "<gray>Farmer"
+    description: "Food surplus and carrots"
+    rarity: COMMON
+    icon: GOLDEN_CARROT
+    category: Utility
+    permission: wildkits.kit.farmer
+    unlocked-by-default: true
+    price: 0
+    theme: farmer
+    prefer-ranged: false
+    prefer-magic: false
+  explorer:
+    display-name: "<gray>Explorer"
+    description: "Travel-ready supplies"
+    rarity: COMMON
+    icon: COMPASS
+    category: Utility
+    permission: wildkits.kit.explorer
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  pvp:
+    display-name: "<green>PvP"
+    description: "Classic PvP loadout"
+    rarity: UNCOMMON
+    icon: DIAMOND_SWORD
+    category: Melee
+    permission: wildkits.kit.pvp
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  nether:
+    display-name: "<aqua>Nether"
+    description: "Fireproof nether gear"
+    rarity: RARE
+    icon: NETHERRACK
+    category: Elemental
+    permission: wildkits.kit.nether
+    unlocked-by-default: false
+    price: 800
+    theme: nether
+    prefer-ranged: false
+    prefer-magic: false
+  end:
+    display-name: "<aqua>End"
+    description: "Ender pearls and chorus"
+    rarity: RARE
+    icon: ENDER_PEARL
+    category: Elemental
+    permission: wildkits.kit.end
+    unlocked-by-default: false
+    price: 900
+    theme: end
+    prefer-ranged: false
+    prefer-magic: false
+  diamond:
+    display-name: "<light_purple>Diamond"
+    description: "Diamond-tier fighter"
+    rarity: EPIC
+    icon: DIAMOND_CHESTPLATE
+    category: Elite
+    permission: wildkits.kit.diamond
+    unlocked-by-default: false
+    price: 1500
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  netherite:
+    display-name: "<gold>Netherite"
+    description: "Top-tier netherite power"
+    rarity: LEGENDARY
+    icon: NETHERITE_SWORD
+    category: Elite
+    permission: wildkits.kit.netherite
+    unlocked-by-default: false
+    price: 3000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  lucky:
+    display-name: "<aqua>Lucky"
+    description: "High RNG surprise kit"
+    rarity: RARE
+    icon: GOLD_INGOT
+    category: Special
+    permission: wildkits.kit.lucky
+    unlocked-by-default: false
+    price: 1000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  op:
+    display-name: "<gradient:#ff006e:#8338ec>OP"
+    description: "Overpowered showcase kit"
+    rarity: ULTIMATE
+    icon: NETHER_STAR
+    category: Elite
+    permission: wildkits.kit.op
+    unlocked-by-default: false
+    price: 10000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  legend:
+    display-name: "<gold>Legend"
+    description: "Legendary battlefield presence"
+    rarity: LEGENDARY
+    icon: GOLDEN_HELMET
+    category: Elite
+    permission: wildkits.kit.legend
+    unlocked-by-default: false
+    price: 4000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  mythic:
+    display-name: "<red>Mythic"
+    description: "Mythic-grade armaments"
+    rarity: MYTHIC
+    icon: DRAGON_EGG
+    category: Elite
+    permission: wildkits.kit.mythic
+    unlocked-by-default: false
+    price: 6000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  champion:
+    display-name: "<light_purple>Champion"
+    description: "Tournament-ready kit"
+    rarity: EPIC
+    icon: DIAMOND_HELMET
+    category: Elite
+    permission: wildkits.kit.champion
+    unlocked-by-default: false
+    price: 2000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  elite:
+    display-name: "<light_purple>Elite"
+    description: "Elite squad standard"
+    rarity: EPIC
+    icon: DIAMOND_BOOTS
+    category: Elite
+    permission: wildkits.kit.elite
+    unlocked-by-default: false
+    price: 1800
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  lava:
+    display-name: "<aqua>Lava"
+    description: "Molten offense kit"
+    rarity: RARE
+    icon: LAVA_BUCKET
+    category: Elemental
+    permission: wildkits.kit.lava
+    unlocked-by-default: false
+    price: 850
+    theme: lava
+    prefer-ranged: false
+    prefer-magic: false
+  ice:
+    display-name: "<aqua>Ice"
+    description: "Frost control kit"
+    rarity: RARE
+    icon: PACKED_ICE
+    category: Elemental
+    permission: wildkits.kit.ice
+    unlocked-by-default: false
+    price: 850
+    theme: ice
+    prefer-ranged: false
+    prefer-magic: false
+  storm:
+    display-name: "<light_purple>Storm"
+    description: "Thunderous aggression"
+    rarity: EPIC
+    icon: TRIDENT
+    category: Elemental
+    permission: wildkits.kit.storm
+    unlocked-by-default: false
+    price: 1600
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  speed:
+    display-name: "<green>Speed"
+    description: "Swift mobility kit"
+    rarity: UNCOMMON
+    icon: SUGAR
+    category: Mobility
+    permission: wildkits.kit.speed
+    unlocked-by-default: true
+    price: 0
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  sniper:
+    display-name: "<aqua>Sniper"
+    description: "Precision ranged killer"
+    rarity: RARE
+    icon: ARROW
+    category: Ranged
+    permission: wildkits.kit.sniper
+    unlocked-by-default: false
+    price: 700
+    theme: sniper
+    prefer-ranged: true
+    prefer-magic: false
+  samurai:
+    display-name: "<light_purple>Samurai"
+    description: "Blade discipline kit"
+    rarity: EPIC
+    icon: IRON_SWORD
+    category: Melee
+    permission: wildkits.kit.samurai
+    unlocked-by-default: false
+    price: 1700
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  pirate:
+    display-name: "<green>Pirate"
+    description: "Seafaring combat kit"
+    rarity: UNCOMMON
+    icon: TRIDENT
+    category: Special
+    permission: wildkits.kit.pirate
+    unlocked-by-default: true
+    price: 0
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  ninja:
+    display-name: "<aqua>Ninja"
+    description: "Silent lethal strikes"
+    rarity: RARE
+    icon: BLACK_DYE
+    category: Stealth
+    permission: wildkits.kit.ninja
+    unlocked-by-default: false
+    price: 900
+    theme: ninja
+    prefer-ranged: false
+    prefer-magic: false
+  viking:
+    display-name: "<green>Viking"
+    description: "Axe-raider fury"
+    rarity: UNCOMMON
+    icon: IRON_AXE
+    category: Melee
+    permission: wildkits.kit.viking
+    unlocked-by-default: true
+    price: 0
+    theme: viking
+    prefer-ranged: false
+    prefer-magic: false
+  gladiator:
+    display-name: "<green>Gladiator"
+    description: "Arena brawler kit"
+    rarity: UNCOMMON
+    icon: IRON_CHESTPLATE
+    category: Melee
+    permission: wildkits.kit.gladiator
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  scout:
+    display-name: "<gray>Scout"
+    description: "Light recon gear"
+    rarity: COMMON
+    icon: LEATHER_BOOTS
+    category: Mobility
+    permission: wildkits.kit.scout
+    unlocked-by-default: true
+    price: 0
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  berserker:
+    display-name: "<aqua>Berserker"
+    description: "High risk high reward"
+    rarity: RARE
+    icon: REDSTONE
+    category: Melee
+    permission: wildkits.kit.berserker
+    unlocked-by-default: false
+    price: 650
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  paladin:
+    display-name: "<light_purple>Paladin"
+    description: "Holy defender"
+    rarity: EPIC
+    icon: GOLDEN_APPLE
+    category: Melee
+    permission: wildkits.kit.paladin
+    unlocked-by-default: false
+    price: 1900
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: false
+  rogue:
+    display-name: "<aqua>Rogue"
+    description: "Shadowy duelist"
+    rarity: RARE
+    icon: ENDER_EYE
+    category: Stealth
+    permission: wildkits.kit.rogue
+    unlocked-by-default: false
+    price: 800
+    theme: assassin
+    prefer-ranged: false
+    prefer-magic: false
+  ranger:
+    display-name: "<green>Ranger"
+    description: "Wilderness marksman"
+    rarity: UNCOMMON
+    icon: BOW
+    category: Ranged
+    permission: wildkits.kit.ranger
+    unlocked-by-default: true
+    price: 0
+    theme: hunter
+    prefer-ranged: true
+    prefer-magic: false
+  warlock:
+    display-name: "<light_purple>Warlock"
+    description: "Dark magic kit"
+    rarity: EPIC
+    icon: SOUL_LANTERN
+    category: Magic
+    permission: wildkits.kit.warlock
+    unlocked-by-default: false
+    price: 2100
+    theme: mage
+    prefer-ranged: false
+    prefer-magic: true
+  necromancer:
+    display-name: "<gold>Necromancer"
+    description: "Soul-draining mage"
+    rarity: LEGENDARY
+    icon: WITHER_SKELETON_SKULL
+    category: Magic
+    permission: wildkits.kit.necromancer
+    unlocked-by-default: false
+    price: 4500
+    theme: mage
+    prefer-ranged: false
+    prefer-magic: true
+  druid:
+    display-name: "<aqua>Druid"
+    description: "Nature-powered kit"
+    rarity: RARE
+    icon: OAK_SAPLING
+    category: Magic
+    permission: wildkits.kit.druid
+    unlocked-by-default: false
+    price: 950
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  phoenix:
+    display-name: "<red>Phoenix"
+    description: "Rise from the ashes"
+    rarity: MYTHIC
+    icon: BLAZE_POWDER
+    category: Elemental
+    permission: wildkits.kit.phoenix
+    unlocked-by-default: false
+    price: 7000
+    theme: lava
+    prefer-ranged: false
+    prefer-magic: false
+  frostbite:
+    display-name: "<light_purple>Frostbite"
+    description: "Deep freeze offense"
+    rarity: EPIC
+    icon: BLUE_ICE
+    category: Elemental
+    permission: wildkits.kit.frostbite
+    unlocked-by-default: false
+    price: 1750
+    theme: ice
+    prefer-ranged: false
+    prefer-magic: false
+  thunder:
+    display-name: "<light_purple>Thunder"
+    description: "Lightning strikes"
+    rarity: EPIC
+    icon: LIGHTNING_ROD
+    category: Elemental
+    permission: wildkits.kit.thunder
+    unlocked-by-default: false
+    price: 1800
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  shadow:
+    display-name: "<gold>Shadow"
+    description: "Umbral assassin"
+    rarity: LEGENDARY
+    icon: BLACK_CONCRETE
+    category: Stealth
+    permission: wildkits.kit.shadow
+    unlocked-by-default: false
+    price: 4200
+    theme: ninja
+    prefer-ranged: false
+    prefer-magic: false
+  crimson:
+    display-name: "<aqua>Crimson"
+    description: "Crimson nether force"
+    rarity: RARE
+    icon: CRIMSON_NYLIUM
+    category: Elemental
+    permission: wildkits.kit.crimson
+    unlocked-by-default: false
+    price: 1000
+    theme: nether
+    prefer-ranged: false
+    prefer-magic: false
+  warden:
+    display-name: "<red>Warden"
+    description: "Deep dark terror"
+    rarity: MYTHIC
+    icon: SCULK_SHRIEKER
+    category: Elite
+    permission: wildkits.kit.warden
+    unlocked-by-default: false
+    price: 8000
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  guardian:
+    display-name: "<green>Guardian"
+    description: "Protective ocean kit"
+    rarity: UNCOMMON
+    icon: PRISMARINE_SHARD
+    category: Special
+    permission: wildkits.kit.guardian
+    unlocked-by-default: true
+    price: 0
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  diver:
+    display-name: "<gray>Diver"
+    description: "Underwater fighter"
+    rarity: COMMON
+    icon: HEART_OF_THE_SEA
+    category: Special
+    permission: wildkits.kit.diver
+    unlocked-by-default: true
+    price: 0
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  bomber:
+    display-name: "<aqua>Bomber"
+    description: "Explosive pressure"
+    rarity: RARE
+    icon: TNT
+    category: Special
+    permission: wildkits.kit.bomber
+    unlocked-by-default: false
+    price: 1100
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  cannoneer:
+    display-name: "<light_purple>Cannoneer"
+    description: "Heavy projectile kit"
+    rarity: EPIC
+    icon: FIRE_CHARGE
+    category: Ranged
+    permission: wildkits.kit.cannoneer
+    unlocked-by-default: false
+    price: 2000
+    theme: sniper
+    prefer-ranged: true
+    prefer-magic: false
+  marksman:
+    display-name: "<green>Marksman"
+    description: "Steady aim kit"
+    rarity: UNCOMMON
+    icon: CROSSBOW
+    category: Ranged
+    permission: wildkits.kit.marksman
+    unlocked-by-default: true
+    price: 0
+    theme: archer
+    prefer-ranged: true
+    prefer-magic: false
+  duelist:
+    display-name: "<green>Duelist"
+    description: "1v1 specialist"
+    rarity: UNCOMMON
+    icon: IRON_SWORD
+    category: Melee
+    permission: wildkits.kit.duelist
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  brawler:
+    display-name: "<gray>Brawler"
+    description: "Close-quarters chaos"
+    rarity: COMMON
+    icon: STONE_AXE
+    category: Melee
+    permission: wildkits.kit.brawler
+    unlocked-by-default: true
+    price: 0
+    theme: viking
+    prefer-ranged: false
+    prefer-magic: false
+  sentinel:
+    display-name: "<aqua>Sentinel"
+    description: "Watchful defender"
+    rarity: RARE
+    icon: SHIELD
+    category: Melee
+    permission: wildkits.kit.sentinel
+    unlocked-by-default: false
+    price: 900
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  templar:
+    display-name: "<gold>Templar"
+    description: "Sacred knight kit"
+    rarity: LEGENDARY
+    icon: GOLDEN_CHESTPLATE
+    category: Melee
+    permission: wildkits.kit.templar
+    unlocked-by-default: false
+    price: 4800
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: false
+  reaper:
+    display-name: "<red>Reaper"
+    description: "Harvest souls"
+    rarity: MYTHIC
+    icon: NETHERITE_HOE
+    category: Stealth
+    permission: wildkits.kit.reaper
+    unlocked-by-default: false
+    price: 7500
+    theme: assassin
+    prefer-ranged: false
+    prefer-magic: false
+  ghost:
+    display-name: "<light_purple>Ghost"
+    description: "Hard to pin down"
+    rarity: EPIC
+    icon: GHAST_TEAR
+    category: Stealth
+    permission: wildkits.kit.ghost
+    unlocked-by-default: false
+    price: 2200
+    theme: ninja
+    prefer-ranged: false
+    prefer-magic: false
+  vampire:
+    display-name: "<gold>Vampire"
+    description: "Life-steal vibes"
+    rarity: LEGENDARY
+    icon: REDSTONE_BLOCK
+    category: Stealth
+    permission: wildkits.kit.vampire
+    unlocked-by-default: false
+    price: 5000
+    theme: assassin
+    prefer-ranged: false
+    prefer-magic: false
+  werewolf:
+    display-name: "<light_purple>Werewolf"
+    description: "Feral night hunter"
+    rarity: EPIC
+    icon: BONE
+    category: Melee
+    permission: wildkits.kit.werewolf
+    unlocked-by-default: false
+    price: 2300
+    theme: hunter
+    prefer-ranged: true
+    prefer-magic: false
+  alchemist:
+    display-name: "<aqua>Alchemist"
+    description: "Potion master"
+    rarity: RARE
+    icon: BREWING_STAND
+    category: Magic
+    permission: wildkits.kit.alchemist
+    unlocked-by-default: false
+    price: 1200
+    theme: mage
+    prefer-ranged: false
+    prefer-magic: true
+  enchanter:
+    display-name: "<light_purple>Enchanter"
+    description: "Enchant-heavy kit"
+    rarity: EPIC
+    icon: ENCHANTING_TABLE
+    category: Magic
+    permission: wildkits.kit.enchanter
+    unlocked-by-default: false
+    price: 2400
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  sorcerer:
+    display-name: "<gold>Sorcerer"
+    description: "Arcane barrage"
+    rarity: LEGENDARY
+    icon: AMETHYST_SHARD
+    category: Magic
+    permission: wildkits.kit.sorcerer
+    unlocked-by-default: false
+    price: 4600
+    theme: mage
+    prefer-ranged: false
+    prefer-magic: true
+  pyromancer:
+    display-name: "<light_purple>Pyromancer"
+    description: "Fire magic specialist"
+    rarity: EPIC
+    icon: BLAZE_ROD
+    category: Magic
+    permission: wildkits.kit.pyromancer
+    unlocked-by-default: false
+    price: 2500
+    theme: lava
+    prefer-ranged: false
+    prefer-magic: true
+  cryomancer:
+    display-name: "<light_purple>Cryomancer"
+    description: "Ice magic specialist"
+    rarity: EPIC
+    icon: SNOWBALL
+    category: Magic
+    permission: wildkits.kit.cryomancer
+    unlocked-by-default: false
+    price: 2500
+    theme: ice
+    prefer-ranged: false
+    prefer-magic: true
+  electromancer:
+    display-name: "<gold>Electromancer"
+    description: "Shock magic kit"
+    rarity: LEGENDARY
+    icon: COPPER_INGOT
+    category: Magic
+    permission: wildkits.kit.electromancer
+    unlocked-by-default: false
+    price: 4700
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  geomancer:
+    display-name: "<aqua>Geomancer"
+    description: "Earth shaper kit"
+    rarity: RARE
+    icon: DIRT
+    category: Magic
+    permission: wildkits.kit.geomancer
+    unlocked-by-default: false
+    price: 1300
+    theme: builder
+    prefer-ranged: false
+    prefer-magic: true
+  aeromancer:
+    display-name: "<aqua>Aeromancer"
+    description: "Wind dancer kit"
+    rarity: RARE
+    icon: FEATHER
+    category: Magic
+    permission: wildkits.kit.aeromancer
+    unlocked-by-default: false
+    price: 1300
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: true
+  engineer:
+    display-name: "<green>Engineer"
+    description: "Utility gadgets"
+    rarity: UNCOMMON
+    icon: REDSTONE_TORCH
+    category: Utility
+    permission: wildkits.kit.engineer
+    unlocked-by-default: true
+    price: 0
+    theme: builder
+    prefer-ranged: false
+    prefer-magic: false
+  architect:
+    display-name: "<aqua>Architect"
+    description: "Master builder kit"
+    rarity: RARE
+    icon: BRICKS
+    category: Utility
+    permission: wildkits.kit.architect
+    unlocked-by-default: false
+    price: 1000
+    theme: builder
+    prefer-ranged: false
+    prefer-magic: false
+  quarry:
+    display-name: "<green>Quarry"
+    description: "Heavy mining kit"
+    rarity: UNCOMMON
+    icon: DIAMOND_PICKAXE
+    category: Utility
+    permission: wildkits.kit.quarry
+    unlocked-by-default: true
+    price: 0
+    theme: miner
+    prefer-ranged: false
+    prefer-magic: false
+  lumberjack:
+    display-name: "<gray>Lumberjack"
+    description: "Axe and wood kit"
+    rarity: COMMON
+    icon: IRON_AXE
+    category: Utility
+    permission: wildkits.kit.lumberjack
+    unlocked-by-default: true
+    price: 0
+    theme: viking
+    prefer-ranged: false
+    prefer-magic: false
+  fisherman:
+    display-name: "<gray>Fisherman"
+    description: "Rod and ocean loot"
+    rarity: COMMON
+    icon: FISHING_ROD
+    category: Utility
+    permission: wildkits.kit.fisherman
+    unlocked-by-default: true
+    price: 0
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  chef:
+    display-name: "<gray>Chef"
+    description: "Food abundance"
+    rarity: COMMON
+    icon: COOKED_BEEF
+    category: Utility
+    permission: wildkits.kit.chef
+    unlocked-by-default: true
+    price: 0
+    theme: farmer
+    prefer-ranged: false
+    prefer-magic: false
+  beekeeper:
+    display-name: "<green>Beekeeper"
+    description: "Sweet survival kit"
+    rarity: UNCOMMON
+    icon: HONEYCOMB
+    category: Utility
+    permission: wildkits.kit.beekeeper
+    unlocked-by-default: true
+    price: 0
+    theme: farmer
+    prefer-ranged: false
+    prefer-magic: false
+  herbalist:
+    display-name: "<green>Herbalist"
+    description: "Natural remedies"
+    rarity: UNCOMMON
+    icon: GLISTERING_MELON_SLICE
+    category: Utility
+    permission: wildkits.kit.herbalist
+    unlocked-by-default: true
+    price: 0
+    theme: farmer
+    prefer-ranged: false
+    prefer-magic: false
+  nomad:
+    display-name: "<gray>Nomad"
+    description: "Travel light kit"
+    rarity: COMMON
+    icon: MAP
+    category: Mobility
+    permission: wildkits.kit.nomad
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  courier:
+    display-name: "<green>Courier"
+    description: "Speed delivery kit"
+    rarity: UNCOMMON
+    icon: RABBIT_FOOT
+    category: Mobility
+    permission: wildkits.kit.courier
+    unlocked-by-default: true
+    price: 0
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  parkour:
+    display-name: "<aqua>Parkour"
+    description: "Mobility specialist"
+    rarity: RARE
+    icon: SLIME_BLOCK
+    category: Mobility
+    permission: wildkits.kit.parkour
+    unlocked-by-default: false
+    price: 900
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  skirmisher:
+    display-name: "<green>Skirmisher"
+    description: "Hit and run"
+    rarity: UNCOMMON
+    icon: LEATHER_CHESTPLATE
+    category: Mobility
+    permission: wildkits.kit.skirmisher
+    unlocked-by-default: true
+    price: 0
+    theme: assassin
+    prefer-ranged: false
+    prefer-magic: false
+  raider:
+    display-name: "<aqua>Raider"
+    description: "Aggressive loot kit"
+    rarity: RARE
+    icon: CROSSBOW
+    category: Melee
+    permission: wildkits.kit.raider
+    unlocked-by-default: false
+    price: 1100
+    theme: viking
+    prefer-ranged: false
+    prefer-magic: false
+  bandit:
+    display-name: "<gray>Bandit"
+    description: "Dirty fighter"
+    rarity: COMMON
+    icon: STONE_SWORD
+    category: Stealth
+    permission: wildkits.kit.bandit
+    unlocked-by-default: true
+    price: 0
+    theme: assassin
+    prefer-ranged: false
+    prefer-magic: false
+  mercenary:
+    display-name: "<green>Mercenary"
+    description: "Paid killer kit"
+    rarity: UNCOMMON
+    icon: IRON_SWORD
+    category: Melee
+    permission: wildkits.kit.mercenary
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  captain:
+    display-name: "<light_purple>Captain"
+    description: "Commanding presence"
+    rarity: EPIC
+    icon: GOLDEN_HELMET
+    category: Special
+    permission: wildkits.kit.captain
+    unlocked-by-default: false
+    price: 2600
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  admiral:
+    display-name: "<gold>Admiral"
+    description: "Naval supremacy"
+    rarity: LEGENDARY
+    icon: HEART_OF_THE_SEA
+    category: Special
+    permission: wildkits.kit.admiral
+    unlocked-by-default: false
+    price: 4900
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  corsair:
+    display-name: "<aqua>Corsair"
+    description: "Swift sea raider"
+    rarity: RARE
+    icon: NAUTILUS_SHELL
+    category: Special
+    permission: wildkits.kit.corsair
+    unlocked-by-default: false
+    price: 1400
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  musketeer:
+    display-name: "<green>Musketeer"
+    description: "Classic shot kit"
+    rarity: UNCOMMON
+    icon: CROSSBOW
+    category: Ranged
+    permission: wildkits.kit.musketeer
+    unlocked-by-default: true
+    price: 0
+    theme: archer
+    prefer-ranged: true
+    prefer-magic: false
+  longbow:
+    display-name: "<aqua>Longbow"
+    description: "Heavy bow kit"
+    rarity: RARE
+    icon: BOW
+    category: Ranged
+    permission: wildkits.kit.longbow
+    unlocked-by-default: false
+    price: 1000
+    theme: sniper
+    prefer-ranged: true
+    prefer-magic: false
+  crossbowman:
+    display-name: "<green>Crossbowman"
+    description: "Piercing bolts"
+    rarity: UNCOMMON
+    icon: CROSSBOW
+    category: Ranged
+    permission: wildkits.kit.crossbowman
+    unlocked-by-default: true
+    price: 0
+    theme: archer
+    prefer-ranged: true
+    prefer-magic: false
+  trapper:
+    display-name: "<aqua>Trapper"
+    description: "Control the field"
+    rarity: RARE
+    icon: TRIPWIRE_HOOK
+    category: Special
+    permission: wildkits.kit.trapper
+    unlocked-by-default: false
+    price: 1150
+    theme: hunter
+    prefer-ranged: true
+    prefer-magic: false
+  beastmaster:
+    display-name: "<light_purple>Beastmaster"
+    description: "Hunt with ferocity"
+    rarity: EPIC
+    icon: BONE
+    category: Ranged
+    permission: wildkits.kit.beastmaster
+    unlocked-by-default: false
+    price: 2100
+    theme: hunter
+    prefer-ranged: true
+    prefer-magic: false
+  falconer:
+    display-name: "<aqua>Falconer"
+    description: "Aerial hunter"
+    rarity: RARE
+    icon: FEATHER
+    category: Ranged
+    permission: wildkits.kit.falconer
+    unlocked-by-default: false
+    price: 1200
+    theme: hunter
+    prefer-ranged: true
+    prefer-magic: false
+  desert:
+    display-name: "<gray>Desert"
+    description: "Sandstorm survivor"
+    rarity: COMMON
+    icon: SANDSTONE
+    category: Elemental
+    permission: wildkits.kit.desert
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  jungle:
+    display-name: "<gray>Jungle"
+    description: "Dense foliage fighter"
+    rarity: COMMON
+    icon: VINE
+    category: Elemental
+    permission: wildkits.kit.jungle
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  tundra:
+    display-name: "<green>Tundra"
+    description: "Frozen wastes kit"
+    rarity: UNCOMMON
+    icon: SNOW_BLOCK
+    category: Elemental
+    permission: wildkits.kit.tundra
+    unlocked-by-default: true
+    price: 0
+    theme: snow
+    prefer-ranged: false
+    prefer-magic: false
+  volcano:
+    display-name: "<gold>Volcano"
+    description: "Eruption offense"
+    rarity: LEGENDARY
+    icon: MAGMA_BLOCK
+    category: Elemental
+    permission: wildkits.kit.volcano
+    unlocked-by-default: false
+    price: 5100
+    theme: lava
+    prefer-ranged: false
+    prefer-magic: false
+  ocean:
+    display-name: "<green>Ocean"
+    description: "Tidal warrior"
+    rarity: UNCOMMON
+    icon: PRISMARINE
+    category: Elemental
+    permission: wildkits.kit.ocean
+    unlocked-by-default: true
+    price: 0
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  swamp:
+    display-name: "<gray>Swamp"
+    description: "Murky ambusher"
+    rarity: COMMON
+    icon: LILY_PAD
+    category: Stealth
+    permission: wildkits.kit.swamp
+    unlocked-by-default: true
+    price: 0
+    theme: assassin
+    prefer-ranged: false
+    prefer-magic: false
+  cave:
+    display-name: "<gray>Cave"
+    description: "Underground fighter"
+    rarity: COMMON
+    icon: COBBLESTONE
+    category: Utility
+    permission: wildkits.kit.cave
+    unlocked-by-default: true
+    price: 0
+    theme: miner
+    prefer-ranged: false
+    prefer-magic: false
+  sky:
+    display-name: "<aqua>Sky"
+    description: "High ground kit"
+    rarity: RARE
+    icon: ELYTRA
+    category: Mobility
+    permission: wildkits.kit.sky
+    unlocked-by-default: false
+    price: 1500
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  void:
+    display-name: "<red>Void"
+    description: "Void-touched power"
+    rarity: MYTHIC
+    icon: END_CRYSTAL
+    category: Elite
+    permission: wildkits.kit.void
+    unlocked-by-default: false
+    price: 8500
+    theme: end
+    prefer-ranged: false
+    prefer-magic: true
+  astral:
+    display-name: "<gold>Astral"
+    description: "Starlight magic"
+    rarity: LEGENDARY
+    icon: END_ROD
+    category: Magic
+    permission: wildkits.kit.astral
+    unlocked-by-default: false
+    price: 5200
+    theme: end
+    prefer-ranged: false
+    prefer-magic: true
+  cosmic:
+    display-name: "<gradient:#ff006e:#8338ec>Cosmic"
+    description: "Universe- Tier kit"
+    rarity: ULTIMATE
+    icon: NETHER_STAR
+    category: Elite
+    permission: wildkits.kit.cosmic
+    unlocked-by-default: false
+    price: 12000
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  royal:
+    display-name: "<light_purple>Royal"
+    description: "Royal guard kit"
+    rarity: EPIC
+    icon: GOLDEN_SWORD
+    category: Elite
+    permission: wildkits.kit.royal
+    unlocked-by-default: false
+    price: 2800
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: false
+  imperial:
+    display-name: "<gold>Imperial"
+    description: "Empire elite kit"
+    rarity: LEGENDARY
+    icon: DIAMOND_BLOCK
+    category: Elite
+    permission: wildkits.kit.imperial
+    unlocked-by-default: false
+    price: 5500
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: false
+  emperor:
+    display-name: "<gradient:#ff006e:#8338ec>Emperor"
+    description: "Absolute authority"
+    rarity: ULTIMATE
+    icon: GOLD_BLOCK
+    category: Elite
+    permission: wildkits.kit.emperor
+    unlocked-by-default: false
+    price: 15000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  noble:
+    display-name: "<aqua>Noble"
+    description: "Aristocrat fighter"
+    rarity: RARE
+    icon: GOLD_INGOT
+    category: Elite
+    permission: wildkits.kit.noble
+    unlocked-by-default: false
+    price: 1600
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  squire:
+    display-name: "<gray>Squire"
+    description: "Training knight kit"
+    rarity: COMMON
+    icon: WOODEN_SWORD
+    category: Melee
+    permission: wildkits.kit.squire
+    unlocked-by-default: true
+    price: 0
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: false
+  cavalier:
+    display-name: "<green>Cavalier"
+    description: "Mounted-style charge"
+    rarity: UNCOMMON
+    icon: SADDLE
+    category: Melee
+    permission: wildkits.kit.cavalier
+    unlocked-by-default: true
+    price: 0
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: false
+  dragoon:
+    display-name: "<light_purple>Dragoon"
+    description: "Shock troop kit"
+    rarity: EPIC
+    icon: IRON_HORSE_ARMOR
+    category: Melee
+    permission: wildkits.kit.dragoon
+    unlocked-by-default: false
+    price: 2700
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  centurion:
+    display-name: "<light_purple>Centurion"
+    description: "Legion commander"
+    rarity: EPIC
+    icon: IRON_CHESTPLATE
+    category: Melee
+    permission: wildkits.kit.centurion
+    unlocked-by-default: false
+    price: 2900
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  spartan:
+    display-name: "<aqua>Spartan"
+    description: "Spear-and-shield spirit"
+    rarity: RARE
+    icon: SHIELD
+    category: Melee
+    permission: wildkits.kit.spartan
+    unlocked-by-default: false
+    price: 1450
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  amazon:
+    display-name: "<aqua>Amazon"
+    description: "Fierce warrior kit"
+    rarity: RARE
+    icon: BOW
+    category: Ranged
+    permission: wildkits.kit.amazon
+    unlocked-by-default: false
+    price: 1450
+    theme: archer
+    prefer-ranged: true
+    prefer-magic: false
+  valkyrie:
+    display-name: "<gold>Valkyrie"
+    description: "Winged champion"
+    rarity: LEGENDARY
+    icon: ELYTRA
+    category: Elite
+    permission: wildkits.kit.valkyrie
+    unlocked-by-default: false
+    price: 5600
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  olympus:
+    display-name: "<gradient:#ff006e:#8338ec>Olympus"
+    description: "Godlike showcase"
+    rarity: ULTIMATE
+    icon: TOTEM_OF_UNDYING
+    category: Elite
+    permission: wildkits.kit.olympus
+    unlocked-by-default: false
+    price: 20000
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  titan:
+    display-name: "<red>Titan"
+    description: "Colossal strength"
+    rarity: MYTHIC
+    icon: ANVIL
+    category: Melee
+    permission: wildkits.kit.titan
+    unlocked-by-default: false
+    price: 9000
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  colossus:
+    display-name: "<red>Colossus"
+    description: "Unstoppable force"
+    rarity: MYTHIC
+    icon: NETHERITE_CHESTPLATE
+    category: Melee
+    permission: wildkits.kit.colossus
+    unlocked-by-default: false
+    price: 9500
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  juggernaut:
+    display-name: "<gold>Juggernaut"
+    description: "Slow but deadly"
+    rarity: LEGENDARY
+    icon: NETHERITE_HELMET
+    category: Melee
+    permission: wildkits.kit.juggernaut
+    unlocked-by-default: false
+    price: 5800
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  blitz:
+    display-name: "<light_purple>Blitz"
+    description: "Lightning rush"
+    rarity: EPIC
+    icon: SUGAR
+    category: Mobility
+    permission: wildkits.kit.blitz
+    unlocked-by-default: false
+    price: 2300
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  flash:
+    display-name: "<aqua>Flash"
+    description: "Pure speed kit"
+    rarity: RARE
+    icon: RABBIT_FOOT
+    category: Mobility
+    permission: wildkits.kit.flash
+    unlocked-by-default: false
+    price: 1250
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  dash:
+    display-name: "<gray>Dash"
+    description: "Short burst fighter"
+    rarity: COMMON
+    icon: LEATHER_BOOTS
+    category: Mobility
+    permission: wildkits.kit.dash
+    unlocked-by-default: true
+    price: 0
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  stormcaller:
+    display-name: "<gold>Stormcaller"
+    description: "Weather war mage"
+    rarity: LEGENDARY
+    icon: TRIDENT
+    category: Magic
+    permission: wildkits.kit.stormcaller
+    unlocked-by-default: false
+    price: 5400
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  tidehunter:
+    display-name: "<light_purple>Tidehunter"
+    description: "Oceanic predator"
+    rarity: EPIC
+    icon: TRIDENT
+    category: Special
+    permission: wildkits.kit.tidehunter
+    unlocked-by-default: false
+    price: 2600
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  sandstalker:
+    display-name: "<aqua>Sandstalker"
+    description: "Desert ambush"
+    rarity: RARE
+    icon: SAND
+    category: Stealth
+    permission: wildkits.kit.sandstalker
+    unlocked-by-default: false
+    price: 1350
+    theme: assassin
+    prefer-ranged: false
+    prefer-magic: false
+  nightblade:
+    display-name: "<light_purple>Nightblade"
+    description: "Moonlit killer"
+    rarity: EPIC
+    icon: IRON_SWORD
+    category: Stealth
+    permission: wildkits.kit.nightblade
+    unlocked-by-default: false
+    price: 2750
+    theme: ninja
+    prefer-ranged: false
+    prefer-magic: false
+  dawnbreaker:
+    display-name: "<gold>Dawnbreaker"
+    description: "Radiant melee kit"
+    rarity: LEGENDARY
+    icon: GOLDEN_SWORD
+    category: Melee
+    permission: wildkits.kit.dawnbreaker
+    unlocked-by-default: false
+    price: 5300
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: false
+  dusk:
+    display-name: "<aqua>Dusk"
+    description: "Twilight skirmisher"
+    rarity: RARE
+    icon: GRAY_DYE
+    category: Stealth
+    permission: wildkits.kit.dusk
+    unlocked-by-default: false
+    price: 1400
+    theme: assassin
+    prefer-ranged: false
+    prefer-magic: false
+  solar:
+    display-name: "<light_purple>Solar"
+    description: "Sunfire warrior"
+    rarity: EPIC
+    icon: SUNFLOWER
+    category: Elemental
+    permission: wildkits.kit.solar
+    unlocked-by-default: false
+    price: 2550
+    theme: lava
+    prefer-ranged: false
+    prefer-magic: false
+  lunar:
+    display-name: "<light_purple>Lunar"
+    description: "Moonlit magic"
+    rarity: EPIC
+    icon: END_STONE
+    category: Magic
+    permission: wildkits.kit.lunar
+    unlocked-by-default: false
+    price: 2550
+    theme: mage
+    prefer-ranged: false
+    prefer-magic: true
+  stellar:
+    display-name: "<red>Stellar"
+    description: "Star-forged gear"
+    rarity: MYTHIC
+    icon: NETHER_STAR
+    category: Elite
+    permission: wildkits.kit.stellar
+    unlocked-by-default: false
+    price: 8800
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  obsidian:
+    display-name: "<aqua>Obsidian"
+    description: "Hardened defense"
+    rarity: RARE
+    icon: OBSIDIAN
+    category: Melee
+    permission: wildkits.kit.obsidian
+    unlocked-by-default: false
+    price: 1500
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  emerald:
+    display-name: "<light_purple>Emerald"
+    description: "Lucky green wealth"
+    rarity: EPIC
+    icon: EMERALD
+    category: Special
+    permission: wildkits.kit.emerald
+    unlocked-by-default: false
+    price: 3000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  ruby:
+    display-name: "<light_purple>Ruby"
+    description: "Crimson gem power"
+    rarity: EPIC
+    icon: REDSTONE
+    category: Special
+    permission: wildkits.kit.ruby
+    unlocked-by-default: false
+    price: 3000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  sapphire:
+    display-name: "<light_purple>Sapphire"
+    description: "Azure gem magic"
+    rarity: EPIC
+    icon: LAPIS_LAZULI
+    category: Magic
+    permission: wildkits.kit.sapphire
+    unlocked-by-default: false
+    price: 3000
+    theme: mage
+    prefer-ranged: false
+    prefer-magic: true
+  amethyst:
+    display-name: "<aqua>Amethyst"
+    description: "Crystal mage kit"
+    rarity: RARE
+    icon: AMETHYST_CLUSTER
+    category: Magic
+    permission: wildkits.kit.amethyst
+    unlocked-by-default: false
+    price: 1550
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  copper:
+    display-name: "<gray>Copper"
+    description: "Oxidized fighter"
+    rarity: COMMON
+    icon: COPPER_BLOCK
+    category: General
+    permission: wildkits.kit.copper
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  ironclad:
+    display-name: "<green>Ironclad"
+    description: "Solid iron kit"
+    rarity: UNCOMMON
+    icon: IRON_BLOCK
+    category: Melee
+    permission: wildkits.kit.ironclad
+    unlocked-by-default: true
+    price: 0
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  gilded:
+    display-name: "<aqua>Gilded"
+    description: "Golden flashy kit"
+    rarity: RARE
+    icon: GOLD_BLOCK
+    category: Elite
+    permission: wildkits.kit.gilded
+    unlocked-by-default: false
+    price: 1700
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  prismatic:
+    display-name: "<red>Prismatic"
+    description: "Rainbow rarity kit"
+    rarity: MYTHIC
+    icon: TINTED_GLASS
+    category: Special
+    permission: wildkits.kit.prismatic
+    unlocked-by-default: false
+    price: 9200
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  chaos:
+    display-name: "<gold>Chaos"
+    description: "Unstable RNG king"
+    rarity: LEGENDARY
+    icon: ENDER_EYE
+    category: Special
+    permission: wildkits.kit.chaos
+    unlocked-by-default: false
+    price: 6000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  order:
+    display-name: "<light_purple>Order"
+    description: "Perfectly balanced"
+    rarity: EPIC
+    icon: COMPARATOR
+    category: Special
+    permission: wildkits.kit.order
+    unlocked-by-default: false
+    price: 2800
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  fortune:
+    display-name: "<aqua>Fortune"
+    description: "High luck drops feel"
+    rarity: RARE
+    icon: RABBIT_FOOT
+    category: Special
+    permission: wildkits.kit.fortune
+    unlocked-by-default: false
+    price: 1600
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  gambler:
+    display-name: "<green>Gambler"
+    description: "All-in random kit"
+    rarity: UNCOMMON
+    icon: GOLD_NUGGET
+    category: Special
+    permission: wildkits.kit.gambler
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  wildcard:
+    display-name: "<light_purple>Wildcard"
+    description: "Anything can happen"
+    rarity: EPIC
+    icon: PLAYER_HEAD
+    category: Special
+    permission: wildkits.kit.wildcard
+    unlocked-by-default: false
+    price: 2500
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  seasoned:
+    display-name: "<green>Seasoned"
+    description: "Veteran loadout"
+    rarity: UNCOMMON
+    icon: IRON_SWORD
+    category: General
+    permission: wildkits.kit.seasoned
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  recruit:
+    display-name: "<gray>Recruit"
+    description: "Training grounds kit"
+    rarity: COMMON
+    icon: STICK
+    category: General
+    permission: wildkits.kit.recruit
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  veteran:
+    display-name: "<aqua>Veteran"
+    description: "Battle-tested kit"
+    rarity: RARE
+    icon: SHIELD
+    category: General
+    permission: wildkits.kit.veteran
+    unlocked-by-default: false
+    price: 1200
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  hero:
+    display-name: "<gold>Hero"
+    description: "Heroic comeback kit"
+    rarity: LEGENDARY
+    icon: TOTEM_OF_UNDYING
+    category: Elite
+    permission: wildkits.kit.hero
+    unlocked-by-default: false
+    price: 5700
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  savior:
+    display-name: "<light_purple>Savior"
+    description: "Supportive fighter"
+    rarity: EPIC
+    icon: GOLDEN_APPLE
+    category: Special
+    permission: wildkits.kit.savior
+    unlocked-by-default: false
+    price: 2400
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: false
+  demon:
+    display-name: "<red>Demon"
+    description: "Infernal menace"
+    rarity: MYTHIC
+    icon: MAGMA_CREAM
+    category: Elemental
+    permission: wildkits.kit.demon
+    unlocked-by-default: false
+    price: 8600
+    theme: lava
+    prefer-ranged: false
+    prefer-magic: true
+  angel:
+    display-name: "<red>Angel"
+    description: "Radiant protector"
+    rarity: MYTHIC
+    icon: GLOWSTONE
+    category: Elite
+    permission: wildkits.kit.angel
+    unlocked-by-default: false
+    price: 8600
+    theme: knight
+    prefer-ranged: false
+    prefer-magic: true
+  dragon:
+    display-name: "<gradient:#ff006e:#8338ec>Dragon"
+    description: "Dragonfire supremacy"
+    rarity: ULTIMATE
+    icon: DRAGON_HEAD
+    category: Elite
+    permission: wildkits.kit.dragon
+    unlocked-by-default: false
+    price: 25000
+    theme: lava
+    prefer-ranged: false
+    prefer-magic: true
+  hydra:
+    display-name: "<red>Hydra"
+    description: "Multi-threat kit"
+    rarity: MYTHIC
+    icon: CREEPER_HEAD
+    category: Elite
+    permission: wildkits.kit.hydra
+    unlocked-by-default: false
+    price: 9100
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  kraken:
+    display-name: "<gold>Kraken"
+    description: "Deep sea terror"
+    rarity: LEGENDARY
+    icon: DARK_PRISMARINE
+    category: Special
+    permission: wildkits.kit.kraken
+    unlocked-by-default: false
+    price: 5900
+    theme: pirate
+    prefer-ranged: false
+    prefer-magic: false
+  phoenixlord:
+    display-name: "<gradient:#ff006e:#8338ec>Phoenix Lord"
+    description: "Rebirth incarnate"
+    rarity: ULTIMATE
+    icon: BLAZE_POWDER
+    category: Elemental
+    permission: wildkits.kit.phoenixlord
+    unlocked-by-default: false
+    price: 22000
+    theme: lava
+    prefer-ranged: false
+    prefer-magic: true
+  stormlord:
+    display-name: "<gradient:#ff006e:#8338ec>Storm Lord"
+    description: "Tempest emperor"
+    rarity: ULTIMATE
+    icon: TRIDENT
+    category: Elemental
+    permission: wildkits.kit.stormlord
+    unlocked-by-default: false
+    price: 22000
+    theme: magic
+    prefer-ranged: false
+    prefer-magic: true
+  shadowlord:
+    display-name: "<gradient:#ff006e:#8338ec>Shadow Lord"
+    description: "Absolute stealth"
+    rarity: ULTIMATE
+    icon: BLACK_WOOL
+    category: Stealth
+    permission: wildkits.kit.shadowlord
+    unlocked-by-default: false
+    price: 22000
+    theme: ninja
+    prefer-ranged: false
+    prefer-magic: false
+  kitmaster:
+    display-name: "<gradient:#ff006e:#8338ec>Kit Master"
+    description: "Master of all kits"
+    rarity: ULTIMATE
+    icon: CHEST
+    category: Elite
+    permission: wildkits.kit.kitmaster
+    unlocked-by-default: false
+    price: 30000
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  wild:
+    display-name: "<gold>Wild"
+    description: "True WildKits spirit"
+    rarity: LEGENDARY
+    icon: FIREWORK_ROCKET
+    category: Special
+    permission: wildkits.kit.wild
+    unlocked-by-default: false
+    price: 6500
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  blaze:
+    display-name: "<red>Blaze"
+    description: "Signature Blaze kit"
+    rarity: MYTHIC
+    icon: BLAZE_ROD
+    category: Elite
+    permission: wildkits.kit.blaze
+    unlocked-by-default: false
+    price: 10000
+    theme: lava
+    prefer-ranged: false
+    prefer-magic: true

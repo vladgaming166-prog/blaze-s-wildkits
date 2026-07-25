@@ -1,0 +1,40 @@
+# Blaze's WildKits - Main Configuration
+language: en
+
+# When true, players automatically receive a random kit on join/respawn.
+# When false, players may manually choose kits from the GUI.
+auto-random-kits: true
+
+respawn:
+  delay-seconds: 3
+  protection-seconds: 3
+  heal: true
+  feed: true
+  clear-effects: true
+  teleport-to-spawn: true
+
+economy:
+  coins-per-kill: 25
+  coins-per-killstreak-bonus: 5
+  playtime-coins: 10
+  playtime-interval-minutes: 5
+  daily-reward-coins: 100
+
+# Weighted rarity chances for random kit selection
+rarity-chances:
+  common: 40.0
+  uncommon: 25.0
+  rare: 15.0
+  epic: 10.0
+  legendary: 6.0
+  mythic: 3.0
+  ultimate: 1.0
+
+# Set with /wk setspawn
+spawn:
+  world: world
+  x: 0.5
+  y: 64.0
+  z: 0.5
+  yaw: 0.0
+  pitch: 0.0

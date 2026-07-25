@@ -1,0 +1,22 @@
+enabled: true
+update-interval-ticks: 20
+
+title-animation:
+  - "<gold><bold>BLAZE'S</bold></gold>"
+  - "<yellow><bold>WILDKITS</bold></yellow>"
+  - "<gold><bold>WILDKITS</bold></gold>"
+  - "<white><bold>KITPVP</bold></white>"
+
+lines:
+  - ""
+  - "<gray>Player <white>%player%"
+  - "<gray>Kit <aqua>%currentkit%"
+  - "<gray>Coins <gold>%coins%"
+  - ""
+  - "<gray>Kills <green>%kills%"
+  - "<gray>Deaths <red>%deaths%"
+  - "<gray>K/D <yellow>%kd%"
+  - "<gray>Streak <light_purple>%killstreak%"
+  - "<gray>Level <aqua>%level%"
+  - ""
+  - "<dark_gray>blaze.wildkits"

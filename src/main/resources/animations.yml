@@ -1,0 +1,11 @@
+gui-open-sound: UI_BUTTON_CLICK
+gui-click-sound: UI_BUTTON_CLICK
+
+gui-title-frames:
+  - "<gold>Blaze's WildKits"
+  - "<yellow>Blaze's WildKits"
+  - "<white>Auto Kits • Cosmetics • Shop"
+  - "<gold>Blaze's WildKits"
+
+scoreboard-flash: true
+preview-reroll-particles: true
