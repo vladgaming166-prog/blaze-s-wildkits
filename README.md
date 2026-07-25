@@ -6,16 +6,18 @@ Players do **not** type `/kit`. They automatically receive a smart-generated ran
 
 ## Features
 
-- Auto random kits every life (`auto-random-kits`)
-- **160** premade professionally themed kits
-- Smart balanced equipment generation (armor/weapon tiers stay coherent)
-- Rarities: Common → Ultimate with configurable weights
+- Instant auto random kits every life (`auto-random-kits`, delay `0`)
+- **188** premium kit templates with unique themes
+- Gear bands: Iron ~60% / Diamond ~35% / Netherite-partial ~5% (never full netherite)
+- Per-life randomized extras (food, gaps, blocks, pearls, buckets, TNT, potions, etc.)
+- Light random enchantments (Sharp/Prot/Power I–II)
+- `/wk showkit true|false` — reveal or hide kit identity everywhere
+- Chaos-style scoreboard: MiniMessage gradients, `shadow:black:1`, `%animation:%`, blank score numbers
 - Cosmetics shop (trails, death/victory effects, tags, titles, kits)
 - 15 particle trails with amount/spacing/speed/toggle/preview
 - Modern animated GUI (categories, search, favorites, recent, preview, shop)
 - Configurable respawn + spawn system (`/wk setspawn`, `/wk spawn`)
 - Citizens NPC support (right-click opens GUI)
-- Animated scoreboard (no content dependency on vanilla score numbers)
 - PlaceholderAPI, Vault, LuckPerms, MiniMessage
 - SQLite (default) + optional MySQL (HikariCP)
 - Fully reloadable configs
@@ -54,7 +56,7 @@ Players do **not** type `/kit`. They automatically receive a smart-generated ran
 mvn -B clean verify
 ```
 
-JAR output: `target/BlazesWildKits-1.0.1.jar`
+JAR output: `target/BlazesWildKits-1.1.0.jar`
 
 `verify` runs a Linux SQLite native smoke test against the shaded JAR (`NativeDB` / `_open_utf8`).
 
