@@ -21,8 +21,8 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build with Maven
-        run: mvn -B clean package --file pom.xml
+      - name: Build and verify SQLite natives
+        run: mvn -B clean verify --file pom.xml
 
       - name: Upload plugin JAR
         uses: actions/upload-artifact@v4
