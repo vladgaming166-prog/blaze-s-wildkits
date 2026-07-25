@@ -28,10 +28,11 @@ public final class PlayerListener implements Listener {
         Player player = event.getPlayer();
         plugin.getPlayerDataManager().loadAsync(player);
 
-        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+        // Instant kit on first join (1 tick so the player is fully online)
+        Bukkit.getScheduler().runTask(plugin, () -> {
             if (!player.isOnline()) return;
             prepareLife(player, true);
-        }, 10L);
+        });
     }
 
     @EventHandler
@@ -48,8 +49,10 @@ public final class PlayerListener implements Listener {
         if (plugin.getConfigManager().isRespawnTeleport() && plugin.getSpawnManager().getSpawn() != null) {
             event.setRespawnLocation(plugin.getSpawnManager().getSpawn());
         }
-        int delay = plugin.getConfigManager().getRespawnDelaySeconds();
-        long ticks = Math.max(1, delay) * 20L;
+
+        int delaySeconds = plugin.getConfigManager().getRespawnDelaySeconds();
+        // 0 = instant next tick (required for respawn event completion)
+        long ticks = delaySeconds <= 0 ? 1L : delaySeconds * 20L;
         Bukkit.getScheduler().runTaskLater(plugin, () -> {
             if (!player.isOnline()) return;
             prepareLife(player, false);

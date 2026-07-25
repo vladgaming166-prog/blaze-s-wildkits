@@ -212,6 +212,21 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
                 String name = args.length >= 2 ? String.join(" ", Arrays.copyOfRange(args, 1, args.length)) : "WildKits";
                 plugin.getCitizensHook().createNpc(player, name);
             }
+            case "showkit" -> {
+                if (!sender.hasPermission("wildkits.admin")) {
+                    plugin.getMessageService().send(sender, "no-permission");
+                    return true;
+                }
+                if (args.length < 2) {
+                    sender.sendMessage("Usage: /wk showkit <true|false>");
+                    sender.sendMessage("Current: " + plugin.getConfigManager().isShowKit());
+                    return true;
+                }
+                boolean enabled = Boolean.parseBoolean(args[1]);
+                plugin.getConfigManager().setShowKit(enabled);
+                plugin.getScoreboardManager().reload();
+                plugin.getMessageService().send(sender, enabled ? "showkit-enabled" : "showkit-disabled");
+            }
             case "db", "dbstatus" -> {
                 if (!sender.hasPermission("wildkits.admin")) {
                     plugin.getMessageService().send(sender, "no-permission");
@@ -285,10 +300,13 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
         if (args.length == 1) {
             return filter(List.of("help", "kits", "gui", "shop", "particles", "trails", "random", "kit",
                     "preview", "search", "daily", "coins", "stats", "spawn", "setspawn", "reload",
-                    "givecoins", "eventreward", "db", "dbstatus", "npc"), args[0]);
+                    "givecoins", "eventreward", "showkit", "db", "dbstatus", "npc"), args[0]);
         }
         if (args.length == 2 && (args[0].equalsIgnoreCase("kit") || args[0].equalsIgnoreCase("preview"))) {
             return filter(plugin.getKitManager().getKits().stream().map(KitDefinition::getId).collect(Collectors.toList()), args[1]);
+        }
+        if (args.length == 2 && args[0].equalsIgnoreCase("showkit")) {
+            return filter(List.of("true", "false"), args[1]);
         }
         if (args.length == 2 && (args[0].equalsIgnoreCase("givecoins") || args[0].equalsIgnoreCase("coins"))) {
             return filter(Bukkit.getOnlinePlayers().stream().map(Player::getName).toList(), args[1]);

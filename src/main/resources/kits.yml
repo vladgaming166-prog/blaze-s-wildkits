@@ -1,11 +1,10 @@
-# Blaze's WildKits - Premade kits (120+)
-# These mirror DefaultKits and can be customized.
+# Premade premium kit templates (IDs stable for backwards compatibility)
 kits:
   starter:
-    display-name: "<gray>Starter"
-    description: "Basic gear for new fighters"
+    display-name: "<gradient:#FF4500:#FFD700>Iron Recruit</gradient>"
+    description: "Reliable iron opener"
     rarity: COMMON
-    icon: WOODEN_SWORD
+    icon: IRON_SWORD
     category: General
     permission: wildkits.kit.starter
     unlocked-by-default: true
@@ -14,10 +13,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   warrior:
-    display-name: "<gray>Warrior"
-    description: "Balanced melee fighter"
+    display-name: "<gradient:#FF4500:#FFD700>Diamond Warrior</gradient>"
+    description: "Diamond melee pressure"
     rarity: COMMON
-    icon: STONE_SWORD
+    icon: DIAMOND_SWORD
     category: Melee
     permission: wildkits.kit.warrior
     unlocked-by-default: true
@@ -26,10 +25,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   knight:
-    display-name: "<green>Knight"
-    description: "Armored frontline defender"
+    display-name: "<gradient:#FF4500:#FFD700>Shield Knight</gradient>"
+    description: "Frontline shield fighter"
     rarity: UNCOMMON
-    icon: IRON_SWORD
+    icon: SHIELD
     category: Melee
     permission: wildkits.kit.knight
     unlocked-by-default: true
@@ -38,10 +37,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   tank:
-    display-name: "<green>Tank"
-    description: "Heavy armor and shield focus"
+    display-name: "<gradient:#FF4500:#FFD700>Iron Tank</gradient>"
+    description: "Heavy defense kit"
     rarity: UNCOMMON
-    icon: SHIELD
+    icon: IRON_CHESTPLATE
     category: Melee
     permission: wildkits.kit.tank
     unlocked-by-default: true
@@ -50,10 +49,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   assassin:
-    display-name: "<aqua>Assassin"
-    description: "Fast strikes and pearls"
+    display-name: "<gradient:#FF4500:#FFD700>Pearl Assassin</gradient>"
+    description: "Pearls and burst damage"
     rarity: RARE
-    icon: IRON_SWORD
+    icon: ENDER_PEARL
     category: Stealth
     permission: wildkits.kit.assassin
     unlocked-by-default: false
@@ -62,8 +61,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   archer:
-    display-name: "<gray>Archer"
-    description: "Bow-focused ranged kit"
+    display-name: "<gradient:#FF4500:#FFD700>Power Archer</gradient>"
+    description: "Bow dominance"
     rarity: COMMON
     icon: BOW
     category: Ranged
@@ -74,10 +73,10 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   mage:
-    display-name: "<aqua>Mage"
-    description: "Potions and magic control"
+    display-name: "<gradient:#FF4500:#FFD700>Potion Mage</gradient>"
+    description: "Splash control kit"
     rarity: RARE
-    icon: BLAZE_ROD
+    icon: SPLASH_POTION
     category: Magic
     permission: wildkits.kit.mage
     unlocked-by-default: false
@@ -86,10 +85,10 @@ kits:
     prefer-ranged: false
     prefer-magic: true
   miner:
-    display-name: "<gray>Miner"
-    description: "Pickaxe and torch utility"
+    display-name: "<gradient:#FF4500:#FFD700>Diamond Miner</gradient>"
+    description: "Pickaxe and torches"
     rarity: COMMON
-    icon: IRON_PICKAXE
+    icon: DIAMOND_PICKAXE
     category: Utility
     permission: wildkits.kit.miner
     unlocked-by-default: true
@@ -98,10 +97,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   builder:
-    display-name: "<gray>Builder"
+    display-name: "<gradient:#FF4500:#FFD700>Bridge Builder</gradient>"
     description: "Blocks and scaffolding"
     rarity: COMMON
-    icon: OAK_PLANKS
+    icon: SCAFFOLDING
     category: Utility
     permission: wildkits.kit.builder
     unlocked-by-default: true
@@ -110,8 +109,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   hunter:
-    display-name: "<green>Hunter"
-    description: "Track and shoot prey"
+    display-name: "<gradient:#FF4500:#FFD700>Crossbow Hunter</gradient>"
+    description: "Crossbow pursuit kit"
     rarity: UNCOMMON
     icon: CROSSBOW
     category: Ranged
@@ -122,8 +121,8 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   farmer:
-    display-name: "<gray>Farmer"
-    description: "Food surplus and carrots"
+    display-name: "<gradient:#FF4500:#FFD700>Golden Farmer</gradient>"
+    description: "Food surplus kit"
     rarity: COMMON
     icon: GOLDEN_CARROT
     category: Utility
@@ -134,20 +133,20 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   explorer:
-    display-name: "<gray>Explorer"
-    description: "Travel-ready supplies"
+    display-name: "<gradient:#FF4500:#FFD700>Trail Explorer</gradient>"
+    description: "Travel utility kit"
     rarity: COMMON
     icon: COMPASS
     category: Utility
     permission: wildkits.kit.explorer
     unlocked-by-default: true
     price: 0
-    theme: balanced
+    theme: explorer
     prefer-ranged: false
     prefer-magic: false
   pvp:
-    display-name: "<green>PvP"
-    description: "Classic PvP loadout"
+    display-name: "<gradient:#FF4500:#FFD700>PvP Striker</gradient>"
+    description: "Classic diamond PvP"
     rarity: UNCOMMON
     icon: DIAMOND_SWORD
     category: Melee
@@ -158,8 +157,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   nether:
-    display-name: "<aqua>Nether"
-    description: "Fireproof nether gear"
+    display-name: "<gradient:#FF4500:#FFD700>Nether Raider</gradient>"
+    description: "Fireproof nether assault"
     rarity: RARE
     icon: NETHERRACK
     category: Elemental
@@ -170,8 +169,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   end:
-    display-name: "<aqua>End"
-    description: "Ender pearls and chorus"
+    display-name: "<gradient:#FF4500:#FFD700>End Fighter</gradient>"
+    description: "Pearls and chorus"
     rarity: RARE
     icon: ENDER_PEARL
     category: Elemental
@@ -182,8 +181,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   diamond:
-    display-name: "<light_purple>Diamond"
-    description: "Diamond-tier fighter"
+    display-name: "<gradient:#FF4500:#FFD700>Diamond Assault</gradient>"
+    description: "Full diamond pressure"
     rarity: EPIC
     icon: DIAMOND_CHESTPLATE
     category: Elite
@@ -194,8 +193,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   netherite:
-    display-name: "<gold>Netherite"
-    description: "Top-tier netherite power"
+    display-name: "<gradient:#FF4500:#FFD700>Partial Netherite</gradient>"
+    description: "Rare netherite fragments"
     rarity: LEGENDARY
     icon: NETHERITE_SWORD
     category: Elite
@@ -206,80 +205,80 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   lucky:
-    display-name: "<aqua>Lucky"
-    description: "High RNG surprise kit"
+    display-name: "<gradient:#FF4500:#FFD700>Lucky Roll</gradient>"
+    description: "High variance loot"
     rarity: RARE
     icon: GOLD_INGOT
     category: Special
     permission: wildkits.kit.lucky
     unlocked-by-default: false
     price: 1000
-    theme: balanced
+    theme: chaos
     prefer-ranged: false
     prefer-magic: false
   op:
-    display-name: "<gradient:#ff006e:#8338ec>OP"
-    description: "Overpowered showcase kit"
+    display-name: "<gradient:#FF4500:#FFD700>Chaos Overload</gradient>"
+    description: "Showcase chaos kit"
     rarity: ULTIMATE
     icon: NETHER_STAR
     category: Elite
     permission: wildkits.kit.op
     unlocked-by-default: false
     price: 10000
-    theme: balanced
+    theme: chaos
     prefer-ranged: false
     prefer-magic: false
   legend:
-    display-name: "<gold>Legend"
-    description: "Legendary battlefield presence"
+    display-name: "<gradient:#FF4500:#FFD700>Legend Blade</gradient>"
+    description: "Legendary presence"
     rarity: LEGENDARY
     icon: GOLDEN_HELMET
     category: Elite
     permission: wildkits.kit.legend
     unlocked-by-default: false
     price: 4000
-    theme: balanced
+    theme: champion
     prefer-ranged: false
     prefer-magic: false
   mythic:
-    display-name: "<red>Mythic"
-    description: "Mythic-grade armaments"
+    display-name: "<gradient:#FF4500:#FFD700>Mythic Edge</gradient>"
+    description: "Mythic-grade arms"
     rarity: MYTHIC
     icon: DRAGON_EGG
     category: Elite
     permission: wildkits.kit.mythic
     unlocked-by-default: false
     price: 6000
-    theme: balanced
+    theme: mystic
     prefer-ranged: false
     prefer-magic: false
   champion:
-    display-name: "<light_purple>Champion"
-    description: "Tournament-ready kit"
+    display-name: "<gradient:#FF4500:#FFD700>Arena Champion</gradient>"
+    description: "Tournament kit"
     rarity: EPIC
     icon: DIAMOND_HELMET
     category: Elite
     permission: wildkits.kit.champion
     unlocked-by-default: false
     price: 2000
-    theme: balanced
+    theme: champion
     prefer-ranged: false
     prefer-magic: false
   elite:
-    display-name: "<light_purple>Elite"
-    description: "Elite squad standard"
+    display-name: "<gradient:#FF4500:#FFD700>Elite Guard</gradient>"
+    description: "Elite standard"
     rarity: EPIC
     icon: DIAMOND_BOOTS
     category: Elite
     permission: wildkits.kit.elite
     unlocked-by-default: false
     price: 1800
-    theme: balanced
+    theme: knight
     prefer-ranged: false
     prefer-magic: false
   lava:
-    display-name: "<aqua>Lava"
-    description: "Molten offense kit"
+    display-name: "<gradient:#FF4500:#FFD700>Lava Bomber</gradient>"
+    description: "Lava and fire charges"
     rarity: RARE
     icon: LAVA_BUCKET
     category: Elemental
@@ -290,8 +289,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   ice:
-    display-name: "<aqua>Ice"
-    description: "Frost control kit"
+    display-name: "<gradient:#FF4500:#FFD700>Ice Mage</gradient>"
+    description: "Frost control"
     rarity: RARE
     icon: PACKED_ICE
     category: Elemental
@@ -300,22 +299,22 @@ kits:
     price: 850
     theme: ice
     prefer-ranged: false
-    prefer-magic: false
+    prefer-magic: true
   storm:
-    display-name: "<light_purple>Storm"
-    description: "Thunderous aggression"
+    display-name: "<gradient:#FF4500:#FFD700>Thunder Storm</gradient>"
+    description: "Trident tempest"
     rarity: EPIC
     icon: TRIDENT
     category: Elemental
     permission: wildkits.kit.storm
     unlocked-by-default: false
     price: 1600
-    theme: magic
+    theme: thunder
     prefer-ranged: false
     prefer-magic: true
   speed:
-    display-name: "<green>Speed"
-    description: "Swift mobility kit"
+    display-name: "<gradient:#FF4500:#FFD700>Speed Runner</gradient>"
+    description: "Swift mobility"
     rarity: UNCOMMON
     icon: SUGAR
     category: Mobility
@@ -326,8 +325,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   sniper:
-    display-name: "<aqua>Sniper"
-    description: "Precision ranged killer"
+    display-name: "<gradient:#FF4500:#FFD700>Longbow Sniper</gradient>"
+    description: "Precision arrows"
     rarity: RARE
     icon: ARROW
     category: Ranged
@@ -338,20 +337,20 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   samurai:
-    display-name: "<light_purple>Samurai"
-    description: "Blade discipline kit"
+    display-name: "<gradient:#FF4500:#FFD700>Samurai Blade</gradient>"
+    description: "Blade discipline"
     rarity: EPIC
-    icon: IRON_SWORD
+    icon: DIAMOND_SWORD
     category: Melee
     permission: wildkits.kit.samurai
     unlocked-by-default: false
     price: 1700
-    theme: balanced
+    theme: samurai
     prefer-ranged: false
     prefer-magic: false
   pirate:
-    display-name: "<green>Pirate"
-    description: "Seafaring combat kit"
+    display-name: "<gradient:#FF4500:#FFD700>Ocean Pirate</gradient>"
+    description: "Trident sea kit"
     rarity: UNCOMMON
     icon: TRIDENT
     category: Special
@@ -362,8 +361,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   ninja:
-    display-name: "<aqua>Ninja"
-    description: "Silent lethal strikes"
+    display-name: "<gradient:#FF4500:#FFD700>Shadow Ninja</gradient>"
+    description: "Silent lethal kit"
     rarity: RARE
     icon: BLACK_DYE
     category: Stealth
@@ -374,10 +373,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   viking:
-    display-name: "<green>Viking"
-    description: "Axe-raider fury"
+    display-name: "<gradient:#FF4500:#FFD700>Viking Raider</gradient>"
+    description: "Axe fury"
     rarity: UNCOMMON
-    icon: IRON_AXE
+    icon: DIAMOND_AXE
     category: Melee
     permission: wildkits.kit.viking
     unlocked-by-default: true
@@ -386,43 +385,43 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   gladiator:
-    display-name: "<green>Gladiator"
-    description: "Arena brawler kit"
+    display-name: "<gradient:#FF4500:#FFD700>Gladiator</gradient>"
+    description: "Arena brawler"
     rarity: UNCOMMON
     icon: IRON_CHESTPLATE
     category: Melee
     permission: wildkits.kit.gladiator
     unlocked-by-default: true
     price: 0
-    theme: balanced
+    theme: gladiator
     prefer-ranged: false
     prefer-magic: false
   scout:
-    display-name: "<gray>Scout"
-    description: "Light recon gear"
+    display-name: "<gradient:#FF4500:#FFD700>Scout Runner</gradient>"
+    description: "Light recon kit"
     rarity: COMMON
     icon: LEATHER_BOOTS
     category: Mobility
     permission: wildkits.kit.scout
     unlocked-by-default: true
     price: 0
-    theme: speed
+    theme: scout
     prefer-ranged: false
     prefer-magic: false
   berserker:
-    display-name: "<aqua>Berserker"
-    description: "High risk high reward"
+    display-name: "<gradient:#FF4500:#FFD700>Berserker</gradient>"
+    description: "Aggressive axe rush"
     rarity: RARE
-    icon: REDSTONE
+    icon: DIAMOND_AXE
     category: Melee
     permission: wildkits.kit.berserker
     unlocked-by-default: false
     price: 650
-    theme: balanced
+    theme: berserker
     prefer-ranged: false
     prefer-magic: false
   paladin:
-    display-name: "<light_purple>Paladin"
+    display-name: "<gradient:#FF4500:#FFD700>Guardian Paladin</gradient>"
     description: "Holy defender"
     rarity: EPIC
     icon: GOLDEN_APPLE
@@ -430,11 +429,11 @@ kits:
     permission: wildkits.kit.paladin
     unlocked-by-default: false
     price: 1900
-    theme: knight
+    theme: guardian
     prefer-ranged: false
     prefer-magic: false
   rogue:
-    display-name: "<aqua>Rogue"
+    display-name: "<gradient:#FF4500:#FFD700>Rogue Duelist</gradient>"
     description: "Shadowy duelist"
     rarity: RARE
     icon: ENDER_EYE
@@ -446,7 +445,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   ranger:
-    display-name: "<green>Ranger"
+    display-name: "<gradient:#FF4500:#FFD700>Wild Ranger</gradient>"
     description: "Wilderness marksman"
     rarity: UNCOMMON
     icon: BOW
@@ -458,7 +457,7 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   warlock:
-    display-name: "<light_purple>Warlock"
+    display-name: "<gradient:#FF4500:#FFD700>Warlock</gradient>"
     description: "Dark magic kit"
     rarity: EPIC
     icon: SOUL_LANTERN
@@ -470,8 +469,8 @@ kits:
     prefer-ranged: false
     prefer-magic: true
   necromancer:
-    display-name: "<gold>Necromancer"
-    description: "Soul-draining mage"
+    display-name: "<gradient:#FF4500:#FFD700>Necromancer</gradient>"
+    description: "Soul mage"
     rarity: LEGENDARY
     icon: WITHER_SKELETON_SKULL
     category: Magic
@@ -482,55 +481,55 @@ kits:
     prefer-ranged: false
     prefer-magic: true
   druid:
-    display-name: "<aqua>Druid"
-    description: "Nature-powered kit"
+    display-name: "<gradient:#FF4500:#FFD700>Forest Druid</gradient>"
+    description: "Nature kit"
     rarity: RARE
     icon: OAK_SAPLING
     category: Magic
     permission: wildkits.kit.druid
     unlocked-by-default: false
     price: 950
-    theme: magic
+    theme: forest
     prefer-ranged: false
     prefer-magic: true
   phoenix:
-    display-name: "<red>Phoenix"
-    description: "Rise from the ashes"
+    display-name: "<gradient:#FF4500:#FFD700>Phoenix</gradient>"
+    description: "Ash rebirth kit"
     rarity: MYTHIC
     icon: BLAZE_POWDER
     category: Elemental
     permission: wildkits.kit.phoenix
     unlocked-by-default: false
     price: 7000
-    theme: lava
+    theme: phoenix
     prefer-ranged: false
     prefer-magic: false
   frostbite:
-    display-name: "<light_purple>Frostbite"
-    description: "Deep freeze offense"
+    display-name: "<gradient:#FF4500:#FFD700>Frozen Bite</gradient>"
+    description: "Deep freeze"
     rarity: EPIC
     icon: BLUE_ICE
     category: Elemental
     permission: wildkits.kit.frostbite
     unlocked-by-default: false
     price: 1750
-    theme: ice
+    theme: frozen
     prefer-ranged: false
     prefer-magic: false
   thunder:
-    display-name: "<light_purple>Thunder"
-    description: "Lightning strikes"
+    display-name: "<gradient:#FF4500:#FFD700>Thunder Strike</gradient>"
+    description: "Lightning kit"
     rarity: EPIC
     icon: LIGHTNING_ROD
     category: Elemental
     permission: wildkits.kit.thunder
     unlocked-by-default: false
     price: 1800
-    theme: magic
+    theme: thunder
     prefer-ranged: false
     prefer-magic: true
   shadow:
-    display-name: "<gold>Shadow"
+    display-name: "<gradient:#FF4500:#FFD700>Shadow</gradient>"
     description: "Umbral assassin"
     rarity: LEGENDARY
     icon: BLACK_CONCRETE
@@ -538,12 +537,12 @@ kits:
     permission: wildkits.kit.shadow
     unlocked-by-default: false
     price: 4200
-    theme: ninja
+    theme: shadow
     prefer-ranged: false
     prefer-magic: false
   crimson:
-    display-name: "<aqua>Crimson"
-    description: "Crimson nether force"
+    display-name: "<gradient:#FF4500:#FFD700>Crimson Raider</gradient>"
+    description: "Crimson nether"
     rarity: RARE
     icon: CRIMSON_NYLIUM
     category: Elemental
@@ -554,7 +553,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   warden:
-    display-name: "<red>Warden"
+    display-name: "<gradient:#FF4500:#FFD700>Deep Warden</gradient>"
     description: "Deep dark terror"
     rarity: MYTHIC
     icon: SCULK_SHRIEKER
@@ -566,19 +565,19 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   guardian:
-    display-name: "<green>Guardian"
-    description: "Protective ocean kit"
+    display-name: "<gradient:#FF4500:#FFD700>Ocean Guardian</gradient>"
+    description: "Protective ocean"
     rarity: UNCOMMON
     icon: PRISMARINE_SHARD
     category: Special
     permission: wildkits.kit.guardian
     unlocked-by-default: true
     price: 0
-    theme: pirate
+    theme: ocean
     prefer-ranged: false
     prefer-magic: false
   diver:
-    display-name: "<gray>Diver"
+    display-name: "<gradient:#FF4500:#FFD700>Deep Diver</gradient>"
     description: "Underwater fighter"
     rarity: COMMON
     icon: HEART_OF_THE_SEA
@@ -586,11 +585,11 @@ kits:
     permission: wildkits.kit.diver
     unlocked-by-default: true
     price: 0
-    theme: pirate
+    theme: ocean
     prefer-ranged: false
     prefer-magic: false
   bomber:
-    display-name: "<aqua>Bomber"
+    display-name: "<gradient:#FF4500:#FFD700>TNT Expert</gradient>"
     description: "Explosive pressure"
     rarity: RARE
     icon: TNT
@@ -598,12 +597,12 @@ kits:
     permission: wildkits.kit.bomber
     unlocked-by-default: false
     price: 1100
-    theme: balanced
+    theme: bomber
     prefer-ranged: false
     prefer-magic: false
   cannoneer:
-    display-name: "<light_purple>Cannoneer"
-    description: "Heavy projectile kit"
+    display-name: "<gradient:#FF4500:#FFD700>Fire Cannoneer</gradient>"
+    description: "Heavy projectiles"
     rarity: EPIC
     icon: FIRE_CHARGE
     category: Ranged
@@ -614,8 +613,8 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   marksman:
-    display-name: "<green>Marksman"
-    description: "Steady aim kit"
+    display-name: "<gradient:#FF4500:#FFD700>Marksman</gradient>"
+    description: "Steady aim"
     rarity: UNCOMMON
     icon: CROSSBOW
     category: Ranged
@@ -626,10 +625,10 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   duelist:
-    display-name: "<green>Duelist"
+    display-name: "<gradient:#FF4500:#FFD700>Duelist</gradient>"
     description: "1v1 specialist"
     rarity: UNCOMMON
-    icon: IRON_SWORD
+    icon: DIAMOND_SWORD
     category: Melee
     permission: wildkits.kit.duelist
     unlocked-by-default: true
@@ -638,10 +637,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   brawler:
-    display-name: "<gray>Brawler"
-    description: "Close-quarters chaos"
+    display-name: "<gradient:#FF4500:#FFD700>Axe Brawler</gradient>"
+    description: "Close-quarters axe"
     rarity: COMMON
-    icon: STONE_AXE
+    icon: DIAMOND_AXE
     category: Melee
     permission: wildkits.kit.brawler
     unlocked-by-default: true
@@ -650,7 +649,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   sentinel:
-    display-name: "<aqua>Sentinel"
+    display-name: "<gradient:#FF4500:#FFD700>Shield Sentinel</gradient>"
     description: "Watchful defender"
     rarity: RARE
     icon: SHIELD
@@ -662,19 +661,19 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   templar:
-    display-name: "<gold>Templar"
-    description: "Sacred knight kit"
+    display-name: "<gradient:#FF4500:#FFD700>Royal Templar</gradient>"
+    description: "Sacred knight"
     rarity: LEGENDARY
     icon: GOLDEN_CHESTPLATE
     category: Melee
     permission: wildkits.kit.templar
     unlocked-by-default: false
     price: 4800
-    theme: knight
+    theme: royal
     prefer-ranged: false
     prefer-magic: false
   reaper:
-    display-name: "<red>Reaper"
+    display-name: "<gradient:#FF4500:#FFD700>Shadow Reaper</gradient>"
     description: "Harvest souls"
     rarity: MYTHIC
     icon: NETHERITE_HOE
@@ -682,12 +681,12 @@ kits:
     permission: wildkits.kit.reaper
     unlocked-by-default: false
     price: 7500
-    theme: assassin
+    theme: shadow
     prefer-ranged: false
     prefer-magic: false
   ghost:
-    display-name: "<light_purple>Ghost"
-    description: "Hard to pin down"
+    display-name: "<gradient:#FF4500:#FFD700>Ghost</gradient>"
+    description: "Hard to pin"
     rarity: EPIC
     icon: GHAST_TEAR
     category: Stealth
@@ -698,7 +697,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   vampire:
-    display-name: "<gold>Vampire"
+    display-name: "<gradient:#FF4500:#FFD700>Vampire</gradient>"
     description: "Life-steal vibes"
     rarity: LEGENDARY
     icon: REDSTONE_BLOCK
@@ -710,8 +709,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   werewolf:
-    display-name: "<light_purple>Werewolf"
-    description: "Feral night hunter"
+    display-name: "<gradient:#FF4500:#FFD700>Werewolf</gradient>"
+    description: "Feral hunter"
     rarity: EPIC
     icon: BONE
     category: Melee
@@ -722,20 +721,20 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   alchemist:
-    display-name: "<aqua>Alchemist"
-    description: "Potion master"
+    display-name: "<gradient:#FF4500:#FFD700>Potion Master</gradient>"
+    description: "Potion specialist"
     rarity: RARE
     icon: BREWING_STAND
     category: Magic
     permission: wildkits.kit.alchemist
     unlocked-by-default: false
     price: 1200
-    theme: mage
+    theme: potion
     prefer-ranged: false
     prefer-magic: true
   enchanter:
-    display-name: "<light_purple>Enchanter"
-    description: "Enchant-heavy kit"
+    display-name: "<gradient:#FF4500:#FFD700>Enchanter</gradient>"
+    description: "Enchant-heavy"
     rarity: EPIC
     icon: ENCHANTING_TABLE
     category: Magic
@@ -746,7 +745,7 @@ kits:
     prefer-ranged: false
     prefer-magic: true
   sorcerer:
-    display-name: "<gold>Sorcerer"
+    display-name: "<gradient:#FF4500:#FFD700>Crystal Sorcerer</gradient>"
     description: "Arcane barrage"
     rarity: LEGENDARY
     icon: AMETHYST_SHARD
@@ -754,24 +753,24 @@ kits:
     permission: wildkits.kit.sorcerer
     unlocked-by-default: false
     price: 4600
-    theme: mage
+    theme: crystal
     prefer-ranged: false
     prefer-magic: true
   pyromancer:
-    display-name: "<light_purple>Pyromancer"
-    description: "Fire magic specialist"
+    display-name: "<gradient:#FF4500:#FFD700>Pyromancer</gradient>"
+    description: "Fire magic"
     rarity: EPIC
     icon: BLAZE_ROD
     category: Magic
     permission: wildkits.kit.pyromancer
     unlocked-by-default: false
     price: 2500
-    theme: lava
+    theme: pyro
     prefer-ranged: false
     prefer-magic: true
   cryomancer:
-    display-name: "<light_purple>Cryomancer"
-    description: "Ice magic specialist"
+    display-name: "<gradient:#FF4500:#FFD700>Cryomancer</gradient>"
+    description: "Ice magic"
     rarity: EPIC
     icon: SNOWBALL
     category: Magic
@@ -782,32 +781,32 @@ kits:
     prefer-ranged: false
     prefer-magic: true
   electromancer:
-    display-name: "<gold>Electromancer"
-    description: "Shock magic kit"
+    display-name: "<gradient:#FF4500:#FFD700>Stormcaller</gradient>"
+    description: "Shock magic"
     rarity: LEGENDARY
     icon: COPPER_INGOT
     category: Magic
     permission: wildkits.kit.electromancer
     unlocked-by-default: false
     price: 4700
-    theme: magic
+    theme: storm
     prefer-ranged: false
     prefer-magic: true
   geomancer:
-    display-name: "<aqua>Geomancer"
-    description: "Earth shaper kit"
+    display-name: "<gradient:#FF4500:#FFD700>Mountain Mage</gradient>"
+    description: "Earth shaper"
     rarity: RARE
     icon: DIRT
     category: Magic
     permission: wildkits.kit.geomancer
     unlocked-by-default: false
     price: 1300
-    theme: builder
+    theme: mountain
     prefer-ranged: false
     prefer-magic: true
   aeromancer:
-    display-name: "<aqua>Aeromancer"
-    description: "Wind dancer kit"
+    display-name: "<gradient:#FF4500:#FFD700>Wind Runner</gradient>"
+    description: "Wind dancer"
     rarity: RARE
     icon: FEATHER
     category: Magic
@@ -818,32 +817,32 @@ kits:
     prefer-ranged: false
     prefer-magic: true
   engineer:
-    display-name: "<green>Engineer"
+    display-name: "<gradient:#FF4500:#FFD700>Trap Master</gradient>"
     description: "Utility gadgets"
     rarity: UNCOMMON
-    icon: REDSTONE_TORCH
+    icon: TRIPWIRE_HOOK
     category: Utility
     permission: wildkits.kit.engineer
     unlocked-by-default: true
     price: 0
-    theme: builder
+    theme: trap
     prefer-ranged: false
     prefer-magic: false
   architect:
-    display-name: "<aqua>Architect"
-    description: "Master builder kit"
+    display-name: "<gradient:#FF4500:#FFD700>Fortress Architect</gradient>"
+    description: "Master builder"
     rarity: RARE
     icon: BRICKS
     category: Utility
     permission: wildkits.kit.architect
     unlocked-by-default: false
     price: 1000
-    theme: builder
+    theme: fortress
     prefer-ranged: false
     prefer-magic: false
   quarry:
-    display-name: "<green>Quarry"
-    description: "Heavy mining kit"
+    display-name: "<gradient:#FF4500:#FFD700>Quarry Miner</gradient>"
+    description: "Heavy mining"
     rarity: UNCOMMON
     icon: DIAMOND_PICKAXE
     category: Utility
@@ -854,20 +853,20 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   lumberjack:
-    display-name: "<gray>Lumberjack"
-    description: "Axe and wood kit"
+    display-name: "<gradient:#FF4500:#FFD700>Lumberjack</gradient>"
+    description: "Axe and wood"
     rarity: COMMON
-    icon: IRON_AXE
+    icon: DIAMOND_AXE
     category: Utility
     permission: wildkits.kit.lumberjack
     unlocked-by-default: true
     price: 0
-    theme: viking
+    theme: lumberjack
     prefer-ranged: false
     prefer-magic: false
   fisherman:
-    display-name: "<gray>Fisherman"
-    description: "Rod and ocean loot"
+    display-name: "<gradient:#FF4500:#FFD700>Fisherman</gradient>"
+    description: "Rod and ocean"
     rarity: COMMON
     icon: FISHING_ROD
     category: Utility
@@ -878,7 +877,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   chef:
-    display-name: "<gray>Chef"
+    display-name: "<gradient:#FF4500:#FFD700>Chef</gradient>"
     description: "Food abundance"
     rarity: COMMON
     icon: COOKED_BEEF
@@ -890,8 +889,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   beekeeper:
-    display-name: "<green>Beekeeper"
-    description: "Sweet survival kit"
+    display-name: "<gradient:#FF4500:#FFD700>Beekeeper</gradient>"
+    description: "Sweet survival"
     rarity: UNCOMMON
     icon: HONEYCOMB
     category: Utility
@@ -902,7 +901,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   herbalist:
-    display-name: "<green>Herbalist"
+    display-name: "<gradient:#FF4500:#FFD700>Herbalist</gradient>"
     description: "Natural remedies"
     rarity: UNCOMMON
     icon: GLISTERING_MELON_SLICE
@@ -914,20 +913,20 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   nomad:
-    display-name: "<gray>Nomad"
-    description: "Travel light kit"
+    display-name: "<gradient:#FF4500:#FFD700>Desert Nomad</gradient>"
+    description: "Travel light"
     rarity: COMMON
     icon: MAP
     category: Mobility
     permission: wildkits.kit.nomad
     unlocked-by-default: true
     price: 0
-    theme: balanced
+    theme: desert
     prefer-ranged: false
     prefer-magic: false
   courier:
-    display-name: "<green>Courier"
-    description: "Speed delivery kit"
+    display-name: "<gradient:#FF4500:#FFD700>Courier</gradient>"
+    description: "Speed delivery"
     rarity: UNCOMMON
     icon: RABBIT_FOOT
     category: Mobility
@@ -938,7 +937,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   parkour:
-    display-name: "<aqua>Parkour"
+    display-name: "<gradient:#FF4500:#FFD700>Parkourist</gradient>"
     description: "Mobility specialist"
     rarity: RARE
     icon: SLIME_BLOCK
@@ -950,7 +949,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   skirmisher:
-    display-name: "<green>Skirmisher"
+    display-name: "<gradient:#FF4500:#FFD700>Skirmisher</gradient>"
     description: "Hit and run"
     rarity: UNCOMMON
     icon: LEATHER_CHESTPLATE
@@ -962,8 +961,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   raider:
-    display-name: "<aqua>Raider"
-    description: "Aggressive loot kit"
+    display-name: "<gradient:#FF4500:#FFD700>Raider</gradient>"
+    description: "Aggressive loot"
     rarity: RARE
     icon: CROSSBOW
     category: Melee
@@ -974,10 +973,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   bandit:
-    display-name: "<gray>Bandit"
+    display-name: "<gradient:#FF4500:#FFD700>Bandit</gradient>"
     description: "Dirty fighter"
     rarity: COMMON
-    icon: STONE_SWORD
+    icon: IRON_SWORD
     category: Stealth
     permission: wildkits.kit.bandit
     unlocked-by-default: true
@@ -986,10 +985,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   mercenary:
-    display-name: "<green>Mercenary"
-    description: "Paid killer kit"
+    display-name: "<gradient:#FF4500:#FFD700>Mercenary</gradient>"
+    description: "Paid killer"
     rarity: UNCOMMON
-    icon: IRON_SWORD
+    icon: DIAMOND_SWORD
     category: Melee
     permission: wildkits.kit.mercenary
     unlocked-by-default: true
@@ -998,7 +997,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   captain:
-    display-name: "<light_purple>Captain"
+    display-name: "<gradient:#FF4500:#FFD700>Captain</gradient>"
     description: "Commanding presence"
     rarity: EPIC
     icon: GOLDEN_HELMET
@@ -1010,7 +1009,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   admiral:
-    display-name: "<gold>Admiral"
+    display-name: "<gradient:#FF4500:#FFD700>Admiral</gradient>"
     description: "Naval supremacy"
     rarity: LEGENDARY
     icon: HEART_OF_THE_SEA
@@ -1018,11 +1017,11 @@ kits:
     permission: wildkits.kit.admiral
     unlocked-by-default: false
     price: 4900
-    theme: pirate
+    theme: ocean
     prefer-ranged: false
     prefer-magic: false
   corsair:
-    display-name: "<aqua>Corsair"
+    display-name: "<gradient:#FF4500:#FFD700>Corsair</gradient>"
     description: "Swift sea raider"
     rarity: RARE
     icon: NAUTILUS_SHELL
@@ -1034,8 +1033,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   musketeer:
-    display-name: "<green>Musketeer"
-    description: "Classic shot kit"
+    display-name: "<gradient:#FF4500:#FFD700>Musketeer</gradient>"
+    description: "Classic shot"
     rarity: UNCOMMON
     icon: CROSSBOW
     category: Ranged
@@ -1046,8 +1045,8 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   longbow:
-    display-name: "<aqua>Longbow"
-    description: "Heavy bow kit"
+    display-name: "<gradient:#FF4500:#FFD700>Longbow</gradient>"
+    description: "Heavy bow"
     rarity: RARE
     icon: BOW
     category: Ranged
@@ -1058,7 +1057,7 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   crossbowman:
-    display-name: "<green>Crossbowman"
+    display-name: "<gradient:#FF4500:#FFD700>Crossbowman</gradient>"
     description: "Piercing bolts"
     rarity: UNCOMMON
     icon: CROSSBOW
@@ -1070,20 +1069,20 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   trapper:
-    display-name: "<aqua>Trapper"
-    description: "Control the field"
+    display-name: "<gradient:#FF4500:#FFD700>Trap Master</gradient>"
+    description: "Field control"
     rarity: RARE
-    icon: TRIPWIRE_HOOK
+    icon: COBWEB
     category: Special
     permission: wildkits.kit.trapper
     unlocked-by-default: false
     price: 1150
-    theme: hunter
+    theme: trap
     prefer-ranged: true
     prefer-magic: false
   beastmaster:
-    display-name: "<light_purple>Beastmaster"
-    description: "Hunt with ferocity"
+    display-name: "<gradient:#FF4500:#FFD700>Beastmaster</gradient>"
+    description: "Hunt ferocity"
     rarity: EPIC
     icon: BONE
     category: Ranged
@@ -1094,7 +1093,7 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   falconer:
-    display-name: "<aqua>Falconer"
+    display-name: "<gradient:#FF4500:#FFD700>Falconer</gradient>"
     description: "Aerial hunter"
     rarity: RARE
     icon: FEATHER
@@ -1106,7 +1105,7 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   desert:
-    display-name: "<gray>Desert"
+    display-name: "<gradient:#FF4500:#FFD700>Desert Stalker</gradient>"
     description: "Sandstorm survivor"
     rarity: COMMON
     icon: SANDSTONE
@@ -1114,35 +1113,35 @@ kits:
     permission: wildkits.kit.desert
     unlocked-by-default: true
     price: 0
-    theme: balanced
+    theme: desert
     prefer-ranged: false
     prefer-magic: false
   jungle:
-    display-name: "<gray>Jungle"
-    description: "Dense foliage fighter"
+    display-name: "<gradient:#FF4500:#FFD700>Jungle Scout</gradient>"
+    description: "Dense foliage"
     rarity: COMMON
     icon: VINE
     category: Elemental
     permission: wildkits.kit.jungle
     unlocked-by-default: true
     price: 0
-    theme: balanced
+    theme: jungle
     prefer-ranged: false
     prefer-magic: false
   tundra:
-    display-name: "<green>Tundra"
-    description: "Frozen wastes kit"
+    display-name: "<gradient:#FF4500:#FFD700>Tundra</gradient>"
+    description: "Frozen wastes"
     rarity: UNCOMMON
     icon: SNOW_BLOCK
     category: Elemental
     permission: wildkits.kit.tundra
     unlocked-by-default: true
     price: 0
-    theme: snow
+    theme: frozen
     prefer-ranged: false
     prefer-magic: false
   volcano:
-    display-name: "<gold>Volcano"
+    display-name: "<gradient:#FF4500:#FFD700>Inferno</gradient>"
     description: "Eruption offense"
     rarity: LEGENDARY
     icon: MAGMA_BLOCK
@@ -1150,11 +1149,11 @@ kits:
     permission: wildkits.kit.volcano
     unlocked-by-default: false
     price: 5100
-    theme: lava
+    theme: inferno
     prefer-ranged: false
     prefer-magic: false
   ocean:
-    display-name: "<green>Ocean"
+    display-name: "<gradient:#FF4500:#FFD700>Ocean</gradient>"
     description: "Tidal warrior"
     rarity: UNCOMMON
     icon: PRISMARINE
@@ -1162,11 +1161,11 @@ kits:
     permission: wildkits.kit.ocean
     unlocked-by-default: true
     price: 0
-    theme: pirate
+    theme: ocean
     prefer-ranged: false
     prefer-magic: false
   swamp:
-    display-name: "<gray>Swamp"
+    display-name: "<gradient:#FF4500:#FFD700>Swamp</gradient>"
     description: "Murky ambusher"
     rarity: COMMON
     icon: LILY_PAD
@@ -1178,7 +1177,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   cave:
-    display-name: "<gray>Cave"
+    display-name: "<gradient:#FF4500:#FFD700>Cave Miner</gradient>"
     description: "Underground fighter"
     rarity: COMMON
     icon: COBBLESTONE
@@ -1190,8 +1189,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   sky:
-    display-name: "<aqua>Sky"
-    description: "High ground kit"
+    display-name: "<gradient:#FF4500:#FFD700>Sky Runner</gradient>"
+    description: "High ground"
     rarity: RARE
     icon: ELYTRA
     category: Mobility
@@ -1202,19 +1201,19 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   void:
-    display-name: "<red>Void"
-    description: "Void-touched power"
+    display-name: "<gradient:#FF4500:#FFD700>Void Walker</gradient>"
+    description: "Void-touched"
     rarity: MYTHIC
     icon: END_CRYSTAL
     category: Elite
     permission: wildkits.kit.void
     unlocked-by-default: false
     price: 8500
-    theme: end
+    theme: void
     prefer-ranged: false
     prefer-magic: true
   astral:
-    display-name: "<gold>Astral"
+    display-name: "<gradient:#FF4500:#FFD700>Galaxy Astral</gradient>"
     description: "Starlight magic"
     rarity: LEGENDARY
     icon: END_ROD
@@ -1222,47 +1221,47 @@ kits:
     permission: wildkits.kit.astral
     unlocked-by-default: false
     price: 5200
-    theme: end
+    theme: galaxy
     prefer-ranged: false
     prefer-magic: true
   cosmic:
-    display-name: "<gradient:#ff006e:#8338ec>Cosmic"
-    description: "Universe- Tier kit"
+    display-name: "<gradient:#FF4500:#FFD700>Galaxy Core</gradient>"
+    description: "Universe kit"
     rarity: ULTIMATE
     icon: NETHER_STAR
     category: Elite
     permission: wildkits.kit.cosmic
     unlocked-by-default: false
     price: 12000
-    theme: magic
+    theme: galaxy
     prefer-ranged: false
     prefer-magic: true
   royal:
-    display-name: "<light_purple>Royal"
-    description: "Royal guard kit"
+    display-name: "<gradient:#FF4500:#FFD700>Royal Guard</gradient>"
+    description: "Royal fighter"
     rarity: EPIC
     icon: GOLDEN_SWORD
     category: Elite
     permission: wildkits.kit.royal
     unlocked-by-default: false
     price: 2800
-    theme: knight
+    theme: royal
     prefer-ranged: false
     prefer-magic: false
   imperial:
-    display-name: "<gold>Imperial"
-    description: "Empire elite kit"
+    display-name: "<gradient:#FF4500:#FFD700>Imperial</gradient>"
+    description: "Empire elite"
     rarity: LEGENDARY
     icon: DIAMOND_BLOCK
     category: Elite
     permission: wildkits.kit.imperial
     unlocked-by-default: false
     price: 5500
-    theme: knight
+    theme: royal
     prefer-ranged: false
     prefer-magic: false
   emperor:
-    display-name: "<gradient:#ff006e:#8338ec>Emperor"
+    display-name: "<gradient:#FF4500:#FFD700>Emperor</gradient>"
     description: "Absolute authority"
     rarity: ULTIMATE
     icon: GOLD_BLOCK
@@ -1270,11 +1269,11 @@ kits:
     permission: wildkits.kit.emperor
     unlocked-by-default: false
     price: 15000
-    theme: balanced
+    theme: royal
     prefer-ranged: false
     prefer-magic: false
   noble:
-    display-name: "<aqua>Noble"
+    display-name: "<gradient:#FF4500:#FFD700>Noble</gradient>"
     description: "Aristocrat fighter"
     rarity: RARE
     icon: GOLD_INGOT
@@ -1282,14 +1281,14 @@ kits:
     permission: wildkits.kit.noble
     unlocked-by-default: false
     price: 1600
-    theme: balanced
+    theme: royal
     prefer-ranged: false
     prefer-magic: false
   squire:
-    display-name: "<gray>Squire"
-    description: "Training knight kit"
+    display-name: "<gradient:#FF4500:#FFD700>Squire</gradient>"
+    description: "Training knight"
     rarity: COMMON
-    icon: WOODEN_SWORD
+    icon: IRON_SWORD
     category: Melee
     permission: wildkits.kit.squire
     unlocked-by-default: true
@@ -1298,8 +1297,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   cavalier:
-    display-name: "<green>Cavalier"
-    description: "Mounted-style charge"
+    display-name: "<gradient:#FF4500:#FFD700>Cavalier</gradient>"
+    description: "Charge kit"
     rarity: UNCOMMON
     icon: SADDLE
     category: Melee
@@ -1310,8 +1309,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   dragoon:
-    display-name: "<light_purple>Dragoon"
-    description: "Shock troop kit"
+    display-name: "<gradient:#FF4500:#FFD700>Dragoon</gradient>"
+    description: "Shock troop"
     rarity: EPIC
     icon: IRON_HORSE_ARMOR
     category: Melee
@@ -1322,7 +1321,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   centurion:
-    display-name: "<light_purple>Centurion"
+    display-name: "<gradient:#FF4500:#FFD700>Centurion</gradient>"
     description: "Legion commander"
     rarity: EPIC
     icon: IRON_CHESTPLATE
@@ -1334,8 +1333,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   spartan:
-    display-name: "<aqua>Spartan"
-    description: "Spear-and-shield spirit"
+    display-name: "<gradient:#FF4500:#FFD700>Spartan</gradient>"
+    description: "Shield spirit"
     rarity: RARE
     icon: SHIELD
     category: Melee
@@ -1346,8 +1345,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   amazon:
-    display-name: "<aqua>Amazon"
-    description: "Fierce warrior kit"
+    display-name: "<gradient:#FF4500:#FFD700>Amazon</gradient>"
+    description: "Fierce warrior"
     rarity: RARE
     icon: BOW
     category: Ranged
@@ -1358,7 +1357,7 @@ kits:
     prefer-ranged: true
     prefer-magic: false
   valkyrie:
-    display-name: "<gold>Valkyrie"
+    display-name: "<gradient:#FF4500:#FFD700>Valkyrie</gradient>"
     description: "Winged champion"
     rarity: LEGENDARY
     icon: ELYTRA
@@ -1370,7 +1369,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   olympus:
-    display-name: "<gradient:#ff006e:#8338ec>Olympus"
+    display-name: "<gradient:#FF4500:#FFD700>Olympus</gradient>"
     description: "Godlike showcase"
     rarity: ULTIMATE
     icon: TOTEM_OF_UNDYING
@@ -1378,11 +1377,11 @@ kits:
     permission: wildkits.kit.olympus
     unlocked-by-default: false
     price: 20000
-    theme: magic
+    theme: mystic
     prefer-ranged: false
     prefer-magic: true
   titan:
-    display-name: "<red>Titan"
+    display-name: "<gradient:#FF4500:#FFD700>Titan</gradient>"
     description: "Colossal strength"
     rarity: MYTHIC
     icon: ANVIL
@@ -1394,8 +1393,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   colossus:
-    display-name: "<red>Colossus"
-    description: "Unstoppable force"
+    display-name: "<gradient:#FF4500:#FFD700>Colossus</gradient>"
+    description: "Unstoppable"
     rarity: MYTHIC
     icon: NETHERITE_CHESTPLATE
     category: Melee
@@ -1406,7 +1405,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   juggernaut:
-    display-name: "<gold>Juggernaut"
+    display-name: "<gradient:#FF4500:#FFD700>Juggernaut</gradient>"
     description: "Slow but deadly"
     rarity: LEGENDARY
     icon: NETHERITE_HELMET
@@ -1418,7 +1417,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   blitz:
-    display-name: "<light_purple>Blitz"
+    display-name: "<gradient:#FF4500:#FFD700>Blitz</gradient>"
     description: "Lightning rush"
     rarity: EPIC
     icon: SUGAR
@@ -1430,8 +1429,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   flash:
-    display-name: "<aqua>Flash"
-    description: "Pure speed kit"
+    display-name: "<gradient:#FF4500:#FFD700>Flash</gradient>"
+    description: "Pure speed"
     rarity: RARE
     icon: RABBIT_FOOT
     category: Mobility
@@ -1442,8 +1441,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   dash:
-    display-name: "<gray>Dash"
-    description: "Short burst fighter"
+    display-name: "<gradient:#FF4500:#FFD700>Dash</gradient>"
+    description: "Burst fighter"
     rarity: COMMON
     icon: LEATHER_BOOTS
     category: Mobility
@@ -1454,7 +1453,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   stormcaller:
-    display-name: "<gold>Stormcaller"
+    display-name: "<gradient:#FF4500:#FFD700>Storm Lord</gradient>"
     description: "Weather war mage"
     rarity: LEGENDARY
     icon: TRIDENT
@@ -1462,11 +1461,11 @@ kits:
     permission: wildkits.kit.stormcaller
     unlocked-by-default: false
     price: 5400
-    theme: magic
+    theme: storm
     prefer-ranged: false
     prefer-magic: true
   tidehunter:
-    display-name: "<light_purple>Tidehunter"
+    display-name: "<gradient:#FF4500:#FFD700>Tidehunter</gradient>"
     description: "Oceanic predator"
     rarity: EPIC
     icon: TRIDENT
@@ -1474,11 +1473,11 @@ kits:
     permission: wildkits.kit.tidehunter
     unlocked-by-default: false
     price: 2600
-    theme: pirate
+    theme: ocean
     prefer-ranged: false
     prefer-magic: false
   sandstalker:
-    display-name: "<aqua>Sandstalker"
+    display-name: "<gradient:#FF4500:#FFD700>Sandstalker</gradient>"
     description: "Desert ambush"
     rarity: RARE
     icon: SAND
@@ -1486,14 +1485,14 @@ kits:
     permission: wildkits.kit.sandstalker
     unlocked-by-default: false
     price: 1350
-    theme: assassin
+    theme: desert
     prefer-ranged: false
     prefer-magic: false
   nightblade:
-    display-name: "<light_purple>Nightblade"
+    display-name: "<gradient:#FF4500:#FFD700>Nightblade</gradient>"
     description: "Moonlit killer"
     rarity: EPIC
-    icon: IRON_SWORD
+    icon: DIAMOND_SWORD
     category: Stealth
     permission: wildkits.kit.nightblade
     unlocked-by-default: false
@@ -1502,8 +1501,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   dawnbreaker:
-    display-name: "<gold>Dawnbreaker"
-    description: "Radiant melee kit"
+    display-name: "<gradient:#FF4500:#FFD700>Dawnbreaker</gradient>"
+    description: "Radiant melee"
     rarity: LEGENDARY
     icon: GOLDEN_SWORD
     category: Melee
@@ -1514,7 +1513,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   dusk:
-    display-name: "<aqua>Dusk"
+    display-name: "<gradient:#FF4500:#FFD700>Dusk</gradient>"
     description: "Twilight skirmisher"
     rarity: RARE
     icon: GRAY_DYE
@@ -1526,7 +1525,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   solar:
-    display-name: "<light_purple>Solar"
+    display-name: "<gradient:#FF4500:#FFD700>Solar</gradient>"
     description: "Sunfire warrior"
     rarity: EPIC
     icon: SUNFLOWER
@@ -1538,7 +1537,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   lunar:
-    display-name: "<light_purple>Lunar"
+    display-name: "<gradient:#FF4500:#FFD700>Lunar</gradient>"
     description: "Moonlit magic"
     rarity: EPIC
     icon: END_STONE
@@ -1550,19 +1549,19 @@ kits:
     prefer-ranged: false
     prefer-magic: true
   stellar:
-    display-name: "<red>Stellar"
-    description: "Star-forged gear"
+    display-name: "<gradient:#FF4500:#FFD700>Stellar</gradient>"
+    description: "Star-forged"
     rarity: MYTHIC
     icon: NETHER_STAR
     category: Elite
     permission: wildkits.kit.stellar
     unlocked-by-default: false
     price: 8800
-    theme: magic
+    theme: galaxy
     prefer-ranged: false
     prefer-magic: true
   obsidian:
-    display-name: "<aqua>Obsidian"
+    display-name: "<gradient:#FF4500:#FFD700>Obsidian Wall</gradient>"
     description: "Hardened defense"
     rarity: RARE
     icon: OBSIDIAN
@@ -1570,24 +1569,24 @@ kits:
     permission: wildkits.kit.obsidian
     unlocked-by-default: false
     price: 1500
-    theme: tank
+    theme: fortress
     prefer-ranged: false
     prefer-magic: false
   emerald:
-    display-name: "<light_purple>Emerald"
-    description: "Lucky green wealth"
+    display-name: "<gradient:#FF4500:#FFD700>Emerald</gradient>"
+    description: "Lucky green"
     rarity: EPIC
     icon: EMERALD
     category: Special
     permission: wildkits.kit.emerald
     unlocked-by-default: false
     price: 3000
-    theme: balanced
+    theme: lucky
     prefer-ranged: false
     prefer-magic: false
   ruby:
-    display-name: "<light_purple>Ruby"
-    description: "Crimson gem power"
+    display-name: "<gradient:#FF4500:#FFD700>Ruby</gradient>"
+    description: "Crimson gem"
     rarity: EPIC
     icon: REDSTONE
     category: Special
@@ -1598,7 +1597,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   sapphire:
-    display-name: "<light_purple>Sapphire"
+    display-name: "<gradient:#FF4500:#FFD700>Sapphire</gradient>"
     description: "Azure gem magic"
     rarity: EPIC
     icon: LAPIS_LAZULI
@@ -1610,19 +1609,19 @@ kits:
     prefer-ranged: false
     prefer-magic: true
   amethyst:
-    display-name: "<aqua>Amethyst"
-    description: "Crystal mage kit"
+    display-name: "<gradient:#FF4500:#FFD700>Amethyst</gradient>"
+    description: "Crystal mage"
     rarity: RARE
     icon: AMETHYST_CLUSTER
     category: Magic
     permission: wildkits.kit.amethyst
     unlocked-by-default: false
     price: 1550
-    theme: magic
+    theme: crystal
     prefer-ranged: false
     prefer-magic: true
   copper:
-    display-name: "<gray>Copper"
+    display-name: "<gradient:#FF4500:#FFD700>Copper</gradient>"
     description: "Oxidized fighter"
     rarity: COMMON
     icon: COPPER_BLOCK
@@ -1634,8 +1633,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   ironclad:
-    display-name: "<green>Ironclad"
-    description: "Solid iron kit"
+    display-name: "<gradient:#FF4500:#FFD700>Ironclad</gradient>"
+    description: "Solid iron"
     rarity: UNCOMMON
     icon: IRON_BLOCK
     category: Melee
@@ -1646,43 +1645,43 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   gilded:
-    display-name: "<aqua>Gilded"
-    description: "Golden flashy kit"
+    display-name: "<gradient:#FF4500:#FFD700>Gilded</gradient>"
+    description: "Golden flashy"
     rarity: RARE
     icon: GOLD_BLOCK
     category: Elite
     permission: wildkits.kit.gilded
     unlocked-by-default: false
     price: 1700
-    theme: balanced
+    theme: royal
     prefer-ranged: false
     prefer-magic: false
   prismatic:
-    display-name: "<red>Prismatic"
-    description: "Rainbow rarity kit"
+    display-name: "<gradient:#FF4500:#FFD700>Prismatic</gradient>"
+    description: "Rainbow rarity"
     rarity: MYTHIC
     icon: TINTED_GLASS
     category: Special
     permission: wildkits.kit.prismatic
     unlocked-by-default: false
     price: 9200
-    theme: magic
+    theme: crystal
     prefer-ranged: false
     prefer-magic: true
   chaos:
-    display-name: "<gold>Chaos"
-    description: "Unstable RNG king"
+    display-name: "<gradient:#FF4500:#FFD700>Chaos</gradient>"
+    description: "Unstable RNG"
     rarity: LEGENDARY
     icon: ENDER_EYE
     category: Special
     permission: wildkits.kit.chaos
     unlocked-by-default: false
     price: 6000
-    theme: balanced
+    theme: chaos
     prefer-ranged: false
     prefer-magic: false
   order:
-    display-name: "<light_purple>Order"
+    display-name: "<gradient:#FF4500:#FFD700>Order</gradient>"
     description: "Perfectly balanced"
     rarity: EPIC
     icon: COMPARATOR
@@ -1694,46 +1693,46 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   fortune:
-    display-name: "<aqua>Fortune"
-    description: "High luck drops feel"
+    display-name: "<gradient:#FF4500:#FFD700>Fortune</gradient>"
+    description: "High luck feel"
     rarity: RARE
     icon: RABBIT_FOOT
     category: Special
     permission: wildkits.kit.fortune
     unlocked-by-default: false
     price: 1600
-    theme: balanced
+    theme: lucky
     prefer-ranged: false
     prefer-magic: false
   gambler:
-    display-name: "<green>Gambler"
-    description: "All-in random kit"
+    display-name: "<gradient:#FF4500:#FFD700>Gambler</gradient>"
+    description: "All-in random"
     rarity: UNCOMMON
     icon: GOLD_NUGGET
     category: Special
     permission: wildkits.kit.gambler
     unlocked-by-default: true
     price: 0
-    theme: balanced
+    theme: lucky
     prefer-ranged: false
     prefer-magic: false
   wildcard:
-    display-name: "<light_purple>Wildcard"
-    description: "Anything can happen"
+    display-name: "<gradient:#FF4500:#FFD700>Wildcard</gradient>"
+    description: "Anything happens"
     rarity: EPIC
     icon: PLAYER_HEAD
     category: Special
     permission: wildkits.kit.wildcard
     unlocked-by-default: false
     price: 2500
-    theme: balanced
+    theme: chaos
     prefer-ranged: false
     prefer-magic: false
   seasoned:
-    display-name: "<green>Seasoned"
+    display-name: "<gradient:#FF4500:#FFD700>Seasoned</gradient>"
     description: "Veteran loadout"
     rarity: UNCOMMON
-    icon: IRON_SWORD
+    icon: DIAMOND_SWORD
     category: General
     permission: wildkits.kit.seasoned
     unlocked-by-default: true
@@ -1742,10 +1741,10 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   recruit:
-    display-name: "<gray>Recruit"
-    description: "Training grounds kit"
+    display-name: "<gradient:#FF4500:#FFD700>Recruit</gradient>"
+    description: "Training kit"
     rarity: COMMON
-    icon: STICK
+    icon: IRON_SWORD
     category: General
     permission: wildkits.kit.recruit
     unlocked-by-default: true
@@ -1754,8 +1753,8 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   veteran:
-    display-name: "<aqua>Veteran"
-    description: "Battle-tested kit"
+    display-name: "<gradient:#FF4500:#FFD700>Veteran</gradient>"
+    description: "Battle-tested"
     rarity: RARE
     icon: SHIELD
     category: General
@@ -1766,19 +1765,19 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   hero:
-    display-name: "<gold>Hero"
-    description: "Heroic comeback kit"
+    display-name: "<gradient:#FF4500:#FFD700>Hero</gradient>"
+    description: "Heroic comeback"
     rarity: LEGENDARY
     icon: TOTEM_OF_UNDYING
     category: Elite
     permission: wildkits.kit.hero
     unlocked-by-default: false
     price: 5700
-    theme: balanced
+    theme: champion
     prefer-ranged: false
     prefer-magic: false
   savior:
-    display-name: "<light_purple>Savior"
+    display-name: "<gradient:#FF4500:#FFD700>Savior</gradient>"
     description: "Supportive fighter"
     rarity: EPIC
     icon: GOLDEN_APPLE
@@ -1786,11 +1785,11 @@ kits:
     permission: wildkits.kit.savior
     unlocked-by-default: false
     price: 2400
-    theme: knight
+    theme: guardian
     prefer-ranged: false
     prefer-magic: false
   demon:
-    display-name: "<red>Demon"
+    display-name: "<gradient:#FF4500:#FFD700>Demon</gradient>"
     description: "Infernal menace"
     rarity: MYTHIC
     icon: MAGMA_CREAM
@@ -1798,11 +1797,11 @@ kits:
     permission: wildkits.kit.demon
     unlocked-by-default: false
     price: 8600
-    theme: lava
+    theme: inferno
     prefer-ranged: false
     prefer-magic: true
   angel:
-    display-name: "<red>Angel"
+    display-name: "<gradient:#FF4500:#FFD700>Angel</gradient>"
     description: "Radiant protector"
     rarity: MYTHIC
     icon: GLOWSTONE
@@ -1810,35 +1809,35 @@ kits:
     permission: wildkits.kit.angel
     unlocked-by-default: false
     price: 8600
-    theme: knight
+    theme: guardian
     prefer-ranged: false
     prefer-magic: true
   dragon:
-    display-name: "<gradient:#ff006e:#8338ec>Dragon"
-    description: "Dragonfire supremacy"
+    display-name: "<gradient:#FF4500:#FFD700>Dragon</gradient>"
+    description: "Dragonfire"
     rarity: ULTIMATE
     icon: DRAGON_HEAD
     category: Elite
     permission: wildkits.kit.dragon
     unlocked-by-default: false
     price: 25000
-    theme: lava
+    theme: dragon
     prefer-ranged: false
     prefer-magic: true
   hydra:
-    display-name: "<red>Hydra"
-    description: "Multi-threat kit"
+    display-name: "<gradient:#FF4500:#FFD700>Hydra</gradient>"
+    description: "Multi-threat"
     rarity: MYTHIC
     icon: CREEPER_HEAD
     category: Elite
     permission: wildkits.kit.hydra
     unlocked-by-default: false
     price: 9100
-    theme: balanced
+    theme: chaos
     prefer-ranged: false
     prefer-magic: false
   kraken:
-    display-name: "<gold>Kraken"
+    display-name: "<gradient:#FF4500:#FFD700>Kraken</gradient>"
     description: "Deep sea terror"
     rarity: LEGENDARY
     icon: DARK_PRISMARINE
@@ -1846,11 +1845,11 @@ kits:
     permission: wildkits.kit.kraken
     unlocked-by-default: false
     price: 5900
-    theme: pirate
+    theme: ocean
     prefer-ranged: false
     prefer-magic: false
   phoenixlord:
-    display-name: "<gradient:#ff006e:#8338ec>Phoenix Lord"
+    display-name: "<gradient:#FF4500:#FFD700>Phoenix Lord</gradient>"
     description: "Rebirth incarnate"
     rarity: ULTIMATE
     icon: BLAZE_POWDER
@@ -1858,11 +1857,11 @@ kits:
     permission: wildkits.kit.phoenixlord
     unlocked-by-default: false
     price: 22000
-    theme: lava
+    theme: phoenix
     prefer-ranged: false
     prefer-magic: true
   stormlord:
-    display-name: "<gradient:#ff006e:#8338ec>Storm Lord"
+    display-name: "<gradient:#FF4500:#FFD700>Storm Lord</gradient>"
     description: "Tempest emperor"
     rarity: ULTIMATE
     icon: TRIDENT
@@ -1870,11 +1869,11 @@ kits:
     permission: wildkits.kit.stormlord
     unlocked-by-default: false
     price: 22000
-    theme: magic
+    theme: storm
     prefer-ranged: false
     prefer-magic: true
   shadowlord:
-    display-name: "<gradient:#ff006e:#8338ec>Shadow Lord"
+    display-name: "<gradient:#FF4500:#FFD700>Shadow Lord</gradient>"
     description: "Absolute stealth"
     rarity: ULTIMATE
     icon: BLACK_WOOL
@@ -1882,12 +1881,12 @@ kits:
     permission: wildkits.kit.shadowlord
     unlocked-by-default: false
     price: 22000
-    theme: ninja
+    theme: shadow
     prefer-ranged: false
     prefer-magic: false
   kitmaster:
-    display-name: "<gradient:#ff006e:#8338ec>Kit Master"
-    description: "Master of all kits"
+    display-name: "<gradient:#FF4500:#FFD700>Kit Master</gradient>"
+    description: "Master of kits"
     rarity: ULTIMATE
     icon: CHEST
     category: Elite
@@ -1898,7 +1897,7 @@ kits:
     prefer-ranged: false
     prefer-magic: false
   wild:
-    display-name: "<gold>Wild"
+    display-name: "<gradient:#FF4500:#FFD700>Wild</gradient>"
     description: "True WildKits spirit"
     rarity: LEGENDARY
     icon: FIREWORK_ROCKET
@@ -1906,11 +1905,11 @@ kits:
     permission: wildkits.kit.wild
     unlocked-by-default: false
     price: 6500
-    theme: balanced
+    theme: chaos
     prefer-ranged: false
     prefer-magic: false
   blaze:
-    display-name: "<red>Blaze"
+    display-name: "<gradient:#FF4500:#FFD700>Blaze</gradient>"
     description: "Signature Blaze kit"
     rarity: MYTHIC
     icon: BLAZE_ROD
@@ -1918,6 +1917,342 @@ kits:
     permission: wildkits.kit.blaze
     unlocked-by-default: false
     price: 10000
-    theme: lava
+    theme: blaze
     prefer-ranged: false
     prefer-magic: true
+  diamond_axe:
+    display-name: "<gradient:#FF4500:#FFD700>Diamond Axe Only</gradient>"
+    description: "Diamond axe specialist"
+    rarity: UNCOMMON
+    icon: DIAMOND_AXE
+    category: Melee
+    permission: wildkits.kit.diamond_axe
+    unlocked-by-default: true
+    price: 0
+    theme: viking
+    prefer-ranged: false
+    prefer-magic: false
+  diamond_pick:
+    display-name: "<gradient:#FF4500:#FFD700>Diamond Pickaxe</gradient>"
+    description: "Mining pressure kit"
+    rarity: COMMON
+    icon: DIAMOND_PICKAXE
+    category: Utility
+    permission: wildkits.kit.diamond_pick
+    unlocked-by-default: true
+    price: 0
+    theme: miner
+    prefer-ranged: false
+    prefer-magic: false
+  trident_kit:
+    display-name: "<gradient:#FF4500:#FFD700>Trident Fighter</gradient>"
+    description: "Trident focused"
+    rarity: RARE
+    icon: TRIDENT
+    category: Special
+    permission: wildkits.kit.trident_kit
+    unlocked-by-default: true
+    price: 0
+    theme: thunder
+    prefer-ranged: false
+    prefer-magic: false
+  shield_kit:
+    display-name: "<gradient:#FF4500:#FFD700>Shield Wall</gradient>"
+    description: "Shield specialist"
+    rarity: UNCOMMON
+    icon: SHIELD
+    category: Melee
+    permission: wildkits.kit.shield_kit
+    unlocked-by-default: true
+    price: 0
+    theme: tank
+    prefer-ranged: false
+    prefer-magic: false
+  bow_kit:
+    display-name: "<gradient:#FF4500:#FFD700>Bow Kit</gradient>"
+    description: "Pure bow kit"
+    rarity: COMMON
+    icon: BOW
+    category: Ranged
+    permission: wildkits.kit.bow_kit
+    unlocked-by-default: true
+    price: 0
+    theme: archer
+    prefer-ranged: true
+    prefer-magic: false
+  crossbow_kit:
+    display-name: "<gradient:#FF4500:#FFD700>Crossbow Kit</gradient>"
+    description: "Pure crossbow"
+    rarity: COMMON
+    icon: CROSSBOW
+    category: Ranged
+    permission: wildkits.kit.crossbow_kit
+    unlocked-by-default: true
+    price: 0
+    theme: archer
+    prefer-ranged: true
+    prefer-magic: false
+  helmet_diamond_chest:
+    display-name: "<gradient:#FF4500:#FFD700>Helmet Split</gradient>"
+    description: "Helmet + diamond chest style"
+    rarity: UNCOMMON
+    icon: DIAMOND_CHESTPLATE
+    category: Melee
+    permission: wildkits.kit.helmet_diamond_chest
+    unlocked-by-default: true
+    price: 0
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  nether_sword_dia:
+    display-name: "<gradient:#FF4500:#FFD700>Nether Sword Diamond</gradient>"
+    description: "Netherite sword + diamond armor"
+    rarity: EPIC
+    icon: NETHERITE_SWORD
+    category: Elite
+    permission: wildkits.kit.nether_sword_dia
+    unlocked-by-default: false
+    price: 2200
+    theme: balanced
+    prefer-ranged: false
+    prefer-magic: false
+  pyromancer_blaze:
+    display-name: "<gradient:#FF4500:#FFD700>Blaze Pyromancer</gradient>"
+    description: "Fire charges and lava"
+    rarity: RARE
+    icon: FIRE_CHARGE
+    category: Elemental
+    permission: wildkits.kit.pyromancer_blaze
+    unlocked-by-default: true
+    price: 0
+    theme: blaze
+    prefer-ranged: false
+    prefer-magic: true
+  ancient:
+    display-name: "<gradient:#FF4500:#FFD700>Ancient</gradient>"
+    description: "Ancient ruins kit"
+    rarity: EPIC
+    icon: COBBLED_DEEPSLATE
+    category: Special
+    permission: wildkits.kit.ancient
+    unlocked-by-default: false
+    price: 2100
+    theme: ancient
+    prefer-ranged: false
+    prefer-magic: false
+  mystic:
+    display-name: "<gradient:#FF4500:#FFD700>Mystic</gradient>"
+    description: "Mystic energies"
+    rarity: EPIC
+    icon: AMETHYST_SHARD
+    category: Magic
+    permission: wildkits.kit.mystic
+    unlocked-by-default: false
+    price: 2100
+    theme: mystic
+    prefer-ranged: false
+    prefer-magic: true
+  inferno:
+    display-name: "<gradient:#FF4500:#FFD700>Inferno</gradient>"
+    description: "Pure fire kit"
+    rarity: LEGENDARY
+    icon: MAGMA_BLOCK
+    category: Elemental
+    permission: wildkits.kit.inferno
+    unlocked-by-default: false
+    price: 5000
+    theme: inferno
+    prefer-ranged: false
+    prefer-magic: false
+  forest:
+    display-name: "<gradient:#FF4500:#FFD700>Forest</gradient>"
+    description: "Forest survival"
+    rarity: COMMON
+    icon: OAK_LEAVES
+    category: Elemental
+    permission: wildkits.kit.forest
+    unlocked-by-default: true
+    price: 0
+    theme: forest
+    prefer-ranged: false
+    prefer-magic: false
+  mountain:
+    display-name: "<gradient:#FF4500:#FFD700>Mountain</gradient>"
+    description: "Peak climber"
+    rarity: UNCOMMON
+    icon: STONE
+    category: Elemental
+    permission: wildkits.kit.mountain
+    unlocked-by-default: true
+    price: 0
+    theme: mountain
+    prefer-ranged: false
+    prefer-magic: false
+  bridge:
+    display-name: "<gradient:#FF4500:#FFD700>Bridge Builder</gradient>"
+    description: "Scaffolds and planks"
+    rarity: COMMON
+    icon: SCAFFOLDING
+    category: Utility
+    permission: wildkits.kit.bridge
+    unlocked-by-default: true
+    price: 0
+    theme: bridge
+    prefer-ranged: false
+    prefer-magic: false
+  fortress:
+    display-name: "<gradient:#FF4500:#FFD700>Fortress</gradient>"
+    description: "Obsidian defense"
+    rarity: RARE
+    icon: OBSIDIAN
+    category: Utility
+    permission: wildkits.kit.fortress
+    unlocked-by-default: false
+    price: 1300
+    theme: fortress
+    prefer-ranged: false
+    prefer-magic: false
+  tnt_expert:
+    display-name: "<gradient:#FF4500:#FFD700>TNT Expert</gradient>"
+    description: "Explosive expert"
+    rarity: RARE
+    icon: TNT
+    category: Special
+    permission: wildkits.kit.tnt_expert
+    unlocked-by-default: false
+    price: 1400
+    theme: tnt
+    prefer-ranged: false
+    prefer-magic: false
+  trap_master:
+    display-name: "<gradient:#FF4500:#FFD700>Trap Master</gradient>"
+    description: "Cobwebs and control"
+    rarity: RARE
+    icon: COBWEB
+    category: Special
+    permission: wildkits.kit.trap_master
+    unlocked-by-default: false
+    price: 1400
+    theme: trap
+    prefer-ranged: false
+    prefer-magic: false
+  potion_master:
+    display-name: "<gradient:#FF4500:#FFD700>Potion Master</gradient>"
+    description: "Potion arsenal"
+    rarity: RARE
+    icon: BREWING_STAND
+    category: Magic
+    permission: wildkits.kit.potion_master
+    unlocked-by-default: false
+    price: 1400
+    theme: potion
+    prefer-ranged: false
+    prefer-magic: true
+  end_fighter:
+    display-name: "<gradient:#FF4500:#FFD700>End Fighter</gradient>"
+    description: "End dimension kit"
+    rarity: RARE
+    icon: END_STONE
+    category: Elemental
+    permission: wildkits.kit.end_fighter
+    unlocked-by-default: true
+    price: 0
+    theme: end
+    prefer-ranged: false
+    prefer-magic: false
+  nether_raider:
+    display-name: "<gradient:#FF4500:#FFD700>Nether Raider</gradient>"
+    description: "Nether assault"
+    rarity: RARE
+    icon: NETHERRACK
+    category: Elemental
+    permission: wildkits.kit.nether_raider
+    unlocked-by-default: true
+    price: 0
+    theme: nether
+    prefer-ranged: false
+    prefer-magic: false
+  ice_mage:
+    display-name: "<gradient:#FF4500:#FFD700>Ice Mage</gradient>"
+    description: "Ice magic specialist"
+    rarity: RARE
+    icon: BLUE_ICE
+    category: Magic
+    permission: wildkits.kit.ice_mage
+    unlocked-by-default: true
+    price: 0
+    theme: ice
+    prefer-ranged: false
+    prefer-magic: true
+  speed_runner:
+    display-name: "<gradient:#FF4500:#FFD700>Speed Runner</gradient>"
+    description: "Pure speed kit"
+    rarity: UNCOMMON
+    icon: SUGAR
+    category: Mobility
+    permission: wildkits.kit.speed_runner
+    unlocked-by-default: true
+    price: 0
+    theme: speed
+    prefer-ranged: false
+    prefer-magic: false
+  galaxy:
+    display-name: "<gradient:#FF4500:#FFD700>Galaxy</gradient>"
+    description: "Cosmic fighter"
+    rarity: MYTHIC
+    icon: END_CRYSTAL
+    category: Elite
+    permission: wildkits.kit.galaxy
+    unlocked-by-default: false
+    price: 7000
+    theme: galaxy
+    prefer-ranged: false
+    prefer-magic: true
+  crystal:
+    display-name: "<gradient:#FF4500:#FFD700>Crystal</gradient>"
+    description: "Crystal power"
+    rarity: EPIC
+    icon: AMETHYST_BLOCK
+    category: Magic
+    permission: wildkits.kit.crystal
+    unlocked-by-default: false
+    price: 2000
+    theme: crystal
+    prefer-ranged: false
+    prefer-magic: true
+  chaos_core:
+    display-name: "<gradient:#FF4500:#FFD700>Chaos Core</gradient>"
+    description: "Total chaos kit"
+    rarity: LEGENDARY
+    icon: ENDER_EYE
+    category: Special
+    permission: wildkits.kit.chaos_core
+    unlocked-by-default: false
+    price: 5500
+    theme: chaos
+    prefer-ranged: false
+    prefer-magic: false
+  legendary_blade:
+    display-name: "<gradient:#FF4500:#FFD700>Legendary</gradient>"
+    description: "Legendary template"
+    rarity: LEGENDARY
+    icon: NETHERITE_SWORD
+    category: Elite
+    permission: wildkits.kit.legendary_blade
+    unlocked-by-default: false
+    price: 4500
+    theme: champion
+    prefer-ranged: false
+    prefer-magic: false
+  mythic_core:
+    display-name: "<gradient:#FF4500:#FFD700>Mythic Core</gradient>"
+    description: "Mythic template"
+    rarity: MYTHIC
+    icon: NETHER_STAR
+    category: Elite
+    permission: wildkits.kit.mythic_core
+    unlocked-by-default: false
+    price: 6500
+    theme: mystic
+    prefer-ranged: false
+    prefer-magic: false

@@ -1,22 +1,27 @@
 enabled: true
-update-interval-ticks: 20
+update-interval-ticks: 10
 
+# Title supports MiniMessage + %animation:title%
+title: "%animation:title%"
+
+# Optional rotating titles (used when title does not contain %animation:)
 title-animation:
-  - "<gold><bold>BLAZE'S</bold></gold>"
-  - "<yellow><bold>WILDKITS</bold></yellow>"
-  - "<gold><bold>WILDKITS</bold></gold>"
-  - "<white><bold>KITPVP</bold></white>"
+  - "<gradient:#FF4500:#FFD700><bold>Blaze's WildKits</bold></gradient>"
+  - "<gradient:#FFD700:#FF4500><bold>Blaze's WildKits</bold></gradient>"
+  - "<gradient:#FF4500:#FFAA00><bold>WildKits</bold></gradient>"
 
+# Every line should start with shadow:black:1 (Chaos-style)
+# Vanilla score numbers are fully hidden via Paper NumberFormat.blank()
 lines:
-  - ""
-  - "<gray>Player <white>%player%"
-  - "<gray>Kit <aqua>%currentkit%"
-  - "<gray>Coins <gold>%coins%"
-  - ""
-  - "<gray>Kills <green>%kills%"
-  - "<gray>Deaths <red>%deaths%"
-  - "<gray>K/D <yellow>%kd%"
-  - "<gray>Streak <light_purple>%killstreak%"
-  - "<gray>Level <aqua>%level%"
-  - ""
-  - "<dark_gray>blaze.wildkits"
+  - "shadow:black:1 <dark_gray><st>--------------------</st>"
+  - "shadow:black:1 <gray>Player <white>%player%"
+  - "shadow:black:1 <gray>Kit <gradient:#FF4500:#FFD700>%currentkit%</gradient>"
+  - "shadow:black:1 <gray>Coins <gold>%coins%"
+  - "shadow:black:1 <dark_gray>"
+  - "shadow:black:1 <gray>Kills <green>%kills%"
+  - "shadow:black:1 <gray>Deaths <red>%deaths%"
+  - "shadow:black:1 <gray>K/D <yellow>%kd%"
+  - "shadow:black:1 <gray>Streak <light_purple>%killstreak%"
+  - "shadow:black:1 <gray>Level <aqua>%level%"
+  - "shadow:black:1 <dark_gray><st>--------------------</st>"
+  - "shadow:black:1 %animation:server%"

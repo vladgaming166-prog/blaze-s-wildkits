@@ -5,9 +5,21 @@ language: en
 # When false, players may manually choose kits from the GUI.
 auto-random-kits: true
 
+# When true, kit identity is shown (chat/title/actionbar/scoreboard).
+# When false, kits are still given but never revealed.
+# Live toggle: /wk showkit <true|false> (wildkits.admin)
+show-kit: true
+show-kit-hidden-text: "???"
+
+show-kit-effects:
+  title: true
+  actionbar: true
+  bossbar: false
+
 respawn:
-  delay-seconds: 3
-  protection-seconds: 3
+  # 0 = instant kit next tick (recommended for WildKits gameplay)
+  delay-seconds: 0
+  protection-seconds: 2
   heal: true
   feed: true
   clear-effects: true
@@ -20,7 +32,7 @@ economy:
   playtime-interval-minutes: 5
   daily-reward-coins: 100
 
-# Weighted rarity chances for random kit selection
+# Weighted rarity chances for random kit template selection
 rarity-chances:
   common: 40.0
   uncommon: 25.0
@@ -29,6 +41,42 @@ rarity-chances:
   legendary: 6.0
   mythic: 3.0
   ultimate: 1.0
+
+# Premium gear generation (HoneySMP-style)
+generation:
+  # Gear band chances (should roughly sum to 100)
+  iron-chance: 60.0
+  diamond-chance: 35.0
+  netherite-partial-chance: 5.0
+  # Never full netherite — cap pieces on NETHERITE_PARTIAL band
+  max-netherite-pieces: 2
+
+  enchant-chance: 0.45
+
+  food-min: 16
+  food-max: 40
+  blocks-min: 24
+  blocks-max: 64
+  arrows-min: 24
+  arrows-max: 64
+
+  blocks-chance: 0.90
+  golden-apple-chance: 0.60
+  water-bucket-chance: 0.55
+  lava-bucket-chance: 0.22
+  ender-pearl-chance: 0.40
+  cobweb-chance: 0.28
+  obsidian-chance: 0.22
+  tnt-chance: 0.18
+  fire-charge-chance: 0.25
+  fishing-rod-chance: 0.15
+  snowball-chance: 0.20
+  egg-chance: 0.15
+  torch-chance: 0.55
+  shield-chance: 0.35
+  bow-chance: 0.30
+  potion-chance: 0.40
+  tool-chance: 0.25
 
 # Set with /wk setspawn
 spawn:

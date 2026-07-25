@@ -40,14 +40,15 @@ public final class SmartGenProfile {
     }
 
     public static SmartGenProfile forRarity(KitRarity rarity) {
+        // Faster gameplay profiles: iron/diamond-forward (tiers 3-5), less wood/stone
         return switch (rarity) {
-            case COMMON -> new SmartGenProfile(1, 2, 0.25, 0.10, 0.15, 0.20, 8, 16, 16, 32, false, false, "balanced");
-            case UNCOMMON -> new SmartGenProfile(1, 3, 0.35, 0.20, 0.25, 0.35, 12, 20, 24, 40, false, false, "balanced");
-            case RARE -> new SmartGenProfile(2, 3, 0.45, 0.35, 0.40, 0.50, 16, 24, 32, 48, false, false, "balanced");
-            case EPIC -> new SmartGenProfile(2, 4, 0.55, 0.50, 0.55, 0.65, 20, 32, 40, 56, false, false, "balanced");
-            case LEGENDARY -> new SmartGenProfile(3, 4, 0.65, 0.65, 0.70, 0.80, 24, 40, 48, 64, false, false, "balanced");
-            case MYTHIC -> new SmartGenProfile(3, 5, 0.75, 0.80, 0.85, 0.90, 32, 48, 48, 64, false, false, "balanced");
-            case ULTIMATE -> new SmartGenProfile(4, 5, 0.90, 0.95, 0.95, 1.0, 40, 64, 56, 64, false, false, "balanced");
+            case COMMON -> new SmartGenProfile(3, 4, 0.35, 0.45, 0.30, 0.40, 16, 32, 24, 48, false, false, "balanced");
+            case UNCOMMON -> new SmartGenProfile(3, 4, 0.45, 0.55, 0.40, 0.50, 18, 36, 28, 56, false, false, "balanced");
+            case RARE -> new SmartGenProfile(3, 5, 0.55, 0.65, 0.50, 0.55, 20, 40, 32, 64, false, false, "balanced");
+            case EPIC -> new SmartGenProfile(4, 5, 0.60, 0.75, 0.60, 0.65, 24, 44, 36, 64, false, false, "balanced");
+            case LEGENDARY -> new SmartGenProfile(4, 5, 0.70, 0.85, 0.70, 0.75, 28, 48, 40, 64, false, false, "balanced");
+            case MYTHIC -> new SmartGenProfile(4, 5, 0.80, 0.90, 0.80, 0.85, 32, 56, 48, 64, false, false, "balanced");
+            case ULTIMATE -> new SmartGenProfile(5, 5, 0.90, 0.95, 0.90, 0.95, 36, 64, 48, 64, false, false, "balanced");
         };
     }
 

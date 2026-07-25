@@ -19,6 +19,7 @@ import com.blaze.wildkits.player.PlayerDataManager;
 import com.blaze.wildkits.scoreboard.ScoreboardManager;
 import com.blaze.wildkits.shop.ShopManager;
 import com.blaze.wildkits.spawn.SpawnManager;
+import com.blaze.wildkits.util.AnimationService;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -37,6 +38,7 @@ public final class BlazesWildKits extends JavaPlugin {
     private SpawnManager spawnManager;
     private ScoreboardManager scoreboardManager;
     private MenuService menuService;
+    private AnimationService animationService;
     private VaultHook vaultHook;
     private LuckPermsHook luckPermsHook;
     private CitizensHook citizensHook;
@@ -52,6 +54,9 @@ public final class BlazesWildKits extends JavaPlugin {
 
         this.messageService = new MessageService(this);
         this.messageService.load();
+
+        this.animationService = new AnimationService(this);
+        this.animationService.load();
 
         this.databaseManager = new DatabaseManager(this);
         boolean databaseOk = false;
@@ -122,6 +127,7 @@ public final class BlazesWildKits extends JavaPlugin {
         try {
             configManager.loadAll();
             messageService.load();
+            animationService.load();
             kitManager.load();
             shopManager.load();
             particleManager.load();
@@ -227,6 +233,10 @@ public final class BlazesWildKits extends JavaPlugin {
 
     public MenuService getMenuService() {
         return menuService;
+    }
+
+    public AnimationService getAnimationService() {
+        return animationService;
     }
 
     public VaultHook getVaultHook() {

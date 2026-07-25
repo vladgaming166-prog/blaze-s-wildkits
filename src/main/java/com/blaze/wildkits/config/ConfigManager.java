@@ -64,8 +64,17 @@ public final class ConfigManager {
         return config.getBoolean("auto-random-kits", true);
     }
 
+    public boolean isShowKit() {
+        return config.getBoolean("show-kit", true);
+    }
+
+    public void setShowKit(boolean value) {
+        config.set("show-kit", value);
+        plugin.saveConfig();
+    }
+
     public int getRespawnDelaySeconds() {
-        return Math.max(0, config.getInt("respawn.delay-seconds", 3));
+        return Math.max(0, config.getInt("respawn.delay-seconds", 0));
     }
 
     public int getRespawnProtectionSeconds() {

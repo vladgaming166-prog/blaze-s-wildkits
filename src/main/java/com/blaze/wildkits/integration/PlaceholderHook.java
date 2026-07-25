@@ -46,7 +46,12 @@ public final class PlaceholderHook extends PlaceholderExpansion {
             case "coins" -> String.valueOf(data.getCoins());
             case "level" -> String.valueOf(data.getLevel());
             case "xp" -> String.valueOf(data.getXp());
-            case "currentkit" -> data.getCurrentKit() == null ? "None" : data.getCurrentKit();
+            case "currentkit" -> {
+                if (!plugin.getConfigManager().isShowKit()) {
+                    yield plugin.getConfigManager().getConfig().getString("show-kit-hidden-text", "???");
+                }
+                yield data.getCurrentKit() == null ? "None" : data.getCurrentKit();
+            }
             case "killstreak" -> String.valueOf(data.getKillstreak());
             case "bestkillstreak" -> String.valueOf(data.getBestKillstreak());
             case "trail" -> data.getActiveTrail() == null ? "None" : data.getActiveTrail();

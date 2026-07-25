@@ -23,16 +23,18 @@ import java.util.stream.Collectors;
 public final class KitManager {
 
     private final BlazesWildKits plugin;
-    private final SmartKitGenerator generator = new SmartKitGenerator();
+    private final SmartKitGenerator generator;
+    private final KitAnnounceService announceService;
     private final Map<String, KitDefinition> kits = new LinkedHashMap<>();
 
     public KitManager(BlazesWildKits plugin) {
         this.plugin = plugin;
+        this.generator = new SmartKitGenerator(plugin);
+        this.announceService = new KitAnnounceService(plugin);
     }
 
     public void load() {
         kits.clear();
-        // Always seed defaults first (admins shouldn't need to create kits)
         for (KitDefinition def : DefaultKits.createAll()) {
             kits.put(def.getId().toLowerCase(Locale.ROOT), def);
         }
@@ -43,11 +45,10 @@ public final class KitManager {
             for (String id : section.getKeys(false)) {
                 ConfigurationSection kit = section.getConfigurationSection(id);
                 if (kit == null) continue;
-                KitDefinition overridden = fromSection(id, kit);
-                kits.put(id.toLowerCase(Locale.ROOT), overridden);
+                kits.put(id.toLowerCase(Locale.ROOT), fromSection(id, kit));
             }
         }
-        plugin.getLogger().info("Loaded " + kits.size() + " kits.");
+        plugin.getLogger().info("Loaded " + kits.size() + " kit templates.");
     }
 
     private KitDefinition fromSection(String id, ConfigurationSection kit) {
@@ -117,7 +118,7 @@ public final class KitManager {
     }
 
     public List<KitDefinition> getUsableKits(Player player) {
-        List<KitDefinition> usable = new ArrayList<>();
+        List<KitDefinition> usable = new ArrayList<>(Math.min(64, kits.size()));
         for (KitDefinition kit : kits.values()) {
             if (canUse(player, kit)) {
                 usable.add(kit);
@@ -131,17 +132,18 @@ public final class KitManager {
         if (usable.isEmpty()) {
             return kits.values().stream().findFirst().orElse(null);
         }
-        Map<KitRarity, Double> weights = plugin.getConfigManager().getRarityWeights();
+        var weights = plugin.getConfigManager().getRarityWeights();
         double total = 0;
-        List<Double> cumulative = new ArrayList<>();
-        for (KitDefinition kit : usable) {
+        double[] cumulative = new double[usable.size()];
+        for (int i = 0; i < usable.size(); i++) {
+            KitDefinition kit = usable.get(i);
             double w = weights.getOrDefault(kit.getRarity(), kit.getRarity().getDefaultWeight());
             total += Math.max(0.01, w);
-            cumulative.add(total);
+            cumulative[i] = total;
         }
         double roll = ThreadLocalRandom.current().nextDouble(total);
         for (int i = 0; i < usable.size(); i++) {
-            if (roll <= cumulative.get(i)) {
+            if (roll <= cumulative[i]) {
                 return usable.get(i);
             }
         }
@@ -149,8 +151,7 @@ public final class KitManager {
     }
 
     public SmartKitGenerator.GeneratedKit giveRandomKit(Player player) {
-        KitDefinition kit = pickRandom(player);
-        return giveKit(player, kit);
+        return giveKit(player, pickRandom(player));
     }
 
     public SmartKitGenerator.GeneratedKit giveKit(Player player, KitDefinition kit) {
@@ -162,18 +163,14 @@ public final class KitManager {
         }
         SmartKitGenerator.GeneratedKit generated = generator.generate(kit);
         generator.apply(player.getInventory(), generated);
-        player.updateInventory();
 
         PlayerData data = plugin.getPlayerDataManager().get(player);
         data.setCurrentKit(kit.getId());
         data.addRecentKit(kit.getId());
         plugin.getPlayerDataManager().saveAsync(player.getUniqueId());
+        plugin.getScoreboardManager().update(player);
 
-        Map<String, String> placeholders = Map.of(
-                "kit", TextUtil.strip(kit.getDisplayName()),
-                "rarity", kit.getRarity().name()
-        );
-        plugin.getMessageService().send(player, "kit-received", placeholders);
+        announceService.announce(player, kit, generated.band());
         return generated;
     }
 
