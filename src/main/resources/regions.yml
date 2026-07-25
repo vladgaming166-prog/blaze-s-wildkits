@@ -1,0 +1,18 @@
+setup-complete: false
+# Configure via /wk setup or /wk wand lobby|drop then /wk wand save
+# lobby:
+#   world: world
+#   min-x: -50
+#   min-y: 60
+#   min-z: -50
+#   max-x: 50
+#   max-y: 120
+#   max-z: 50
+# drop:
+#   world: world
+#   min-x: 100
+#   min-y: 40
+#   min-z: 100
+#   max-x: 200
+#   max-y: 100
+#   max-z: 200

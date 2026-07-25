@@ -53,9 +53,9 @@ public final class MenuService {
         set(inv, session, 24, new ItemBuilder(Material.BLAZE_POWDER).name("<red>Particles").lore("<gray>Trails & effects").build(), "open:particles");
         set(inv, session, 29, new ItemBuilder(Material.GOLDEN_APPLE).name("<yellow>Favorites").lore("<gray>Your favorite kits").build(), "open:favorites");
         set(inv, session, 30, new ItemBuilder(Material.CLOCK).name("<white>Recent").lore("<gray>Recently used kits").build(), "open:recent");
-        set(inv, session, 31, new ItemBuilder(Material.COMPASS).name("<aqua>Categories").lore("<gray>Browse by category").build(), "open:categories");
-        set(inv, session, 32, new ItemBuilder(Material.OAK_SIGN).name("<white>Search").lore("<gray>/wk search <query>").build(), "action:search_help");
-        set(inv, session, 33, new ItemBuilder(Material.ENDER_PEARL).name("<green>Spawn").lore("<gray>Teleport to spawn").build(), "action:spawn");
+        set(inv, session, 31, new ItemBuilder(Material.BOOK).name("<gold>Quests").lore("<gray>Daily / Weekly / Lifetime").build(), "action:quests");
+        set(inv, session, 32, new ItemBuilder(Material.COMPASS).name("<aqua>Categories").lore("<gray>Browse by category").build(), "open:categories");
+        set(inv, session, 33, new ItemBuilder(Material.ENDER_PEARL).name("<green>Spawn").lore("<gray>Teleport to lobby spawn").build(), "action:spawn");
 
         playOpen(player);
         player.openInventory(inv);
@@ -294,6 +294,11 @@ public final class MenuService {
         }
         if (action.equals("action:toggle_trail")) {
             plugin.getParticleManager().toggle(player);
+            return;
+        }
+        if (action.equals("action:quests")) {
+            player.closeInventory();
+            plugin.getQuestManager().openGui(player);
             return;
         }
 

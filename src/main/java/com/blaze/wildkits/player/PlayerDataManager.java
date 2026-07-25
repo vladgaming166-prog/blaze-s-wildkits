@@ -9,8 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -84,6 +86,13 @@ public final class PlayerDataManager {
                     data.setRecentKits(splitList(rs.getString("recent_kits")));
                     data.setLastDaily(rs.getLong("last_daily"));
                     data.setPlaytimeSeconds(rs.getLong("playtime_seconds"));
+                    data.setActiveKillEffect(getString(rs, "active_kill_effect"));
+                    data.setActivePrefix(getString(rs, "active_prefix"));
+                    data.setCrateKeysMap(splitIntMap(getString(rs, "crate_keys")));
+                    data.setQuestProgressMap(splitIntMap(getString(rs, "quest_progress")));
+                    data.setQuestCompletedSet(splitSet(getString(rs, "quest_completed")));
+                    data.setLastDailyQuestReset(getLong(rs, "last_daily_quest_reset"));
+                    data.setLastWeeklyQuestReset(getLong(rs, "last_weekly_quest_reset"));
                     data.clearDirty();
                     return data;
                 }
@@ -96,13 +105,7 @@ public final class PlayerDataManager {
     }
 
     private void insert(Connection connection, PlayerData data) throws SQLException {
-        String sql = """
-                INSERT INTO wildkits_players(uuid, name, coins, kills, deaths, killstreak, best_killstreak,
-                level, xp, current_kit, active_trail, active_death_effect, active_victory_effect,
-                active_tag, active_title, unlocked_kits, unlocked_cosmetics, favorites, recent_kits,
-                last_daily, playtime_seconds) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-                """;
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = connection.prepareStatement(upsertSql(false))) {
             bind(ps, data);
             ps.executeUpdate();
         }
@@ -111,10 +114,7 @@ public final class PlayerDataManager {
     public void saveAsync(UUID uuid) {
         PlayerData data = cache.get(uuid);
         if (data == null || !data.isDirty()) return;
-        if (!plugin.getDatabaseManager().isConnected()) {
-            // Keep dirty so a later reconnect/restart path could still try; avoid spam
-            return;
-        }
+        if (!plugin.getDatabaseManager().isConnected()) return;
         PlayerData snapshot = copy(data);
         data.clearDirty();
         plugin.getDatabaseManager().executeAsync(connection -> upsert(connection, snapshot));
@@ -137,28 +137,24 @@ public final class PlayerDataManager {
     }
 
     private void upsert(Connection connection, PlayerData data) throws SQLException {
-        String sql = """
+        try (PreparedStatement ps = connection.prepareStatement(upsertSql(true))) {
+            bind(ps, data);
+            ps.executeUpdate();
+        }
+    }
+
+    private String upsertSql(boolean update) {
+        String columns = """
                 INSERT INTO wildkits_players(uuid, name, coins, kills, deaths, killstreak, best_killstreak,
                 level, xp, current_kit, active_trail, active_death_effect, active_victory_effect,
                 active_tag, active_title, unlocked_kits, unlocked_cosmetics, favorites, recent_kits,
-                last_daily, playtime_seconds) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-                ON CONFLICT(uuid) DO UPDATE SET
-                name=excluded.name, coins=excluded.coins, kills=excluded.kills, deaths=excluded.deaths,
-                killstreak=excluded.killstreak, best_killstreak=excluded.best_killstreak, level=excluded.level,
-                xp=excluded.xp, current_kit=excluded.current_kit, active_trail=excluded.active_trail,
-                active_death_effect=excluded.active_death_effect, active_victory_effect=excluded.active_victory_effect,
-                active_tag=excluded.active_tag, active_title=excluded.active_title,
-                unlocked_kits=excluded.unlocked_kits, unlocked_cosmetics=excluded.unlocked_cosmetics,
-                favorites=excluded.favorites, recent_kits=excluded.recent_kits, last_daily=excluded.last_daily,
-                playtime_seconds=excluded.playtime_seconds
+                last_daily, playtime_seconds, active_kill_effect, active_prefix, crate_keys,
+                quest_progress, quest_completed, last_daily_quest_reset, last_weekly_quest_reset)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 """;
-        // MySQL uses different upsert syntax
+        if (!update) return columns;
         if ("mysql".equalsIgnoreCase(plugin.getDatabaseManager().getType())) {
-            sql = """
-                    INSERT INTO wildkits_players(uuid, name, coins, kills, deaths, killstreak, best_killstreak,
-                    level, xp, current_kit, active_trail, active_death_effect, active_victory_effect,
-                    active_tag, active_title, unlocked_kits, unlocked_cosmetics, favorites, recent_kits,
-                    last_daily, playtime_seconds) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            return columns + """
                     ON DUPLICATE KEY UPDATE
                     name=VALUES(name), coins=VALUES(coins), kills=VALUES(kills), deaths=VALUES(deaths),
                     killstreak=VALUES(killstreak), best_killstreak=VALUES(best_killstreak), level=VALUES(level),
@@ -167,13 +163,28 @@ public final class PlayerDataManager {
                     active_tag=VALUES(active_tag), active_title=VALUES(active_title),
                     unlocked_kits=VALUES(unlocked_kits), unlocked_cosmetics=VALUES(unlocked_cosmetics),
                     favorites=VALUES(favorites), recent_kits=VALUES(recent_kits), last_daily=VALUES(last_daily),
-                    playtime_seconds=VALUES(playtime_seconds)
+                    playtime_seconds=VALUES(playtime_seconds), active_kill_effect=VALUES(active_kill_effect),
+                    active_prefix=VALUES(active_prefix), crate_keys=VALUES(crate_keys),
+                    quest_progress=VALUES(quest_progress), quest_completed=VALUES(quest_completed),
+                    last_daily_quest_reset=VALUES(last_daily_quest_reset),
+                    last_weekly_quest_reset=VALUES(last_weekly_quest_reset)
                     """;
         }
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            bind(ps, data);
-            ps.executeUpdate();
-        }
+        return columns + """
+                ON CONFLICT(uuid) DO UPDATE SET
+                name=excluded.name, coins=excluded.coins, kills=excluded.kills, deaths=excluded.deaths,
+                killstreak=excluded.killstreak, best_killstreak=excluded.best_killstreak, level=excluded.level,
+                xp=excluded.xp, current_kit=excluded.current_kit, active_trail=excluded.active_trail,
+                active_death_effect=excluded.active_death_effect, active_victory_effect=excluded.active_victory_effect,
+                active_tag=excluded.active_tag, active_title=excluded.active_title,
+                unlocked_kits=excluded.unlocked_kits, unlocked_cosmetics=excluded.unlocked_cosmetics,
+                favorites=excluded.favorites, recent_kits=excluded.recent_kits, last_daily=excluded.last_daily,
+                playtime_seconds=excluded.playtime_seconds, active_kill_effect=excluded.active_kill_effect,
+                active_prefix=excluded.active_prefix, crate_keys=excluded.crate_keys,
+                quest_progress=excluded.quest_progress, quest_completed=excluded.quest_completed,
+                last_daily_quest_reset=excluded.last_daily_quest_reset,
+                last_weekly_quest_reset=excluded.last_weekly_quest_reset
+                """;
     }
 
     private void bind(PreparedStatement ps, PlayerData data) throws SQLException {
@@ -198,6 +209,13 @@ public final class PlayerDataManager {
         ps.setString(19, String.join(",", data.getRecentKits()));
         ps.setLong(20, data.getLastDaily());
         ps.setLong(21, data.getPlaytimeSeconds());
+        ps.setString(22, data.getActiveKillEffect());
+        ps.setString(23, data.getActivePrefix());
+        ps.setString(24, joinIntMap(data.getCrateKeysMap()));
+        ps.setString(25, joinIntMap(data.getQuestProgressMap()));
+        ps.setString(26, join(data.getQuestCompletedSet()));
+        ps.setLong(27, data.getLastDailyQuestReset());
+        ps.setLong(28, data.getLastWeeklyQuestReset());
     }
 
     private PlayerData copy(PlayerData src) {
@@ -215,11 +233,18 @@ public final class PlayerDataManager {
         data.setActiveVictoryEffect(src.getActiveVictoryEffect());
         data.setActiveTag(src.getActiveTag());
         data.setActiveTitle(src.getActiveTitle());
+        data.setActiveKillEffect(src.getActiveKillEffect());
+        data.setActivePrefix(src.getActivePrefix());
         data.setUnlockedKits(new LinkedHashSet<>(src.getUnlockedKits()));
         data.setUnlockedCosmetics(new LinkedHashSet<>(src.getUnlockedCosmetics()));
         data.setFavorites(new LinkedHashSet<>(src.getFavorites()));
         data.setRecentKits(List.copyOf(src.getRecentKits()));
+        data.setCrateKeysMap(new HashMap<>(src.getCrateKeysMap()));
+        data.setQuestProgressMap(new HashMap<>(src.getQuestProgressMap()));
+        data.setQuestCompletedSet(new LinkedHashSet<>(src.getQuestCompletedSet()));
         data.setLastDaily(src.getLastDaily());
+        data.setLastDailyQuestReset(src.getLastDailyQuestReset());
+        data.setLastWeeklyQuestReset(src.getLastWeeklyQuestReset());
         data.setPlaytimeSeconds(src.getPlaytimeSeconds());
         return data;
     }
@@ -227,6 +252,22 @@ public final class PlayerDataManager {
     public void unload(UUID uuid) {
         saveAsync(uuid);
         Bukkit.getScheduler().runTaskLater(plugin, () -> cache.remove(uuid), 40L);
+    }
+
+    private static String getString(ResultSet rs, String column) {
+        try {
+            return rs.getString(column);
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+
+    private static long getLong(ResultSet rs, String column) {
+        try {
+            return rs.getLong(column);
+        } catch (SQLException e) {
+            return 0L;
+        }
     }
 
     private static Set<String> splitSet(String raw) {
@@ -245,7 +286,27 @@ public final class PlayerDataManager {
                 .toList();
     }
 
+    private static Map<String, Integer> splitIntMap(String raw) {
+        Map<String, Integer> map = new HashMap<>();
+        if (raw == null || raw.isBlank()) return map;
+        for (String part : raw.split(",")) {
+            String[] kv = part.split("=", 2);
+            if (kv.length != 2) continue;
+            try {
+                map.put(kv[0].trim().toLowerCase(Locale.ROOT), Integer.parseInt(kv[1].trim()));
+            } catch (NumberFormatException ignored) {
+            }
+        }
+        return map;
+    }
+
     private static String join(Set<String> set) {
         return String.join(",", set);
+    }
+
+    private static String joinIntMap(Map<String, Integer> map) {
+        return map.entrySet().stream()
+                .map(e -> e.getKey() + "=" + e.getValue())
+                .collect(Collectors.joining(","));
     }
 }

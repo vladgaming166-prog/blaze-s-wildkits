@@ -51,32 +51,37 @@ generation:
   # Never full netherite — cap pieces on NETHERITE_PARTIAL band
   max-netherite-pieces: 2
 
-  enchant-chance: 0.45
+  # Almost every combat item is enchanted
+  enchant-chance: 0.92
+  # Anti-repeat kit selection
+  recent-kit-penalty: 0.18
+  last-kit-penalty: 0.04
+  mace-chance: 0.03
+  trident-chance: 0.06
+  wind-charge-chance: 0.30
 
   food-min: 16
-  food-max: 40
-  blocks-min: 24
-  blocks-max: 64
+  food-max: 32
+  blocks-min: 16
+  blocks-max: 48
   arrows-min: 24
   arrows-max: 64
 
-  blocks-chance: 0.90
-  golden-apple-chance: 0.60
-  water-bucket-chance: 0.55
-  lava-bucket-chance: 0.22
-  ender-pearl-chance: 0.40
-  cobweb-chance: 0.28
-  obsidian-chance: 0.22
-  tnt-chance: 0.18
-  fire-charge-chance: 0.25
-  fishing-rod-chance: 0.15
-  snowball-chance: 0.20
-  egg-chance: 0.15
-  torch-chance: 0.55
-  shield-chance: 0.35
-  bow-chance: 0.30
-  potion-chance: 0.40
-  tool-chance: 0.25
+  blocks-chance: 0.85
+  golden-apple-chance: 0.85
+  water-bucket-chance: 0.70
+  lava-bucket-chance: 0.35
+  ender-pearl-chance: 0.65
+  cobweb-chance: 0.45
+  obsidian-chance: 0.35
+  tnt-chance: 0.25
+  fire-charge-chance: 0.35
+  fishing-rod-chance: 0.30
+  snowball-chance: 0.35
+  egg-chance: 0.30
+  shield-chance: 0.55
+  bow-chance: 0.45
+  potion-chance: 0.55
 
 # Set with /wk setspawn
 spawn:

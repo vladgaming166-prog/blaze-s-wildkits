@@ -2,9 +2,11 @@ package com.blaze.wildkits.player;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -25,11 +27,18 @@ public final class PlayerData {
     private String activeVictoryEffect;
     private String activeTag;
     private String activeTitle;
+    private String activeKillEffect;
+    private String activePrefix;
     private final Set<String> unlockedKits = new LinkedHashSet<>();
     private final Set<String> unlockedCosmetics = new LinkedHashSet<>();
     private final Set<String> favorites = new LinkedHashSet<>();
     private final List<String> recentKits = new ArrayList<>();
+    private final Map<String, Integer> crateKeys = new HashMap<>();
+    private final Map<String, Integer> questProgress = new HashMap<>();
+    private final Set<String> questCompleted = new LinkedHashSet<>();
     private long lastDaily;
+    private long lastDailyQuestReset;
+    private long lastWeeklyQuestReset;
     private long playtimeSeconds;
     private boolean dirty;
     private boolean protectedSpawn;
@@ -112,6 +121,78 @@ public final class PlayerData {
     public void setActiveTag(String activeTag) { this.activeTag = activeTag; markDirty(); }
     public String getActiveTitle() { return activeTitle; }
     public void setActiveTitle(String activeTitle) { this.activeTitle = activeTitle; markDirty(); }
+    public String getActiveKillEffect() { return activeKillEffect; }
+    public void setActiveKillEffect(String activeKillEffect) { this.activeKillEffect = activeKillEffect; markDirty(); }
+    public String getActivePrefix() { return activePrefix; }
+    public void setActivePrefix(String activePrefix) { this.activePrefix = activePrefix; markDirty(); }
+
+    public void addCrateKeys(String rarity, int amount) {
+        if (rarity == null || amount == 0) return;
+        String key = rarity.toLowerCase(Locale.ROOT);
+        crateKeys.put(key, Math.max(0, crateKeys.getOrDefault(key, 0) + amount));
+        markDirty();
+    }
+
+    public boolean takeCrateKey(String rarity, int amount) {
+        if (rarity == null || amount <= 0) return false;
+        String key = rarity.toLowerCase(Locale.ROOT);
+        int have = crateKeys.getOrDefault(key, 0);
+        if (have < amount) return false;
+        crateKeys.put(key, have - amount);
+        markDirty();
+        return true;
+    }
+
+    public int getCrateKeys(String rarity) {
+        return rarity == null ? 0 : crateKeys.getOrDefault(rarity.toLowerCase(Locale.ROOT), 0);
+    }
+
+    public Map<String, Integer> getCrateKeysMap() { return Collections.unmodifiableMap(crateKeys); }
+    public void setCrateKeysMap(Map<String, Integer> map) {
+        crateKeys.clear();
+        if (map != null) crateKeys.putAll(map);
+        markDirty();
+    }
+
+    public int getQuestProgress(String key) {
+        return questProgress.getOrDefault(key, 0);
+    }
+
+    public void setQuestProgress(String key, int value) {
+        if (key == null) return;
+        questProgress.put(key, Math.max(0, value));
+        markDirty();
+    }
+
+    public boolean isQuestCompleted(String key) {
+        return key != null && questCompleted.contains(key);
+    }
+
+    public void setQuestCompleted(String key, boolean completed) {
+        if (key == null) return;
+        if (completed) questCompleted.add(key);
+        else questCompleted.remove(key);
+        markDirty();
+    }
+
+    public Map<String, Integer> getQuestProgressMap() { return Collections.unmodifiableMap(questProgress); }
+    public void setQuestProgressMap(Map<String, Integer> map) {
+        questProgress.clear();
+        if (map != null) questProgress.putAll(map);
+        markDirty();
+    }
+
+    public Set<String> getQuestCompletedSet() { return Collections.unmodifiableSet(questCompleted); }
+    public void setQuestCompletedSet(Set<String> set) {
+        questCompleted.clear();
+        if (set != null) questCompleted.addAll(set);
+        markDirty();
+    }
+
+    public long getLastDailyQuestReset() { return lastDailyQuestReset; }
+    public void setLastDailyQuestReset(long lastDailyQuestReset) { this.lastDailyQuestReset = lastDailyQuestReset; markDirty(); }
+    public long getLastWeeklyQuestReset() { return lastWeeklyQuestReset; }
+    public void setLastWeeklyQuestReset(long lastWeeklyQuestReset) { this.lastWeeklyQuestReset = lastWeeklyQuestReset; markDirty(); }
 
     public boolean hasUnlockedKit(String id) {
         return id != null && unlockedKits.contains(id.toLowerCase(Locale.ROOT));
@@ -174,7 +255,7 @@ public final class PlayerData {
         String id = kitId.toLowerCase(Locale.ROOT);
         recentKits.remove(id);
         recentKits.add(0, id);
-        while (recentKits.size() > 12) {
+        while (recentKits.size() > 24) {
             recentKits.remove(recentKits.size() - 1);
         }
         markDirty();

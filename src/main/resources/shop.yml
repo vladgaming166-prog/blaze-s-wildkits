@@ -236,3 +236,77 @@ items:
     price: 2500
     unlock-id: upgrade_sharp
     category: Kits
+
+  kill_lightning:
+    display-name: "<yellow>Kill Lightning"
+    description: "Lightning effect on kill"
+    type: KILL_EFFECT
+    icon: LIGHTNING_ROD
+    price: 1200
+    unlock-id: lightning
+    category: Effects
+  kill_blood:
+    display-name: "<red>Kill Blood"
+    description: "Blood burst on kill"
+    type: KILL_EFFECT
+    icon: REDSTONE
+    price: 900
+    unlock-id: blood_kill
+    category: Effects
+  kill_spark:
+    display-name: "<aqua>Kill Spark"
+    description: "Electric sparks on kill"
+    type: KILL_EFFECT
+    icon: GLOWSTONE_DUST
+    price: 1000
+    unlock-id: spark
+    category: Effects
+  kill_flame:
+    display-name: "<gold>Kill Flame"
+    description: "Flame burst on kill"
+    type: KILL_EFFECT
+    icon: BLAZE_POWDER
+    price: 1100
+    unlock-id: flame_burst
+    category: Effects
+
+  tag_chaos:
+    display-name: "<red>[Chaos]"
+    description: "Chaos chat tag"
+    type: TAG
+    icon: NAME_TAG
+    price: 1800
+    unlock-id: chaos
+    category: Tags
+  tag_mythic:
+    display-name: "<dark_purple>[Mythic]"
+    description: "Mythic chat tag"
+    type: TAG
+    icon: NAME_TAG
+    price: 2500
+    unlock-id: mythic_tag
+    category: Tags
+  title_centurion:
+    display-name: "<gold>Centurion"
+    description: "Centurion title"
+    type: TITLE
+    icon: PAPER
+    price: 4000
+    unlock-id: title_centurion
+    category: Titles
+  title_warlord:
+    display-name: "<red>Warlord"
+    description: "Warlord title"
+    type: TITLE
+    icon: PAPER
+    price: 4500
+    unlock-id: warlord
+    category: Titles
+  prefix_blaze:
+    display-name: "<gradient:#FF4500:#FFD700>Blaze Prefix"
+    description: "Chat prefix cosmetic"
+    type: TITLE
+    icon: NAME_TAG
+    price: 3000
+    unlock-id: prefix_blaze
+    category: Titles

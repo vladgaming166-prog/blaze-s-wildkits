@@ -33,6 +33,13 @@ public final class GuiListener implements Listener {
         }
         event.setCancelled(true);
         if (event.getClickedInventory() == null) return;
+
+        // Setup wizard clicks
+        if (plugin.getSetupGui().isSetupInventory(title)) {
+            plugin.getSetupGui().handle(player, event.getRawSlot());
+            return;
+        }
+
         String action = session.getAction(event.getRawSlot());
         if (action == null) return;
         boolean right = event.getClick() == ClickType.RIGHT || event.getClick() == ClickType.SHIFT_RIGHT;
@@ -62,6 +69,7 @@ public final class GuiListener implements Listener {
         String t = title.toLowerCase();
         return t.contains("wildkits") || t.contains("preview") || t.contains("shop")
                 || t.contains("kits") || t.contains("particle") || t.contains("categories")
-                || t.contains("favorites") || t.contains("recent") || t.contains("search");
+                || t.contains("favorites") || t.contains("recent") || t.contains("search")
+                || t.contains("setup") || t.contains("quest") || t.contains("crate") || t.contains("edit");
     }
 }

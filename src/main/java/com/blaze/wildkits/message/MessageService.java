@@ -51,10 +51,11 @@ public final class MessageService {
         String message = raw(key);
         if (message.equalsIgnoreCase("none") || message.isBlank()) return;
         String full = (message.contains("<noprefix>") ? message.replace("<noprefix>", "") : prefix + message);
+        String resolved = TextUtil.applyPlaceholders(full, placeholders);
         if (sender instanceof Player player) {
-            TextUtil.send(player, full, placeholders);
+            TextUtil.send(player, resolved);
         } else {
-            TextUtil.send(sender, TextUtil.strip(full));
+            TextUtil.send(sender, TextUtil.strip(resolved));
         }
     }
 

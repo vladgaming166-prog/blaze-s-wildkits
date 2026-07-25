@@ -45,6 +45,7 @@ public final class CombatListener implements Listener {
                     killerData.getCurrentKit(),
                     base + bonus
             );
+            plugin.getQuestManager().progress(killer, "kill", 1);
             plugin.getPlayerDataManager().saveAsync(killer.getUniqueId());
             plugin.getScoreboardManager().update(killer);
         }

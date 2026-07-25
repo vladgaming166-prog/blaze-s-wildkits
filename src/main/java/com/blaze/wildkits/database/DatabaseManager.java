@@ -29,7 +29,7 @@ import java.util.logging.Level;
  */
 public final class DatabaseManager {
 
-    private static final int SCHEMA_VERSION = 2;
+    private static final int SCHEMA_VERSION = 3;
 
     private final BlazesWildKits plugin;
     private HikariDataSource dataSource;
@@ -302,7 +302,14 @@ public final class DatabaseManager {
                         favorites TEXT,
                         recent_kits TEXT,
                         last_daily BIGINT NOT NULL DEFAULT 0,
-                        playtime_seconds BIGINT NOT NULL DEFAULT 0
+                        playtime_seconds BIGINT NOT NULL DEFAULT 0,
+                        active_kill_effect VARCHAR(64),
+                        active_prefix VARCHAR(64),
+                        crate_keys TEXT,
+                        quest_progress TEXT,
+                        quest_completed TEXT,
+                        last_daily_quest_reset BIGINT NOT NULL DEFAULT 0,
+                        last_weekly_quest_reset BIGINT NOT NULL DEFAULT 0
                     )
                     """);
 
@@ -338,6 +345,15 @@ public final class DatabaseManager {
                 if (current < 2) {
                     ensureColumn(connection, "wildkits_players", "best_killstreak", "INT NOT NULL DEFAULT 0");
                     ensureColumn(connection, "wildkits_players", "playtime_seconds", "BIGINT NOT NULL DEFAULT 0");
+                }
+                if (current < 3) {
+                    ensureColumn(connection, "wildkits_players", "active_kill_effect", "VARCHAR(64)");
+                    ensureColumn(connection, "wildkits_players", "active_prefix", "VARCHAR(64)");
+                    ensureColumn(connection, "wildkits_players", "crate_keys", "TEXT");
+                    ensureColumn(connection, "wildkits_players", "quest_progress", "TEXT");
+                    ensureColumn(connection, "wildkits_players", "quest_completed", "TEXT");
+                    ensureColumn(connection, "wildkits_players", "last_daily_quest_reset", "BIGINT NOT NULL DEFAULT 0");
+                    ensureColumn(connection, "wildkits_players", "last_weekly_quest_reset", "BIGINT NOT NULL DEFAULT 0");
                 }
                 writeSchemaVersion(connection, SCHEMA_VERSION);
                 plugin.getLogger().info("Database schema migrated to v" + SCHEMA_VERSION + ".");

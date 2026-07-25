@@ -28,9 +28,12 @@ public final class PlayerListener implements Listener {
         Player player = event.getPlayer();
         plugin.getPlayerDataManager().loadAsync(player);
 
-        // Instant kit on first join (1 tick so the player is fully online)
+        // Instant lobby spawn + kit on join
         Bukkit.getScheduler().runTask(plugin, () -> {
             if (!player.isOnline()) return;
+            if (plugin.getSpawnManager().getSpawn() != null) {
+                plugin.getSpawnManager().teleport(player);
+            }
             prepareLife(player, true);
         });
     }

@@ -1,8 +1,10 @@
 package com.blaze.wildkits.command;
 
 import com.blaze.wildkits.BlazesWildKits;
+import com.blaze.wildkits.crate.CrateRarity;
 import com.blaze.wildkits.kit.KitDefinition;
 import com.blaze.wildkits.player.PlayerData;
+import com.blaze.wildkits.region.SelectionSession;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,6 +29,15 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        // Standalone /spawn
+        if (command.getName().equalsIgnoreCase("spawn")) {
+            if (!(sender instanceof Player player)) {
+                sender.sendMessage("Players only.");
+                return true;
+            }
+            return teleportSpawn(player);
+        }
+
         if (args.length == 0) {
             if (!(sender instanceof Player player)) {
                 sender.sendMessage("Players only.");
@@ -64,16 +75,38 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
                     sender.sendMessage("Players only.");
                     return true;
                 }
-                if (!player.hasPermission("wildkits.spawn")) {
+                return teleportSpawn(player);
+            }
+            case "setup" -> {
+                if (!(sender instanceof Player player)) return true;
+                if (!player.hasPermission("wildkits.admin")) {
                     plugin.getMessageService().send(player, "no-permission");
                     return true;
                 }
-                if (!plugin.getSpawnManager().teleport(player)) {
-                    plugin.getMessageService().send(player, "spawn-not-set");
-                } else {
-                    plugin.getMessageService().send(player, "spawn-teleport");
-                }
+                plugin.getSetupGui().open(player);
             }
+            case "wand" -> {
+                if (!(sender instanceof Player player)) return true;
+                if (!player.hasPermission("wildkits.admin")) {
+                    plugin.getMessageService().send(player, "no-permission");
+                    return true;
+                }
+                if (args.length >= 2 && args[1].equalsIgnoreCase("save")) {
+                    plugin.getRegionManager().saveSelection(player);
+                    return true;
+                }
+                SelectionSession.Target target = SelectionSession.Target.NONE;
+                if (args.length >= 2) {
+                    if (args[1].equalsIgnoreCase("lobby")) target = SelectionSession.Target.LOBBY;
+                    else if (args[1].equalsIgnoreCase("drop")) target = SelectionSession.Target.DROP;
+                }
+                plugin.getRegionManager().giveWand(player, target);
+            }
+            case "quests", "quest" -> {
+                if (!(sender instanceof Player player)) return true;
+                plugin.getQuestManager().openGui(player);
+            }
+            case "crate" -> handleCrate(sender, args);
             case "kits", "gui" -> {
                 if (!(sender instanceof Player player)) return true;
                 plugin.getMenuService().openMain(player);
@@ -274,20 +307,119 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
+    private boolean teleportSpawn(Player player) {
+        if (!player.hasPermission("wildkits.spawn")) {
+            plugin.getMessageService().send(player, "no-permission");
+            return true;
+        }
+        if (!plugin.getSpawnManager().teleport(player)) {
+            plugin.getMessageService().send(player, "spawn-not-set");
+        } else {
+            plugin.getMessageService().send(player, "spawn-teleport");
+        }
+        return true;
+    }
+
+    private void handleCrate(CommandSender sender, String[] args) {
+        if (!sender.hasPermission("wildkits.admin")) {
+            plugin.getMessageService().send(sender, "no-permission");
+            return;
+        }
+        if (args.length < 2) {
+            sender.sendMessage("/wk crate <create|set|key|edit|delete|list> ...");
+            return;
+        }
+        String action = args[1].toLowerCase(Locale.ROOT);
+        switch (action) {
+            case "create" -> {
+                if (args.length < 4) {
+                    sender.sendMessage("/wk crate create <id> <common|rare|epic|legendary|mythic>");
+                    return;
+                }
+                CrateRarity rarity = CrateRarity.from(args[3]);
+                plugin.getCrateManager().create(args[2], rarity);
+                plugin.getMessageService().send(sender, "crate-created", Map.of("id", args[2], "rarity", rarity.name()));
+            }
+            case "set" -> {
+                if (!(sender instanceof Player player)) {
+                    sender.sendMessage("Players only.");
+                    return;
+                }
+                if (args.length < 3) {
+                    sender.sendMessage("/wk crate set <id>");
+                    return;
+                }
+                plugin.getCrateManager().get(args[2]).ifPresentOrElse(crate -> {
+                    plugin.getCrateManager().setLocation(args[2], player.getLocation().getBlock().getLocation());
+                    plugin.getMessageService().send(player, "crate-set", Map.of("id", args[2]));
+                }, () -> plugin.getMessageService().send(player, "crate-not-found"));
+            }
+            case "key" -> {
+                if (args.length < 5) {
+                    sender.sendMessage("/wk crate key <player> <rarity> <amount>");
+                    return;
+                }
+                Player target = Bukkit.getPlayerExact(args[2]);
+                if (target == null) {
+                    plugin.getMessageService().send(sender, "player-not-found");
+                    return;
+                }
+                int amount;
+                try {
+                    amount = Integer.parseInt(args[4]);
+                } catch (NumberFormatException e) {
+                    sender.sendMessage("Invalid amount.");
+                    return;
+                }
+                plugin.getCrateManager().giveKey(target, args[3], amount);
+                plugin.getMessageService().send(sender, "crate-key-given", Map.of(
+                        "player", target.getName(),
+                        "rarity", args[3],
+                        "amount", String.valueOf(amount)
+                ));
+            }
+            case "edit" -> {
+                if (!(sender instanceof Player player)) return;
+                if (args.length < 3) {
+                    sender.sendMessage("/wk crate edit <id>");
+                    return;
+                }
+                plugin.getCrateManager().get(args[2]).ifPresentOrElse(
+                        crate -> plugin.getCrateManager().openEditor(player, crate),
+                        () -> plugin.getMessageService().send(player, "crate-not-found")
+                );
+            }
+            case "delete" -> {
+                if (args.length < 3) {
+                    sender.sendMessage("/wk crate delete <id>");
+                    return;
+                }
+                if (plugin.getCrateManager().delete(args[2])) {
+                    plugin.getMessageService().send(sender, "crate-deleted", Map.of("id", args[2]));
+                } else {
+                    plugin.getMessageService().send(sender, "crate-not-found");
+                }
+            }
+            case "list" -> {
+                plugin.getCrateManager().getCrates().forEach(c ->
+                        sender.sendMessage(c.getId() + " [" + c.getRarity() + "]"));
+            }
+            default -> sender.sendMessage("/wk crate <create|set|key|edit|delete|list>");
+        }
+    }
+
     private void sendHelp(CommandSender sender) {
         List<String> lines = List.of(
                 "<gold><bold>Blaze's WildKits</bold></gold>",
                 "<yellow>/wk</yellow> <gray>- Open main GUI",
-                "<yellow>/wk kits</yellow> <gray>- Open kits",
+                "<yellow>/wk setup</yellow> <gray>- Admin setup wizard",
+                "<yellow>/wk wand [lobby|drop|save]</yellow>",
+                "<yellow>/wk quests</yellow> <gray>- Quest menu",
+                "<yellow>/wk crate ...</yellow> <gray>- Crate admin",
                 "<yellow>/wk shop</yellow> <gray>- Open shop",
-                "<yellow>/wk particles</yellow> <gray>- Trails",
-                "<yellow>/wk random</yellow> <gray>- Random kit",
-                "<yellow>/wk preview <kit></yellow>",
-                "<yellow>/wk search <query></yellow>",
-                "<yellow>/wk spawn</yellow> <gray>- Teleport spawn",
-                "<yellow>/wk setspawn</yellow> <gray>- Admin set spawn",
-                "<yellow>/wk daily</yellow> <gray>- Daily reward",
-                "<yellow>/wk stats</yellow>",
+                "<yellow>/spawn</yellow> <gray>- Lobby spawn",
+                "<yellow>/wk setspawn</yellow> <gray>- Set lobby spawn",
+                "<yellow>/wk showkit <true|false></yellow>",
                 "<yellow>/wk reload</yellow> <gray>- Admin reload"
         );
         for (String line : lines) {
@@ -297,16 +429,27 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (command.getName().equalsIgnoreCase("spawn")) return List.of();
         if (args.length == 1) {
             return filter(List.of("help", "kits", "gui", "shop", "particles", "trails", "random", "kit",
                     "preview", "search", "daily", "coins", "stats", "spawn", "setspawn", "reload",
-                    "givecoins", "eventreward", "showkit", "db", "dbstatus", "npc"), args[0]);
+                    "givecoins", "eventreward", "showkit", "db", "dbstatus", "npc",
+                    "setup", "wand", "quests", "quest", "crate"), args[0]);
         }
         if (args.length == 2 && (args[0].equalsIgnoreCase("kit") || args[0].equalsIgnoreCase("preview"))) {
             return filter(plugin.getKitManager().getKits().stream().map(KitDefinition::getId).collect(Collectors.toList()), args[1]);
         }
         if (args.length == 2 && args[0].equalsIgnoreCase("showkit")) {
             return filter(List.of("true", "false"), args[1]);
+        }
+        if (args.length == 2 && args[0].equalsIgnoreCase("wand")) {
+            return filter(List.of("lobby", "drop", "save"), args[1]);
+        }
+        if (args.length == 2 && args[0].equalsIgnoreCase("crate")) {
+            return filter(List.of("create", "set", "key", "edit", "delete", "list"), args[1]);
+        }
+        if (args.length == 4 && args[0].equalsIgnoreCase("crate") && args[1].equalsIgnoreCase("create")) {
+            return filter(List.of("common", "rare", "epic", "legendary", "mythic"), args[3]);
         }
         if (args.length == 2 && (args[0].equalsIgnoreCase("givecoins") || args[0].equalsIgnoreCase("coins"))) {
             return filter(Bukkit.getOnlinePlayers().stream().map(Player::getName).toList(), args[1]);

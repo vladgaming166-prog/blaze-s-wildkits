@@ -132,13 +132,33 @@ public final class KitManager {
         if (usable.isEmpty()) {
             return kits.values().stream().findFirst().orElse(null);
         }
+        PlayerData data = plugin.getPlayerDataManager().get(player);
+        List<String> recent = data.getRecentKits();
+        String last = recent.isEmpty() ? null : recent.get(0);
         var weights = plugin.getConfigManager().getRarityWeights();
+        double recentPenalty = plugin.getConfigManager().getConfig().getDouble("generation.recent-kit-penalty", 0.15);
+        double lastPenalty = plugin.getConfigManager().getConfig().getDouble("generation.last-kit-penalty", 0.05);
+
         double total = 0;
         double[] cumulative = new double[usable.size()];
         for (int i = 0; i < usable.size(); i++) {
             KitDefinition kit = usable.get(i);
             double w = weights.getOrDefault(kit.getRarity(), kit.getRarity().getDefaultWeight());
-            total += Math.max(0.01, w);
+            if (last != null && last.equalsIgnoreCase(kit.getId())) {
+                w *= lastPenalty; // almost never identical twice in a row
+            } else if (recent.stream().anyMatch(r -> r.equalsIgnoreCase(kit.getId()))) {
+                int index = -1;
+                for (int r = 0; r < recent.size(); r++) {
+                    if (recent.get(r).equalsIgnoreCase(kit.getId())) {
+                        index = r;
+                        break;
+                    }
+                }
+                // More recent => stronger penalty
+                double factor = recentPenalty + (index * 0.05);
+                w *= Math.min(0.85, Math.max(0.08, factor));
+            }
+            total += Math.max(0.001, w);
             cumulative[i] = total;
         }
         double roll = ThreadLocalRandom.current().nextDouble(total);
@@ -171,6 +191,10 @@ public final class KitManager {
         plugin.getScoreboardManager().update(player);
 
         announceService.announce(player, kit, generated.band());
+        if (kit.getRarity() == KitRarity.LEGENDARY || kit.getRarity() == KitRarity.MYTHIC
+                || kit.getRarity() == KitRarity.ULTIMATE) {
+            plugin.getQuestManager().progress(player, "legendary_kit", 1);
+        }
         return generated;
     }
 

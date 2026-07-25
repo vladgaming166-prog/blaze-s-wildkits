@@ -5,7 +5,7 @@ import org.bukkit.Material;
 public final class ShopItem {
 
     public enum Type {
-        KIT, KIT_UPGRADE, TRAIL, DEATH_EFFECT, VICTORY_EFFECT, TAG, TITLE
+        KIT, KIT_UPGRADE, TRAIL, DEATH_EFFECT, VICTORY_EFFECT, KILL_EFFECT, TAG, TITLE
     }
 
     private final String id;

@@ -1,0 +1,113 @@
+quests:
+  daily_kills_5:
+    display-name: "<green>First Blood"
+    description: "Kill 5 players"
+    type: DAILY
+    objective: kill
+    target: 5
+    rewards:
+      coins: 150
+      xp: 50
+  daily_kills_20:
+    display-name: "<green>Hot Streak"
+    description: "Kill 20 players"
+    type: DAILY
+    objective: kill
+    target: 20
+    rewards:
+      coins: 400
+      crate_key_common: 1
+  daily_crates_5:
+    display-name: "<aqua>Lucky Hands"
+    description: "Open 5 crates"
+    type: DAILY
+    objective: crate_open
+    target: 5
+    rewards:
+      coins: 200
+  daily_gaps:
+    display-name: "<gold>Golden Appetite"
+    description: "Use 10 golden apples"
+    type: DAILY
+    objective: golden_apple
+    target: 10
+    rewards:
+      coins: 175
+  daily_pearls:
+    display-name: "<light_purple>Pearl Master"
+    description: "Use 15 ender pearls"
+    type: DAILY
+    objective: ender_pearl
+    target: 15
+    rewards:
+      coins: 175
+  daily_play_30:
+    display-name: "<yellow>Warmup"
+    description: "Play 30 minutes"
+    type: DAILY
+    objective: playtime_minutes
+    target: 30
+    rewards:
+      coins: 250
+      xp: 100
+  daily_survive:
+    display-name: "<green>Survivor"
+    description: "Survive 10 minutes"
+    type: DAILY
+    objective: survive_minutes
+    target: 10
+    rewards:
+      coins: 300
+  weekly_kills_100:
+    display-name: "<gold>Warlord"
+    description: "Kill 100 players"
+    type: WEEKLY
+    objective: kill
+    target: 100
+    rewards:
+      coins: 2500
+      crate_key_rare: 2
+      xp: 500
+  weekly_crates_50:
+    display-name: "<gold>Crate Grinder"
+    description: "Open 50 crates"
+    type: WEEKLY
+    objective: crate_open
+    target: 50
+    rewards:
+      coins: 2000
+      crate_key_epic: 1
+  life_kills_100:
+    display-name: "<red>Centurion"
+    description: "Kill 100 players lifetime"
+    type: LIFETIME
+    objective: kill
+    target: 100
+    rewards:
+      coins: 5000
+      cosmetic_title_centurion: 1
+  life_legendary:
+    display-name: "<gold>Legend Seeker"
+    description: "Receive a Legendary+ kit"
+    type: LIFETIME
+    objective: legendary_kit
+    target: 1
+    rewards:
+      coins: 1000
+      crate_key_legendary: 1
+  life_break_placed:
+    display-name: "<gray>Demolisher"
+    description: "Break 200 player-placed blocks"
+    type: LIFETIME
+    objective: break_placed
+    target: 200
+    rewards:
+      coins: 1500
+  life_damage:
+    display-name: "<red>Bruiser"
+    description: "Deal 5000 damage"
+    type: LIFETIME
+    objective: deal_damage
+    target: 5000
+    rewards:
+      coins: 2000

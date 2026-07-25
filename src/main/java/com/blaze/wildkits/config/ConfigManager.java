@@ -20,6 +20,7 @@ public final class ConfigManager {
     private FileConfiguration animations;
     private FileConfiguration database;
     private FileConfiguration particles;
+    private FileConfiguration quests;
 
     public ConfigManager(BlazesWildKits plugin) {
         this.plugin = plugin;
@@ -34,6 +35,7 @@ public final class ConfigManager {
         this.animations = load("animations.yml");
         this.database = load("database.yml");
         this.particles = load("particles.yml");
+        this.quests = load("quests.yml");
     }
 
     private FileConfiguration load(String name) {
@@ -59,6 +61,7 @@ public final class ConfigManager {
     public FileConfiguration getAnimations() { return animations; }
     public FileConfiguration getDatabase() { return database; }
     public FileConfiguration getParticles() { return particles; }
+    public FileConfiguration getQuests() { return quests; }
 
     public boolean isAutoRandomKits() {
         return config.getBoolean("auto-random-kits", true);

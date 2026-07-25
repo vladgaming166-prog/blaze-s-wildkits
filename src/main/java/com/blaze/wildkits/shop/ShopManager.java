@@ -123,6 +123,10 @@ public final class ShopManager {
                 data.unlockCosmetic(item.getUnlockId());
                 data.setActiveVictoryEffect(item.getUnlockId());
             }
+            case KILL_EFFECT -> {
+                data.unlockCosmetic(item.getUnlockId());
+                data.setActiveKillEffect(item.getUnlockId());
+            }
             case TAG -> {
                 data.unlockCosmetic(item.getUnlockId());
                 data.setActiveTag(item.getUnlockId());
@@ -130,6 +134,9 @@ public final class ShopManager {
             case TITLE -> {
                 data.unlockCosmetic(item.getUnlockId());
                 data.setActiveTitle(item.getUnlockId());
+                if (item.getUnlockId() != null && item.getUnlockId().startsWith("prefix_")) {
+                    data.setActivePrefix(item.getUnlockId());
+                }
             }
         }
     }

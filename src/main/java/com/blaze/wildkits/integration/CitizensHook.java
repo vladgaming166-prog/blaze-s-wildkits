@@ -61,6 +61,13 @@ public final class CitizensHook implements Listener {
             }
         }
         Player player = event.getClicker();
-        plugin.getMenuService().openMain(player);
+        String name = npc.getName() == null ? "" : npc.getName().toLowerCase();
+        if (name.contains("quest")) {
+            plugin.getQuestManager().openGui(player);
+        } else if (name.contains("shop")) {
+            plugin.getMenuService().openShop(player);
+        } else {
+            plugin.getMenuService().openMain(player);
+        }
     }
 }

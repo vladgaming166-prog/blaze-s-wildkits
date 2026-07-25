@@ -182,9 +182,20 @@ public final class ParticleManager {
 
     public void playVictoryEffect(Player player) {
         PlayerData data = plugin.getPlayerDataManager().get(player);
+        Location loc = player.getLocation().add(0, 1, 0);
+        String kill = data.getActiveKillEffect();
+        if (kill != null) {
+            switch (kill.toLowerCase(Locale.ROOT)) {
+                case "lightning" -> player.getWorld().strikeLightningEffect(loc);
+                case "blood_kill" -> player.getWorld().spawnParticle(Particle.DAMAGE_INDICATOR, loc, 40, 0.5, 0.7, 0.5, 0.05);
+                case "spark" -> player.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, loc, 50, 0.5, 0.8, 0.5, 0.1);
+                case "flame_burst" -> player.getWorld().spawnParticle(Particle.FLAME, loc, 60, 0.4, 0.7, 0.4, 0.05);
+                default -> {
+                }
+            }
+        }
         String effect = data.getActiveVictoryEffect();
         if (effect == null) return;
-        Location loc = player.getLocation().add(0, 1, 0);
         switch (effect.toLowerCase(Locale.ROOT)) {
             case "fireworks" -> player.getWorld().spawnParticle(Particle.FIREWORK, loc, 40, 0.5, 0.8, 0.5, 0.1);
             case "totem" -> player.getWorld().spawnParticle(Particle.TOTEM_OF_UNDYING, loc, 50, 0.5, 0.8, 0.5, 0.3);
