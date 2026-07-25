@@ -162,6 +162,14 @@ public final class QuestManager {
                 data.unlockCosmetic(cosmeticId);
             } else if (reward.startsWith("trail_")) {
                 data.unlockCosmetic(reward.substring("trail_".length()));
+            } else if (reward.startsWith("permission_")) {
+                String node = reward.substring("permission_".length()).replace('_', '.');
+                if (plugin.getLuckPermsHook() != null && plugin.getLuckPermsHook().isEnabled()) {
+                    plugin.getLuckPermsHook().grantPermission(player, node);
+                } else {
+                    // Fallback: store as cosmetic unlock marker
+                    data.unlockCosmetic("perm_" + node);
+                }
             }
         }
     }

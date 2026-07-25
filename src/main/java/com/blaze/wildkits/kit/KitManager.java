@@ -191,6 +191,7 @@ public final class KitManager {
         plugin.getScoreboardManager().update(player);
 
         announceService.announce(player, kit, generated.band());
+        plugin.getQuestManager().progress(player, "receive_kit", 1);
         if (kit.getRarity() == KitRarity.LEGENDARY || kit.getRarity() == KitRarity.MYTHIC
                 || kit.getRarity() == KitRarity.ULTIMATE) {
             plugin.getQuestManager().progress(player, "legendary_kit", 1);

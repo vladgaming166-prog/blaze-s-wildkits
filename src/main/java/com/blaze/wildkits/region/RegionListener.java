@@ -27,6 +27,10 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Legacy lobby/drop region listener (kept for backwards compatibility).
+ * When a location is covered by the new Arena system, ArenaListener owns protections.
+ */
 public final class RegionListener implements Listener {
 
     private static final Set<EntityDamageEvent.DamageCause> LOBBY_BLOCKED = EnumSet.of(
@@ -54,6 +58,15 @@ public final class RegionListener implements Listener {
 
     public RegionListener(BlazesWildKits plugin) {
         this.plugin = plugin;
+    }
+
+    private boolean arenaOwns(Location location) {
+        if (plugin.getArenaManager() == null || location == null) return false;
+        // Prefer arena system whenever any arena is configured
+        if (plugin.getArenaManager().getArenas().isEmpty()) return false;
+        return plugin.getArenaManager().isOnAnySpawnPlatform(location)
+                || plugin.getArenaManager().isInAnyPlayable(location)
+                || plugin.getArenaManager().findArenaAt(location) != null;
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
@@ -96,6 +109,7 @@ public final class RegionListener implements Listener {
         Player player = event.getPlayer();
         if (player.getGameMode() == GameMode.CREATIVE && player.hasPermission("wildkits.admin")) return;
         Location loc = event.getBlock().getLocation();
+        if (arenaOwns(loc)) return;
 
         if (plugin.getRegionManager().isInLobby(loc)) {
             event.setCancelled(true);
@@ -103,7 +117,6 @@ public final class RegionListener implements Listener {
         }
 
         if (plugin.getRegionManager().isInDrop(loc)) {
-            // Only player-placed blocks can be broken
             if (!plugin.getRegionManager().isPlayerPlaced(loc)) {
                 event.setCancelled(true);
                 return;
@@ -118,6 +131,7 @@ public final class RegionListener implements Listener {
         Player player = event.getPlayer();
         if (player.getGameMode() == GameMode.CREATIVE && player.hasPermission("wildkits.admin")) return;
         Location loc = event.getBlock().getLocation();
+        if (arenaOwns(loc)) return;
 
         if (plugin.getRegionManager().isInLobby(loc)) {
             event.setCancelled(true);
@@ -136,6 +150,18 @@ public final class RegionListener implements Listener {
         Player attacker = resolveAttacker(event.getDamager());
         if (attacker == null) return;
 
+        if (arenaOwns(victim.getLocation()) || arenaOwns(attacker.getLocation())) {
+            // ArenaListener handles platform PvP; still track damage quests in playable
+            if (plugin.getArenaManager().isInAnyPlayable(victim.getLocation())
+                    && plugin.getArenaManager().isInAnyPlayable(attacker.getLocation())
+                    && !plugin.getArenaManager().isOnAnySpawnPlatform(victim.getLocation())
+                    && !plugin.getArenaManager().isOnAnySpawnPlatform(attacker.getLocation())) {
+                plugin.getQuestManager().progress(attacker, "deal_damage", (int) Math.max(1, event.getFinalDamage()));
+                plugin.getQuestManager().progress(victim, "take_damage", (int) Math.max(1, event.getFinalDamage()));
+            }
+            return;
+        }
+
         boolean victimLobby = plugin.getRegionManager().isInLobby(victim);
         boolean attackerLobby = plugin.getRegionManager().isInLobby(attacker);
         if (victimLobby || attackerLobby) {
@@ -143,11 +169,9 @@ public final class RegionListener implements Listener {
             return;
         }
 
-        // Outside drop & lobby: allow PvP if configured, but drop region explicitly enables PvP
         boolean victimDrop = plugin.getRegionManager().isInDrop(victim);
         boolean attackerDrop = plugin.getRegionManager().isInDrop(attacker);
         if (!victimDrop || !attackerDrop) {
-            // Still allow PvP outside lobby for wildkits gameplay unless both in lobby
             return;
         }
         plugin.getQuestManager().progress(attacker, "deal_damage", (int) Math.max(1, event.getFinalDamage()));
@@ -157,6 +181,7 @@ public final class RegionListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
+        if (arenaOwns(player.getLocation())) return;
         if (!plugin.getRegionManager().isInLobby(player)) return;
         if (LOBBY_BLOCKED.contains(event.getCause()) || event instanceof EntityDamageByEntityEvent) {
             event.setCancelled(true);
@@ -166,6 +191,7 @@ public final class RegionListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onHunger(FoodLevelChangeEvent event) {
         if (!(event.getEntity() instanceof Player player)) return;
+        if (arenaOwns(player.getLocation())) return;
         if (plugin.getRegionManager().isInLobby(player)) {
             event.setCancelled(true);
             player.setFoodLevel(20);
@@ -176,9 +202,9 @@ public final class RegionListener implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onDrop(PlayerDropItemEvent event) {
         Player player = event.getPlayer();
+        if (arenaOwns(player.getLocation())) return;
         if (!plugin.getRegionManager().isInLobby(player)) return;
         ItemStack stack = event.getItemDrop().getItemStack();
-        // Soft protect valuable combat items in lobby
         Material type = stack.getType();
         if (type.name().contains("SWORD") || type.name().contains("AXE") || type.name().contains("HELMET")
                 || type.name().contains("CHESTPLATE") || type.name().contains("LEGGINGS")
@@ -197,11 +223,13 @@ public final class RegionListener implements Listener {
                 && event.getFrom().getBlockZ() == event.getTo().getBlockZ()) {
             return;
         }
+        // Arena system owns leave-arena teleport when arenas exist
+        if (!plugin.getArenaManager().getArenas().isEmpty()) return;
+
         Player player = event.getPlayer();
         boolean inDrop = plugin.getRegionManager().isInDrop(event.getTo());
         Boolean was = wasInDrop.put(player.getUniqueId(), inDrop);
         if (Boolean.TRUE.equals(was) && !inDrop) {
-            // Leaving drop arena → return to lobby spawn
             if (plugin.getSpawnManager().getSpawn() != null) {
                 plugin.getSpawnManager().teleport(player);
                 plugin.getMessageService().send(player, "left-drop-arena");

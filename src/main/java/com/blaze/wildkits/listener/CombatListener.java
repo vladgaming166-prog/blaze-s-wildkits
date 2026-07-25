@@ -46,6 +46,18 @@ public final class CombatListener implements Listener {
                     base + bonus
             );
             plugin.getQuestManager().progress(killer, "kill", 1);
+            // Win = killstreak milestone (configurable)
+            int winEvery = Math.max(1, plugin.getConfigManager().getConfig().getInt("economy.win-killstreak", 5));
+            if (streak > 0 && streak % winEvery == 0) {
+                killerData.addWin();
+                int winCoins = plugin.getConfigManager().getConfig().getInt("economy.coins-per-win", 50);
+                killerData.addCoins(winCoins);
+                plugin.getQuestManager().progress(killer, "win", 1);
+                plugin.getMessageService().send(killer, "player-win", Map.of(
+                        "streak", String.valueOf(streak),
+                        "coins", String.valueOf(winCoins)
+                ));
+            }
             plugin.getPlayerDataManager().saveAsync(killer.getUniqueId());
             plugin.getScoreboardManager().update(killer);
         }

@@ -17,6 +17,7 @@ public final class PlayerData {
     private long coins;
     private int kills;
     private int deaths;
+    private int wins;
     private int killstreak;
     private int bestKillstreak;
     private int level = 1;
@@ -29,6 +30,10 @@ public final class PlayerData {
     private String activeTitle;
     private String activeKillEffect;
     private String activePrefix;
+    private String activeChatColor;
+    private String activeSpawnCage;
+    private String activeProjectileTrail;
+    private String activeWingParticle;
     private final Set<String> unlockedKits = new LinkedHashSet<>();
     private final Set<String> unlockedCosmetics = new LinkedHashSet<>();
     private final Set<String> favorites = new LinkedHashSet<>();
@@ -80,6 +85,13 @@ public final class PlayerData {
         markDirty();
     }
 
+    public int getWins() { return wins; }
+    public void setWins(int wins) { this.wins = Math.max(0, wins); markDirty(); }
+    public void addWin() {
+        this.wins++;
+        markDirty();
+    }
+
     public int getKillstreak() { return killstreak; }
     public void setKillstreak(int killstreak) { this.killstreak = Math.max(0, killstreak); markDirty(); }
     public int getBestKillstreak() { return bestKillstreak; }
@@ -125,6 +137,14 @@ public final class PlayerData {
     public void setActiveKillEffect(String activeKillEffect) { this.activeKillEffect = activeKillEffect; markDirty(); }
     public String getActivePrefix() { return activePrefix; }
     public void setActivePrefix(String activePrefix) { this.activePrefix = activePrefix; markDirty(); }
+    public String getActiveChatColor() { return activeChatColor; }
+    public void setActiveChatColor(String activeChatColor) { this.activeChatColor = activeChatColor; markDirty(); }
+    public String getActiveSpawnCage() { return activeSpawnCage; }
+    public void setActiveSpawnCage(String activeSpawnCage) { this.activeSpawnCage = activeSpawnCage; markDirty(); }
+    public String getActiveProjectileTrail() { return activeProjectileTrail; }
+    public void setActiveProjectileTrail(String activeProjectileTrail) { this.activeProjectileTrail = activeProjectileTrail; markDirty(); }
+    public String getActiveWingParticle() { return activeWingParticle; }
+    public void setActiveWingParticle(String activeWingParticle) { this.activeWingParticle = activeWingParticle; markDirty(); }
 
     public void addCrateKeys(String rarity, int amount) {
         if (rarity == null || amount == 0) return;

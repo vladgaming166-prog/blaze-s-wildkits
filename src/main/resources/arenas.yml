@@ -1,0 +1,11 @@
+# Blaze's WildKits - Arena Configuration
+# Managed by /wk configure create|edit <arena>
+# Tools: Blaze Rod (spawn platform), Stick (arena Pos1/Pos2)
+
+timed-reset:
+  enabled: false
+  minutes: 5
+
+active-arena: null
+
+arenas: {}

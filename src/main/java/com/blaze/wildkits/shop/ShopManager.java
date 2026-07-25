@@ -138,6 +138,22 @@ public final class ShopManager {
                     data.setActivePrefix(item.getUnlockId());
                 }
             }
+            case CHAT_COLOR -> {
+                data.unlockCosmetic(item.getUnlockId());
+                data.setActiveChatColor(item.getUnlockId());
+            }
+            case SPAWN_CAGE -> {
+                data.unlockCosmetic(item.getUnlockId());
+                data.setActiveSpawnCage(item.getUnlockId());
+            }
+            case PROJECTILE_TRAIL -> {
+                data.unlockCosmetic(item.getUnlockId());
+                data.setActiveProjectileTrail(item.getUnlockId());
+            }
+            case WING_PARTICLE -> {
+                data.unlockCosmetic(item.getUnlockId());
+                data.setActiveWingParticle(item.getUnlockId());
+            }
         }
     }
 }

@@ -111,3 +111,64 @@ quests:
     target: 5000
     rewards:
       coins: 2000
+  daily_wins_3:
+    display-name: "<gold>Daily Champion"
+    description: "Win 3 streak milestones"
+    type: DAILY
+    objective: win
+    target: 3
+    rewards:
+      coins: 300
+      crate_key_common: 1
+  daily_place_50:
+    display-name: "<yellow>Builder"
+    description: "Place 50 blocks in arena"
+    type: DAILY
+    objective: place_block
+    target: 50
+    rewards:
+      coins: 200
+  daily_kits_10:
+    display-name: "<aqua>Kit Roulette"
+    description: "Receive 10 random kits"
+    type: DAILY
+    objective: receive_kit
+    target: 10
+    rewards:
+      coins: 175
+  daily_coins_500:
+    display-name: "<gold>Coin Collector"
+    description: "Collect 500 coins"
+    type: DAILY
+    objective: collect_coins
+    target: 500
+    rewards:
+      crate_key_rare: 1
+      xp: 75
+  weekly_wins_20:
+    display-name: "<gold>Weekly Dominator"
+    description: "Win 20 streak milestones"
+    type: WEEKLY
+    objective: win
+    target: 20
+    rewards:
+      coins: 3000
+      crate_key_epic: 1
+      cosmetic_title_warlord: 1
+  weekly_place_500:
+    display-name: "<yellow>Fortress Engineer"
+    description: "Place 500 arena blocks"
+    type: WEEKLY
+    objective: place_block
+    target: 500
+    rewards:
+      coins: 1500
+  weekly_break_300:
+    display-name: "<gray>Demolition Weekly"
+    description: "Break 300 player-placed blocks"
+    type: WEEKLY
+    objective: break_placed
+    target: 300
+    rewards:
+      coins: 1500
+      crate_key_rare: 1

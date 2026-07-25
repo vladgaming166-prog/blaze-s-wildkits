@@ -14,9 +14,8 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * PvP-focused WildKits generator.
- * Combat gear only — no farming/survival clutter.
- * Almost every armor/weapon piece is enchanted.
+ * Premium PvP-oriented WildKits generator.
+ * Modern combat loadouts — enchanted weapons/armor, utilities, almost no survival clutter.
  */
 public final class SmartKitGenerator {
 
@@ -25,7 +24,8 @@ public final class SmartKitGenerator {
     };
     private static final Material[] PVP_BLOCKS = {
             Material.COBBLESTONE, Material.OAK_PLANKS, Material.OBSIDIAN,
-            Material.NETHERRACK, Material.END_STONE, Material.DEEPSLATE
+            Material.NETHERRACK, Material.END_STONE, Material.DEEPSLATE,
+            Material.STONE, Material.DIRT
     };
 
     private final BlazesWildKits plugin;
@@ -41,12 +41,12 @@ public final class SmartKitGenerator {
         String theme = definition.getProfile().getTheme().toLowerCase();
 
         ItemStack[] armor = buildArmor(band, theme, cfg, rng);
-        enchantArmor(armor, cfg, rng);
+        enchantArmor(armor, band, cfg, rng);
 
         ItemStack weapon = buildWeapon(band, theme, cfg, rng);
-        enchantWeapon(weapon, cfg, rng);
+        enchantWeapon(weapon, band, cfg, rng);
 
-        List<ItemStack> extras = new ArrayList<>(28);
+        List<ItemStack> extras = new ArrayList<>(32);
         applyThemeLoadout(definition, band, extras, rng, cfg);
         addCombatUtilities(extras, band, theme, cfg, rng);
 
@@ -64,7 +64,7 @@ public final class SmartKitGenerator {
         List<ItemStack> remaining = new ArrayList<>(kit.extras().size());
         for (ItemStack extra : kit.extras()) {
             if (extra == null) continue;
-            if (off == null && extra.getType() == Material.SHIELD) {
+            if (off == null && (extra.getType() == Material.SHIELD || extra.getType() == Material.TOTEM_OF_UNDYING)) {
                 off = extra;
             } else {
                 remaining.add(extra);
@@ -80,14 +80,16 @@ public final class SmartKitGenerator {
     }
 
     private GearBand rollBand(FileConfiguration cfg, ThreadLocalRandom rng) {
-        double iron = cfg.getDouble("generation.iron-chance", 60.0);
-        double diamond = cfg.getDouble("generation.diamond-chance", 35.0);
-        double netherite = cfg.getDouble("generation.netherite-partial-chance", 5.0);
-        double total = Math.max(0.01, iron + diamond + netherite);
+        double iron = cfg.getDouble("generation.iron-chance", 55.0);
+        double diamond = cfg.getDouble("generation.diamond-chance", 32.0);
+        double netherite = cfg.getDouble("generation.netherite-partial-chance", 10.0);
+        double fullNetherite = cfg.getDouble("generation.full-netherite-chance", 3.0);
+        double total = Math.max(0.01, iron + diamond + netherite + fullNetherite);
         double roll = rng.nextDouble() * total;
         if (roll < iron) return GearBand.IRON;
         if (roll < iron + diamond) return GearBand.DIAMOND;
-        return GearBand.NETHERITE_PARTIAL;
+        if (roll < iron + diamond + netherite) return GearBand.NETHERITE_PARTIAL;
+        return GearBand.FULL_NETHERITE;
     }
 
     private ItemStack[] buildArmor(GearBand band, String theme, FileConfiguration cfg, ThreadLocalRandom rng) {
@@ -99,18 +101,25 @@ public final class SmartKitGenerator {
 
         if (band == GearBand.IRON) {
             for (int i = 0; i < 4; i++) {
-                armor[i] = new ItemStack(rng.nextDouble() < 0.22 ? diamond[i] : iron[i]);
+                armor[i] = new ItemStack(rng.nextDouble() < 0.28 ? diamond[i] : iron[i]);
+            }
+            // Classic iron/diamond mixes
+            if (rng.nextDouble() < 0.25) {
+                armor[1] = new ItemStack(Material.DIAMOND_CHESTPLATE);
             }
         } else if (band == GearBand.DIAMOND) {
             for (int i = 0; i < 4; i++) {
-                armor[i] = new ItemStack(rng.nextDouble() < 0.10 ? iron[i] : diamond[i]);
+                armor[i] = new ItemStack(rng.nextDouble() < 0.08 ? iron[i] : diamond[i]);
             }
-            // Classic mix examples: helmet + diamond chest
-            if (rng.nextDouble() < 0.20) {
+            if (rng.nextDouble() < 0.18) {
                 armor[0] = new ItemStack(Material.IRON_HELMET);
                 armor[1] = new ItemStack(Material.DIAMOND_CHESTPLATE);
             }
-        } else {
+            // Occasional diamond + netherite piece
+            if (rng.nextDouble() < 0.22) {
+                armor[rng.nextInt(4)] = new ItemStack(netherite[rng.nextInt(4)]);
+            }
+        } else if (band == GearBand.NETHERITE_PARTIAL) {
             boolean[] nether = new boolean[4];
             int pieces = 1 + rng.nextInt(maxNetherite);
             int placed = 0;
@@ -121,85 +130,117 @@ public final class SmartKitGenerator {
                     placed++;
                 }
             }
-            // Never full netherite armor
-            int count = 0;
-            for (boolean b : nether) if (b) count++;
-            if (count >= 4) nether[rng.nextInt(4)] = false;
             for (int i = 0; i < 4; i++) {
                 armor[i] = new ItemStack(nether[i] ? netherite[i] : diamond[i]);
+            }
+        } else {
+            // Rare full netherite
+            for (int i = 0; i < 4; i++) {
+                armor[i] = new ItemStack(netherite[i]);
             }
         }
 
         if ((theme.contains("assassin") || theme.contains("ninja") || theme.contains("shadow") || theme.contains("scout"))
-                && rng.nextDouble() < 0.30) {
+                && rng.nextDouble() < 0.28) {
             armor[0] = new ItemStack(Material.AIR);
         }
         return armor;
     }
 
     private ItemStack buildWeapon(GearBand band, String theme, FileConfiguration cfg, ThreadLocalRandom rng) {
-        // Rare mace / trident
-        if (rng.nextDouble() < cfg.getDouble("generation.mace-chance", 0.03)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.mace-chance", 0.04)) {
             return new ItemStack(Material.MACE);
         }
         if (themeContains(theme, "pirate", "ocean", "thunder", "storm", "tide")
-                || rng.nextDouble() < cfg.getDouble("generation.trident-chance", 0.06)) {
+                || rng.nextDouble() < cfg.getDouble("generation.trident-chance", 0.07)) {
             return new ItemStack(Material.TRIDENT);
         }
 
         boolean axe = themeContains(theme, "viking", "lumber", "berserker", "lumberjack", "brawler")
-                || rng.nextDouble() < 0.28;
-        if (band == GearBand.NETHERITE_PARTIAL && rng.nextDouble() < 0.8) {
+                || rng.nextDouble() < 0.30;
+
+        // Full netherite / partial prefer high-tier weapons
+        if (band == GearBand.FULL_NETHERITE || (band == GearBand.NETHERITE_PARTIAL && rng.nextDouble() < 0.85)) {
             return new ItemStack(axe ? Material.NETHERITE_AXE : Material.NETHERITE_SWORD);
         }
-        if (band == GearBand.DIAMOND || rng.nextDouble() < 0.88) {
+        if (band == GearBand.DIAMOND || rng.nextDouble() < 0.82) {
             return new ItemStack(axe ? Material.DIAMOND_AXE : Material.DIAMOND_SWORD);
         }
-        return new ItemStack(axe ? Material.IRON_AXE : Material.IRON_SWORD);
+        // Occasional lower-tier for variety / underdog kits
+        double roll = rng.nextDouble();
+        if (roll < 0.55) return new ItemStack(axe ? Material.IRON_AXE : Material.IRON_SWORD);
+        if (roll < 0.80) return new ItemStack(axe ? Material.STONE_AXE : Material.STONE_SWORD);
+        return new ItemStack(axe ? Material.WOODEN_AXE : Material.WOODEN_SWORD);
     }
 
-    private void enchantArmor(ItemStack[] armor, FileConfiguration cfg, ThreadLocalRandom rng) {
-        double chance = cfg.getDouble("generation.enchant-chance", 0.92);
+    private void enchantArmor(ItemStack[] armor, GearBand band, FileConfiguration cfg, ThreadLocalRandom rng) {
+        double chance = cfg.getDouble("generation.enchant-chance", 0.95);
+        int maxProt = band == GearBand.FULL_NETHERITE ? 4 : (band == GearBand.NETHERITE_PARTIAL ? 3 : 2);
         for (ItemStack piece : armor) {
             if (piece == null || piece.getType().isAir()) continue;
             if (rng.nextDouble() > chance) continue;
-            piece.addUnsafeEnchantment(Enchantment.PROTECTION, 1 + rng.nextInt(2));
-            if (rng.nextDouble() < 0.55) {
-                piece.addUnsafeEnchantment(Enchantment.UNBREAKING, 1 + rng.nextInt(2));
+            piece.addUnsafeEnchantment(Enchantment.PROTECTION, 1 + rng.nextInt(maxProt));
+            if (rng.nextDouble() < 0.60) {
+                piece.addUnsafeEnchantment(Enchantment.UNBREAKING, 1 + rng.nextInt(3));
+            }
+            if (rng.nextDouble() < 0.18) {
+                piece.addUnsafeEnchantment(Enchantment.PROJECTILE_PROTECTION, 1 + rng.nextInt(2));
             }
             if (rng.nextDouble() < 0.15) {
-                piece.addUnsafeEnchantment(Enchantment.PROJECTILE_PROTECTION, 1);
+                piece.addUnsafeEnchantment(Enchantment.FIRE_PROTECTION, 1 + rng.nextInt(2));
             }
-            if (rng.nextDouble() < 0.12) {
-                piece.addUnsafeEnchantment(Enchantment.FIRE_PROTECTION, 1);
+            if (rng.nextDouble() < 0.10) {
+                piece.addUnsafeEnchantment(Enchantment.BLAST_PROTECTION, 1);
             }
-            if (piece.getType().name().contains("BOOTS") && rng.nextDouble() < 0.25) {
-                piece.addUnsafeEnchantment(Enchantment.FEATHER_FALLING, 1 + rng.nextInt(2));
+            if (piece.getType().name().contains("BOOTS")) {
+                if (rng.nextDouble() < 0.35) {
+                    piece.addUnsafeEnchantment(Enchantment.FEATHER_FALLING, 1 + rng.nextInt(3));
+                }
+                if (rng.nextDouble() < 0.20) {
+                    piece.addUnsafeEnchantment(Enchantment.DEPTH_STRIDER, 1 + rng.nextInt(2));
+                }
+                if (rng.nextDouble() < 0.12) {
+                    piece.addUnsafeEnchantment(Enchantment.SOUL_SPEED, 1);
+                }
+            }
+            if (piece.getType().name().contains("HELMET") && rng.nextDouble() < 0.15) {
+                piece.addUnsafeEnchantment(Enchantment.RESPIRATION, 1 + rng.nextInt(2));
+            }
+            if (band == GearBand.FULL_NETHERITE && rng.nextDouble() < 0.35) {
+                piece.addUnsafeEnchantment(Enchantment.MENDING, 1);
             }
         }
     }
 
-    private void enchantWeapon(ItemStack weapon, FileConfiguration cfg, ThreadLocalRandom rng) {
+    private void enchantWeapon(ItemStack weapon, GearBand band, FileConfiguration cfg, ThreadLocalRandom rng) {
         if (weapon == null || weapon.getType().isAir()) return;
-        if (rng.nextDouble() > cfg.getDouble("generation.enchant-chance", 0.92)) return;
+        if (rng.nextDouble() > cfg.getDouble("generation.enchant-chance", 0.95)) return;
 
         Material type = weapon.getType();
+        int sharpMax = band == GearBand.FULL_NETHERITE ? 5 : (band == GearBand.NETHERITE_PARTIAL ? 4 : 3);
+
         if (type == Material.TRIDENT) {
-            weapon.addUnsafeEnchantment(Enchantment.IMPALING, 1 + rng.nextInt(2));
-            if (rng.nextBoolean()) weapon.addUnsafeEnchantment(Enchantment.LOYALTY, 1);
-            if (rng.nextDouble() < 0.3) weapon.addUnsafeEnchantment(Enchantment.UNBREAKING, 1);
+            weapon.addUnsafeEnchantment(Enchantment.IMPALING, 1 + rng.nextInt(3));
+            if (rng.nextBoolean()) weapon.addUnsafeEnchantment(Enchantment.LOYALTY, 1 + rng.nextInt(2));
+            if (rng.nextDouble() < 0.35) weapon.addUnsafeEnchantment(Enchantment.UNBREAKING, 1 + rng.nextInt(2));
+            if (rng.nextDouble() < 0.20) weapon.addUnsafeEnchantment(Enchantment.CHANNELING, 1);
             return;
         }
         if (type == Material.MACE) {
-            weapon.addUnsafeEnchantment(Enchantment.DENSITY, 1);
+            weapon.addUnsafeEnchantment(Enchantment.DENSITY, 1 + rng.nextInt(2));
             if (rng.nextBoolean()) weapon.addUnsafeEnchantment(Enchantment.BREACH, 1);
+            if (rng.nextDouble() < 0.3) weapon.addUnsafeEnchantment(Enchantment.WIND_BURST, 1);
             return;
         }
-        weapon.addUnsafeEnchantment(Enchantment.SHARPNESS, 1 + rng.nextInt(2));
-        if (rng.nextDouble() < 0.45) weapon.addUnsafeEnchantment(Enchantment.UNBREAKING, 1 + rng.nextInt(2));
-        if (rng.nextDouble() < 0.30) weapon.addUnsafeEnchantment(Enchantment.KNOCKBACK, 1);
-        if (rng.nextDouble() < 0.25) weapon.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 1);
-        if (rng.nextDouble() < 0.20) weapon.addUnsafeEnchantment(Enchantment.LOOTING, 1);
+        weapon.addUnsafeEnchantment(Enchantment.SHARPNESS, 1 + rng.nextInt(Math.max(1, sharpMax)));
+        if (rng.nextDouble() < 0.50) weapon.addUnsafeEnchantment(Enchantment.UNBREAKING, 1 + rng.nextInt(3));
+        if (rng.nextDouble() < 0.32) weapon.addUnsafeEnchantment(Enchantment.KNOCKBACK, 1);
+        if (rng.nextDouble() < 0.28) weapon.addUnsafeEnchantment(Enchantment.FIRE_ASPECT, 1);
+        if (rng.nextDouble() < 0.22) weapon.addUnsafeEnchantment(Enchantment.LOOTING, 1 + rng.nextInt(2));
+        if (rng.nextDouble() < 0.15) weapon.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE, 1);
+        if (band.ordinal() >= GearBand.NETHERITE_PARTIAL.ordinal() && rng.nextDouble() < 0.25) {
+            weapon.addUnsafeEnchantment(Enchantment.MENDING, 1);
+        }
     }
 
     private void applyThemeLoadout(KitDefinition def, GearBand band, List<ItemStack> extras,
@@ -211,29 +252,30 @@ public final class SmartKitGenerator {
             boolean cross = theme.contains("cross") || id.contains("cross") || rng.nextBoolean();
             ItemStack ranged = new ItemStack(cross ? Material.CROSSBOW : Material.BOW);
             if (cross) {
-                ranged.addUnsafeEnchantment(Enchantment.QUICK_CHARGE, 1 + rng.nextInt(2));
-                if (rng.nextDouble() < 0.35) ranged.addUnsafeEnchantment(Enchantment.MULTISHOT, 1);
-                if (rng.nextDouble() < 0.25) ranged.addUnsafeEnchantment(Enchantment.PIERCING, 1);
+                ranged.addUnsafeEnchantment(Enchantment.QUICK_CHARGE, 1 + rng.nextInt(3));
+                if (rng.nextDouble() < 0.40) ranged.addUnsafeEnchantment(Enchantment.MULTISHOT, 1);
+                if (rng.nextDouble() < 0.30) ranged.addUnsafeEnchantment(Enchantment.PIERCING, 1 + rng.nextInt(2));
             } else {
-                ranged.addUnsafeEnchantment(Enchantment.POWER, 1 + rng.nextInt(2));
-                if (rng.nextDouble() < 0.4) ranged.addUnsafeEnchantment(Enchantment.PUNCH, 1);
-                if (rng.nextDouble() < 0.2) ranged.addUnsafeEnchantment(Enchantment.FLAME, 1);
+                ranged.addUnsafeEnchantment(Enchantment.POWER, 1 + rng.nextInt(3));
+                if (rng.nextDouble() < 0.45) ranged.addUnsafeEnchantment(Enchantment.PUNCH, 1);
+                if (rng.nextDouble() < 0.25) ranged.addUnsafeEnchantment(Enchantment.FLAME, 1);
+                if (rng.nextDouble() < 0.20) ranged.addUnsafeEnchantment(Enchantment.INFINITY, 1);
             }
             extras.add(ranged);
             extras.add(new ItemStack(Material.ARROW, range(cfg, "generation.arrows", 24, 64, rng)));
-            if (rng.nextDouble() < 0.45) extras.add(new ItemStack(Material.SPECTRAL_ARROW, 8 + rng.nextInt(17)));
+            if (rng.nextDouble() < 0.50) extras.add(new ItemStack(Material.SPECTRAL_ARROW, 8 + rng.nextInt(17)));
         }
 
         if (themeContains(theme, "tank", "knight", "guardian", "fortress", "gladiator", "royal", "sentinel", "spartan")) {
             extras.add(new ItemStack(Material.SHIELD));
-            extras.add(new ItemStack(Material.GOLDEN_APPLE, 2 + rng.nextInt(3)));
-            if (rng.nextDouble() < 0.4) extras.add(new ItemStack(Material.OBSIDIAN, 4 + rng.nextInt(5)));
+            extras.add(new ItemStack(Material.GOLDEN_APPLE, 2 + rng.nextInt(4)));
+            if (rng.nextDouble() < 0.45) extras.add(new ItemStack(Material.OBSIDIAN, 4 + rng.nextInt(5)));
         }
 
         if (themeContains(theme, "assassin", "ninja", "shadow", "scout", "speed", "rogue")) {
             extras.add(new ItemStack(Material.ENDER_PEARL, 4 + rng.nextInt(5)));
-            extras.add(splash(PotionType.SWIFTNESS, true));
-            if (rng.nextDouble() < 0.4) extras.add(splash(PotionType.INVISIBILITY, false));
+            extras.add(splash(PotionType.SWIFTNESS));
+            if (rng.nextDouble() < 0.45) extras.add(splash(PotionType.INVISIBILITY));
         }
 
         if (themeContains(theme, "bomber", "tnt", "trap", "chaos")) {
@@ -245,20 +287,20 @@ public final class SmartKitGenerator {
         if (themeContains(theme, "lava", "nether", "pyro", "inferno", "phoenix", "blaze", "dragon")) {
             extras.add(new ItemStack(Material.FIRE_CHARGE, 8 + rng.nextInt(9)));
             extras.add(new ItemStack(Material.LAVA_BUCKET));
-            extras.add(splash(PotionType.FIRE_RESISTANCE, false));
+            extras.add(splash(PotionType.FIRE_RESISTANCE));
         }
 
         if (themeContains(theme, "ice", "frozen", "cryo", "snow")) {
             extras.add(new ItemStack(Material.SNOWBALL, 16));
-            extras.add(splash(PotionType.SLOWNESS, true));
+            extras.add(splash(PotionType.SLOWNESS));
             extras.add(new ItemStack(Material.PACKED_ICE, 8));
         }
 
         if (themeContains(theme, "mage", "potion", "mystic", "crystal", "thunder", "storm", "magic")) {
-            extras.add(splash(PotionType.STRENGTH, true));
-            extras.add(splash(PotionType.SWIFTNESS, false));
-            extras.add(splash(PotionType.HEALING, true));
-            if (rng.nextDouble() < 0.5) extras.add(splash(PotionType.POISON, true));
+            extras.add(splash(PotionType.STRENGTH));
+            extras.add(splash(PotionType.SWIFTNESS));
+            extras.add(splash(PotionType.HEALING));
+            if (rng.nextDouble() < 0.55) extras.add(splash(PotionType.POISON));
         }
 
         if (themeContains(theme, "end", "void", "galaxy", "astral")) {
@@ -280,9 +322,8 @@ public final class SmartKitGenerator {
         }
 
         if (themeContains(theme, "miner")) {
-            // Combat utility pick only (obsidian / cobble), not survival grind
             ItemStack pick = new ItemStack(band == GearBand.IRON ? Material.IRON_PICKAXE : Material.DIAMOND_PICKAXE);
-            pick.addUnsafeEnchantment(Enchantment.EFFICIENCY, 1 + rng.nextInt(2));
+            pick.addUnsafeEnchantment(Enchantment.EFFICIENCY, 1 + rng.nextInt(3));
             if (rng.nextDouble() < 0.25) pick.addUnsafeEnchantment(Enchantment.SILK_TOUCH, 1);
             else if (rng.nextDouble() < 0.35) pick.addUnsafeEnchantment(Enchantment.FORTUNE, 1);
             extras.add(pick);
@@ -293,53 +334,55 @@ public final class SmartKitGenerator {
 
     private void addCombatUtilities(List<ItemStack> extras, GearBand band, String theme,
                                     FileConfiguration cfg, ThreadLocalRandom rng) {
-        // Steak / golden carrots only
         extras.add(new ItemStack(PVP_FOOD[rng.nextInt(PVP_FOOD.length)], range(cfg, "generation.food", 16, 32, rng)));
 
-        // Gaps — very common in PvP kits
-        if (rng.nextDouble() < cfg.getDouble("generation.golden-apple-chance", 0.85)) {
-            extras.add(new ItemStack(Material.GOLDEN_APPLE, 1 + rng.nextInt(band == GearBand.NETHERITE_PARTIAL ? 4 : 3)));
+        if (rng.nextDouble() < cfg.getDouble("generation.golden-apple-chance", 0.88)) {
+            int gaps = 1 + rng.nextInt(band == GearBand.FULL_NETHERITE ? 5
+                    : band == GearBand.NETHERITE_PARTIAL ? 4 : 3);
+            extras.add(new ItemStack(Material.GOLDEN_APPLE, gaps));
+        }
+        if (rng.nextDouble() < cfg.getDouble("generation.enchanted-golden-apple-chance", 0.06)) {
+            extras.add(new ItemStack(Material.ENCHANTED_GOLDEN_APPLE));
         }
 
-        // Blocks for bridging / cover
-        if (rng.nextDouble() < cfg.getDouble("generation.blocks-chance", 0.85)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.blocks-chance", 0.88)) {
             extras.add(new ItemStack(PVP_BLOCKS[rng.nextInt(PVP_BLOCKS.length)], range(cfg, "generation.blocks", 16, 48, rng)));
         }
 
-        if (rng.nextDouble() < cfg.getDouble("generation.water-bucket-chance", 0.70)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.water-bucket-chance", 0.75)) {
             extras.add(new ItemStack(Material.WATER_BUCKET));
         }
-        if (rng.nextDouble() < cfg.getDouble("generation.lava-bucket-chance", 0.35)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.lava-bucket-chance", 0.38)) {
             extras.add(new ItemStack(Material.LAVA_BUCKET));
         }
-        if (rng.nextDouble() < cfg.getDouble("generation.ender-pearl-chance", 0.65)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.ender-pearl-chance", 0.70)) {
             extras.add(new ItemStack(Material.ENDER_PEARL, 2 + rng.nextInt(5)));
         }
-        if (rng.nextDouble() < cfg.getDouble("generation.cobweb-chance", 0.45)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.cobweb-chance", 0.50)) {
             extras.add(new ItemStack(Material.COBWEB, 1 + rng.nextInt(4)));
         }
-        if (rng.nextDouble() < cfg.getDouble("generation.obsidian-chance", 0.35)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.obsidian-chance", 0.38)) {
             extras.add(new ItemStack(Material.OBSIDIAN, 2 + rng.nextInt(7)));
         }
-        if (rng.nextDouble() < cfg.getDouble("generation.tnt-chance", 0.25)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.tnt-chance", 0.22)) {
             extras.add(new ItemStack(Material.TNT, 1 + rng.nextInt(3)));
             extras.add(new ItemStack(Material.FLINT_AND_STEEL));
         }
         if (rng.nextDouble() < cfg.getDouble("generation.fire-charge-chance", 0.35)) {
             extras.add(new ItemStack(Material.FIRE_CHARGE, 4 + rng.nextInt(9)));
         }
-        if (rng.nextDouble() < cfg.getDouble("generation.wind-charge-chance", 0.30)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.wind-charge-chance", 0.32)) {
             extras.add(new ItemStack(Material.WIND_CHARGE, 2 + rng.nextInt(5)));
         }
-        if (rng.nextDouble() < cfg.getDouble("generation.fishing-rod-chance", 0.30)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.fishing-rod-chance", 0.28)) {
             ItemStack rod = new ItemStack(Material.FISHING_ROD);
-            if (rng.nextDouble() < 0.4) rod.addUnsafeEnchantment(Enchantment.KNOCKBACK, 1);
+            if (rng.nextDouble() < 0.45) rod.addUnsafeEnchantment(Enchantment.KNOCKBACK, 1);
             extras.add(rod);
         }
-        if (rng.nextDouble() < cfg.getDouble("generation.snowball-chance", 0.35)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.snowball-chance", 0.32)) {
             extras.add(new ItemStack(Material.SNOWBALL, 8 + rng.nextInt(17)));
         }
-        if (rng.nextDouble() < cfg.getDouble("generation.egg-chance", 0.30)) {
+        if (rng.nextDouble() < cfg.getDouble("generation.egg-chance", 0.28)) {
             extras.add(new ItemStack(Material.EGG, 8 + rng.nextInt(9)));
         }
         if (rng.nextDouble() < cfg.getDouble("generation.shield-chance", 0.55)) {
@@ -347,12 +390,18 @@ public final class SmartKitGenerator {
             if (!has) extras.add(new ItemStack(Material.SHIELD));
         }
 
-        // Bow/crossbow for non-archer kits
+        // Rare totem
+        if (rng.nextDouble() < cfg.getDouble("generation.totem-chance", 0.08)
+                || band == GearBand.FULL_NETHERITE && rng.nextDouble() < 0.35) {
+            boolean has = extras.stream().anyMatch(i -> i.getType() == Material.TOTEM_OF_UNDYING);
+            if (!has) extras.add(new ItemStack(Material.TOTEM_OF_UNDYING));
+        }
+
         if (!themeContains(theme, "archer", "sniper", "hunter")
-                && rng.nextDouble() < cfg.getDouble("generation.bow-chance", 0.45)) {
+                && rng.nextDouble() < cfg.getDouble("generation.bow-chance", 0.48)) {
             ItemStack bow = new ItemStack(rng.nextBoolean() ? Material.BOW : Material.CROSSBOW);
             if (bow.getType() == Material.BOW) {
-                bow.addUnsafeEnchantment(Enchantment.POWER, 1 + rng.nextInt(2));
+                bow.addUnsafeEnchantment(Enchantment.POWER, 1 + rng.nextInt(3));
                 if (rng.nextDouble() < 0.35) bow.addUnsafeEnchantment(Enchantment.PUNCH, 1);
             } else {
                 bow.addUnsafeEnchantment(Enchantment.QUICK_CHARGE, 1 + rng.nextInt(2));
@@ -361,13 +410,19 @@ public final class SmartKitGenerator {
             extras.add(new ItemStack(Material.ARROW, range(cfg, "generation.arrows", 16, 48, rng)));
         }
 
-        if (rng.nextDouble() < cfg.getDouble("generation.potion-chance", 0.55)) {
-            PotionType[] types = {PotionType.STRENGTH, PotionType.SWIFTNESS, PotionType.HEALING, PotionType.FIRE_RESISTANCE};
-            extras.add(splash(types[rng.nextInt(types.length)], rng.nextBoolean()));
+        if (rng.nextDouble() < cfg.getDouble("generation.potion-chance", 0.60)) {
+            PotionType[] types = {
+                    PotionType.STRENGTH, PotionType.SWIFTNESS, PotionType.HEALING,
+                    PotionType.FIRE_RESISTANCE, PotionType.TURTLE_MASTER
+            };
+            extras.add(splash(types[rng.nextInt(types.length)]));
+            if (rng.nextDouble() < 0.40) {
+                extras.add(splash(types[rng.nextInt(types.length)]));
+            }
         }
     }
 
-    private ItemStack splash(PotionType type, boolean ignored) {
+    private ItemStack splash(PotionType type) {
         ItemStack item = new ItemStack(Material.SPLASH_POTION);
         if (item.getItemMeta() instanceof PotionMeta meta) {
             meta.setBasePotionType(type);

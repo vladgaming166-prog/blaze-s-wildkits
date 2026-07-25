@@ -193,8 +193,12 @@ public final class ScoreboardManager {
                 .replace("%kd%", String.valueOf(data.getKd()))
                 .replace("%killstreak%", String.valueOf(data.getKillstreak()))
                 .replace("%level%", String.valueOf(data.getLevel()))
+                .replace("%wins%", String.valueOf(data.getWins()))
                 .replace("%currentkit%", kitDisplay)
-                .replace("%online%", String.valueOf(Bukkit.getOnlinePlayers().size()));
+                .replace("%online%", String.valueOf(Bukkit.getOnlinePlayers().size()))
+                .replace("%keys%", String.valueOf(
+                        data.getCrateKeys("common") + data.getCrateKeys("rare") + data.getCrateKeys("epic")
+                                + data.getCrateKeys("legendary") + data.getCrateKeys("mythic")));
 
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             try {

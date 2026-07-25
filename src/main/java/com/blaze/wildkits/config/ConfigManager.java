@@ -91,6 +91,7 @@ public final class ConfigManager {
 
     public int getCoinsPerKill() { return config.getInt("economy.coins-per-kill", 25); }
     public int getCoinsPerKillstreakBonus() { return config.getInt("economy.coins-per-killstreak-bonus", 5); }
+    public int getCoinsPerWin() { return config.getInt("economy.coins-per-win", 50); }
     public int getPlaytimeCoins() { return config.getInt("economy.playtime-coins", 10); }
     public int getPlaytimeIntervalMinutes() { return config.getInt("economy.playtime-interval-minutes", 5); }
     public int getDailyRewardCoins() { return config.getInt("economy.daily-reward-coins", 100); }

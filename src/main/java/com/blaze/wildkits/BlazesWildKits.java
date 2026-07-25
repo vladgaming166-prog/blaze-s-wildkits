@@ -1,5 +1,7 @@
 package com.blaze.wildkits;
 
+import com.blaze.wildkits.arena.ArenaListener;
+import com.blaze.wildkits.arena.ArenaManager;
 import com.blaze.wildkits.command.WildKitsCommand;
 import com.blaze.wildkits.config.ConfigManager;
 import com.blaze.wildkits.crate.CrateListener;
@@ -14,6 +16,7 @@ import com.blaze.wildkits.integration.PlaceholderHook;
 import com.blaze.wildkits.integration.VaultHook;
 import com.blaze.wildkits.kit.KitManager;
 import com.blaze.wildkits.listener.CombatListener;
+import com.blaze.wildkits.listener.CosmeticListener;
 import com.blaze.wildkits.listener.ItemUseListener;
 import com.blaze.wildkits.listener.PlayerListener;
 import com.blaze.wildkits.message.MessageService;
@@ -47,9 +50,11 @@ public final class BlazesWildKits extends JavaPlugin {
     private MenuService menuService;
     private AnimationService animationService;
     private RegionManager regionManager;
+    private ArenaManager arenaManager;
     private QuestManager questManager;
     private CrateManager crateManager;
     private SetupGui setupGui;
+    private CosmeticListener cosmeticListener;
     private VaultHook vaultHook;
     private LuckPermsHook luckPermsHook;
     private CitizensHook citizensHook;
@@ -91,6 +96,9 @@ public final class BlazesWildKits extends JavaPlugin {
         this.regionManager = new RegionManager(this);
         this.regionManager.load();
 
+        this.arenaManager = new ArenaManager(this);
+        this.arenaManager.load();
+
         this.kitManager = new KitManager(this);
         this.kitManager.load();
 
@@ -123,15 +131,18 @@ public final class BlazesWildKits extends JavaPlugin {
         getLogger().info("Blaze's WildKits v" + getPluginMeta().getVersion() + " enabled ("
                 + kitManager.getKits().size() + " kits, "
                 + questManager.getQuests().size() + " quests, "
-                + crateManager.getCrates().size() + " crates).");
+                + crateManager.getCrates().size() + " crates, "
+                + arenaManager.getArenas().size() + " arenas).");
     }
 
     @Override
     public void onDisable() {
         if (scoreboardManager != null) scoreboardManager.shutdown();
+        if (cosmeticListener != null) cosmeticListener.shutdown();
         if (particleManager != null) particleManager.shutdown();
         if (coinManager != null) coinManager.shutdown();
         if (questManager != null) questManager.shutdown();
+        if (arenaManager != null) arenaManager.shutdown();
         if (playerDataManager != null) playerDataManager.saveAllSync();
         if (crateManager != null) crateManager.save();
         if (regionManager != null) regionManager.save();
@@ -146,6 +157,7 @@ public final class BlazesWildKits extends JavaPlugin {
             animationService.load();
             spawnManager.load();
             regionManager.load();
+            arenaManager.load();
             kitManager.load();
             shopManager.load();
             questManager.load();
@@ -164,7 +176,8 @@ public final class BlazesWildKits extends JavaPlugin {
         String[] files = {
                 "config.yml", "kits.yml", "shop.yml", "scoreboard.yml",
                 "animations.yml", "messages_en.yml", "messages_ro.yml",
-                "database.yml", "particles.yml", "regions.yml", "quests.yml", "crates.yml"
+                "database.yml", "particles.yml", "regions.yml", "quests.yml",
+                "crates.yml", "arenas.yml"
         };
         for (String file : files) {
             saveResource(file, false);
@@ -204,8 +217,11 @@ public final class BlazesWildKits extends JavaPlugin {
         pm.registerEvents(new CombatListener(this), this);
         pm.registerEvents(new GuiListener(this), this);
         pm.registerEvents(new RegionListener(this), this);
+        pm.registerEvents(new ArenaListener(this), this);
         pm.registerEvents(new CrateListener(this), this);
         pm.registerEvents(new ItemUseListener(this), this);
+        this.cosmeticListener = new CosmeticListener(this);
+        pm.registerEvents(cosmeticListener, this);
         if (citizensHook != null && citizensHook.isEnabled()) {
             pm.registerEvents(citizensHook, this);
         }
@@ -225,6 +241,7 @@ public final class BlazesWildKits extends JavaPlugin {
     public MenuService getMenuService() { return menuService; }
     public AnimationService getAnimationService() { return animationService; }
     public RegionManager getRegionManager() { return regionManager; }
+    public ArenaManager getArenaManager() { return arenaManager; }
     public QuestManager getQuestManager() { return questManager; }
     public CrateManager getCrateManager() { return crateManager; }
     public SetupGui getSetupGui() { return setupGui; }

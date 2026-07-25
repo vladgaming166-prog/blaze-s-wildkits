@@ -28,6 +28,7 @@ public final class CoinManager {
                 PlayerData data = plugin.getPlayerDataManager().get(player);
                 data.addPlaytimeSeconds(minutes * 60L);
                 data.addCoins(reward);
+                plugin.getQuestManager().progress(player, "collect_coins", reward);
                 plugin.getMessageService().send(player, "playtime-reward", Map.of("coins", String.valueOf(reward)));
                 plugin.getPlayerDataManager().saveAsync(player.getUniqueId());
             }
@@ -43,6 +44,7 @@ public final class CoinManager {
         if (plugin.getVaultHook() != null && plugin.getVaultHook().isEnabled()) {
             plugin.getVaultHook().deposit(killer, total);
         }
+        plugin.getQuestManager().progress(killer, "collect_coins", total);
         plugin.getMessageService().send(killer, "coins-kill", Map.of("coins", String.valueOf(total)));
     }
 

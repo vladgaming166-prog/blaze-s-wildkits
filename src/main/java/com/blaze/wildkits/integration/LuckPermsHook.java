@@ -50,4 +50,11 @@ public final class LuckPermsHook {
         String prefix = user.getCachedData().getMetaData().getPrefix();
         return prefix == null ? "" : prefix;
     }
+
+    public void grantPermission(Player player, String permission) {
+        if (!isEnabled() || player == null || permission == null || permission.isBlank()) return;
+        api.getUserManager().modifyUser(player.getUniqueId(), user -> {
+            user.data().add(net.luckperms.api.node.Node.builder(permission).build());
+        });
+    }
 }

@@ -9,6 +9,7 @@ title-animation:
   - "<gradient:#FF4500:#FFD700><bold>Blaze's WildKits</bold></gradient>"
   - "<gradient:#FFD700:#FF4500><bold>Blaze's WildKits</bold></gradient>"
   - "<gradient:#FF4500:#FFAA00><bold>WildKits</bold></gradient>"
+  - "<gradient:#FFAA00:#FF4500><bold>Premium PvP</bold></gradient>"
 
 # Every line should start with shadow:black:1 (Chaos-style)
 # Vanilla score numbers are fully hidden via Paper NumberFormat.blank()
@@ -20,6 +21,7 @@ lines:
   - "shadow:black:1 <dark_gray>"
   - "shadow:black:1 <gray>Kills <green>%kills%"
   - "shadow:black:1 <gray>Deaths <red>%deaths%"
+  - "shadow:black:1 <gray>Wins <aqua>%wins%"
   - "shadow:black:1 <gray>K/D <yellow>%kd%"
   - "shadow:black:1 <gray>Streak <light_purple>%killstreak%"
   - "shadow:black:1 <gray>Level <aqua>%level%"

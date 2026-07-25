@@ -344,6 +344,42 @@ public final class DefaultKits {
         kits.add(kit("mace_rare_3", "Mace Rare #3", "Rare mace template", KitRarity.LEGENDARY, Material.MACE, "wildkits.kit.mace_rare_3", "Elite", false, 3500, "champion", false, false));
         kits.add(kit("mace_rare_4", "Mace Rare #4", "Rare mace template", KitRarity.LEGENDARY, Material.MACE, "wildkits.kit.mace_rare_4", "Elite", false, 3500, "champion", false, false));
         kits.add(kit("mace_rare_5", "Mace Rare #5", "Rare mace template", KitRarity.LEGENDARY, Material.MACE, "wildkits.kit.mace_rare_5", "Elite", false, 3500, "champion", false, false));
+
+        // Premium expansion pool — modern PvP archetypes
+        String[] meleeNames = {"Blade", "Edge", "Strike", "Fury", "Clash", "Duel", "Rift", "Pulse", "Nova", "Apex"};
+        for (int i = 1; i <= 20; i++) {
+            kits.add(kit("pvp_elite_" + i, "PvP Elite " + meleeNames[(i - 1) % meleeNames.length] + " #" + i,
+                    "Premium enchanted melee kit", KitRarity.UNCOMMON, Material.DIAMOND_SWORD,
+                    "wildkits.kit.pvp_elite_" + i, "Melee", true, 0, "balanced", false, false));
+        }
+        for (int i = 1; i <= 15; i++) {
+            kits.add(kit("axe_rush_" + i, "Axe Rush #" + i, "Diamond/netherite axe pressure",
+                    KitRarity.RARE, Material.DIAMOND_AXE, "wildkits.kit.axe_rush_" + i, "Melee", false, 650, "berserker", false, false));
+        }
+        for (int i = 1; i <= 15; i++) {
+            kits.add(kit("pearl_combo_" + i, "Pearl Combo #" + i, "Pearl + gap modern PvP",
+                    KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_combo_" + i, "Stealth", false, 800, "assassin", false, false));
+        }
+        for (int i = 1; i <= 12; i++) {
+            kits.add(kit("totem_guard_" + i, "Totem Guard #" + i, "Rare totem defensive kit",
+                    KitRarity.EPIC, Material.TOTEM_OF_UNDYING, "wildkits.kit.totem_guard_" + i, "Melee", false, 1800, "tank", false, false));
+        }
+        for (int i = 1; i <= 12; i++) {
+            kits.add(kit("nether_mix_" + i, "Nether Mix #" + i, "Diamond + netherite mix",
+                    KitRarity.LEGENDARY, Material.NETHERITE_CHESTPLATE, "wildkits.kit.nether_mix_" + i, "Elite", false, 3200, "nether", false, false));
+        }
+        for (int i = 1; i <= 10; i++) {
+            kits.add(kit("full_nether_" + i, "Full Netherite #" + i, "Rare full netherite roll",
+                    KitRarity.MYTHIC, Material.NETHERITE_HELMET, "wildkits.kit.full_nether_" + i, "Elite", false, 7000, "champion", false, false));
+        }
+        for (int i = 1; i <= 10; i++) {
+            kits.add(kit("pot_fighter_" + i, "Pot Fighter #" + i, "Strength/speed pot kit",
+                    KitRarity.EPIC, Material.SPLASH_POTION, "wildkits.kit.pot_fighter_" + i, "Magic", false, 1600, "potion", false, true));
+        }
+        for (int i = 1; i <= 8; i++) {
+            kits.add(kit("bridge_fight_" + i, "Bridge Fight #" + i, "Blocks + pearls bridge PvP",
+                    KitRarity.UNCOMMON, Material.OAK_PLANKS, "wildkits.kit.bridge_fight_" + i, "Utility", true, 0, "builder", false, false));
+        }
         return kits;
     }
 

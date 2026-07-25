@@ -93,6 +93,11 @@ public final class PlayerDataManager {
                     data.setQuestCompletedSet(splitSet(getString(rs, "quest_completed")));
                     data.setLastDailyQuestReset(getLong(rs, "last_daily_quest_reset"));
                     data.setLastWeeklyQuestReset(getLong(rs, "last_weekly_quest_reset"));
+                    data.setWins(getInt(rs, "wins"));
+                    data.setActiveChatColor(getString(rs, "active_chat_color"));
+                    data.setActiveSpawnCage(getString(rs, "active_spawn_cage"));
+                    data.setActiveProjectileTrail(getString(rs, "active_projectile_trail"));
+                    data.setActiveWingParticle(getString(rs, "active_wing_particle"));
                     data.clearDirty();
                     return data;
                 }
@@ -149,8 +154,9 @@ public final class PlayerDataManager {
                 level, xp, current_kit, active_trail, active_death_effect, active_victory_effect,
                 active_tag, active_title, unlocked_kits, unlocked_cosmetics, favorites, recent_kits,
                 last_daily, playtime_seconds, active_kill_effect, active_prefix, crate_keys,
-                quest_progress, quest_completed, last_daily_quest_reset, last_weekly_quest_reset)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                quest_progress, quest_completed, last_daily_quest_reset, last_weekly_quest_reset,
+                wins, active_chat_color, active_spawn_cage, active_projectile_trail, active_wing_particle)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 """;
         if (!update) return columns;
         if ("mysql".equalsIgnoreCase(plugin.getDatabaseManager().getType())) {
@@ -167,7 +173,11 @@ public final class PlayerDataManager {
                     active_prefix=VALUES(active_prefix), crate_keys=VALUES(crate_keys),
                     quest_progress=VALUES(quest_progress), quest_completed=VALUES(quest_completed),
                     last_daily_quest_reset=VALUES(last_daily_quest_reset),
-                    last_weekly_quest_reset=VALUES(last_weekly_quest_reset)
+                    last_weekly_quest_reset=VALUES(last_weekly_quest_reset),
+                    wins=VALUES(wins), active_chat_color=VALUES(active_chat_color),
+                    active_spawn_cage=VALUES(active_spawn_cage),
+                    active_projectile_trail=VALUES(active_projectile_trail),
+                    active_wing_particle=VALUES(active_wing_particle)
                     """;
         }
         return columns + """
@@ -183,7 +193,11 @@ public final class PlayerDataManager {
                 active_prefix=excluded.active_prefix, crate_keys=excluded.crate_keys,
                 quest_progress=excluded.quest_progress, quest_completed=excluded.quest_completed,
                 last_daily_quest_reset=excluded.last_daily_quest_reset,
-                last_weekly_quest_reset=excluded.last_weekly_quest_reset
+                last_weekly_quest_reset=excluded.last_weekly_quest_reset,
+                wins=excluded.wins, active_chat_color=excluded.active_chat_color,
+                active_spawn_cage=excluded.active_spawn_cage,
+                active_projectile_trail=excluded.active_projectile_trail,
+                active_wing_particle=excluded.active_wing_particle
                 """;
     }
 
@@ -216,6 +230,11 @@ public final class PlayerDataManager {
         ps.setString(26, join(data.getQuestCompletedSet()));
         ps.setLong(27, data.getLastDailyQuestReset());
         ps.setLong(28, data.getLastWeeklyQuestReset());
+        ps.setInt(29, data.getWins());
+        ps.setString(30, data.getActiveChatColor());
+        ps.setString(31, data.getActiveSpawnCage());
+        ps.setString(32, data.getActiveProjectileTrail());
+        ps.setString(33, data.getActiveWingParticle());
     }
 
     private PlayerData copy(PlayerData src) {
@@ -246,6 +265,11 @@ public final class PlayerDataManager {
         data.setLastDailyQuestReset(src.getLastDailyQuestReset());
         data.setLastWeeklyQuestReset(src.getLastWeeklyQuestReset());
         data.setPlaytimeSeconds(src.getPlaytimeSeconds());
+        data.setWins(src.getWins());
+        data.setActiveChatColor(src.getActiveChatColor());
+        data.setActiveSpawnCage(src.getActiveSpawnCage());
+        data.setActiveProjectileTrail(src.getActiveProjectileTrail());
+        data.setActiveWingParticle(src.getActiveWingParticle());
         return data;
     }
 
@@ -267,6 +291,14 @@ public final class PlayerDataManager {
             return rs.getLong(column);
         } catch (SQLException e) {
             return 0L;
+        }
+    }
+
+    private static int getInt(ResultSet rs, String column) {
+        try {
+            return rs.getInt(column);
+        } catch (SQLException e) {
+            return 0;
         }
     }
 

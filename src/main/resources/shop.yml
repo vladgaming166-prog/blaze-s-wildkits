@@ -310,3 +310,128 @@ items:
     price: 3000
     unlock-id: prefix_blaze
     category: Titles
+
+  chat_gold:
+    display-name: "<gold>Gold Chat"
+    description: "Gold colored chat messages"
+    type: CHAT_COLOR
+    icon: GOLD_INGOT
+    price: 800
+    unlock-id: gold
+    category: Chat
+  chat_aqua:
+    display-name: "<aqua>Aqua Chat"
+    description: "Aqua colored chat"
+    type: CHAT_COLOR
+    icon: DIAMOND
+    price: 800
+    unlock-id: aqua
+    category: Chat
+  chat_red:
+    display-name: "<red>Red Chat"
+    description: "Red colored chat"
+    type: CHAT_COLOR
+    icon: REDSTONE
+    price: 800
+    unlock-id: red
+    category: Chat
+  chat_purple:
+    display-name: "<light_purple>Purple Chat"
+    description: "Purple colored chat"
+    type: CHAT_COLOR
+    icon: AMETHYST_SHARD
+    price: 1000
+    unlock-id: purple
+    category: Chat
+
+  cage_glass:
+    display-name: "<white>Glass Spawn Cage"
+    description: "Temporary glass cage on respawn"
+    type: SPAWN_CAGE
+    icon: GLASS
+    price: 1200
+    unlock-id: glass
+    category: Cages
+  cage_iron:
+    display-name: "<gray>Iron Spawn Cage"
+    description: "Iron bars spawn cage"
+    type: SPAWN_CAGE
+    icon: IRON_BARS
+    price: 1500
+    unlock-id: iron
+    category: Cages
+  cage_nether:
+    display-name: "<dark_red>Nether Spawn Cage"
+    description: "Nether brick fence cage"
+    type: SPAWN_CAGE
+    icon: NETHER_BRICK_FENCE
+    price: 2000
+    unlock-id: nether
+    category: Cages
+
+  proj_flame:
+    display-name: "<gold>Flame Projectile Trail"
+    description: "Flames follow your arrows"
+    type: PROJECTILE_TRAIL
+    icon: FIRE_CHARGE
+    price: 1400
+    unlock-id: flame
+    category: Projectiles
+  proj_soul:
+    display-name: "<aqua>Soul Projectile Trail"
+    description: "Soul particles on projectiles"
+    type: PROJECTILE_TRAIL
+    icon: SOUL_LANTERN
+    price: 1600
+    unlock-id: soul
+    category: Projectiles
+  proj_crit:
+    display-name: "<yellow>Crit Projectile Trail"
+    description: "Crit sparkles on projectiles"
+    type: PROJECTILE_TRAIL
+    icon: IRON_SWORD
+    price: 1200
+    unlock-id: crit
+    category: Projectiles
+
+  wing_angel:
+    display-name: "<white>Angel Wings"
+    description: "End rod wing particles"
+    type: WING_PARTICLE
+    icon: FEATHER
+    price: 2500
+    unlock-id: angel
+    category: Wings
+  wing_demon:
+    display-name: "<red>Demon Wings"
+    description: "Flame wing particles"
+    type: WING_PARTICLE
+    icon: BLAZE_POWDER
+    price: 2500
+    unlock-id: demon
+    category: Wings
+  wing_dragon:
+    display-name: "<dark_purple>Dragon Wings"
+    description: "Dragon breath wings"
+    type: WING_PARTICLE
+    icon: DRAGON_BREATH
+    price: 3500
+    unlock-id: dragon
+    category: Wings
+  wing_frost:
+    display-name: "<aqua>Frost Wings"
+    description: "Snowflake wing particles"
+    type: WING_PARTICLE
+    icon: SNOWBALL
+    price: 2800
+    unlock-id: frost
+    category: Wings
+
+  victory_dance_spin:
+    display-name: "<light_purple>Victory Dance"
+    description: "Extra celebration on kill"
+    type: VICTORY_EFFECT
+    icon: MUSIC_DISC_CAT
+    price: 1800
+    unlock-id: fireworks
+    category: Effects

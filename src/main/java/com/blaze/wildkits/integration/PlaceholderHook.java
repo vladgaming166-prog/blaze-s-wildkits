@@ -54,10 +54,14 @@ public final class PlaceholderHook extends PlaceholderExpansion {
             }
             case "killstreak" -> String.valueOf(data.getKillstreak());
             case "bestkillstreak" -> String.valueOf(data.getBestKillstreak());
+            case "wins" -> String.valueOf(data.getWins());
             case "trail" -> data.getActiveTrail() == null ? "None" : data.getActiveTrail();
             case "tag" -> data.getActiveTag() == null ? "" : data.getActiveTag();
             case "title" -> data.getActiveTitle() == null ? "" : data.getActiveTitle();
             case "playtime" -> String.valueOf(data.getPlaytimeSeconds() / 60);
+            case "keys" -> String.valueOf(
+                    data.getCrateKeys("common") + data.getCrateKeys("rare") + data.getCrateKeys("epic")
+                            + data.getCrateKeys("legendary") + data.getCrateKeys("mythic"));
             default -> null;
         };
     }

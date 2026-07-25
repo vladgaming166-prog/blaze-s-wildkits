@@ -28,6 +28,8 @@ respawn:
 economy:
   coins-per-kill: 25
   coins-per-killstreak-bonus: 5
+  coins-per-win: 50
+  win-killstreak: 5
   playtime-coins: 10
   playtime-interval-minutes: 5
   daily-reward-coins: 100
@@ -42,23 +44,25 @@ rarity-chances:
   mythic: 3.0
   ultimate: 1.0
 
-# Premium gear generation (HoneySMP-style)
+# Premium gear generation — modern PvP oriented
 generation:
   # Gear band chances (should roughly sum to 100)
-  iron-chance: 60.0
-  diamond-chance: 35.0
-  netherite-partial-chance: 5.0
-  # Never full netherite — cap pieces on NETHERITE_PARTIAL band
+  iron-chance: 55.0
+  diamond-chance: 32.0
+  netherite-partial-chance: 10.0
+  full-netherite-chance: 3.0
   max-netherite-pieces: 2
 
   # Almost every combat item is enchanted
-  enchant-chance: 0.92
+  enchant-chance: 0.95
   # Anti-repeat kit selection
   recent-kit-penalty: 0.18
   last-kit-penalty: 0.04
-  mace-chance: 0.03
-  trident-chance: 0.06
-  wind-charge-chance: 0.30
+  mace-chance: 0.04
+  trident-chance: 0.07
+  wind-charge-chance: 0.32
+  totem-chance: 0.08
+  enchanted-golden-apple-chance: 0.06
 
   food-min: 16
   food-max: 32
@@ -67,23 +71,24 @@ generation:
   arrows-min: 24
   arrows-max: 64
 
-  blocks-chance: 0.85
-  golden-apple-chance: 0.85
-  water-bucket-chance: 0.70
-  lava-bucket-chance: 0.35
-  ender-pearl-chance: 0.65
-  cobweb-chance: 0.45
-  obsidian-chance: 0.35
-  tnt-chance: 0.25
+  blocks-chance: 0.88
+  golden-apple-chance: 0.88
+  water-bucket-chance: 0.75
+  lava-bucket-chance: 0.38
+  ender-pearl-chance: 0.70
+  cobweb-chance: 0.50
+  obsidian-chance: 0.38
+  tnt-chance: 0.22
   fire-charge-chance: 0.35
-  fishing-rod-chance: 0.30
-  snowball-chance: 0.35
-  egg-chance: 0.30
+  fishing-rod-chance: 0.28
+  snowball-chance: 0.32
+  egg-chance: 0.28
   shield-chance: 0.55
-  bow-chance: 0.45
-  potion-chance: 0.55
+  bow-chance: 0.48
+  potion-chance: 0.60
 
-# Set with /wk setspawn
+# Global server spawn — /wk setspawn
+# Every player joins / respawns / leaves arena here.
 spawn:
   world: world
   x: 0.5
