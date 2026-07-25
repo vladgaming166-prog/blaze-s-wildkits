@@ -38,6 +38,15 @@ public final class PlayerDataManager {
     public void loadAsync(Player player) {
         UUID uuid = player.getUniqueId();
         String name = player.getName();
+        if (!plugin.getDatabaseManager().isConnected()) {
+            cache.computeIfAbsent(uuid, id -> new PlayerData(id, name));
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                if (player.isOnline()) {
+                    plugin.getScoreboardManager().show(player);
+                }
+            });
+            return;
+        }
         plugin.getDatabaseManager().executeAsync(connection -> {
             PlayerData data = loadFromDb(connection, uuid, name);
             Bukkit.getScheduler().runTask(plugin, () -> {
@@ -102,12 +111,20 @@ public final class PlayerDataManager {
     public void saveAsync(UUID uuid) {
         PlayerData data = cache.get(uuid);
         if (data == null || !data.isDirty()) return;
+        if (!plugin.getDatabaseManager().isConnected()) {
+            // Keep dirty so a later reconnect/restart path could still try; avoid spam
+            return;
+        }
         PlayerData snapshot = copy(data);
         data.clearDirty();
         plugin.getDatabaseManager().executeAsync(connection -> upsert(connection, snapshot));
     }
 
     public void saveAllSync() {
+        if (!plugin.getDatabaseManager().isConnected()) {
+            plugin.getLogger().warning("Skipped saveAllSync: database unavailable.");
+            return;
+        }
         for (PlayerData data : cache.values()) {
             if (!data.isDirty()) continue;
             try (Connection connection = plugin.getDatabaseManager().getConnection()) {

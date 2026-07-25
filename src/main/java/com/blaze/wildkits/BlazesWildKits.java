@@ -54,7 +54,19 @@ public final class BlazesWildKits extends JavaPlugin {
         this.messageService.load();
 
         this.databaseManager = new DatabaseManager(this);
-        this.databaseManager.connect();
+        boolean databaseOk = false;
+        try {
+            databaseOk = this.databaseManager.connect();
+        } catch (Throwable t) {
+            getLogger().severe("Database bootstrap crashed unexpectedly: " + t.getMessage());
+            t.printStackTrace();
+        }
+        if (!databaseOk) {
+            getLogger().warning("WildKits is running without a persistent database.");
+            getLogger().warning("Stats/coins may reset on restart until SQLite/MySQL is fixed.");
+        } else if (this.databaseManager.isMemoryFallback()) {
+            getLogger().warning("WildKits database is in memory-fallback mode (non-persistent).");
+        }
 
         this.playerDataManager = new PlayerDataManager(this);
         this.kitManager = new KitManager(this);

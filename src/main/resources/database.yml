@@ -1,9 +1,15 @@
-# Database configuration
+# Blaze's WildKits - Database
 # type: sqlite | mysql
 type: sqlite
 
 sqlite:
+  # Relative paths are resolved under the plugin data folder
   file: wildkits.db
+  # WAL is best for concurrent reads on Linux; DELETE is safer on some network FS
+  journal-mode: WAL
+  # NORMAL is a good durability/speed balance with WAL
+  synchronous: NORMAL
+  busy-timeout-ms: 10000
 
 mysql:
   host: localhost
@@ -14,7 +20,10 @@ mysql:
   use-ssl: false
 
 pool:
+  # SQLite always forces maximum-pool-size=1 regardless of this value
   maximum-pool-size: 10
   minimum-idle: 2
   connection-timeout: 30000
   max-lifetime: 1800000
+  # Set >0 (ms) to log connection leaks in console
+  leak-detection-ms: 0

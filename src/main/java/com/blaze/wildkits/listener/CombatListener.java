@@ -30,12 +30,21 @@ public final class CombatListener implements Listener {
         if (killer != null && !killer.getUniqueId().equals(victim.getUniqueId())) {
             PlayerData killerData = plugin.getPlayerDataManager().get(killer);
             killerData.addKill();
-            plugin.getCoinManager().rewardKill(killer, killerData.getKillstreak());
+            int streak = killerData.getKillstreak();
+            int base = plugin.getConfigManager().getCoinsPerKill();
+            int bonus = plugin.getConfigManager().getCoinsPerKillstreakBonus() * Math.max(0, streak - 1);
+            plugin.getCoinManager().rewardKill(killer, streak);
             plugin.getParticleManager().playVictoryEffect(killer);
             plugin.getMessageService().send(killer, "player-kill", Map.of(
                     "victim", victim.getName(),
-                    "streak", String.valueOf(killerData.getKillstreak())
+                    "streak", String.valueOf(streak)
             ));
+            plugin.getDatabaseManager().logKillAsync(
+                    killer.getUniqueId().toString(),
+                    victim.getUniqueId().toString(),
+                    killerData.getCurrentKit(),
+                    base + bonus
+            );
             plugin.getPlayerDataManager().saveAsync(killer.getUniqueId());
             plugin.getScoreboardManager().update(killer);
         }

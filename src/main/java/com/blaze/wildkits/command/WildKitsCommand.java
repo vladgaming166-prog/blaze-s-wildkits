@@ -212,6 +212,19 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
                 String name = args.length >= 2 ? String.join(" ", Arrays.copyOfRange(args, 1, args.length)) : "WildKits";
                 plugin.getCitizensHook().createNpc(player, name);
             }
+            case "db", "dbstatus" -> {
+                if (!sender.hasPermission("wildkits.admin")) {
+                    plugin.getMessageService().send(sender, "no-permission");
+                    return true;
+                }
+                var db = plugin.getDatabaseManager();
+                sender.sendMessage("Database type: " + db.getType());
+                sender.sendMessage("Connected: " + db.isConnected());
+                sender.sendMessage("Memory fallback: " + db.isMemoryFallback());
+                if (!db.getLastError().isBlank()) {
+                    sender.sendMessage("Last error: " + db.getLastError());
+                }
+            }
             case "eventreward" -> {
                 if (!sender.hasPermission("wildkits.admin")) {
                     plugin.getMessageService().send(sender, "no-permission");
@@ -272,7 +285,7 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
         if (args.length == 1) {
             return filter(List.of("help", "kits", "gui", "shop", "particles", "trails", "random", "kit",
                     "preview", "search", "daily", "coins", "stats", "spawn", "setspawn", "reload",
-                    "givecoins", "eventreward", "npc"), args[0]);
+                    "givecoins", "eventreward", "db", "dbstatus", "npc"), args[0]);
         }
         if (args.length == 2 && (args[0].equalsIgnoreCase("kit") || args[0].equalsIgnoreCase("preview"))) {
             return filter(plugin.getKitManager().getKits().stream().map(KitDefinition::getId).collect(Collectors.toList()), args[1]);

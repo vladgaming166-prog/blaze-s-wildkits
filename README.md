@@ -51,10 +51,16 @@ Players do **not** type `/kit`. They automatically receive a smart-generated ran
 ## Build
 
 ```bash
-mvn -B clean package
+mvn -B clean verify
 ```
 
-JAR output: `target/BlazesWildKits-1.0.0.jar`
+JAR output: `target/BlazesWildKits-1.0.1.jar`
+
+`verify` runs a Linux SQLite native smoke test against the shaded JAR (`NativeDB` / `_open_utf8`).
+
+### SQLite shading notes
+
+`org.xerial:sqlite-jdbc` is bundled **without relocation**. Relocating `org.sqlite` breaks JNI native extraction on Linux (`UnsatisfiedLinkError: NativeDB._open_utf8`). Only HikariCP is relocated.
 
 ## Config files
 
