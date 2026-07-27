@@ -435,3 +435,103 @@ items:
     price: 1800
     unlock-id: fireworks
     category: Effects
+
+  booster_2x_30:
+    display-name: "<green>2x Coin Booster (30m)"
+    description: "Double coins for 30 minutes"
+    type: BOOSTER
+    icon: EXPERIENCE_BOTTLE
+    price: 1500
+    unlock-id: "2.0_30"
+    category: Boosters
+  booster_2x_60:
+    display-name: "<green>2x Coin Booster (60m)"
+    description: "Double coins for 1 hour"
+    type: BOOSTER
+    icon: EXPERIENCE_BOTTLE
+    price: 2500
+    unlock-id: "2.0_60"
+    category: Boosters
+  booster_3x_30:
+    display-name: "<gold>3x Coin Booster (30m)"
+    description: "Triple coins for 30 minutes"
+    type: BOOSTER
+    icon: EXPERIENCE_BOTTLE
+    price: 4000
+    unlock-id: "3.0_30"
+    category: Boosters
+
+  reroll_1:
+    display-name: "<light_purple>Kit Reroll x1"
+    description: "Reroll your random kit once"
+    type: KIT_REROLL
+    icon: AMETHYST_SHARD
+    price: 350
+    unlock-id: "1"
+    category: Rerolls
+  reroll_5:
+    display-name: "<light_purple>Kit Reroll x5"
+    description: "Five kit rerolls"
+    type: KIT_REROLL
+    icon: AMETHYST_CLUSTER
+    price: 1500
+    unlock-id: "5"
+    category: Rerolls
+  reroll_10:
+    display-name: "<dark_purple>Kit Reroll x10"
+    description: "Ten kit rerolls"
+    type: KIT_REROLL
+    icon: BUDDING_AMETHYST
+    price: 2800
+    unlock-id: "10"
+    category: Rerolls
+
+  key_common:
+    display-name: "<gray>Common Crate Key"
+    description: "Opens a Common crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 200
+    unlock-id: common
+    category: Crates
+  key_rare:
+    display-name: "<aqua>Rare Crate Key"
+    description: "Opens a Rare crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 500
+    unlock-id: rare
+    category: Crates
+  key_epic:
+    display-name: "<light_purple>Epic Crate Key"
+    description: "Opens an Epic crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 1200
+    unlock-id: epic
+    category: Crates
+  key_legendary:
+    display-name: "<gold>Legendary Crate Key"
+    description: "Opens a Legendary crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 2500
+    unlock-id: legendary
+    category: Crates
+  key_mythic:
+    display-name: "<red>Mythic Crate Key"
+    description: "Opens a Mythic crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 5000
+    unlock-id: mythic
+    category: Crates
+
+  join_welcome:
+    display-name: "<green>Welcome Join Message"
+    description: "Custom join message unlock"
+    type: JOIN_MESSAGE
+    icon: OAK_SIGN
+    price: 800
+    unlock-id: welcome
+    category: Titles

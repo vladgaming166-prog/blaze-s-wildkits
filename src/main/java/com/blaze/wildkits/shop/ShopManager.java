@@ -104,6 +104,7 @@ public final class ShopManager {
     public boolean owns(PlayerData data, ShopItem item) {
         return switch (item.getType()) {
             case KIT, KIT_UPGRADE -> data.hasUnlockedKit(item.getUnlockId());
+            case BOOSTER, KIT_REROLL, CRATE_KEY -> false; // consumables — always repurchaseable
             default -> data.hasCosmetic(item.getUnlockId());
         };
     }
@@ -153,6 +154,30 @@ public final class ShopManager {
             case WING_PARTICLE -> {
                 data.unlockCosmetic(item.getUnlockId());
                 data.setActiveWingParticle(item.getUnlockId());
+            }
+            case JOIN_MESSAGE -> data.unlockCosmetic(item.getUnlockId());
+            case BOOSTER -> {
+                String[] parts = item.getUnlockId().split("_");
+                double mult = 2.0;
+                long minutes = 60;
+                try {
+                    if (parts.length >= 1) mult = Double.parseDouble(parts[0]);
+                    if (parts.length >= 2) minutes = Long.parseLong(parts[1]);
+                } catch (NumberFormatException ignored) {
+                }
+                data.setCoinMultiplier(mult, minutes * 60_000L);
+            }
+            case KIT_REROLL -> {
+                int amount = 1;
+                try {
+                    amount = Math.max(1, Integer.parseInt(item.getUnlockId()));
+                } catch (NumberFormatException ignored) {
+                }
+                data.addKitRerolls(amount);
+            }
+            case CRATE_KEY -> {
+                String rarity = item.getUnlockId() == null ? "common" : item.getUnlockId();
+                data.addCrateKeys(rarity, 1);
             }
         }
     }

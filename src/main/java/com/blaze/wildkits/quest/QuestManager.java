@@ -184,6 +184,12 @@ public final class QuestManager {
             clearType(data, QuestType.WEEKLY);
             data.setLastWeeklyQuestReset(now);
         }
+        int epochDays = (int) (now / TimeUnit.DAYS.toMillis(1));
+        int lastMonthlyDays = data.getQuestProgress("__monthly_ts");
+        if (lastMonthlyDays == 0 || epochDays - lastMonthlyDays >= 30) {
+            clearType(data, QuestType.MONTHLY);
+            data.setQuestProgress("__monthly_ts", epochDays);
+        }
     }
 
     private void clearType(PlayerData data, QuestType type) {
@@ -202,7 +208,12 @@ public final class QuestManager {
     public void openGui(Player player) {
         PlayerData data = plugin.getPlayerDataManager().get(player);
         resetIfNeeded(data);
-        Inventory inv = Bukkit.createInventory(player, 54, TextUtil.parse("<gold><bold>Quests</bold></gold>"));
+        Inventory inv = Bukkit.createInventory(player, 54, TextUtil.parse("<gradient:#FF4500:#FFD700><bold>Quests</bold></gradient>"));
+        // glass border
+        var pane = new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE).name(" ").build();
+        for (int i = 0; i < 54; i++) {
+            if (i < 9 || i >= 45 || i % 9 == 0 || i % 9 == 8) inv.setItem(i, pane);
+        }
         int slot = 10;
         for (QuestDefinition quest : quests.values()) {
             if (slot >= 44) break;

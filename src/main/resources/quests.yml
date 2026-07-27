@@ -172,3 +172,39 @@ quests:
     rewards:
       coins: 1500
       crate_key_rare: 1
+  monthly_kills_500:
+    display-name: "<dark_purple>Monthly Warlord"
+    description: "Kill 500 players this month"
+    type: MONTHLY
+    objective: kill
+    target: 500
+    rewards:
+      coins: 10000
+      crate_key_legendary: 2
+      xp: 2000
+  monthly_wins_50:
+    display-name: "<gold>Monthly Champion"
+    description: "Win 50 streak milestones"
+    type: MONTHLY
+    objective: win
+    target: 50
+    rewards:
+      coins: 8000
+      crate_key_epic: 3
+  monthly_crates_100:
+    display-name: "<aqua>Monthly Crate King"
+    description: "Open 100 crates"
+    type: MONTHLY
+    objective: crate_open
+    target: 100
+    rewards:
+      coins: 6000
+      crate_key_mythic: 1
+  monthly_kits_200:
+    display-name: "<yellow>Monthly Collector"
+    description: "Receive 200 random kits"
+    type: MONTHLY
+    objective: receive_kit
+    target: 200
+    rewards:
+      coins: 5000

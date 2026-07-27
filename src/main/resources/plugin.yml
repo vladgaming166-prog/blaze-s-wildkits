@@ -3,7 +3,7 @@ version: ${project.version}
 main: com.blaze.wildkits.BlazesWildKits
 api-version: '1.21'
 authors: [Blaze]
-description: Premium KitPvP with arenas, quests, crates, cosmetics, and smart kits
+description: Premium KitPvP with ultra random kits, cosmetics, quests, and crates
 website: https://github.com/vladgaming166-prog/blaze-s-wildkits
 softdepend: [PlaceholderAPI, Vault, LuckPerms, Citizens]
 commands:
@@ -21,7 +21,7 @@ permissions:
     description: Use WildKits commands and GUI
     default: true
   wildkits.admin:
-    description: Admin commands (reload, setspawn, configure, crates)
+    description: Admin commands (reload, setspawn, crates)
     default: op
   wildkits.kit.*:
     description: Access all kits

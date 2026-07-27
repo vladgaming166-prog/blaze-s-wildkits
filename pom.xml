@@ -6,7 +6,7 @@
 
     <groupId>com.blaze</groupId>
     <artifactId>BlazesWildKits</artifactId>
-    <version>1.3.0</version>
+    <version>1.4.0</version>
     <packaging>jar</packaging>
 
     <name>Blaze's WildKits</name>

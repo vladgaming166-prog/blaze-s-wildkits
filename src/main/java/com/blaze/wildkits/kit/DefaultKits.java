@@ -6,389 +6,138 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Ships 200+ PvP-focused WildKits templates.
+ * 250+ handcrafted PvP kit templates. Each still randomizes gear via SmartKitGenerator.
  */
 public final class DefaultKits {
 
     private DefaultKits() {}
 
     public static List<KitDefinition> createAll() {
-        List<KitDefinition> kits = new ArrayList<>();
-        kits.add(kit("starter", "Iron Recruit", "Reliable iron opener", KitRarity.COMMON, Material.IRON_SWORD, "wildkits.kit.starter", "General", true, 0, "balanced", false, false));
-        kits.add(kit("warrior", "Diamond Warrior", "Diamond melee pressure", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.warrior", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("knight", "Shield Knight", "Frontline shield fighter", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.knight", "Melee", true, 0, "knight", false, false));
-        kits.add(kit("tank", "Iron Tank", "Heavy defense kit", KitRarity.UNCOMMON, Material.IRON_CHESTPLATE, "wildkits.kit.tank", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("assassin", "Pearl Assassin", "Pearls and burst damage", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.assassin", "Stealth", false, 500, "assassin", false, false));
-        kits.add(kit("archer", "Power Archer", "Bow dominance", KitRarity.COMMON, Material.BOW, "wildkits.kit.archer", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("mage", "Potion Mage", "Splash control kit", KitRarity.RARE, Material.SPLASH_POTION, "wildkits.kit.mage", "Magic", false, 750, "mage", false, true));
-        kits.add(kit("miner", "Diamond Miner", "Pickaxe and torches", KitRarity.COMMON, Material.DIAMOND_PICKAXE, "wildkits.kit.miner", "Utility", true, 0, "miner", false, false));
-        kits.add(kit("builder", "Bridge Builder", "Blocks and scaffolding", KitRarity.COMMON, Material.SCAFFOLDING, "wildkits.kit.builder", "Utility", true, 0, "builder", false, false));
-        kits.add(kit("hunter", "Crossbow Hunter", "Crossbow pursuit kit", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.hunter", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("farmer", "Golden Farmer", "Food surplus kit", KitRarity.COMMON, Material.GOLDEN_CARROT, "wildkits.kit.farmer", "Utility", true, 0, "farmer", false, false));
-        kits.add(kit("explorer", "Trail Explorer", "Travel utility kit", KitRarity.COMMON, Material.COMPASS, "wildkits.kit.explorer", "Utility", true, 0, "explorer", false, false));
-        kits.add(kit("pvp", "PvP Striker", "Classic diamond PvP", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("nether", "Nether Raider", "Fireproof nether assault", KitRarity.RARE, Material.NETHERRACK, "wildkits.kit.nether", "Elemental", false, 800, "nether", false, false));
-        kits.add(kit("end", "End Fighter", "Pearls and chorus", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.end", "Elemental", false, 900, "end", false, false));
-        kits.add(kit("diamond", "Diamond Assault", "Full diamond pressure", KitRarity.EPIC, Material.DIAMOND_CHESTPLATE, "wildkits.kit.diamond", "Elite", false, 1500, "balanced", false, false));
-        kits.add(kit("netherite", "Partial Netherite", "Rare netherite fragments", KitRarity.LEGENDARY, Material.NETHERITE_SWORD, "wildkits.kit.netherite", "Elite", false, 3000, "balanced", false, false));
-        kits.add(kit("lucky", "Lucky Roll", "High variance loot", KitRarity.RARE, Material.GOLD_INGOT, "wildkits.kit.lucky", "Special", false, 1000, "chaos", false, false));
-        kits.add(kit("op", "Chaos Overload", "Showcase chaos kit", KitRarity.ULTIMATE, Material.NETHER_STAR, "wildkits.kit.op", "Elite", false, 10000, "chaos", false, false));
-        kits.add(kit("legend", "Legend Blade", "Legendary presence", KitRarity.LEGENDARY, Material.GOLDEN_HELMET, "wildkits.kit.legend", "Elite", false, 4000, "champion", false, false));
-        kits.add(kit("mythic", "Mythic Edge", "Mythic-grade arms", KitRarity.MYTHIC, Material.DRAGON_EGG, "wildkits.kit.mythic", "Elite", false, 6000, "mystic", false, false));
-        kits.add(kit("champion", "Arena Champion", "Tournament kit", KitRarity.EPIC, Material.DIAMOND_HELMET, "wildkits.kit.champion", "Elite", false, 2000, "champion", false, false));
-        kits.add(kit("elite", "Elite Guard", "Elite standard", KitRarity.EPIC, Material.DIAMOND_BOOTS, "wildkits.kit.elite", "Elite", false, 1800, "knight", false, false));
-        kits.add(kit("lava", "Lava Bomber", "Lava and fire charges", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava", "Elemental", false, 850, "lava", false, false));
-        kits.add(kit("ice", "Ice Mage", "Frost control", KitRarity.RARE, Material.PACKED_ICE, "wildkits.kit.ice", "Elemental", false, 850, "ice", false, true));
-        kits.add(kit("storm", "Thunder Storm", "Trident tempest", KitRarity.EPIC, Material.TRIDENT, "wildkits.kit.storm", "Elemental", false, 1600, "thunder", false, true));
-        kits.add(kit("speed", "Speed Runner", "Swift mobility", KitRarity.UNCOMMON, Material.SUGAR, "wildkits.kit.speed", "Mobility", true, 0, "speed", false, false));
-        kits.add(kit("sniper", "Longbow Sniper", "Precision arrows", KitRarity.RARE, Material.ARROW, "wildkits.kit.sniper", "Ranged", false, 700, "sniper", true, false));
-        kits.add(kit("samurai", "Samurai Blade", "Blade discipline", KitRarity.EPIC, Material.DIAMOND_SWORD, "wildkits.kit.samurai", "Melee", false, 1700, "samurai", false, false));
-        kits.add(kit("pirate", "Ocean Pirate", "Trident sea kit", KitRarity.UNCOMMON, Material.TRIDENT, "wildkits.kit.pirate", "Special", true, 0, "pirate", false, false));
-        kits.add(kit("ninja", "Shadow Ninja", "Silent lethal kit", KitRarity.RARE, Material.BLACK_DYE, "wildkits.kit.ninja", "Stealth", false, 900, "ninja", false, false));
-        kits.add(kit("viking", "Viking Raider", "Axe fury", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.viking", "Melee", true, 0, "viking", false, false));
-        kits.add(kit("gladiator", "Gladiator", "Arena brawler", KitRarity.UNCOMMON, Material.IRON_CHESTPLATE, "wildkits.kit.gladiator", "Melee", true, 0, "gladiator", false, false));
-        kits.add(kit("scout", "Scout Runner", "Light recon kit", KitRarity.COMMON, Material.LEATHER_BOOTS, "wildkits.kit.scout", "Mobility", true, 0, "scout", false, false));
-        kits.add(kit("berserker", "Berserker", "Aggressive axe rush", KitRarity.RARE, Material.DIAMOND_AXE, "wildkits.kit.berserker", "Melee", false, 650, "berserker", false, false));
-        kits.add(kit("paladin", "Guardian Paladin", "Holy defender", KitRarity.EPIC, Material.GOLDEN_APPLE, "wildkits.kit.paladin", "Melee", false, 1900, "guardian", false, false));
-        kits.add(kit("rogue", "Rogue Duelist", "Shadowy duelist", KitRarity.RARE, Material.ENDER_EYE, "wildkits.kit.rogue", "Stealth", false, 800, "assassin", false, false));
-        kits.add(kit("ranger", "Wild Ranger", "Wilderness marksman", KitRarity.UNCOMMON, Material.BOW, "wildkits.kit.ranger", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("warlock", "Warlock", "Dark magic kit", KitRarity.EPIC, Material.SOUL_LANTERN, "wildkits.kit.warlock", "Magic", false, 2100, "mage", false, true));
-        kits.add(kit("necromancer", "Necromancer", "Soul mage", KitRarity.LEGENDARY, Material.WITHER_SKELETON_SKULL, "wildkits.kit.necromancer", "Magic", false, 4500, "mage", false, true));
-        kits.add(kit("druid", "Forest Druid", "Nature kit", KitRarity.RARE, Material.OAK_SAPLING, "wildkits.kit.druid", "Magic", false, 950, "forest", false, true));
-        kits.add(kit("phoenix", "Phoenix", "Ash rebirth kit", KitRarity.MYTHIC, Material.BLAZE_POWDER, "wildkits.kit.phoenix", "Elemental", false, 7000, "phoenix", false, false));
-        kits.add(kit("frostbite", "Frozen Bite", "Deep freeze", KitRarity.EPIC, Material.BLUE_ICE, "wildkits.kit.frostbite", "Elemental", false, 1750, "frozen", false, false));
-        kits.add(kit("thunder", "Thunder Strike", "Lightning kit", KitRarity.EPIC, Material.LIGHTNING_ROD, "wildkits.kit.thunder", "Elemental", false, 1800, "thunder", false, true));
-        kits.add(kit("shadow", "Shadow", "Umbral assassin", KitRarity.LEGENDARY, Material.BLACK_CONCRETE, "wildkits.kit.shadow", "Stealth", false, 4200, "shadow", false, false));
-        kits.add(kit("crimson", "Crimson Raider", "Crimson nether", KitRarity.RARE, Material.CRIMSON_NYLIUM, "wildkits.kit.crimson", "Elemental", false, 1000, "nether", false, false));
-        kits.add(kit("warden", "Deep Warden", "Deep dark terror", KitRarity.MYTHIC, Material.SCULK_SHRIEKER, "wildkits.kit.warden", "Elite", false, 8000, "tank", false, false));
-        kits.add(kit("guardian", "Ocean Guardian", "Protective ocean", KitRarity.UNCOMMON, Material.PRISMARINE_SHARD, "wildkits.kit.guardian", "Special", true, 0, "ocean", false, false));
-        kits.add(kit("diver", "Deep Diver", "Underwater fighter", KitRarity.COMMON, Material.HEART_OF_THE_SEA, "wildkits.kit.diver", "Special", true, 0, "ocean", false, false));
-        kits.add(kit("bomber", "TNT Expert", "Explosive pressure", KitRarity.RARE, Material.TNT, "wildkits.kit.bomber", "Special", false, 1100, "bomber", false, false));
-        kits.add(kit("cannoneer", "Fire Cannoneer", "Heavy projectiles", KitRarity.EPIC, Material.FIRE_CHARGE, "wildkits.kit.cannoneer", "Ranged", false, 2000, "sniper", true, false));
-        kits.add(kit("marksman", "Marksman", "Steady aim", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.marksman", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("duelist", "Duelist", "1v1 specialist", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.duelist", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("brawler", "Axe Brawler", "Close-quarters axe", KitRarity.COMMON, Material.DIAMOND_AXE, "wildkits.kit.brawler", "Melee", true, 0, "viking", false, false));
-        kits.add(kit("sentinel", "Shield Sentinel", "Watchful defender", KitRarity.RARE, Material.SHIELD, "wildkits.kit.sentinel", "Melee", false, 900, "tank", false, false));
-        kits.add(kit("templar", "Royal Templar", "Sacred knight", KitRarity.LEGENDARY, Material.GOLDEN_CHESTPLATE, "wildkits.kit.templar", "Melee", false, 4800, "royal", false, false));
-        kits.add(kit("reaper", "Shadow Reaper", "Harvest souls", KitRarity.MYTHIC, Material.NETHERITE_HOE, "wildkits.kit.reaper", "Stealth", false, 7500, "shadow", false, false));
-        kits.add(kit("ghost", "Ghost", "Hard to pin", KitRarity.EPIC, Material.GHAST_TEAR, "wildkits.kit.ghost", "Stealth", false, 2200, "ninja", false, false));
-        kits.add(kit("vampire", "Vampire", "Life-steal vibes", KitRarity.LEGENDARY, Material.REDSTONE_BLOCK, "wildkits.kit.vampire", "Stealth", false, 5000, "assassin", false, false));
-        kits.add(kit("werewolf", "Werewolf", "Feral hunter", KitRarity.EPIC, Material.BONE, "wildkits.kit.werewolf", "Melee", false, 2300, "hunter", true, false));
-        kits.add(kit("alchemist", "Potion Master", "Potion specialist", KitRarity.RARE, Material.BREWING_STAND, "wildkits.kit.alchemist", "Magic", false, 1200, "potion", false, true));
-        kits.add(kit("enchanter", "Enchanter", "Enchant-heavy", KitRarity.EPIC, Material.ENCHANTING_TABLE, "wildkits.kit.enchanter", "Magic", false, 2400, "magic", false, true));
-        kits.add(kit("sorcerer", "Crystal Sorcerer", "Arcane barrage", KitRarity.LEGENDARY, Material.AMETHYST_SHARD, "wildkits.kit.sorcerer", "Magic", false, 4600, "crystal", false, true));
-        kits.add(kit("pyromancer", "Pyromancer", "Fire magic", KitRarity.EPIC, Material.BLAZE_ROD, "wildkits.kit.pyromancer", "Magic", false, 2500, "pyro", false, true));
-        kits.add(kit("cryomancer", "Cryomancer", "Ice magic", KitRarity.EPIC, Material.SNOWBALL, "wildkits.kit.cryomancer", "Magic", false, 2500, "ice", false, true));
-        kits.add(kit("electromancer", "Stormcaller", "Shock magic", KitRarity.LEGENDARY, Material.COPPER_INGOT, "wildkits.kit.electromancer", "Magic", false, 4700, "storm", false, true));
-        kits.add(kit("geomancer", "Mountain Mage", "Earth shaper", KitRarity.RARE, Material.DIRT, "wildkits.kit.geomancer", "Magic", false, 1300, "mountain", false, true));
-        kits.add(kit("aeromancer", "Wind Runner", "Wind dancer", KitRarity.RARE, Material.FEATHER, "wildkits.kit.aeromancer", "Magic", false, 1300, "speed", false, true));
-        kits.add(kit("engineer", "Trap Master", "Utility gadgets", KitRarity.UNCOMMON, Material.TRIPWIRE_HOOK, "wildkits.kit.engineer", "Utility", true, 0, "trap", false, false));
-        kits.add(kit("architect", "Fortress Architect", "Master builder", KitRarity.RARE, Material.BRICKS, "wildkits.kit.architect", "Utility", false, 1000, "fortress", false, false));
-        kits.add(kit("quarry", "Quarry Miner", "Heavy mining", KitRarity.UNCOMMON, Material.DIAMOND_PICKAXE, "wildkits.kit.quarry", "Utility", true, 0, "miner", false, false));
-        kits.add(kit("lumberjack", "Lumberjack", "Axe and wood", KitRarity.COMMON, Material.DIAMOND_AXE, "wildkits.kit.lumberjack", "Utility", true, 0, "lumberjack", false, false));
-        kits.add(kit("fisherman", "Fisherman", "Rod and ocean", KitRarity.COMMON, Material.FISHING_ROD, "wildkits.kit.fisherman", "Utility", true, 0, "pirate", false, false));
-        kits.add(kit("chef", "Chef", "Food abundance", KitRarity.COMMON, Material.COOKED_BEEF, "wildkits.kit.chef", "Utility", true, 0, "farmer", false, false));
-        kits.add(kit("beekeeper", "Beekeeper", "Sweet survival", KitRarity.UNCOMMON, Material.HONEYCOMB, "wildkits.kit.beekeeper", "Utility", true, 0, "farmer", false, false));
-        kits.add(kit("herbalist", "Herbalist", "Natural remedies", KitRarity.UNCOMMON, Material.GLISTERING_MELON_SLICE, "wildkits.kit.herbalist", "Utility", true, 0, "farmer", false, false));
-        kits.add(kit("nomad", "Desert Nomad", "Travel light", KitRarity.COMMON, Material.MAP, "wildkits.kit.nomad", "Mobility", true, 0, "desert", false, false));
-        kits.add(kit("courier", "Courier", "Speed delivery", KitRarity.UNCOMMON, Material.RABBIT_FOOT, "wildkits.kit.courier", "Mobility", true, 0, "speed", false, false));
-        kits.add(kit("parkour", "Parkourist", "Mobility specialist", KitRarity.RARE, Material.SLIME_BLOCK, "wildkits.kit.parkour", "Mobility", false, 900, "speed", false, false));
-        kits.add(kit("skirmisher", "Skirmisher", "Hit and run", KitRarity.UNCOMMON, Material.LEATHER_CHESTPLATE, "wildkits.kit.skirmisher", "Mobility", true, 0, "assassin", false, false));
-        kits.add(kit("raider", "Raider", "Aggressive loot", KitRarity.RARE, Material.CROSSBOW, "wildkits.kit.raider", "Melee", false, 1100, "viking", false, false));
-        kits.add(kit("bandit", "Bandit", "Dirty fighter", KitRarity.COMMON, Material.IRON_SWORD, "wildkits.kit.bandit", "Stealth", true, 0, "assassin", false, false));
-        kits.add(kit("mercenary", "Mercenary", "Paid killer", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.mercenary", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("captain", "Captain", "Commanding presence", KitRarity.EPIC, Material.GOLDEN_HELMET, "wildkits.kit.captain", "Special", false, 2600, "pirate", false, false));
-        kits.add(kit("admiral", "Admiral", "Naval supremacy", KitRarity.LEGENDARY, Material.HEART_OF_THE_SEA, "wildkits.kit.admiral", "Special", false, 4900, "ocean", false, false));
-        kits.add(kit("corsair", "Corsair", "Swift sea raider", KitRarity.RARE, Material.NAUTILUS_SHELL, "wildkits.kit.corsair", "Special", false, 1400, "pirate", false, false));
-        kits.add(kit("musketeer", "Musketeer", "Classic shot", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.musketeer", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("longbow", "Longbow", "Heavy bow", KitRarity.RARE, Material.BOW, "wildkits.kit.longbow", "Ranged", false, 1000, "sniper", true, false));
-        kits.add(kit("crossbowman", "Crossbowman", "Piercing bolts", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.crossbowman", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("trapper", "Trap Master", "Field control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.trapper", "Special", false, 1150, "trap", true, false));
-        kits.add(kit("beastmaster", "Beastmaster", "Hunt ferocity", KitRarity.EPIC, Material.BONE, "wildkits.kit.beastmaster", "Ranged", false, 2100, "hunter", true, false));
-        kits.add(kit("falconer", "Falconer", "Aerial hunter", KitRarity.RARE, Material.FEATHER, "wildkits.kit.falconer", "Ranged", false, 1200, "hunter", true, false));
-        kits.add(kit("desert", "Desert Stalker", "Sandstorm survivor", KitRarity.COMMON, Material.SANDSTONE, "wildkits.kit.desert", "Elemental", true, 0, "desert", false, false));
-        kits.add(kit("jungle", "Jungle Scout", "Dense foliage", KitRarity.COMMON, Material.VINE, "wildkits.kit.jungle", "Elemental", true, 0, "jungle", false, false));
-        kits.add(kit("tundra", "Tundra", "Frozen wastes", KitRarity.UNCOMMON, Material.SNOW_BLOCK, "wildkits.kit.tundra", "Elemental", true, 0, "frozen", false, false));
-        kits.add(kit("volcano", "Inferno", "Eruption offense", KitRarity.LEGENDARY, Material.MAGMA_BLOCK, "wildkits.kit.volcano", "Elemental", false, 5100, "inferno", false, false));
-        kits.add(kit("ocean", "Ocean", "Tidal warrior", KitRarity.UNCOMMON, Material.PRISMARINE, "wildkits.kit.ocean", "Elemental", true, 0, "ocean", false, false));
-        kits.add(kit("swamp", "Swamp", "Murky ambusher", KitRarity.COMMON, Material.LILY_PAD, "wildkits.kit.swamp", "Stealth", true, 0, "assassin", false, false));
-        kits.add(kit("cave", "Cave Miner", "Underground fighter", KitRarity.COMMON, Material.COBBLESTONE, "wildkits.kit.cave", "Utility", true, 0, "miner", false, false));
-        kits.add(kit("sky", "Sky Runner", "High ground", KitRarity.RARE, Material.ELYTRA, "wildkits.kit.sky", "Mobility", false, 1500, "speed", false, false));
-        kits.add(kit("void", "Void Walker", "Void-touched", KitRarity.MYTHIC, Material.END_CRYSTAL, "wildkits.kit.void", "Elite", false, 8500, "void", false, true));
-        kits.add(kit("astral", "Galaxy Astral", "Starlight magic", KitRarity.LEGENDARY, Material.END_ROD, "wildkits.kit.astral", "Magic", false, 5200, "galaxy", false, true));
-        kits.add(kit("cosmic", "Galaxy Core", "Universe kit", KitRarity.ULTIMATE, Material.NETHER_STAR, "wildkits.kit.cosmic", "Elite", false, 12000, "galaxy", false, true));
-        kits.add(kit("royal", "Royal Guard", "Royal fighter", KitRarity.EPIC, Material.GOLDEN_SWORD, "wildkits.kit.royal", "Elite", false, 2800, "royal", false, false));
-        kits.add(kit("imperial", "Imperial", "Empire elite", KitRarity.LEGENDARY, Material.DIAMOND_BLOCK, "wildkits.kit.imperial", "Elite", false, 5500, "royal", false, false));
-        kits.add(kit("emperor", "Emperor", "Absolute authority", KitRarity.ULTIMATE, Material.GOLD_BLOCK, "wildkits.kit.emperor", "Elite", false, 15000, "royal", false, false));
-        kits.add(kit("noble", "Noble", "Aristocrat fighter", KitRarity.RARE, Material.GOLD_INGOT, "wildkits.kit.noble", "Elite", false, 1600, "royal", false, false));
-        kits.add(kit("squire", "Squire", "Training knight", KitRarity.COMMON, Material.IRON_SWORD, "wildkits.kit.squire", "Melee", true, 0, "knight", false, false));
-        kits.add(kit("cavalier", "Cavalier", "Charge kit", KitRarity.UNCOMMON, Material.SADDLE, "wildkits.kit.cavalier", "Melee", true, 0, "knight", false, false));
-        kits.add(kit("dragoon", "Dragoon", "Shock troop", KitRarity.EPIC, Material.IRON_HORSE_ARMOR, "wildkits.kit.dragoon", "Melee", false, 2700, "balanced", false, false));
-        kits.add(kit("centurion", "Centurion", "Legion commander", KitRarity.EPIC, Material.IRON_CHESTPLATE, "wildkits.kit.centurion", "Melee", false, 2900, "tank", false, false));
-        kits.add(kit("spartan", "Spartan", "Shield spirit", KitRarity.RARE, Material.SHIELD, "wildkits.kit.spartan", "Melee", false, 1450, "tank", false, false));
-        kits.add(kit("amazon", "Amazon", "Fierce warrior", KitRarity.RARE, Material.BOW, "wildkits.kit.amazon", "Ranged", false, 1450, "archer", true, false));
-        kits.add(kit("valkyrie", "Valkyrie", "Winged champion", KitRarity.LEGENDARY, Material.ELYTRA, "wildkits.kit.valkyrie", "Elite", false, 5600, "speed", false, false));
-        kits.add(kit("olympus", "Olympus", "Godlike showcase", KitRarity.ULTIMATE, Material.TOTEM_OF_UNDYING, "wildkits.kit.olympus", "Elite", false, 20000, "mystic", false, true));
-        kits.add(kit("titan", "Titan", "Colossal strength", KitRarity.MYTHIC, Material.ANVIL, "wildkits.kit.titan", "Melee", false, 9000, "tank", false, false));
-        kits.add(kit("colossus", "Colossus", "Unstoppable", KitRarity.MYTHIC, Material.NETHERITE_CHESTPLATE, "wildkits.kit.colossus", "Melee", false, 9500, "tank", false, false));
-        kits.add(kit("juggernaut", "Juggernaut", "Slow but deadly", KitRarity.LEGENDARY, Material.NETHERITE_HELMET, "wildkits.kit.juggernaut", "Melee", false, 5800, "tank", false, false));
-        kits.add(kit("blitz", "Blitz", "Lightning rush", KitRarity.EPIC, Material.SUGAR, "wildkits.kit.blitz", "Mobility", false, 2300, "speed", false, false));
-        kits.add(kit("flash", "Flash", "Pure speed", KitRarity.RARE, Material.RABBIT_FOOT, "wildkits.kit.flash", "Mobility", false, 1250, "speed", false, false));
-        kits.add(kit("dash", "Dash", "Burst fighter", KitRarity.COMMON, Material.LEATHER_BOOTS, "wildkits.kit.dash", "Mobility", true, 0, "speed", false, false));
-        kits.add(kit("stormcaller", "Storm Lord", "Weather war mage", KitRarity.LEGENDARY, Material.TRIDENT, "wildkits.kit.stormcaller", "Magic", false, 5400, "storm", false, true));
-        kits.add(kit("tidehunter", "Tidehunter", "Oceanic predator", KitRarity.EPIC, Material.TRIDENT, "wildkits.kit.tidehunter", "Special", false, 2600, "ocean", false, false));
-        kits.add(kit("sandstalker", "Sandstalker", "Desert ambush", KitRarity.RARE, Material.SAND, "wildkits.kit.sandstalker", "Stealth", false, 1350, "desert", false, false));
-        kits.add(kit("nightblade", "Nightblade", "Moonlit killer", KitRarity.EPIC, Material.DIAMOND_SWORD, "wildkits.kit.nightblade", "Stealth", false, 2750, "ninja", false, false));
-        kits.add(kit("dawnbreaker", "Dawnbreaker", "Radiant melee", KitRarity.LEGENDARY, Material.GOLDEN_SWORD, "wildkits.kit.dawnbreaker", "Melee", false, 5300, "knight", false, false));
-        kits.add(kit("dusk", "Dusk", "Twilight skirmisher", KitRarity.RARE, Material.GRAY_DYE, "wildkits.kit.dusk", "Stealth", false, 1400, "assassin", false, false));
-        kits.add(kit("solar", "Solar", "Sunfire warrior", KitRarity.EPIC, Material.SUNFLOWER, "wildkits.kit.solar", "Elemental", false, 2550, "lava", false, false));
-        kits.add(kit("lunar", "Lunar", "Moonlit magic", KitRarity.EPIC, Material.END_STONE, "wildkits.kit.lunar", "Magic", false, 2550, "mage", false, true));
-        kits.add(kit("stellar", "Stellar", "Star-forged", KitRarity.MYTHIC, Material.NETHER_STAR, "wildkits.kit.stellar", "Elite", false, 8800, "galaxy", false, true));
-        kits.add(kit("obsidian", "Obsidian Wall", "Hardened defense", KitRarity.RARE, Material.OBSIDIAN, "wildkits.kit.obsidian", "Melee", false, 1500, "fortress", false, false));
-        kits.add(kit("emerald", "Emerald", "Lucky green", KitRarity.EPIC, Material.EMERALD, "wildkits.kit.emerald", "Special", false, 3000, "lucky", false, false));
-        kits.add(kit("ruby", "Ruby", "Crimson gem", KitRarity.EPIC, Material.REDSTONE, "wildkits.kit.ruby", "Special", false, 3000, "balanced", false, false));
-        kits.add(kit("sapphire", "Sapphire", "Azure gem magic", KitRarity.EPIC, Material.LAPIS_LAZULI, "wildkits.kit.sapphire", "Magic", false, 3000, "mage", false, true));
-        kits.add(kit("amethyst", "Amethyst", "Crystal mage", KitRarity.RARE, Material.AMETHYST_CLUSTER, "wildkits.kit.amethyst", "Magic", false, 1550, "crystal", false, true));
-        kits.add(kit("copper", "Copper", "Oxidized fighter", KitRarity.COMMON, Material.COPPER_BLOCK, "wildkits.kit.copper", "General", true, 0, "balanced", false, false));
-        kits.add(kit("ironclad", "Ironclad", "Solid iron", KitRarity.UNCOMMON, Material.IRON_BLOCK, "wildkits.kit.ironclad", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gilded", "Gilded", "Golden flashy", KitRarity.RARE, Material.GOLD_BLOCK, "wildkits.kit.gilded", "Elite", false, 1700, "royal", false, false));
-        kits.add(kit("prismatic", "Prismatic", "Rainbow rarity", KitRarity.MYTHIC, Material.TINTED_GLASS, "wildkits.kit.prismatic", "Special", false, 9200, "crystal", false, true));
-        kits.add(kit("chaos", "Chaos", "Unstable RNG", KitRarity.LEGENDARY, Material.ENDER_EYE, "wildkits.kit.chaos", "Special", false, 6000, "chaos", false, false));
-        kits.add(kit("order", "Order", "Perfectly balanced", KitRarity.EPIC, Material.COMPARATOR, "wildkits.kit.order", "Special", false, 2800, "balanced", false, false));
-        kits.add(kit("fortune", "Fortune", "High luck feel", KitRarity.RARE, Material.RABBIT_FOOT, "wildkits.kit.fortune", "Special", false, 1600, "lucky", false, false));
-        kits.add(kit("gambler", "Gambler", "All-in random", KitRarity.UNCOMMON, Material.GOLD_NUGGET, "wildkits.kit.gambler", "Special", true, 0, "lucky", false, false));
-        kits.add(kit("wildcard", "Wildcard", "Anything happens", KitRarity.EPIC, Material.PLAYER_HEAD, "wildkits.kit.wildcard", "Special", false, 2500, "chaos", false, false));
-        kits.add(kit("seasoned", "Seasoned", "Veteran loadout", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.seasoned", "General", true, 0, "balanced", false, false));
-        kits.add(kit("recruit", "Recruit", "Training kit", KitRarity.COMMON, Material.IRON_SWORD, "wildkits.kit.recruit", "General", true, 0, "balanced", false, false));
-        kits.add(kit("veteran", "Veteran", "Battle-tested", KitRarity.RARE, Material.SHIELD, "wildkits.kit.veteran", "General", false, 1200, "balanced", false, false));
-        kits.add(kit("hero", "Hero", "Heroic comeback", KitRarity.LEGENDARY, Material.TOTEM_OF_UNDYING, "wildkits.kit.hero", "Elite", false, 5700, "champion", false, false));
-        kits.add(kit("savior", "Savior", "Supportive fighter", KitRarity.EPIC, Material.GOLDEN_APPLE, "wildkits.kit.savior", "Special", false, 2400, "guardian", false, false));
-        kits.add(kit("demon", "Demon", "Infernal menace", KitRarity.MYTHIC, Material.MAGMA_CREAM, "wildkits.kit.demon", "Elemental", false, 8600, "inferno", false, true));
-        kits.add(kit("angel", "Angel", "Radiant protector", KitRarity.MYTHIC, Material.GLOWSTONE, "wildkits.kit.angel", "Elite", false, 8600, "guardian", false, true));
-        kits.add(kit("dragon", "Dragon", "Dragonfire", KitRarity.ULTIMATE, Material.DRAGON_HEAD, "wildkits.kit.dragon", "Elite", false, 25000, "dragon", false, true));
-        kits.add(kit("hydra", "Hydra", "Multi-threat", KitRarity.MYTHIC, Material.CREEPER_HEAD, "wildkits.kit.hydra", "Elite", false, 9100, "chaos", false, false));
-        kits.add(kit("kraken", "Kraken", "Deep sea terror", KitRarity.LEGENDARY, Material.DARK_PRISMARINE, "wildkits.kit.kraken", "Special", false, 5900, "ocean", false, false));
-        kits.add(kit("phoenixlord", "Phoenix Lord", "Rebirth incarnate", KitRarity.ULTIMATE, Material.BLAZE_POWDER, "wildkits.kit.phoenixlord", "Elemental", false, 22000, "phoenix", false, true));
-        kits.add(kit("stormlord", "Storm Lord", "Tempest emperor", KitRarity.ULTIMATE, Material.TRIDENT, "wildkits.kit.stormlord", "Elemental", false, 22000, "storm", false, true));
-        kits.add(kit("shadowlord", "Shadow Lord", "Absolute stealth", KitRarity.ULTIMATE, Material.BLACK_WOOL, "wildkits.kit.shadowlord", "Stealth", false, 22000, "shadow", false, false));
-        kits.add(kit("kitmaster", "Kit Master", "Master of kits", KitRarity.ULTIMATE, Material.CHEST, "wildkits.kit.kitmaster", "Elite", false, 30000, "balanced", false, false));
-        kits.add(kit("wild", "Wild", "True WildKits spirit", KitRarity.LEGENDARY, Material.FIREWORK_ROCKET, "wildkits.kit.wild", "Special", false, 6500, "chaos", false, false));
-        kits.add(kit("blaze", "Blaze", "Signature Blaze kit", KitRarity.MYTHIC, Material.BLAZE_ROD, "wildkits.kit.blaze", "Elite", false, 10000, "blaze", false, true));
-        kits.add(kit("diamond_axe", "Diamond Axe Only", "Diamond axe specialist", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.diamond_axe", "Melee", true, 0, "viking", false, false));
-        kits.add(kit("diamond_pick", "Diamond Pickaxe", "Mining pressure kit", KitRarity.COMMON, Material.DIAMOND_PICKAXE, "wildkits.kit.diamond_pick", "Utility", true, 0, "miner", false, false));
-        kits.add(kit("trident_kit", "Trident Fighter", "Trident focused", KitRarity.RARE, Material.TRIDENT, "wildkits.kit.trident_kit", "Special", true, 0, "thunder", false, false));
-        kits.add(kit("shield_kit", "Shield Wall", "Shield specialist", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.shield_kit", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("bow_kit", "Bow Kit", "Pure bow kit", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_kit", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("crossbow_kit", "Crossbow Kit", "Pure crossbow", KitRarity.COMMON, Material.CROSSBOW, "wildkits.kit.crossbow_kit", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("helmet_diamond_chest", "Helmet Split", "Helmet + diamond chest style", KitRarity.UNCOMMON, Material.DIAMOND_CHESTPLATE, "wildkits.kit.helmet_diamond_chest", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("nether_sword_dia", "Nether Sword Diamond", "Netherite sword + diamond armor", KitRarity.EPIC, Material.NETHERITE_SWORD, "wildkits.kit.nether_sword_dia", "Elite", false, 2200, "balanced", false, false));
-        kits.add(kit("pyromancer_blaze", "Blaze Pyromancer", "Fire charges and lava", KitRarity.RARE, Material.FIRE_CHARGE, "wildkits.kit.pyromancer_blaze", "Elemental", true, 0, "blaze", false, true));
-        kits.add(kit("ancient", "Ancient", "Ancient ruins kit", KitRarity.EPIC, Material.COBBLED_DEEPSLATE, "wildkits.kit.ancient", "Special", false, 2100, "ancient", false, false));
-        kits.add(kit("mystic", "Mystic", "Mystic energies", KitRarity.EPIC, Material.AMETHYST_SHARD, "wildkits.kit.mystic", "Magic", false, 2100, "mystic", false, true));
-        kits.add(kit("inferno", "Inferno", "Pure fire kit", KitRarity.LEGENDARY, Material.MAGMA_BLOCK, "wildkits.kit.inferno", "Elemental", false, 5000, "inferno", false, false));
-        kits.add(kit("forest", "Forest", "Forest survival", KitRarity.COMMON, Material.OAK_LEAVES, "wildkits.kit.forest", "Elemental", true, 0, "forest", false, false));
-        kits.add(kit("mountain", "Mountain", "Peak climber", KitRarity.UNCOMMON, Material.STONE, "wildkits.kit.mountain", "Elemental", true, 0, "mountain", false, false));
-        kits.add(kit("bridge", "Bridge Builder", "Scaffolds and planks", KitRarity.COMMON, Material.SCAFFOLDING, "wildkits.kit.bridge", "Utility", true, 0, "bridge", false, false));
-        kits.add(kit("fortress", "Fortress", "Obsidian defense", KitRarity.RARE, Material.OBSIDIAN, "wildkits.kit.fortress", "Utility", false, 1300, "fortress", false, false));
-        kits.add(kit("tnt_expert", "TNT Expert", "Explosive expert", KitRarity.RARE, Material.TNT, "wildkits.kit.tnt_expert", "Special", false, 1400, "tnt", false, false));
-        kits.add(kit("trap_master", "Trap Master", "Cobwebs and control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.trap_master", "Special", false, 1400, "trap", false, false));
-        kits.add(kit("potion_master", "Potion Master", "Potion arsenal", KitRarity.RARE, Material.BREWING_STAND, "wildkits.kit.potion_master", "Magic", false, 1400, "potion", false, true));
-        kits.add(kit("end_fighter", "End Fighter", "End dimension kit", KitRarity.RARE, Material.END_STONE, "wildkits.kit.end_fighter", "Elemental", true, 0, "end", false, false));
-        kits.add(kit("nether_raider", "Nether Raider", "Nether assault", KitRarity.RARE, Material.NETHERRACK, "wildkits.kit.nether_raider", "Elemental", true, 0, "nether", false, false));
-        kits.add(kit("ice_mage", "Ice Mage", "Ice magic specialist", KitRarity.RARE, Material.BLUE_ICE, "wildkits.kit.ice_mage", "Magic", true, 0, "ice", false, true));
-        kits.add(kit("speed_runner", "Speed Runner", "Pure speed kit", KitRarity.UNCOMMON, Material.SUGAR, "wildkits.kit.speed_runner", "Mobility", true, 0, "speed", false, false));
-        kits.add(kit("galaxy", "Galaxy", "Cosmic fighter", KitRarity.MYTHIC, Material.END_CRYSTAL, "wildkits.kit.galaxy", "Elite", false, 7000, "galaxy", false, true));
-        kits.add(kit("crystal", "Crystal", "Crystal power", KitRarity.EPIC, Material.AMETHYST_BLOCK, "wildkits.kit.crystal", "Magic", false, 2000, "crystal", false, true));
-        kits.add(kit("chaos_core", "Chaos Core", "Total chaos kit", KitRarity.LEGENDARY, Material.ENDER_EYE, "wildkits.kit.chaos_core", "Special", false, 5500, "chaos", false, false));
-        kits.add(kit("legendary_blade", "Legendary", "Legendary template", KitRarity.LEGENDARY, Material.NETHERITE_SWORD, "wildkits.kit.legendary_blade", "Elite", false, 4500, "champion", false, false));
-        kits.add(kit("mythic_core", "Mythic Core", "Mythic template", KitRarity.MYTHIC, Material.NETHER_STAR, "wildkits.kit.mythic_core", "Elite", false, 6500, "mystic", false, false));
-        kits.add(kit("pvp_mix_1", "PvP Mix #1", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_1", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_2", "PvP Mix #2", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_2", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_3", "PvP Mix #3", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_3", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_4", "PvP Mix #4", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_4", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_5", "PvP Mix #5", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_5", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_6", "PvP Mix #6", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_6", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_7", "PvP Mix #7", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_7", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_8", "PvP Mix #8", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_8", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_9", "PvP Mix #9", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_9", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_10", "PvP Mix #10", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_10", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_11", "PvP Mix #11", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_11", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_12", "PvP Mix #12", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_12", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_13", "PvP Mix #13", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_13", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_14", "PvP Mix #14", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_14", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_15", "PvP Mix #15", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_15", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_16", "PvP Mix #16", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_16", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_17", "PvP Mix #17", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_17", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_18", "PvP Mix #18", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_18", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_19", "PvP Mix #19", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_19", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_20", "PvP Mix #20", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_20", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_21", "PvP Mix #21", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_21", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_22", "PvP Mix #22", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_22", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_23", "PvP Mix #23", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_23", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_24", "PvP Mix #24", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_24", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_25", "PvP Mix #25", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_25", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_26", "PvP Mix #26", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_26", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_27", "PvP Mix #27", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_27", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_28", "PvP Mix #28", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_28", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_29", "PvP Mix #29", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_29", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_30", "PvP Mix #30", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_30", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_31", "PvP Mix #31", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_31", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_32", "PvP Mix #32", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_32", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_33", "PvP Mix #33", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_33", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_34", "PvP Mix #34", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_34", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_35", "PvP Mix #35", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_35", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_36", "PvP Mix #36", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_36", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_37", "PvP Mix #37", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_37", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_38", "PvP Mix #38", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_38", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_39", "PvP Mix #39", "Combat mix template", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_39", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("pvp_mix_40", "PvP Mix #40", "Combat mix template", KitRarity.COMMON, Material.DIAMOND_SWORD, "wildkits.kit.pvp_mix_40", "Melee", true, 0, "balanced", false, false));
-        kits.add(kit("axe_duel_1", "Axe Duel #1", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_1", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_2", "Axe Duel #2", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_2", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_3", "Axe Duel #3", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_3", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_4", "Axe Duel #4", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_4", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_5", "Axe Duel #5", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_5", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_6", "Axe Duel #6", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_6", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_7", "Axe Duel #7", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_7", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_8", "Axe Duel #8", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_8", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_9", "Axe Duel #9", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_9", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_10", "Axe Duel #10", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_10", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_11", "Axe Duel #11", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_11", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_12", "Axe Duel #12", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_12", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_13", "Axe Duel #13", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_13", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_14", "Axe Duel #14", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_14", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_15", "Axe Duel #15", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_15", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_16", "Axe Duel #16", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_16", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_17", "Axe Duel #17", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_17", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_18", "Axe Duel #18", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_18", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_19", "Axe Duel #19", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_19", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("axe_duel_20", "Axe Duel #20", "Axe PvP template", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "wildkits.kit.axe_duel_20", "Melee", true, 0, "berserker", false, false));
-        kits.add(kit("pearl_rush_1", "Pearl Rush #1", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_1", "Stealth", false, 410, "assassin", false, false));
-        kits.add(kit("pearl_rush_2", "Pearl Rush #2", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_2", "Stealth", false, 420, "assassin", false, false));
-        kits.add(kit("pearl_rush_3", "Pearl Rush #3", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_3", "Stealth", false, 430, "assassin", false, false));
-        kits.add(kit("pearl_rush_4", "Pearl Rush #4", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_4", "Stealth", false, 440, "assassin", false, false));
-        kits.add(kit("pearl_rush_5", "Pearl Rush #5", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_5", "Stealth", false, 450, "assassin", false, false));
-        kits.add(kit("pearl_rush_6", "Pearl Rush #6", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_6", "Stealth", false, 460, "assassin", false, false));
-        kits.add(kit("pearl_rush_7", "Pearl Rush #7", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_7", "Stealth", false, 470, "assassin", false, false));
-        kits.add(kit("pearl_rush_8", "Pearl Rush #8", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_8", "Stealth", false, 480, "assassin", false, false));
-        kits.add(kit("pearl_rush_9", "Pearl Rush #9", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_9", "Stealth", false, 490, "assassin", false, false));
-        kits.add(kit("pearl_rush_10", "Pearl Rush #10", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_10", "Stealth", false, 500, "assassin", false, false));
-        kits.add(kit("pearl_rush_11", "Pearl Rush #11", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_11", "Stealth", false, 510, "assassin", false, false));
-        kits.add(kit("pearl_rush_12", "Pearl Rush #12", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_12", "Stealth", false, 520, "assassin", false, false));
-        kits.add(kit("pearl_rush_13", "Pearl Rush #13", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_13", "Stealth", false, 530, "assassin", false, false));
-        kits.add(kit("pearl_rush_14", "Pearl Rush #14", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_14", "Stealth", false, 540, "assassin", false, false));
-        kits.add(kit("pearl_rush_15", "Pearl Rush #15", "Pearl aggression", KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_rush_15", "Stealth", false, 550, "assassin", false, false));
-        kits.add(kit("gap_tank_1", "Gap Tank #1", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_1", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_2", "Gap Tank #2", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_2", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_3", "Gap Tank #3", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_3", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_4", "Gap Tank #4", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_4", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_5", "Gap Tank #5", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_5", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_6", "Gap Tank #6", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_6", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_7", "Gap Tank #7", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_7", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_8", "Gap Tank #8", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_8", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_9", "Gap Tank #9", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_9", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_10", "Gap Tank #10", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_10", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_11", "Gap Tank #11", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_11", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_12", "Gap Tank #12", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_12", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_13", "Gap Tank #13", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_13", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_14", "Gap Tank #14", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_14", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("gap_tank_15", "Gap Tank #15", "Shield and gaps", KitRarity.UNCOMMON, Material.SHIELD, "wildkits.kit.gap_tank_15", "Melee", true, 0, "tank", false, false));
-        kits.add(kit("bow_spam_1", "Bow Spam #1", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_1", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_2", "Bow Spam #2", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_2", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_3", "Bow Spam #3", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_3", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_4", "Bow Spam #4", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_4", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_5", "Bow Spam #5", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_5", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_6", "Bow Spam #6", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_6", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_7", "Bow Spam #7", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_7", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_8", "Bow Spam #8", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_8", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_9", "Bow Spam #9", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_9", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_10", "Bow Spam #10", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_10", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("bow_spam_11", "Bow Spam #11", "Ranged pressure", KitRarity.COMMON, Material.BOW, "wildkits.kit.bow_spam_11", "Ranged", true, 0, "archer", true, false));
-        kits.add(kit("cross_rush_1", "Cross Rush #1", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_1", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_2", "Cross Rush #2", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_2", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_3", "Cross Rush #3", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_3", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_4", "Cross Rush #4", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_4", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_5", "Cross Rush #5", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_5", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_6", "Cross Rush #6", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_6", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_7", "Cross Rush #7", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_7", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_8", "Cross Rush #8", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_8", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_9", "Cross Rush #9", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_9", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_10", "Cross Rush #10", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_10", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("cross_rush_11", "Cross Rush #11", "Crossbow rush", KitRarity.UNCOMMON, Material.CROSSBOW, "wildkits.kit.cross_rush_11", "Ranged", true, 0, "hunter", true, false));
-        kits.add(kit("web_trap_1", "Web Trap #1", "Cobweb control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.web_trap_1", "Special", false, 600, "trap", false, false));
-        kits.add(kit("web_trap_2", "Web Trap #2", "Cobweb control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.web_trap_2", "Special", false, 600, "trap", false, false));
-        kits.add(kit("web_trap_3", "Web Trap #3", "Cobweb control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.web_trap_3", "Special", false, 600, "trap", false, false));
-        kits.add(kit("web_trap_4", "Web Trap #4", "Cobweb control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.web_trap_4", "Special", false, 600, "trap", false, false));
-        kits.add(kit("web_trap_5", "Web Trap #5", "Cobweb control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.web_trap_5", "Special", false, 600, "trap", false, false));
-        kits.add(kit("web_trap_6", "Web Trap #6", "Cobweb control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.web_trap_6", "Special", false, 600, "trap", false, false));
-        kits.add(kit("web_trap_7", "Web Trap #7", "Cobweb control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.web_trap_7", "Special", false, 600, "trap", false, false));
-        kits.add(kit("web_trap_8", "Web Trap #8", "Cobweb control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.web_trap_8", "Special", false, 600, "trap", false, false));
-        kits.add(kit("web_trap_9", "Web Trap #9", "Cobweb control", KitRarity.RARE, Material.COBWEB, "wildkits.kit.web_trap_9", "Special", false, 600, "trap", false, false));
-        kits.add(kit("lava_combo_1", "Lava Combo #1", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava_combo_1", "Elemental", false, 700, "lava", false, false));
-        kits.add(kit("lava_combo_2", "Lava Combo #2", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava_combo_2", "Elemental", false, 700, "lava", false, false));
-        kits.add(kit("lava_combo_3", "Lava Combo #3", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava_combo_3", "Elemental", false, 700, "lava", false, false));
-        kits.add(kit("lava_combo_4", "Lava Combo #4", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava_combo_4", "Elemental", false, 700, "lava", false, false));
-        kits.add(kit("lava_combo_5", "Lava Combo #5", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava_combo_5", "Elemental", false, 700, "lava", false, false));
-        kits.add(kit("lava_combo_6", "Lava Combo #6", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava_combo_6", "Elemental", false, 700, "lava", false, false));
-        kits.add(kit("lava_combo_7", "Lava Combo #7", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava_combo_7", "Elemental", false, 700, "lava", false, false));
-        kits.add(kit("lava_combo_8", "Lava Combo #8", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava_combo_8", "Elemental", false, 700, "lava", false, false));
-        kits.add(kit("lava_combo_9", "Lava Combo #9", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "wildkits.kit.lava_combo_9", "Elemental", false, 700, "lava", false, false));
-        kits.add(kit("wind_fighter_1", "Wind Fighter #1", "Wind charge fighter", KitRarity.EPIC, Material.WIND_CHARGE, "wildkits.kit.wind_fighter_1", "Special", false, 1200, "speed", false, false));
-        kits.add(kit("wind_fighter_2", "Wind Fighter #2", "Wind charge fighter", KitRarity.EPIC, Material.WIND_CHARGE, "wildkits.kit.wind_fighter_2", "Special", false, 1200, "speed", false, false));
-        kits.add(kit("wind_fighter_3", "Wind Fighter #3", "Wind charge fighter", KitRarity.EPIC, Material.WIND_CHARGE, "wildkits.kit.wind_fighter_3", "Special", false, 1200, "speed", false, false));
-        kits.add(kit("wind_fighter_4", "Wind Fighter #4", "Wind charge fighter", KitRarity.EPIC, Material.WIND_CHARGE, "wildkits.kit.wind_fighter_4", "Special", false, 1200, "speed", false, false));
-        kits.add(kit("wind_fighter_5", "Wind Fighter #5", "Wind charge fighter", KitRarity.EPIC, Material.WIND_CHARGE, "wildkits.kit.wind_fighter_5", "Special", false, 1200, "speed", false, false));
-        kits.add(kit("wind_fighter_6", "Wind Fighter #6", "Wind charge fighter", KitRarity.EPIC, Material.WIND_CHARGE, "wildkits.kit.wind_fighter_6", "Special", false, 1200, "speed", false, false));
-        kits.add(kit("wind_fighter_7", "Wind Fighter #7", "Wind charge fighter", KitRarity.EPIC, Material.WIND_CHARGE, "wildkits.kit.wind_fighter_7", "Special", false, 1200, "speed", false, false));
-        kits.add(kit("mace_rare_1", "Mace Rare #1", "Rare mace template", KitRarity.LEGENDARY, Material.MACE, "wildkits.kit.mace_rare_1", "Elite", false, 3500, "champion", false, false));
-        kits.add(kit("mace_rare_2", "Mace Rare #2", "Rare mace template", KitRarity.LEGENDARY, Material.MACE, "wildkits.kit.mace_rare_2", "Elite", false, 3500, "champion", false, false));
-        kits.add(kit("mace_rare_3", "Mace Rare #3", "Rare mace template", KitRarity.LEGENDARY, Material.MACE, "wildkits.kit.mace_rare_3", "Elite", false, 3500, "champion", false, false));
-        kits.add(kit("mace_rare_4", "Mace Rare #4", "Rare mace template", KitRarity.LEGENDARY, Material.MACE, "wildkits.kit.mace_rare_4", "Elite", false, 3500, "champion", false, false));
-        kits.add(kit("mace_rare_5", "Mace Rare #5", "Rare mace template", KitRarity.LEGENDARY, Material.MACE, "wildkits.kit.mace_rare_5", "Elite", false, 3500, "champion", false, false));
+        List<KitDefinition> kits = new ArrayList<>(320);
 
-        // Premium expansion pool — modern PvP archetypes
-        String[] meleeNames = {"Blade", "Edge", "Strike", "Fury", "Clash", "Duel", "Rift", "Pulse", "Nova", "Apex"};
-        for (int i = 1; i <= 20; i++) {
-            kits.add(kit("pvp_elite_" + i, "PvP Elite " + meleeNames[(i - 1) % meleeNames.length] + " #" + i,
-                    "Premium enchanted melee kit", KitRarity.UNCOMMON, Material.DIAMOND_SWORD,
-                    "wildkits.kit.pvp_elite_" + i, "Melee", true, 0, "balanced", false, false));
-        }
-        for (int i = 1; i <= 15; i++) {
-            kits.add(kit("axe_rush_" + i, "Axe Rush #" + i, "Diamond/netherite axe pressure",
-                    KitRarity.RARE, Material.DIAMOND_AXE, "wildkits.kit.axe_rush_" + i, "Melee", false, 650, "berserker", false, false));
-        }
-        for (int i = 1; i <= 15; i++) {
-            kits.add(kit("pearl_combo_" + i, "Pearl Combo #" + i, "Pearl + gap modern PvP",
-                    KitRarity.RARE, Material.ENDER_PEARL, "wildkits.kit.pearl_combo_" + i, "Stealth", false, 800, "assassin", false, false));
-        }
-        for (int i = 1; i <= 12; i++) {
-            kits.add(kit("totem_guard_" + i, "Totem Guard #" + i, "Rare totem defensive kit",
-                    KitRarity.EPIC, Material.TOTEM_OF_UNDYING, "wildkits.kit.totem_guard_" + i, "Melee", false, 1800, "tank", false, false));
-        }
-        for (int i = 1; i <= 12; i++) {
-            kits.add(kit("nether_mix_" + i, "Nether Mix #" + i, "Diamond + netherite mix",
-                    KitRarity.LEGENDARY, Material.NETHERITE_CHESTPLATE, "wildkits.kit.nether_mix_" + i, "Elite", false, 3200, "nether", false, false));
-        }
-        for (int i = 1; i <= 10; i++) {
-            kits.add(kit("full_nether_" + i, "Full Netherite #" + i, "Rare full netherite roll",
-                    KitRarity.MYTHIC, Material.NETHERITE_HELMET, "wildkits.kit.full_nether_" + i, "Elite", false, 7000, "champion", false, false));
-        }
-        for (int i = 1; i <= 10; i++) {
-            kits.add(kit("pot_fighter_" + i, "Pot Fighter #" + i, "Strength/speed pot kit",
-                    KitRarity.EPIC, Material.SPLASH_POTION, "wildkits.kit.pot_fighter_" + i, "Magic", false, 1600, "potion", false, true));
-        }
-        for (int i = 1; i <= 8; i++) {
-            kits.add(kit("bridge_fight_" + i, "Bridge Fight #" + i, "Blocks + pearls bridge PvP",
-                    KitRarity.UNCOMMON, Material.OAK_PLANKS, "wildkits.kit.bridge_fight_" + i, "Utility", true, 0, "builder", false, false));
-        }
+        // Signature named kits
+        add(kits, "starter", "Iron Recruit", "Reliable iron opener", KitRarity.COMMON, Material.IRON_SWORD, "Melee", true, 0, "balanced", false, false);
+        add(kits, "warrior", "Diamond Warrior", "Diamond melee pressure", KitRarity.COMMON, Material.DIAMOND_SWORD, "Melee", true, 0, "balanced", false, false);
+        add(kits, "knight", "Shield Knight", "Frontline shield fighter", KitRarity.UNCOMMON, Material.SHIELD, "Melee", true, 0, "knight", false, false);
+        add(kits, "tank", "Iron Tank", "Heavy defense kit", KitRarity.UNCOMMON, Material.IRON_CHESTPLATE, "Melee", true, 0, "tank", false, false);
+        add(kits, "assassin", "Pearl Assassin", "Pearls and burst damage", KitRarity.RARE, Material.ENDER_PEARL, "Stealth", false, 500, "assassin", false, false);
+        add(kits, "archer", "Power Archer", "Bow dominance", KitRarity.COMMON, Material.BOW, "Ranged", true, 0, "archer", true, false);
+        add(kits, "mage", "Potion Mage", "Splash control kit", KitRarity.RARE, Material.SPLASH_POTION, "Magic", false, 750, "mage", false, true);
+        add(kits, "hunter", "Crossbow Hunter", "Crossbow pursuit", KitRarity.UNCOMMON, Material.CROSSBOW, "Ranged", true, 0, "hunter", true, false);
+        add(kits, "builder", "Bridge Builder", "Blocks and cover", KitRarity.COMMON, Material.OAK_PLANKS, "Utility", true, 0, "builder", false, false);
+        add(kits, "pvp", "PvP Striker", "Classic diamond PvP", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "Melee", true, 0, "balanced", false, false);
+        add(kits, "nether", "Nether Raider", "Fireproof nether assault", KitRarity.RARE, Material.NETHERRACK, "Elemental", false, 800, "nether", false, false);
+        add(kits, "end", "End Fighter", "Pearls and chorus", KitRarity.RARE, Material.ENDER_PEARL, "Elemental", false, 900, "end", false, false);
+        add(kits, "diamond", "Diamond Assault", "Full diamond pressure", KitRarity.EPIC, Material.DIAMOND_CHESTPLATE, "Elite", false, 1500, "balanced", false, false);
+        add(kits, "netherite", "Partial Netherite", "Rare netherite fragments", KitRarity.LEGENDARY, Material.NETHERITE_SWORD, "Elite", false, 3000, "balanced", false, false);
+        add(kits, "godly_blade", "Godly Blade", "God-tier enchanted arms", KitRarity.GODLY, Material.NETHER_STAR, "Elite", false, 12000, "champion", false, false);
+        add(kits, "op", "Chaos Overload", "Showcase chaos kit", KitRarity.ULTIMATE, Material.NETHER_STAR, "Elite", false, 10000, "chaos", false, false);
+        add(kits, "legend", "Legend Blade", "Legendary presence", KitRarity.LEGENDARY, Material.GOLDEN_HELMET, "Elite", false, 4000, "champion", false, false);
+        add(kits, "mythic", "Mythic Edge", "Mythic-grade arms", KitRarity.MYTHIC, Material.DRAGON_EGG, "Elite", false, 6000, "mystic", false, false);
+        add(kits, "champion", "Arena Champion", "Tournament kit", KitRarity.EPIC, Material.DIAMOND_HELMET, "Elite", false, 2000, "champion", false, false);
+        add(kits, "lava", "Lava Bomber", "Lava and fire charges", KitRarity.RARE, Material.LAVA_BUCKET, "Elemental", false, 850, "lava", false, false);
+        add(kits, "ice", "Ice Mage", "Frost control", KitRarity.RARE, Material.PACKED_ICE, "Elemental", false, 850, "ice", false, true);
+        add(kits, "storm", "Thunder Storm", "Trident tempest", KitRarity.EPIC, Material.TRIDENT, "Elemental", false, 1600, "thunder", false, true);
+        add(kits, "speed", "Speed Runner", "Swift mobility", KitRarity.UNCOMMON, Material.SUGAR, "Mobility", true, 0, "speed", false, false);
+        add(kits, "sniper", "Longbow Sniper", "Precision arrows", KitRarity.RARE, Material.ARROW, "Ranged", false, 700, "sniper", true, false);
+        add(kits, "samurai", "Samurai Blade", "Blade discipline", KitRarity.EPIC, Material.DIAMOND_SWORD, "Melee", false, 1700, "samurai", false, false);
+        add(kits, "pirate", "Ocean Pirate", "Trident sea kit", KitRarity.UNCOMMON, Material.TRIDENT, "Special", true, 0, "pirate", false, false);
+        add(kits, "ninja", "Shadow Ninja", "Silent lethal kit", KitRarity.RARE, Material.BLACK_DYE, "Stealth", false, 900, "ninja", false, false);
+        add(kits, "viking", "Viking Raider", "Axe fury", KitRarity.UNCOMMON, Material.DIAMOND_AXE, "Melee", true, 0, "viking", false, false);
+        add(kits, "gladiator", "Gladiator", "Arena brawler", KitRarity.UNCOMMON, Material.IRON_CHESTPLATE, "Melee", true, 0, "gladiator", false, false);
+        add(kits, "scout", "Scout Runner", "Light recon kit", KitRarity.COMMON, Material.LEATHER_BOOTS, "Mobility", true, 0, "scout", false, false);
+        add(kits, "berserker", "Berserker", "Aggressive axe rush", KitRarity.RARE, Material.DIAMOND_AXE, "Melee", false, 650, "berserker", false, false);
+        add(kits, "paladin", "Guardian Paladin", "Holy defender", KitRarity.EPIC, Material.GOLDEN_APPLE, "Melee", false, 1900, "guardian", false, false);
+        add(kits, "rogue", "Rogue Duelist", "Shadowy duelist", KitRarity.RARE, Material.ENDER_EYE, "Stealth", false, 800, "assassin", false, false);
+        add(kits, "ranger", "Wild Ranger", "Wilderness marksman", KitRarity.UNCOMMON, Material.BOW, "Ranged", true, 0, "hunter", true, false);
+        add(kits, "warlock", "Warlock", "Dark magic kit", KitRarity.EPIC, Material.SOUL_LANTERN, "Magic", false, 2100, "mage", false, true);
+        add(kits, "phoenix", "Phoenix", "Ash rebirth kit", KitRarity.MYTHIC, Material.BLAZE_POWDER, "Elemental", false, 7000, "phoenix", false, false);
+        add(kits, "shadow", "Shadow", "Umbral assassin", KitRarity.LEGENDARY, Material.BLACK_CONCRETE, "Stealth", false, 4200, "shadow", false, false);
+        add(kits, "warden", "Deep Warden", "Deep dark terror", KitRarity.MYTHIC, Material.SCULK_SHRIEKER, "Elite", false, 8000, "tank", false, false);
+        add(kits, "bomber", "TNT Expert", "Explosive pressure", KitRarity.RARE, Material.TNT, "Special", false, 1100, "bomber", false, false);
+        add(kits, "duelist", "Duelist", "1v1 specialist", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "Melee", true, 0, "balanced", false, false);
+        add(kits, "brawler", "Axe Brawler", "Close-quarters axe", KitRarity.COMMON, Material.DIAMOND_AXE, "Melee", true, 0, "viking", false, false);
+        add(kits, "sentinel", "Shield Sentinel", "Watchful defender", KitRarity.RARE, Material.SHIELD, "Melee", false, 900, "tank", false, false);
+        add(kits, "reaper", "Shadow Reaper", "Harvest souls", KitRarity.MYTHIC, Material.NETHERITE_HOE, "Stealth", false, 7500, "shadow", false, false);
+        add(kits, "alchemist", "Potion Master", "Potion specialist", KitRarity.RARE, Material.BREWING_STAND, "Magic", false, 1200, "potion", false, true);
+        add(kits, "totem_king", "Totem King", "Rare totem defense", KitRarity.GODLY, Material.TOTEM_OF_UNDYING, "Elite", false, 15000, "tank", false, false);
+
+        // Mass template pools (handcrafted themes + numbered variants)
+        expand(kits, "blade", "Blade", "Enchanted sword pressure", KitRarity.COMMON, Material.IRON_SWORD, "Melee", true, 0, "balanced", false, false, 18);
+        expand(kits, "edge", "Edge", "Diamond edge fighter", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "Melee", true, 0, "balanced", false, false, 16);
+        expand(kits, "strike", "Strike", "Aggressive melee", KitRarity.RARE, Material.DIAMOND_SWORD, "Melee", false, 400, "balanced", false, false, 14);
+        expand(kits, "fury", "Fury", "Axe fury kit", KitRarity.RARE, Material.DIAMOND_AXE, "Melee", false, 500, "berserker", false, false, 14);
+        expand(kits, "clash", "Clash", "Close combat kit", KitRarity.UNCOMMON, Material.IRON_AXE, "Melee", true, 0, "brawler", false, false, 12);
+        expand(kits, "duel", "Duel", "1v1 diamond kit", KitRarity.EPIC, Material.DIAMOND_SWORD, "Melee", false, 1200, "balanced", false, false, 12);
+        expand(kits, "rift", "Rift", "Pearl rift fighter", KitRarity.RARE, Material.ENDER_PEARL, "Stealth", false, 700, "assassin", false, false, 12);
+        expand(kits, "pulse", "Pulse", "Speed pulse kit", KitRarity.UNCOMMON, Material.SUGAR, "Mobility", true, 0, "speed", false, false, 10);
+        expand(kits, "nova", "Nova", "Explosive nova kit", KitRarity.EPIC, Material.FIRE_CHARGE, "Special", false, 1400, "bomber", false, false, 10);
+        expand(kits, "apex", "Apex", "Apex predator kit", KitRarity.LEGENDARY, Material.NETHERITE_SWORD, "Elite", false, 2800, "champion", false, false, 10);
+
+        expand(kits, "bowman", "Bowman", "Power bow kit", KitRarity.COMMON, Material.BOW, "Ranged", true, 0, "archer", true, false, 16);
+        expand(kits, "marks", "Marksman", "Precision marksman", KitRarity.UNCOMMON, Material.CROSSBOW, "Ranged", true, 0, "hunter", true, false, 14);
+        expand(kits, "arrow", "Arrow Storm", "Arrow spam kit", KitRarity.RARE, Material.ARROW, "Ranged", false, 600, "sniper", true, false, 12);
+        expand(kits, "cross", "Cross Rush", "Crossbow rush", KitRarity.RARE, Material.CROSSBOW, "Ranged", false, 650, "hunter", true, false, 12);
+        expand(kits, "snipe", "Snipe", "Long-range sniper", KitRarity.EPIC, Material.BOW, "Ranged", false, 1500, "sniper", true, false, 10);
+
+        expand(kits, "guard", "Guard", "Shield defense", KitRarity.COMMON, Material.SHIELD, "Melee", true, 0, "tank", false, false, 12);
+        expand(kits, "fort", "Fortress", "Heavy fortress kit", KitRarity.RARE, Material.OBSIDIAN, "Melee", false, 800, "fortress", false, false, 10);
+        expand(kits, "totem", "Totem Guard", "Totem chance kit", KitRarity.EPIC, Material.TOTEM_OF_UNDYING, "Melee", false, 1800, "tank", false, false, 12);
+        expand(kits, "web", "Web Trap", "Cobweb control", KitRarity.RARE, Material.COBWEB, "Special", false, 600, "trap", false, false, 10);
+        expand(kits, "lava_c", "Lava Combo", "Lava bucket PvP", KitRarity.RARE, Material.LAVA_BUCKET, "Elemental", false, 700, "lava", false, false, 10);
+        expand(kits, "wind", "Wind Fighter", "Wind charge fighter", KitRarity.EPIC, Material.WIND_CHARGE, "Special", false, 1200, "speed", false, false, 10);
+        expand(kits, "mace", "Mace Rare", "Rare mace template", KitRarity.LEGENDARY, Material.MACE, "Elite", false, 3500, "champion", false, false, 8);
+
+        expand(kits, "pot", "Pot Fighter", "Strength/speed pots", KitRarity.EPIC, Material.SPLASH_POTION, "Magic", false, 1600, "potion", false, true, 12);
+        expand(kits, "arcane", "Arcane", "Magic barrage", KitRarity.LEGENDARY, Material.ENCHANTED_BOOK, "Magic", false, 3200, "mage", false, true, 8);
+        expand(kits, "bridge", "Bridge Fight", "Blocks + pearls", KitRarity.UNCOMMON, Material.OAK_PLANKS, "Utility", true, 0, "builder", false, false, 10);
+        expand(kits, "nether_m", "Nether Mix", "Diamond + netherite mix", KitRarity.LEGENDARY, Material.NETHERITE_CHESTPLATE, "Elite", false, 3200, "nether", false, false, 10);
+        expand(kits, "full_n", "Full Netherite", "Full netherite roll", KitRarity.MYTHIC, Material.NETHERITE_HELMET, "Elite", false, 7000, "champion", false, false, 8);
+        expand(kits, "god", "Godly Set", "Godly-tier roll", KitRarity.GODLY, Material.NETHERITE_SWORD, "Elite", false, 10000, "champion", false, false, 6);
+
+        expand(kits, "ghost", "Ghost", "Hard to pin", KitRarity.EPIC, Material.GHAST_TEAR, "Stealth", false, 2200, "ninja", false, false, 8);
+        expand(kits, "vamp", "Vampire", "Life-steal vibes", KitRarity.LEGENDARY, Material.REDSTONE_BLOCK, "Stealth", false, 5000, "assassin", false, false, 6);
+        expand(kits, "frost", "Frostbite", "Deep freeze", KitRarity.EPIC, Material.BLUE_ICE, "Elemental", false, 1750, "frozen", false, false, 8);
+        expand(kits, "thunder", "Thunder", "Lightning kit", KitRarity.EPIC, Material.LIGHTNING_ROD, "Elemental", false, 1800, "thunder", false, true, 8);
+        expand(kits, "ocean", "Ocean", "Ocean fighter", KitRarity.UNCOMMON, Material.PRISMARINE_SHARD, "Special", true, 0, "ocean", false, false, 8);
+        expand(kits, "crimson", "Crimson", "Crimson nether", KitRarity.RARE, Material.CRIMSON_NYLIUM, "Elemental", false, 1000, "nether", false, false, 8);
+        expand(kits, "void", "Void Walker", "End void kit", KitRarity.EPIC, Material.ENDER_EYE, "Elemental", false, 2000, "end", false, false, 8);
+        expand(kits, "royal", "Royal Guard", "Royal defender", KitRarity.LEGENDARY, Material.GOLDEN_CHESTPLATE, "Melee", false, 4500, "royal", false, false, 6);
+        expand(kits, "spartan", "Spartan", "Shield spear vibe", KitRarity.RARE, Material.SHIELD, "Melee", false, 900, "spartan", false, false, 8);
+        expand(kits, "elite_g", "Elite Guard", "Elite standard", KitRarity.EPIC, Material.DIAMOND_BOOTS, "Elite", false, 1800, "knight", false, false, 8);
+
+        // Ensure we exceed 250
+        expand(kits, "pvp_e", "PvP Elite", "Premium melee kit", KitRarity.UNCOMMON, Material.DIAMOND_SWORD, "Melee", true, 0, "balanced", false, false, 20);
+        expand(kits, "pearl_c", "Pearl Combo", "Pearl + gap modern PvP", KitRarity.RARE, Material.ENDER_PEARL, "Stealth", false, 800, "assassin", false, false, 15);
+        expand(kits, "axe_r", "Axe Rush", "Diamond/netherite axe", KitRarity.RARE, Material.DIAMOND_AXE, "Melee", false, 650, "berserker", false, false, 15);
+
         return kits;
     }
 
-    private static KitDefinition kit(String id, String name, String desc, KitRarity rarity,
-                                  Material icon, String permission, String category,
-                                  boolean unlocked, int price, String theme,
-                                  boolean ranged, boolean magic) {
+    private static void expand(List<KitDefinition> kits, String prefix, String name, String desc,
+                               KitRarity rarity, Material icon, String category, boolean unlocked,
+                               int price, String theme, boolean ranged, boolean magic, int count) {
+        for (int i = 1; i <= count; i++) {
+            add(kits, prefix + "_" + i, name + " #" + i, desc, rarity, icon, category, unlocked, price, theme, ranged, magic);
+        }
+    }
+
+    private static void add(List<KitDefinition> kits, String id, String name, String desc, KitRarity rarity,
+                            Material icon, String category, boolean unlocked, int price, String theme,
+                            boolean ranged, boolean magic) {
         SmartGenProfile profile = SmartGenProfile.forRarity(rarity).withTheme(theme, ranged, magic);
-        return new KitDefinition(id, "<gradient:#FF4500:#FFD700>" + name + "</gradient>", desc, rarity, icon, permission, category, unlocked, price,
-                List.of(category.toLowerCase(), rarity.name().toLowerCase(), theme), profile);
+        kits.add(new KitDefinition(
+                id,
+                "<gradient:#FF4500:#FFD700>" + name + "</gradient>",
+                desc,
+                rarity,
+                icon,
+                "wildkits.kit." + id,
+                category,
+                unlocked,
+                price,
+                List.of(category.toLowerCase(), rarity.name().toLowerCase(), theme),
+                profile
+        ));
     }
 }

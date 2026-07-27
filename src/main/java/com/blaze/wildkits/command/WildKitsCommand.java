@@ -4,7 +4,6 @@ import com.blaze.wildkits.BlazesWildKits;
 import com.blaze.wildkits.crate.CrateRarity;
 import com.blaze.wildkits.kit.KitDefinition;
 import com.blaze.wildkits.player.PlayerData;
-import com.blaze.wildkits.region.SelectionSession;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -29,7 +28,6 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // Standalone /spawn
         if (command.getName().equalsIgnoreCase("spawn")) {
             if (!(sender instanceof Player player)) {
                 sender.sendMessage("Players only.");
@@ -77,34 +75,7 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
                 }
                 return teleportSpawn(player);
             }
-            case "setup" -> {
-                if (!(sender instanceof Player player)) return true;
-                if (!player.hasPermission("wildkits.admin")) {
-                    plugin.getMessageService().send(player, "no-permission");
-                    return true;
-                }
-                plugin.getSetupGui().open(player);
-            }
-            case "configure" -> handleConfigure(sender, args);
-            case "arenatimeblocks" -> handleArenaTimeBlocks(sender, args);
             case "key" -> handleKey(sender, args);
-            case "wand" -> {
-                if (!(sender instanceof Player player)) return true;
-                if (!player.hasPermission("wildkits.admin")) {
-                    plugin.getMessageService().send(player, "no-permission");
-                    return true;
-                }
-                if (args.length >= 2 && args[1].equalsIgnoreCase("save")) {
-                    plugin.getRegionManager().saveSelection(player);
-                    return true;
-                }
-                SelectionSession.Target target = SelectionSession.Target.NONE;
-                if (args.length >= 2) {
-                    if (args[1].equalsIgnoreCase("lobby")) target = SelectionSession.Target.LOBBY;
-                    else if (args[1].equalsIgnoreCase("drop")) target = SelectionSession.Target.DROP;
-                }
-                plugin.getRegionManager().giveWand(player, target);
-            }
             case "quests", "quest" -> {
                 if (!(sender instanceof Player player)) return true;
                 plugin.getQuestManager().openGui(player);
@@ -122,7 +93,7 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
                 }
                 plugin.getMenuService().openShop(player);
             }
-            case "particles", "trails" -> {
+            case "particles", "trails", "cosmetics" -> {
                 if (!(sender instanceof Player player)) return true;
                 if (!player.hasPermission("wildkits.cosmetics")) {
                     plugin.getMessageService().send(player, "no-permission");
@@ -130,8 +101,12 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
                 }
                 plugin.getMenuService().openParticles(player);
             }
-            case "random" -> {
+            case "random", "reroll" -> {
                 if (!(sender instanceof Player player)) return true;
+                if (sub.equals("reroll") && !plugin.getPlayerDataManager().get(player).consumeKitReroll()) {
+                    plugin.getMessageService().send(player, "no-rerolls");
+                    return true;
+                }
                 plugin.getKitManager().giveRandomKit(player);
             }
             case "kit" -> {
@@ -232,6 +207,7 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
                         "coins", String.valueOf(data.getCoins()),
                         "level", String.valueOf(data.getLevel()),
                         "streak", String.valueOf(data.getKillstreak()),
+                        "wins", String.valueOf(data.getWins()),
                         "kit", data.getCurrentKit() == null ? "None" : data.getCurrentKit()
                 ));
             }
@@ -305,6 +281,10 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
                         "coins", String.valueOf(amount)
                 ));
             }
+            // Removed systems — keep friendly notice for backwards habit
+            case "setup", "configure", "wand", "arenatimeblocks" -> {
+                plugin.getMessageService().send(sender, "arena-removed");
+            }
             default -> sendHelp(sender);
         }
         return true;
@@ -323,126 +303,7 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    private void handleConfigure(CommandSender sender, String[] args) {
-        if (!(sender instanceof Player player)) {
-            sender.sendMessage("Players only.");
-            return;
-        }
-        if (!player.hasPermission("wildkits.admin")) {
-            plugin.getMessageService().send(player, "no-permission");
-            return;
-        }
-        if (args.length < 2) {
-            plugin.getMessageService().send(player, "configure-usage");
-            return;
-        }
-        String action = args[1].toLowerCase(Locale.ROOT);
-        switch (action) {
-            case "list" -> {
-                if (plugin.getArenaManager().getArenas().isEmpty()) {
-                    sender.sendMessage("No arenas configured. Use /wk configure create <name>");
-                    return;
-                }
-                plugin.getArenaManager().getArenas().forEach(a ->
-                        sender.sendMessage(a.getId() + (a.isConfigured() ? " [ready]" : " [incomplete]")));
-            }
-            case "save" -> {
-                var session = plugin.getArenaManager().getSession(player);
-                if (session == null) {
-                    plugin.getMessageService().send(player, "configure-no-session");
-                    return;
-                }
-                if (plugin.getArenaManager().saveSession(player)) {
-                    plugin.getMessageService().send(player, "configure-saved", Map.of("arena", session.getArenaId()));
-                } else {
-                    plugin.getMessageService().send(player, "configure-incomplete");
-                }
-            }
-            case "create", "edit", "active" -> {
-                if (args.length < 3) {
-                    plugin.getMessageService().send(player, "configure-usage");
-                    return;
-                }
-                String arenaId = args[2].toLowerCase(Locale.ROOT);
-                if (action.equals("create")) {
-                    if (plugin.getArenaManager().get(arenaId).isPresent()) {
-                        plugin.getMessageService().send(player, "configure-exists", Map.of("arena", arenaId));
-                        return;
-                    }
-                    var session = plugin.getArenaManager().startConfigure(player, arenaId, true);
-                    if (session == null) {
-                        plugin.getMessageService().send(player, "configure-exists", Map.of("arena", arenaId));
-                        return;
-                    }
-                    plugin.getMessageService().send(player, "configure-started", Map.of(
-                            "arena", arenaId,
-                            "mode", "create"
-                    ));
-                } else if (action.equals("edit")) {
-                    if (plugin.getArenaManager().get(arenaId).isEmpty()) {
-                        plugin.getMessageService().send(player, "configure-missing", Map.of("arena", arenaId));
-                        return;
-                    }
-                    var session = plugin.getArenaManager().startConfigure(player, arenaId, false);
-                    if (session == null) {
-                        plugin.getMessageService().send(player, "configure-missing", Map.of("arena", arenaId));
-                        return;
-                    }
-                    plugin.getMessageService().send(player, "configure-started", Map.of(
-                            "arena", arenaId,
-                            "mode", "edit"
-                    ));
-                } else {
-                    plugin.getArenaManager().setActiveArena(arenaId);
-                    plugin.getMessageService().send(player, "configure-active", Map.of("arena", arenaId));
-                }
-            }
-            default -> plugin.getMessageService().send(player, "configure-usage");
-        }
-    }
-
-    private void handleArenaTimeBlocks(CommandSender sender, String[] args) {
-        if (!sender.hasPermission("wildkits.admin")) {
-            plugin.getMessageService().send(sender, "no-permission");
-            return;
-        }
-        if (args.length < 2) {
-            sender.sendMessage("/wk arenatimeblocks <on|off> [minutes]");
-            return;
-        }
-        String mode = args[1].toLowerCase(Locale.ROOT);
-        if (mode.equals("off")) {
-            plugin.getArenaManager().setTimedReset(false, plugin.getArenaManager().getTimedResetMinutes());
-            plugin.getMessageService().send(sender, "arena-timeblocks-off");
-            return;
-        }
-        if (mode.equals("on")) {
-            int minutes = 5;
-            if (args.length >= 3) {
-                try {
-                    minutes = Integer.parseInt(args[2]);
-                } catch (NumberFormatException e) {
-                    sender.sendMessage("Invalid minutes.");
-                    return;
-                }
-            }
-            if (minutes < 1) minutes = 1;
-            plugin.getArenaManager().setTimedReset(true, minutes);
-            plugin.getMessageService().send(sender, "arena-timeblocks-on", Map.of(
-                    "minutes", String.valueOf(minutes)
-            ));
-            return;
-        }
-        if (mode.equals("reset") || mode.equals("now")) {
-            int count = plugin.getArenaManager().resetAllPlayerBlocks();
-            plugin.getMessageService().send(sender, "arena-blocks-reset", Map.of("count", String.valueOf(count)));
-            return;
-        }
-        sender.sendMessage("/wk arenatimeblocks <on|off|reset> [minutes]");
-    }
-
     private void handleKey(CommandSender sender, String[] args) {
-        // /wk key <player> <rarity> <amount>
         if (!sender.hasPermission("wildkits.admin")) {
             plugin.getMessageService().send(sender, "no-permission");
             return;
@@ -451,8 +312,7 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage("/wk key <player> <rarity> <amount>");
             return;
         }
-        String[] crateArgs = new String[]{"crate", "key", args[1], args[2], args[3]};
-        handleCrate(sender, crateArgs);
+        handleCrate(sender, new String[]{"crate", "key", args[1], args[2], args[3]});
     }
 
     private void handleCrate(CommandSender sender, String[] args) {
@@ -535,10 +395,8 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
                     plugin.getMessageService().send(sender, "crate-not-found");
                 }
             }
-            case "list" -> {
-                plugin.getCrateManager().getCrates().forEach(c ->
-                        sender.sendMessage(c.getId() + " [" + c.getRarity() + "]"));
-            }
+            case "list" -> plugin.getCrateManager().getCrates().forEach(c ->
+                    sender.sendMessage(c.getId() + " [" + c.getRarity() + "]"));
             default -> sender.sendMessage("/wk crate <create|set|key|edit|delete|list>");
         }
     }
@@ -547,16 +405,14 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
         List<String> lines = List.of(
                 "<gold><bold>Blaze's WildKits</bold></gold>",
                 "<yellow>/wk</yellow> <gray>- Open main GUI",
-                "<yellow>/wk configure create|edit <arena></yellow> <gray>- Arena editor tools",
-                "<yellow>/wk arenatimeblocks on|off [min]</yellow> <gray>- Auto block reset",
-                "<yellow>/wk setup</yellow> <gray>- Legacy setup wizard",
-                "<yellow>/wk wand [lobby|drop|save]</yellow>",
-                "<yellow>/wk quests</yellow> <gray>- Quest menu",
+                "<yellow>/wk shop</yellow> <gray>- Premium cosmetics shop",
+                "<yellow>/wk quests</yellow> <gray>- Daily / Weekly / Monthly / Lifetime",
                 "<yellow>/wk crate ...</yellow> <gray>- Crate admin",
                 "<yellow>/wk key <player> <rarity> <amount></yellow>",
-                "<yellow>/wk shop</yellow> <gray>- Open shop",
-                "<yellow>/spawn</yellow> <gray>- Global server spawn",
-                "<yellow>/wk setspawn</yellow> <gray>- Set global spawn",
+                "<yellow>/wk random</yellow> <gray>- Random kit",
+                "<yellow>/wk reroll</yellow> <gray>- Use a kit reroll",
+                "<yellow>/spawn</yellow> <gray>- Global spawn",
+                "<yellow>/wk setspawn</yellow> <gray>- Set global spawn (WorldGuard for protection)",
                 "<yellow>/wk showkit <true|false></yellow>",
                 "<yellow>/wk reload</yellow> <gray>- Admin reload"
         );
@@ -569,29 +425,16 @@ public final class WildKitsCommand implements CommandExecutor, TabCompleter {
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (command.getName().equalsIgnoreCase("spawn")) return List.of();
         if (args.length == 1) {
-            return filter(List.of("help", "kits", "gui", "shop", "particles", "trails", "random", "kit",
-                    "preview", "search", "daily", "coins", "stats", "spawn", "setspawn", "reload",
+            return filter(List.of("help", "kits", "gui", "shop", "particles", "trails", "cosmetics", "random",
+                    "reroll", "kit", "preview", "search", "daily", "coins", "stats", "spawn", "setspawn", "reload",
                     "givecoins", "eventreward", "showkit", "db", "dbstatus", "npc",
-                    "setup", "configure", "arenatimeblocks", "wand", "quests", "quest", "crate", "key"), args[0]);
+                    "quests", "quest", "crate", "key"), args[0]);
         }
         if (args.length == 2 && (args[0].equalsIgnoreCase("kit") || args[0].equalsIgnoreCase("preview"))) {
             return filter(plugin.getKitManager().getKits().stream().map(KitDefinition::getId).collect(Collectors.toList()), args[1]);
         }
         if (args.length == 2 && args[0].equalsIgnoreCase("showkit")) {
             return filter(List.of("true", "false"), args[1]);
-        }
-        if (args.length == 2 && args[0].equalsIgnoreCase("wand")) {
-            return filter(List.of("lobby", "drop", "save"), args[1]);
-        }
-        if (args.length == 2 && args[0].equalsIgnoreCase("configure")) {
-            return filter(List.of("create", "edit", "save", "list", "active"), args[1]);
-        }
-        if (args.length == 3 && args[0].equalsIgnoreCase("configure")
-                && (args[1].equalsIgnoreCase("edit") || args[1].equalsIgnoreCase("active"))) {
-            return filter(plugin.getArenaManager().getArenas().stream().map(a -> a.getId()).toList(), args[2]);
-        }
-        if (args.length == 2 && args[0].equalsIgnoreCase("arenatimeblocks")) {
-            return filter(List.of("on", "off", "reset"), args[1]);
         }
         if (args.length == 2 && args[0].equalsIgnoreCase("crate")) {
             return filter(List.of("create", "set", "key", "edit", "delete", "list"), args[1]);

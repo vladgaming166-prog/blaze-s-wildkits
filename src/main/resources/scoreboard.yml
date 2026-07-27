@@ -22,6 +22,7 @@ lines:
   - "shadow:black:1 <gray>Kills <green>%kills%"
   - "shadow:black:1 <gray>Deaths <red>%deaths%"
   - "shadow:black:1 <gray>Wins <aqua>%wins%"
+  - "shadow:black:1 <gray>Rerolls <light_purple>%rerolls%"
   - "shadow:black:1 <gray>K/D <yellow>%kd%"
   - "shadow:black:1 <gray>Streak <light_purple>%killstreak%"
   - "shadow:black:1 <gray>Level <aqua>%level%"

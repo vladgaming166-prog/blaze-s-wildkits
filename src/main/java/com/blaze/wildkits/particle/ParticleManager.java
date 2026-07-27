@@ -79,6 +79,8 @@ public final class ParticleManager {
         add("snow", "Snow Trail", Particle.SNOWFLAKE, 5, 0.3, 0.0);
         add("totem", "Totem Trail", Particle.TOTEM_OF_UNDYING, 4, 0.35, 0.2);
         add("end", "End Trail", Particle.PORTAL, 10, 0.25, 0.4);
+        add("critical", "Critical Trail", Particle.CRIT, 5, 0.3, 0.05);
+        add("portal", "Portal Trail", Particle.PORTAL, 12, 0.25, 0.4);
     }
 
     private void add(String id, String name, Particle particle, int amount, double spacing, double speed) {

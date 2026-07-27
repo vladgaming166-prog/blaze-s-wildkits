@@ -48,14 +48,17 @@ public final class MenuService {
 
         set(inv, session, 20, new ItemBuilder(Material.CHEST).name("<aqua>Kits").lore("<gray>Browse all kits").glow().build(), "open:kits");
         set(inv, session, 21, new ItemBuilder(Material.NETHER_STAR).name("<light_purple>Random Kit").lore("<gray>Receive a random kit now").build(), "action:random");
-        set(inv, session, 22, new ItemBuilder(Material.ENDER_EYE).name("<green>Daily Kit").lore("<gray>Claim daily reward + kit").build(), "action:daily");
-        set(inv, session, 23, new ItemBuilder(Material.EMERALD).name("<gold>Shop").lore("<gray>Cosmetics & kits").build(), "open:shop");
-        set(inv, session, 24, new ItemBuilder(Material.BLAZE_POWDER).name("<red>Particles").lore("<gray>Trails & effects").build(), "open:particles");
+        set(inv, session, 22, new ItemBuilder(Material.ENDER_EYE).name("<green>Daily Reward").lore("<gray>Claim daily coins + kit").build(), "action:daily");
+        set(inv, session, 23, new ItemBuilder(Material.EMERALD).name("<gold>Shop").lore("<gray>Premium cosmetics").build(), "open:shop");
+        set(inv, session, 24, new ItemBuilder(Material.BLAZE_POWDER).name("<red>Cosmetics").lore("<gray>Trails & effects").build(), "open:particles");
         set(inv, session, 29, new ItemBuilder(Material.GOLDEN_APPLE).name("<yellow>Favorites").lore("<gray>Your favorite kits").build(), "open:favorites");
         set(inv, session, 30, new ItemBuilder(Material.CLOCK).name("<white>Recent").lore("<gray>Recently used kits").build(), "open:recent");
-        set(inv, session, 31, new ItemBuilder(Material.BOOK).name("<gold>Quests").lore("<gray>Daily / Weekly / Lifetime").build(), "action:quests");
+        set(inv, session, 31, new ItemBuilder(Material.BOOK).name("<gold>Quests").lore("<gray>Daily / Weekly / Monthly / Lifetime").build(), "action:quests");
         set(inv, session, 32, new ItemBuilder(Material.COMPASS).name("<aqua>Categories").lore("<gray>Browse by category").build(), "open:categories");
-        set(inv, session, 33, new ItemBuilder(Material.ENDER_PEARL).name("<green>Spawn").lore("<gray>Teleport to lobby spawn").build(), "action:spawn");
+        set(inv, session, 33, new ItemBuilder(Material.ENDER_PEARL).name("<green>Spawn").lore("<gray>Teleport to global spawn").build(), "action:spawn");
+        set(inv, session, 40, new ItemBuilder(Material.AMETHYST_SHARD).name("<light_purple>Reroll Kit")
+                .lore("<gray>Uses 1 kit reroll", "<aqua>Owned: " + plugin.getPlayerDataManager().get(player).getKitRerolls())
+                .build(), "action:reroll");
 
         playOpen(player);
         player.openInventory(inv);
@@ -149,19 +152,36 @@ public final class MenuService {
         GuiSession session = session(player);
         session.setType(GuiType.SHOP);
         session.clearActions();
-        Inventory inv = Bukkit.createInventory(player, SIZE, TextUtil.parse("<gold>WildKits Shop"));
-        fillBorder(inv, Material.LIME_STAINED_GLASS_PANE);
+        Inventory inv = Bukkit.createInventory(player, SIZE, TextUtil.parse("<gradient:#FF4500:#FFD700><bold>WildKits Shop</bold></gradient>"));
+        fillBorder(inv, animatedBorder());
 
-        set(inv, session, 20, new ItemBuilder(Material.CHEST).name("<aqua>Kits").build(), "shopcat:Kits");
-        set(inv, session, 22, new ItemBuilder(Material.BLAZE_POWDER).name("<red>Trails").build(), "shopcat:Trails");
-        set(inv, session, 24, new ItemBuilder(Material.FIREWORK_ROCKET).name("<light_purple>Effects").build(), "shopcat:Effects");
-        set(inv, session, 30, new ItemBuilder(Material.NAME_TAG).name("<yellow>Tags").build(), "shopcat:Tags");
-        set(inv, session, 32, new ItemBuilder(Material.PAPER).name("<white>Titles").build(), "shopcat:Titles");
-        set(inv, session, 49, new ItemBuilder(Material.BARRIER).name("<red>Back").build(), "open:main");
         PlayerData data = plugin.getPlayerDataManager().get(player);
         set(inv, session, 4, new ItemBuilder(Material.GOLD_INGOT)
-                .name("<gold>Coins: <white>" + data.getCoins())
-                .build(), "none");
+                .name("<gold>Balance: <white>" + data.getCoins() + " coins")
+                .lore(
+                        "<gray>Rerolls: <aqua>" + data.getKitRerolls(),
+                        "<gray>Multiplier: <yellow>x" + String.format("%.1f", data.getCoinMultiplier()),
+                        "<gray>Wins: <aqua>" + data.getWins()
+                ).glow().build(), "none");
+
+        set(inv, session, 19, new ItemBuilder(Material.BLAZE_POWDER).name("<red>Trails").lore("<gray>Particle trails").build(), "shopcat:Trails");
+        set(inv, session, 20, new ItemBuilder(Material.IRON_SWORD).name("<red>Kill Effects").lore("<gray>On-kill effects").build(), "shopcat:Effects");
+        set(inv, session, 21, new ItemBuilder(Material.SKELETON_SKULL).name("<dark_gray>Death Effects").lore("<gray>Death animations").build(), "shopcat:Effects");
+        set(inv, session, 22, new ItemBuilder(Material.FIREWORK_ROCKET).name("<light_purple>Victory Effects").lore("<gray>Win celebrations").build(), "shopcat:Effects");
+        set(inv, session, 23, new ItemBuilder(Material.PAPER).name("<white>Titles").lore("<gray>Display titles").build(), "shopcat:Titles");
+        set(inv, session, 24, new ItemBuilder(Material.NAME_TAG).name("<yellow>Prefixes & Tags").lore("<gray>Chat identity").build(), "shopcat:Tags");
+        set(inv, session, 25, new ItemBuilder(Material.RED_DYE).name("<gold>Chat Colors").lore("<gray>Message colors").build(), "shopcat:Chat");
+
+        set(inv, session, 28, new ItemBuilder(Material.NETHER_STAR).name("<aqua>Particles").lore("<gray>Extra particle cosmetics").build(), "shopcat:Trails");
+        set(inv, session, 29, new ItemBuilder(Material.GLASS).name("<white>Spawn Cages").lore("<gray>Respawn cages").build(), "shopcat:Cages");
+        set(inv, session, 30, new ItemBuilder(Material.ARROW).name("<yellow>Projectile Trails").lore("<gray>Arrow trails").build(), "shopcat:Projectiles");
+        set(inv, session, 31, new ItemBuilder(Material.FEATHER).name("<white>Wing Particles").lore("<gray>Wing cosmetics").build(), "shopcat:Wings");
+        set(inv, session, 32, new ItemBuilder(Material.CHEST).name("<gold>Crates & Keys").lore("<gray>Buy crate keys").build(), "shopcat:Crates");
+        set(inv, session, 33, new ItemBuilder(Material.EXPERIENCE_BOTTLE).name("<green>Boosters").lore("<gray>Coin multipliers").build(), "shopcat:Boosters");
+        set(inv, session, 34, new ItemBuilder(Material.NETHERITE_UPGRADE_SMITHING_TEMPLATE).name("<light_purple>Kit Rerolls").lore("<gray>Extra random kits").build(), "shopcat:Rerolls");
+
+        set(inv, session, 40, new ItemBuilder(Material.DIAMOND_SWORD).name("<aqua>Premium Kits").lore("<gray>Unlock kits").build(), "shopcat:Kits");
+        set(inv, session, 49, new ItemBuilder(Material.BARRIER).name("<red>Back").build(), "open:main");
         playOpen(player);
         player.openInventory(inv);
     }
@@ -271,6 +291,16 @@ public final class MenuService {
         if (action.equals("action:random")) {
             player.closeInventory();
             plugin.getKitManager().giveRandomKit(player);
+            return;
+        }
+        if (action.equals("action:reroll")) {
+            if (!plugin.getPlayerDataManager().get(player).consumeKitReroll()) {
+                plugin.getMessageService().send(player, "no-rerolls");
+                return;
+            }
+            player.closeInventory();
+            plugin.getKitManager().giveRandomKit(player);
+            plugin.getPlayerDataManager().saveAsync(player.getUniqueId());
             return;
         }
         if (action.equals("action:daily")) {

@@ -2,11 +2,10 @@
 language: en
 
 # When true, players automatically receive a random kit on join/respawn.
-# When false, players may manually choose kits from the GUI.
 auto-random-kits: true
 
-# When true, kit identity is shown (chat/title/actionbar/scoreboard).
-# When false, kits are still given but never revealed.
+# When true, kit identity is shown (chat/title/actionbar/sound/particles).
+# When false, kits are still given but NOTHING is revealed.
 # Live toggle: /wk showkit <true|false> (wildkits.admin)
 show-kit: true
 show-kit-hidden-text: "???"
@@ -15,9 +14,11 @@ show-kit-effects:
   title: true
   actionbar: true
   bossbar: false
+  sound: true
+  particles: true
+  broadcast-mythic: true
 
 respawn:
-  # 0 = instant kit next tick (recommended for WildKits gameplay)
   delay-seconds: 0
   protection-seconds: 2
   heal: true
@@ -33,62 +34,25 @@ economy:
   playtime-coins: 10
   playtime-interval-minutes: 5
   daily-reward-coins: 100
+  login-streak-bonus: 15
 
-# Weighted rarity chances for random kit template selection
+# Premium rarity chances for random kit template selection
 rarity-chances:
-  common: 40.0
-  uncommon: 25.0
-  rare: 15.0
-  epic: 10.0
-  legendary: 6.0
-  mythic: 3.0
-  ultimate: 1.0
+  common: 38.0
+  uncommon: 18.0
+  rare: 18.0
+  epic: 12.0
+  legendary: 8.0
+  mythic: 4.0
+  godly: 1.5
+  ultimate: 0.5
 
-# Premium gear generation — modern PvP oriented
+# Ultra-premium PvP generation (band is locked to rarity for balance)
 generation:
-  # Gear band chances (should roughly sum to 100)
-  iron-chance: 55.0
-  diamond-chance: 32.0
-  netherite-partial-chance: 10.0
-  full-netherite-chance: 3.0
-  max-netherite-pieces: 2
-
-  # Almost every combat item is enchanted
   enchant-chance: 0.95
-  # Anti-repeat kit selection
-  recent-kit-penalty: 0.18
-  last-kit-penalty: 0.04
-  mace-chance: 0.04
-  trident-chance: 0.07
-  wind-charge-chance: 0.32
-  totem-chance: 0.08
-  enchanted-golden-apple-chance: 0.06
-
-  food-min: 16
-  food-max: 32
-  blocks-min: 16
-  blocks-max: 48
-  arrows-min: 24
-  arrows-max: 64
-
-  blocks-chance: 0.88
-  golden-apple-chance: 0.88
-  water-bucket-chance: 0.75
-  lava-bucket-chance: 0.38
-  ender-pearl-chance: 0.70
-  cobweb-chance: 0.50
-  obsidian-chance: 0.38
-  tnt-chance: 0.22
-  fire-charge-chance: 0.35
-  fishing-rod-chance: 0.28
-  snowball-chance: 0.32
-  egg-chance: 0.28
-  shield-chance: 0.55
-  bow-chance: 0.48
-  potion-chance: 0.60
 
 # Global server spawn — /wk setspawn
-# Every player joins / respawns / leaves arena here.
+# World protection: use WorldGuard (no built-in regions)
 spawn:
   world: world
   x: 0.5

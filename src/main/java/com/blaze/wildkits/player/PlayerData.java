@@ -48,6 +48,9 @@ public final class PlayerData {
     private boolean dirty;
     private boolean protectedSpawn;
     private long protectionUntil;
+    private double coinMultiplier = 1.0;
+    private long coinMultiplierUntil;
+    private int loginStreak;
 
     public PlayerData(UUID uuid, String name) {
         this.uuid = uuid;
@@ -60,7 +63,10 @@ public final class PlayerData {
 
     public long getCoins() { return coins; }
     public void setCoins(long coins) { this.coins = Math.max(0, coins); markDirty(); }
-    public void addCoins(long amount) { setCoins(this.coins + amount); }
+    public void addCoins(long amount) {
+        long applied = Math.round(amount * getCoinMultiplier());
+        setCoins(this.coins + applied);
+    }
     public boolean takeCoins(long amount) {
         if (coins < amount) return false;
         setCoins(coins - amount);
@@ -308,6 +314,23 @@ public final class PlayerData {
         this.protectedSpawn = false;
         this.protectionUntil = 0;
     }
+
+    public int getKitRerolls() { return getCrateKeys("reroll"); }
+    public void addKitRerolls(int amount) { addCrateKeys("reroll", amount); }
+    public boolean consumeKitReroll() { return takeCrateKey("reroll", 1); }
+
+    public double getCoinMultiplier() {
+        if (System.currentTimeMillis() > coinMultiplierUntil) return 1.0;
+        return Math.max(1.0, coinMultiplier);
+    }
+    public void setCoinMultiplier(double multiplier, long durationMillis) {
+        this.coinMultiplier = Math.max(1.0, multiplier);
+        this.coinMultiplierUntil = System.currentTimeMillis() + Math.max(0, durationMillis);
+        markDirty();
+    }
+
+    public int getLoginStreak() { return loginStreak; }
+    public void setLoginStreak(int loginStreak) { this.loginStreak = Math.max(0, loginStreak); markDirty(); }
 
     public boolean isDirty() { return dirty; }
     public void markDirty() { this.dirty = true; }

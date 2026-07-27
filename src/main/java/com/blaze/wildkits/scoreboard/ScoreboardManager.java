@@ -194,6 +194,7 @@ public final class ScoreboardManager {
                 .replace("%killstreak%", String.valueOf(data.getKillstreak()))
                 .replace("%level%", String.valueOf(data.getLevel()))
                 .replace("%wins%", String.valueOf(data.getWins()))
+                .replace("%rerolls%", String.valueOf(data.getKitRerolls()))
                 .replace("%currentkit%", kitDisplay)
                 .replace("%online%", String.valueOf(Bukkit.getOnlinePlayers().size()))
                 .replace("%keys%", String.valueOf(

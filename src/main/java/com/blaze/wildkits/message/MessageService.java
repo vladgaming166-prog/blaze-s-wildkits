@@ -59,6 +59,17 @@ public final class MessageService {
         }
     }
 
+    public void broadcast(String key, Map<String, String> placeholders) {
+        String message = raw(key);
+        if (message.equalsIgnoreCase("none") || message.isBlank()) return;
+        String full = (message.contains("<noprefix>") ? message.replace("<noprefix>", "") : prefix + message);
+        String resolved = TextUtil.applyPlaceholders(full, placeholders);
+        for (Player player : org.bukkit.Bukkit.getOnlinePlayers()) {
+            TextUtil.send(player, resolved);
+        }
+        plugin.getLogger().info(TextUtil.strip(resolved));
+    }
+
     public String getPrefix() {
         return prefix;
     }

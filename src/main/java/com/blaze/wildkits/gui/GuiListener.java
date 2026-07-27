@@ -21,11 +21,6 @@ public final class GuiListener implements Listener {
     public void onClick(InventoryClickEvent event) {
         if (!(event.getWhoClicked() instanceof Player player)) return;
         GuiSession session = plugin.getMenuService().session(player);
-        if (session.getAction(event.getRawSlot()) == null
-                && event.getView().title() == null) {
-            return;
-        }
-        // Only cancel when interacting with our menus (tracked sessions with actions / known titles)
         String title = net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer.plainText()
                 .serialize(event.getView().title());
         if (!isWildKitsMenu(title) && session.getAction(event.getRawSlot()) == null) {
@@ -33,12 +28,6 @@ public final class GuiListener implements Listener {
         }
         event.setCancelled(true);
         if (event.getClickedInventory() == null) return;
-
-        // Setup wizard clicks
-        if (plugin.getSetupGui().isSetupInventory(title)) {
-            plugin.getSetupGui().handle(player, event.getRawSlot());
-            return;
-        }
 
         String action = session.getAction(event.getRawSlot());
         if (action == null) return;
@@ -60,7 +49,7 @@ public final class GuiListener implements Listener {
     @EventHandler
     public void onClose(InventoryCloseEvent event) {
         if (event.getPlayer() instanceof Player player) {
-            // Keep session for page state; clear only actions on close of foreign inventories later if needed
+            plugin.getMenuService().session(player).clearActions();
         }
     }
 
@@ -70,6 +59,7 @@ public final class GuiListener implements Listener {
         return t.contains("wildkits") || t.contains("preview") || t.contains("shop")
                 || t.contains("kits") || t.contains("particle") || t.contains("categories")
                 || t.contains("favorites") || t.contains("recent") || t.contains("search")
-                || t.contains("setup") || t.contains("quest") || t.contains("crate") || t.contains("edit");
+                || t.contains("quest") || t.contains("crate") || t.contains("cosmetics")
+                || t.contains("boosters") || t.contains("reroll");
     }
 }
