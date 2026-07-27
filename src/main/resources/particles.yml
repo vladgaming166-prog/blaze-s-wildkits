@@ -1,0 +1,121 @@
+trails:
+  flame:
+    display-name: "<red>Flame Trail"
+    particle: FLAME
+    amount: 5
+    spacing: 0.30
+    speed: 0.01
+    enabled: true
+  rainbow:
+    display-name: "<rainbow>Rainbow Trail"
+    particle: DUST
+    amount: 6
+    spacing: 0.25
+    speed: 0.0
+    enabled: true
+  cloud:
+    display-name: "<white>Cloud Trail"
+    particle: CLOUD
+    amount: 3
+    spacing: 0.40
+    speed: 0.01
+    enabled: true
+  water:
+    display-name: "<blue>Water Trail"
+    particle: DRIPPING_WATER
+    amount: 4
+    spacing: 0.35
+    speed: 0.0
+    enabled: true
+  lava:
+    display-name: "<gold>Lava Trail"
+    particle: LAVA
+    amount: 2
+    spacing: 0.45
+    speed: 0.0
+    enabled: true
+  soul:
+    display-name: "<aqua>Soul Trail"
+    particle: SOUL
+    amount: 4
+    spacing: 0.30
+    speed: 0.01
+    enabled: true
+  magic:
+    display-name: "<light_purple>Magic Trail"
+    particle: ENCHANT
+    amount: 8
+    spacing: 0.25
+    speed: 0.5
+    enabled: true
+  dragon:
+    display-name: "<dark_purple>Dragon Breath Trail"
+    particle: DRAGON_BREATH
+    amount: 4
+    spacing: 0.35
+    speed: 0.02
+    enabled: true
+  heart:
+    display-name: "<red>Heart Trail"
+    particle: HEART
+    amount: 2
+    spacing: 0.50
+    speed: 0.0
+    enabled: true
+  electric:
+    display-name: "<yellow>Electric Trail"
+    particle: ELECTRIC_SPARK
+    amount: 5
+    spacing: 0.30
+    speed: 0.05
+    enabled: true
+  cherry:
+    display-name: "<light_purple>Cherry Trail"
+    particle: CHERRY_LEAVES
+    amount: 4
+    spacing: 0.35
+    speed: 0.0
+    enabled: true
+  leaf:
+    display-name: "<green>Leaf Trail"
+    particle: HAPPY_VILLAGER
+    amount: 3
+    spacing: 0.40
+    speed: 0.0
+    enabled: true
+  snow:
+    display-name: "<white>Snow Trail"
+    particle: SNOWFLAKE
+    amount: 5
+    spacing: 0.30
+    speed: 0.0
+    enabled: true
+  totem:
+    display-name: "<green>Totem Trail"
+    particle: TOTEM_OF_UNDYING
+    amount: 4
+    spacing: 0.35
+    speed: 0.2
+    enabled: true
+  end:
+    display-name: "<dark_purple>End Trail"
+    particle: PORTAL
+    amount: 10
+    spacing: 0.25
+    speed: 0.4
+    enabled: true
+
+  critical:
+    display-name: "<yellow>Critical Trail"
+    particle: CRIT
+    amount: 5
+    spacing: 0.3
+    speed: 0.05
+    enabled: true
+  portal:
+    display-name: "<dark_purple>Portal Trail"
+    particle: PORTAL
+    amount: 12
+    spacing: 0.25
+    speed: 0.4
+    enabled: true

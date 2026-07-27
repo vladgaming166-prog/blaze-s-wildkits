@@ -1,0 +1,537 @@
+items:
+  trail_flame:
+    display-name: "<red>Flame Trail"
+    description: "Leave fire in your footsteps"
+    type: TRAIL
+    icon: BLAZE_POWDER
+    price: 250
+    unlock-id: flame
+    category: Trails
+  trail_rainbow:
+    display-name: "<rainbow>Rainbow Trail"
+    description: "Colorful dust trail"
+    type: TRAIL
+    icon: PINK_DYE
+    price: 500
+    unlock-id: rainbow
+    category: Trails
+  trail_cloud:
+    display-name: "<white>Cloud Trail"
+    description: "Soft cloud footsteps"
+    type: TRAIL
+    icon: WHITE_DYE
+    price: 200
+    unlock-id: cloud
+    category: Trails
+  trail_water:
+    display-name: "<blue>Water Trail"
+    description: "Dripping water trail"
+    type: TRAIL
+    icon: WATER_BUCKET
+    price: 200
+    unlock-id: water
+    category: Trails
+  trail_lava:
+    display-name: "<gold>Lava Trail"
+    description: "Molten footsteps"
+    type: TRAIL
+    icon: LAVA_BUCKET
+    price: 350
+    unlock-id: lava
+    category: Trails
+  trail_soul:
+    display-name: "<aqua>Soul Trail"
+    description: "Soul fire wake"
+    type: TRAIL
+    icon: SOUL_LANTERN
+    price: 400
+    unlock-id: soul
+    category: Trails
+  trail_magic:
+    display-name: "<light_purple>Magic Trail"
+    description: "Enchanting sparkles"
+    type: TRAIL
+    icon: ENCHANTED_BOOK
+    price: 450
+    unlock-id: magic
+    category: Trails
+  trail_dragon:
+    display-name: "<dark_purple>Dragon Breath Trail"
+    description: "Dragon breath mist"
+    type: TRAIL
+    icon: DRAGON_BREATH
+    price: 750
+    unlock-id: dragon
+    category: Trails
+  trail_heart:
+    display-name: "<red>Heart Trail"
+    description: "Show some love"
+    type: TRAIL
+    icon: RED_DYE
+    price: 300
+    unlock-id: heart
+    category: Trails
+  trail_electric:
+    display-name: "<yellow>Electric Trail"
+    description: "Crackling sparks"
+    type: TRAIL
+    icon: LIGHTNING_ROD
+    price: 500
+    unlock-id: electric
+    category: Trails
+  trail_cherry:
+    display-name: "<light_purple>Cherry Trail"
+    description: "Falling cherry leaves"
+    type: TRAIL
+    icon: CHERRY_LEAVES
+    price: 400
+    unlock-id: cherry
+    category: Trails
+  trail_leaf:
+    display-name: "<green>Leaf Trail"
+    description: "Nature sparkles"
+    type: TRAIL
+    icon: OAK_LEAVES
+    price: 250
+    unlock-id: leaf
+    category: Trails
+  trail_snow:
+    display-name: "<white>Snow Trail"
+    description: "Winter snowflakes"
+    type: TRAIL
+    icon: SNOWBALL
+    price: 300
+    unlock-id: snow
+    category: Trails
+  trail_totem:
+    display-name: "<green>Totem Trail"
+    description: "Totem spark bursts"
+    type: TRAIL
+    icon: TOTEM_OF_UNDYING
+    price: 800
+    unlock-id: totem
+    category: Trails
+  trail_end:
+    display-name: "<dark_purple>End Trail"
+    description: "Portal particles"
+    type: TRAIL
+    icon: ENDER_PEARL
+    price: 600
+    unlock-id: end
+    category: Trails
+
+  death_blood:
+    display-name: "<red>Blood Death"
+    description: "Damage indicator burst on death"
+    type: DEATH_EFFECT
+    icon: REDSTONE
+    price: 400
+    unlock-id: blood
+    category: Effects
+  death_smoke:
+    display-name: "<gray>Smoke Death"
+    description: "Smoke cloud on death"
+    type: DEATH_EFFECT
+    icon: CAMPFIRE
+    price: 350
+    unlock-id: smoke
+    category: Effects
+  death_soul:
+    display-name: "<aqua>Soul Burst"
+    description: "Souls escape on death"
+    type: DEATH_EFFECT
+    icon: SOUL_SAND
+    price: 550
+    unlock-id: soul_burst
+    category: Effects
+  death_explosion:
+    display-name: "<gold>Explosion Death"
+    description: "Explosive finale"
+    type: DEATH_EFFECT
+    icon: TNT
+    price: 700
+    unlock-id: explosion
+    category: Effects
+
+  victory_fireworks:
+    display-name: "<light_purple>Victory Fireworks"
+    description: "Celebrate your kills"
+    type: VICTORY_EFFECT
+    icon: FIREWORK_ROCKET
+    price: 600
+    unlock-id: fireworks
+    category: Effects
+  victory_totem:
+    display-name: "<green>Victory Totem"
+    description: "Totem burst on kill"
+    type: VICTORY_EFFECT
+    icon: TOTEM_OF_UNDYING
+    price: 800
+    unlock-id: totem
+    category: Effects
+  victory_hearts:
+    display-name: "<red>Victory Hearts"
+    description: "Hearts on kill"
+    type: VICTORY_EFFECT
+    icon: APPLE
+    price: 450
+    unlock-id: hearts
+    category: Effects
+
+  tag_blaze:
+    display-name: "<gold>[Blaze]"
+    description: "Blaze supporter tag"
+    type: TAG
+    icon: NAME_TAG
+    price: 1000
+    unlock-id: blaze
+    category: Tags
+  tag_wild:
+    display-name: "<aqua>[Wild]"
+    description: "Wild fighter tag"
+    type: TAG
+    icon: NAME_TAG
+    price: 800
+    unlock-id: wild
+    category: Tags
+  tag_elite:
+    display-name: "<light_purple>[Elite]"
+    description: "Elite status tag"
+    type: TAG
+    icon: NAME_TAG
+    price: 1500
+    unlock-id: elite
+    category: Tags
+
+  title_champion:
+    display-name: "<gold>Champion"
+    description: "Champion title"
+    type: TITLE
+    icon: PAPER
+    price: 2000
+    unlock-id: champion
+    category: Titles
+  title_legend:
+    display-name: "<red>Legend"
+    description: "Legend title"
+    type: TITLE
+    icon: PAPER
+    price: 3500
+    unlock-id: legend
+    category: Titles
+  title_mythic:
+    display-name: "<dark_purple>Mythic"
+    description: "Mythic title"
+    type: TITLE
+    icon: PAPER
+    price: 5000
+    unlock-id: mythic
+    category: Titles
+
+  upgrade_sharp:
+    display-name: "<yellow>Kit Upgrade: Sharpness"
+    description: "Unlock sharper weapon rolls"
+    type: KIT_UPGRADE
+    icon: ENCHANTED_BOOK
+    price: 2500
+    unlock-id: upgrade_sharp
+    category: Kits
+
+  kill_lightning:
+    display-name: "<yellow>Kill Lightning"
+    description: "Lightning effect on kill"
+    type: KILL_EFFECT
+    icon: LIGHTNING_ROD
+    price: 1200
+    unlock-id: lightning
+    category: Effects
+  kill_blood:
+    display-name: "<red>Kill Blood"
+    description: "Blood burst on kill"
+    type: KILL_EFFECT
+    icon: REDSTONE
+    price: 900
+    unlock-id: blood_kill
+    category: Effects
+  kill_spark:
+    display-name: "<aqua>Kill Spark"
+    description: "Electric sparks on kill"
+    type: KILL_EFFECT
+    icon: GLOWSTONE_DUST
+    price: 1000
+    unlock-id: spark
+    category: Effects
+  kill_flame:
+    display-name: "<gold>Kill Flame"
+    description: "Flame burst on kill"
+    type: KILL_EFFECT
+    icon: BLAZE_POWDER
+    price: 1100
+    unlock-id: flame_burst
+    category: Effects
+
+  tag_chaos:
+    display-name: "<red>[Chaos]"
+    description: "Chaos chat tag"
+    type: TAG
+    icon: NAME_TAG
+    price: 1800
+    unlock-id: chaos
+    category: Tags
+  tag_mythic:
+    display-name: "<dark_purple>[Mythic]"
+    description: "Mythic chat tag"
+    type: TAG
+    icon: NAME_TAG
+    price: 2500
+    unlock-id: mythic_tag
+    category: Tags
+  title_centurion:
+    display-name: "<gold>Centurion"
+    description: "Centurion title"
+    type: TITLE
+    icon: PAPER
+    price: 4000
+    unlock-id: title_centurion
+    category: Titles
+  title_warlord:
+    display-name: "<red>Warlord"
+    description: "Warlord title"
+    type: TITLE
+    icon: PAPER
+    price: 4500
+    unlock-id: warlord
+    category: Titles
+  prefix_blaze:
+    display-name: "<gradient:#FF4500:#FFD700>Blaze Prefix"
+    description: "Chat prefix cosmetic"
+    type: TITLE
+    icon: NAME_TAG
+    price: 3000
+    unlock-id: prefix_blaze
+    category: Titles
+
+  chat_gold:
+    display-name: "<gold>Gold Chat"
+    description: "Gold colored chat messages"
+    type: CHAT_COLOR
+    icon: GOLD_INGOT
+    price: 800
+    unlock-id: gold
+    category: Chat
+  chat_aqua:
+    display-name: "<aqua>Aqua Chat"
+    description: "Aqua colored chat"
+    type: CHAT_COLOR
+    icon: DIAMOND
+    price: 800
+    unlock-id: aqua
+    category: Chat
+  chat_red:
+    display-name: "<red>Red Chat"
+    description: "Red colored chat"
+    type: CHAT_COLOR
+    icon: REDSTONE
+    price: 800
+    unlock-id: red
+    category: Chat
+  chat_purple:
+    display-name: "<light_purple>Purple Chat"
+    description: "Purple colored chat"
+    type: CHAT_COLOR
+    icon: AMETHYST_SHARD
+    price: 1000
+    unlock-id: purple
+    category: Chat
+
+  cage_glass:
+    display-name: "<white>Glass Spawn Cage"
+    description: "Temporary glass cage on respawn"
+    type: SPAWN_CAGE
+    icon: GLASS
+    price: 1200
+    unlock-id: glass
+    category: Cages
+  cage_iron:
+    display-name: "<gray>Iron Spawn Cage"
+    description: "Iron bars spawn cage"
+    type: SPAWN_CAGE
+    icon: IRON_BARS
+    price: 1500
+    unlock-id: iron
+    category: Cages
+  cage_nether:
+    display-name: "<dark_red>Nether Spawn Cage"
+    description: "Nether brick fence cage"
+    type: SPAWN_CAGE
+    icon: NETHER_BRICK_FENCE
+    price: 2000
+    unlock-id: nether
+    category: Cages
+
+  proj_flame:
+    display-name: "<gold>Flame Projectile Trail"
+    description: "Flames follow your arrows"
+    type: PROJECTILE_TRAIL
+    icon: FIRE_CHARGE
+    price: 1400
+    unlock-id: flame
+    category: Projectiles
+  proj_soul:
+    display-name: "<aqua>Soul Projectile Trail"
+    description: "Soul particles on projectiles"
+    type: PROJECTILE_TRAIL
+    icon: SOUL_LANTERN
+    price: 1600
+    unlock-id: soul
+    category: Projectiles
+  proj_crit:
+    display-name: "<yellow>Crit Projectile Trail"
+    description: "Crit sparkles on projectiles"
+    type: PROJECTILE_TRAIL
+    icon: IRON_SWORD
+    price: 1200
+    unlock-id: crit
+    category: Projectiles
+
+  wing_angel:
+    display-name: "<white>Angel Wings"
+    description: "End rod wing particles"
+    type: WING_PARTICLE
+    icon: FEATHER
+    price: 2500
+    unlock-id: angel
+    category: Wings
+  wing_demon:
+    display-name: "<red>Demon Wings"
+    description: "Flame wing particles"
+    type: WING_PARTICLE
+    icon: BLAZE_POWDER
+    price: 2500
+    unlock-id: demon
+    category: Wings
+  wing_dragon:
+    display-name: "<dark_purple>Dragon Wings"
+    description: "Dragon breath wings"
+    type: WING_PARTICLE
+    icon: DRAGON_BREATH
+    price: 3500
+    unlock-id: dragon
+    category: Wings
+  wing_frost:
+    display-name: "<aqua>Frost Wings"
+    description: "Snowflake wing particles"
+    type: WING_PARTICLE
+    icon: SNOWBALL
+    price: 2800
+    unlock-id: frost
+    category: Wings
+
+  victory_dance_spin:
+    display-name: "<light_purple>Victory Dance"
+    description: "Extra celebration on kill"
+    type: VICTORY_EFFECT
+    icon: MUSIC_DISC_CAT
+    price: 1800
+    unlock-id: fireworks
+    category: Effects
+
+  booster_2x_30:
+    display-name: "<green>2x Coin Booster (30m)"
+    description: "Double coins for 30 minutes"
+    type: BOOSTER
+    icon: EXPERIENCE_BOTTLE
+    price: 1500
+    unlock-id: "2.0_30"
+    category: Boosters
+  booster_2x_60:
+    display-name: "<green>2x Coin Booster (60m)"
+    description: "Double coins for 1 hour"
+    type: BOOSTER
+    icon: EXPERIENCE_BOTTLE
+    price: 2500
+    unlock-id: "2.0_60"
+    category: Boosters
+  booster_3x_30:
+    display-name: "<gold>3x Coin Booster (30m)"
+    description: "Triple coins for 30 minutes"
+    type: BOOSTER
+    icon: EXPERIENCE_BOTTLE
+    price: 4000
+    unlock-id: "3.0_30"
+    category: Boosters
+
+  reroll_1:
+    display-name: "<light_purple>Kit Reroll x1"
+    description: "Reroll your random kit once"
+    type: KIT_REROLL
+    icon: AMETHYST_SHARD
+    price: 350
+    unlock-id: "1"
+    category: Rerolls
+  reroll_5:
+    display-name: "<light_purple>Kit Reroll x5"
+    description: "Five kit rerolls"
+    type: KIT_REROLL
+    icon: AMETHYST_CLUSTER
+    price: 1500
+    unlock-id: "5"
+    category: Rerolls
+  reroll_10:
+    display-name: "<dark_purple>Kit Reroll x10"
+    description: "Ten kit rerolls"
+    type: KIT_REROLL
+    icon: BUDDING_AMETHYST
+    price: 2800
+    unlock-id: "10"
+    category: Rerolls
+
+  key_common:
+    display-name: "<gray>Common Crate Key"
+    description: "Opens a Common crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 200
+    unlock-id: common
+    category: Crates
+  key_rare:
+    display-name: "<aqua>Rare Crate Key"
+    description: "Opens a Rare crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 500
+    unlock-id: rare
+    category: Crates
+  key_epic:
+    display-name: "<light_purple>Epic Crate Key"
+    description: "Opens an Epic crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 1200
+    unlock-id: epic
+    category: Crates
+  key_legendary:
+    display-name: "<gold>Legendary Crate Key"
+    description: "Opens a Legendary crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 2500
+    unlock-id: legendary
+    category: Crates
+  key_mythic:
+    display-name: "<red>Mythic Crate Key"
+    description: "Opens a Mythic crate"
+    type: CRATE_KEY
+    icon: TRIPWIRE_HOOK
+    price: 5000
+    unlock-id: mythic
+    category: Crates
+
+  join_welcome:
+    display-name: "<green>Welcome Join Message"
+    description: "Custom join message unlock"
+    type: JOIN_MESSAGE
+    icon: OAK_SIGN
+    price: 800
+    unlock-id: welcome
+    category: Titles

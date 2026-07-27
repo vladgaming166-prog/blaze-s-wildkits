@@ -1,0 +1,145 @@
+crates:
+  common:
+    display-name: "<gray>Common Crate"
+    rarity: COMMON
+    block: CHEST
+    rewards:
+      r0:
+        display-name: "Coin Pouch"
+        icon: GOLD_NUGGET
+        weight: 40
+        coins: 100
+        xp: 20
+      r1:
+        display-name: "Coin Bag"
+        icon: GOLD_INGOT
+        weight: 25
+        coins: 250
+        xp: 40
+      r2:
+        display-name: "Flame Trail"
+        icon: BLAZE_POWDER
+        weight: 15
+        coins: 0
+        xp: 50
+        cosmetic-id: flame
+      r3:
+        display-name: "Heart Trail"
+        icon: RED_DYE
+        weight: 10
+        coins: 0
+        xp: 50
+        cosmetic-id: heart
+      r4:
+        display-name: "Jackpot"
+        icon: NETHER_STAR
+        weight: 2
+        coins: 1000
+        xp: 200
+  rare:
+    display-name: "<aqua>Rare Crate"
+    rarity: RARE
+    block: ENDER_CHEST
+    rewards:
+      r0:
+        display-name: "Rare Coins"
+        icon: GOLD_INGOT
+        weight: 35
+        coins: 400
+        xp: 60
+      r1:
+        display-name: "Electric Trail"
+        icon: LIGHTNING_ROD
+        weight: 20
+        coins: 0
+        xp: 80
+        cosmetic-id: electric
+      r2:
+        display-name: "Soul Trail"
+        icon: SOUL_LANTERN
+        weight: 15
+        coins: 0
+        xp: 80
+        cosmetic-id: soul
+      r3:
+        display-name: "Victory Fireworks"
+        icon: FIREWORK_ROCKET
+        weight: 12
+        coins: 0
+        xp: 100
+        cosmetic-id: fireworks
+  epic:
+    display-name: "<light_purple>Epic Crate"
+    rarity: EPIC
+    block: TRAPPED_CHEST
+    rewards:
+      r0:
+        display-name: "Epic Coins"
+        icon: EMERALD
+        weight: 30
+        coins: 800
+        xp: 120
+      r1:
+        display-name: "Dragon Trail"
+        icon: DRAGON_BREATH
+        weight: 18
+        coins: 0
+        xp: 150
+        cosmetic-id: dragon
+      r2:
+        display-name: "Elite Tag"
+        icon: NAME_TAG
+        weight: 12
+        coins: 0
+        xp: 150
+        cosmetic-id: elite
+  legendary:
+    display-name: "<gold>Legendary Crate"
+    rarity: LEGENDARY
+    block: GOLD_BLOCK
+    rewards:
+      r0:
+        display-name: "Legendary Coins"
+        icon: GOLD_BLOCK
+        weight: 28
+        coins: 2000
+        xp: 250
+      r1:
+        display-name: "Totem Trail"
+        icon: TOTEM_OF_UNDYING
+        weight: 15
+        coins: 0
+        xp: 300
+        cosmetic-id: totem
+      r2:
+        display-name: "Legend Title"
+        icon: PAPER
+        weight: 10
+        coins: 0
+        xp: 300
+        cosmetic-id: legend
+  mythic:
+    display-name: "<red>Mythic Crate"
+    rarity: MYTHIC
+    block: NETHERITE_BLOCK
+    rewards:
+      r0:
+        display-name: "Mythic Coins"
+        icon: NETHERITE_INGOT
+        weight: 25
+        coins: 5000
+        xp: 500
+      r1:
+        display-name: "End Trail"
+        icon: ENDER_PEARL
+        weight: 15
+        coins: 0
+        xp: 500
+        cosmetic-id: end
+      r2:
+        display-name: "Mythic Title"
+        icon: PAPER
+        weight: 8
+        coins: 0
+        xp: 600
+        cosmetic-id: mythic

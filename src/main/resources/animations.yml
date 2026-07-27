@@ -1,0 +1,33 @@
+gui-open-sound: UI_BUTTON_CLICK
+gui-click-sound: UI_BUTTON_CLICK
+
+gui-title-frames:
+  - "<gradient:#FF4500:#FFD700>Blaze's WildKits</gradient>"
+  - "<gradient:#FFD700:#FF4500>Blaze's WildKits</gradient>"
+  - "<white>Auto Kits • Cosmetics • Shop"
+  - "<gradient:#FF4500:#FFD700>Blaze's WildKits</gradient>"
+
+scoreboard-flash: true
+preview-reroll-particles: true
+
+# Chaos-style animation frames: use as %animation:title% / %animation:server%
+animations:
+  title:
+    interval-ticks: 8
+    frames:
+      - "<gradient:#FF4500:#FFD700><bold>Blaze's WildKits</bold></gradient>"
+      - "<gradient:#FFD700:#FF4500><bold>Blaze's WildKits</bold></gradient>"
+      - "<gradient:#FF4500:#FFAA00><bold>Blaze's WildKits</bold></gradient>"
+      - "<gradient:#FFAA00:#FF4500><bold>WildKits</bold></gradient>"
+  server:
+    interval-ticks: 20
+    frames:
+      - "<gradient:#FF4500:#FFD700>play.blaze.network</gradient>"
+      - "<gray>play.blaze.network</gray>"
+      - "<gradient:#FFD700:#FF4500>play.blaze.network</gradient>"
+  footer:
+    interval-ticks: 15
+    frames:
+      - "<dark_gray>✦ wildkits ✦"
+      - "<gray>✦ wildkits ✦"
+      - "<gold>✦ wildkits ✦"

@@ -1,0 +1,46 @@
+name: BlazesWildKits
+version: ${project.version}
+main: com.blaze.wildkits.BlazesWildKits
+api-version: '1.21'
+authors: [Blaze]
+description: Premium KitPvP with ultra random kits, cosmetics, quests, and crates
+website: https://github.com/vladgaming166-prog/blaze-s-wildkits
+softdepend: [PlaceholderAPI, Vault, LuckPerms, Citizens]
+commands:
+  wk:
+    description: Main WildKits command
+    usage: /wk [subcommand]
+    aliases: [wildkits, blazewildkits]
+    permission: wildkits.use
+  spawn:
+    description: Teleport to WildKits global spawn
+    usage: /spawn
+    permission: wildkits.spawn
+permissions:
+  wildkits.use:
+    description: Use WildKits commands and GUI
+    default: true
+  wildkits.admin:
+    description: Admin commands (reload, setspawn, crates)
+    default: op
+  wildkits.kit.*:
+    description: Access all kits
+    default: op
+  wildkits.bypass.cooldown:
+    description: Bypass kit cooldowns
+    default: op
+  wildkits.shop:
+    description: Access the shop
+    default: true
+  wildkits.cosmetics:
+    description: Use cosmetics
+    default: true
+  wildkits.spawn:
+    description: Teleport to WildKits spawn
+    default: true
+  wildkits.npc:
+    description: Create WildKits NPCs
+    default: op
+  wildkits.quests:
+    description: Access quests
+    default: true

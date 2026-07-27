@@ -1,0 +1,210 @@
+quests:
+  daily_kills_5:
+    display-name: "<green>First Blood"
+    description: "Kill 5 players"
+    type: DAILY
+    objective: kill
+    target: 5
+    rewards:
+      coins: 150
+      xp: 50
+  daily_kills_20:
+    display-name: "<green>Hot Streak"
+    description: "Kill 20 players"
+    type: DAILY
+    objective: kill
+    target: 20
+    rewards:
+      coins: 400
+      crate_key_common: 1
+  daily_crates_5:
+    display-name: "<aqua>Lucky Hands"
+    description: "Open 5 crates"
+    type: DAILY
+    objective: crate_open
+    target: 5
+    rewards:
+      coins: 200
+  daily_gaps:
+    display-name: "<gold>Golden Appetite"
+    description: "Use 10 golden apples"
+    type: DAILY
+    objective: golden_apple
+    target: 10
+    rewards:
+      coins: 175
+  daily_pearls:
+    display-name: "<light_purple>Pearl Master"
+    description: "Use 15 ender pearls"
+    type: DAILY
+    objective: ender_pearl
+    target: 15
+    rewards:
+      coins: 175
+  daily_play_30:
+    display-name: "<yellow>Warmup"
+    description: "Play 30 minutes"
+    type: DAILY
+    objective: playtime_minutes
+    target: 30
+    rewards:
+      coins: 250
+      xp: 100
+  daily_survive:
+    display-name: "<green>Survivor"
+    description: "Survive 10 minutes"
+    type: DAILY
+    objective: survive_minutes
+    target: 10
+    rewards:
+      coins: 300
+  weekly_kills_100:
+    display-name: "<gold>Warlord"
+    description: "Kill 100 players"
+    type: WEEKLY
+    objective: kill
+    target: 100
+    rewards:
+      coins: 2500
+      crate_key_rare: 2
+      xp: 500
+  weekly_crates_50:
+    display-name: "<gold>Crate Grinder"
+    description: "Open 50 crates"
+    type: WEEKLY
+    objective: crate_open
+    target: 50
+    rewards:
+      coins: 2000
+      crate_key_epic: 1
+  life_kills_100:
+    display-name: "<red>Centurion"
+    description: "Kill 100 players lifetime"
+    type: LIFETIME
+    objective: kill
+    target: 100
+    rewards:
+      coins: 5000
+      cosmetic_title_centurion: 1
+  life_legendary:
+    display-name: "<gold>Legend Seeker"
+    description: "Receive a Legendary+ kit"
+    type: LIFETIME
+    objective: legendary_kit
+    target: 1
+    rewards:
+      coins: 1000
+      crate_key_legendary: 1
+  life_break_placed:
+    display-name: "<gray>Demolisher"
+    description: "Break 200 player-placed blocks"
+    type: LIFETIME
+    objective: break_placed
+    target: 200
+    rewards:
+      coins: 1500
+  life_damage:
+    display-name: "<red>Bruiser"
+    description: "Deal 5000 damage"
+    type: LIFETIME
+    objective: deal_damage
+    target: 5000
+    rewards:
+      coins: 2000
+  daily_wins_3:
+    display-name: "<gold>Daily Champion"
+    description: "Win 3 streak milestones"
+    type: DAILY
+    objective: win
+    target: 3
+    rewards:
+      coins: 300
+      crate_key_common: 1
+  daily_place_50:
+    display-name: "<yellow>Builder"
+    description: "Place 50 blocks in arena"
+    type: DAILY
+    objective: place_block
+    target: 50
+    rewards:
+      coins: 200
+  daily_kits_10:
+    display-name: "<aqua>Kit Roulette"
+    description: "Receive 10 random kits"
+    type: DAILY
+    objective: receive_kit
+    target: 10
+    rewards:
+      coins: 175
+  daily_coins_500:
+    display-name: "<gold>Coin Collector"
+    description: "Collect 500 coins"
+    type: DAILY
+    objective: collect_coins
+    target: 500
+    rewards:
+      crate_key_rare: 1
+      xp: 75
+  weekly_wins_20:
+    display-name: "<gold>Weekly Dominator"
+    description: "Win 20 streak milestones"
+    type: WEEKLY
+    objective: win
+    target: 20
+    rewards:
+      coins: 3000
+      crate_key_epic: 1
+      cosmetic_title_warlord: 1
+  weekly_place_500:
+    display-name: "<yellow>Fortress Engineer"
+    description: "Place 500 arena blocks"
+    type: WEEKLY
+    objective: place_block
+    target: 500
+    rewards:
+      coins: 1500
+  weekly_break_300:
+    display-name: "<gray>Demolition Weekly"
+    description: "Break 300 player-placed blocks"
+    type: WEEKLY
+    objective: break_placed
+    target: 300
+    rewards:
+      coins: 1500
+      crate_key_rare: 1
+  monthly_kills_500:
+    display-name: "<dark_purple>Monthly Warlord"
+    description: "Kill 500 players this month"
+    type: MONTHLY
+    objective: kill
+    target: 500
+    rewards:
+      coins: 10000
+      crate_key_legendary: 2
+      xp: 2000
+  monthly_wins_50:
+    display-name: "<gold>Monthly Champion"
+    description: "Win 50 streak milestones"
+    type: MONTHLY
+    objective: win
+    target: 50
+    rewards:
+      coins: 8000
+      crate_key_epic: 3
+  monthly_crates_100:
+    display-name: "<aqua>Monthly Crate King"
+    description: "Open 100 crates"
+    type: MONTHLY
+    objective: crate_open
+    target: 100
+    rewards:
+      coins: 6000
+      crate_key_mythic: 1
+  monthly_kits_200:
+    display-name: "<yellow>Monthly Collector"
+    description: "Receive 200 random kits"
+    type: MONTHLY
+    objective: receive_kit
+    target: 200
+    rewards:
+      coins: 5000

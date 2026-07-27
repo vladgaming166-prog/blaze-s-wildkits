@@ -1,0 +1,62 @@
+# Blaze's WildKits - Main Configuration
+language: en
+
+# When true, players automatically receive a random kit on join/respawn.
+auto-random-kits: true
+
+# When true, kit identity is shown (chat/title/actionbar/sound/particles).
+# When false, kits are still given but NOTHING is revealed.
+# Live toggle: /wk showkit <true|false> (wildkits.admin)
+show-kit: true
+show-kit-hidden-text: "???"
+
+show-kit-effects:
+  title: true
+  actionbar: true
+  bossbar: false
+  sound: true
+  particles: true
+  broadcast-mythic: true
+
+respawn:
+  delay-seconds: 0
+  protection-seconds: 2
+  heal: true
+  feed: true
+  clear-effects: true
+  teleport-to-spawn: true
+
+economy:
+  coins-per-kill: 25
+  coins-per-killstreak-bonus: 5
+  coins-per-win: 50
+  win-killstreak: 5
+  playtime-coins: 10
+  playtime-interval-minutes: 5
+  daily-reward-coins: 100
+  login-streak-bonus: 15
+
+# Premium rarity chances for random kit template selection
+rarity-chances:
+  common: 38.0
+  uncommon: 18.0
+  rare: 18.0
+  epic: 12.0
+  legendary: 8.0
+  mythic: 4.0
+  godly: 1.5
+  ultimate: 0.5
+
+# Ultra-premium PvP generation (band is locked to rarity for balance)
+generation:
+  enchant-chance: 0.95
+
+# Global server spawn — /wk setspawn
+# World protection: use WorldGuard (no built-in regions)
+spawn:
+  world: world
+  x: 0.5
+  y: 64.0
+  z: 0.5
+  yaw: 0.0
+  pitch: 0.0
